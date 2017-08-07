@@ -42,15 +42,13 @@
   <ItemGroup>
     <Compile Include="Asignatura.cs" />
     <Compile Include="CursoLectivo.cs" />
+    <Compile Include="Especialidad.cs" />
     <Compile Include="Estudiante.cs" />
     <Compile Include="Matricula.cs" />
     <Compile Include="Nivel.cs" />
     <Compile Include="Nota.cs" />
     <Compile Include="Periodo.cs" />
-    <Compile Include="Persona.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Seccion.cs" />
-    <Compile Include="TipoPeriodo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace DataLayer
 {
-    public class Seccion
+    public class Especialidad
     {
-        public int IdSeccion { get; set; }
-        public int Nivel { get; set; }
-        public string Grupo { get; set; }
+        public int idEspecialidad { get; set; }
+        public string Nombre { get; set; }
     }
 }
