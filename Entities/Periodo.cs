@@ -1,4 +1,4 @@
-﻿namespace DataLayer
+﻿namespace Entities
 {
     public class Periodo
     {
