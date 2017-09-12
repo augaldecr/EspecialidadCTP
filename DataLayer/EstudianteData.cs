@@ -3,6 +3,7 @@ using Entities;
 using MySql.Data.MySqlClient;
 using System.Configuration;
 using System;
+using System.Collections.Generic;
 
 namespace DataLayer
 {
@@ -138,6 +139,53 @@ namespace DataLayer
                         cmd.ExecuteNonQuery();
                     }
                 }
+            }
+            catch (System.Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        #endregion
+
+        #region ListarEstudiante
+        public List<Estudiante> ListEstudiante()
+        {
+            //string connString = ConfigurationManager.AppSettings["connString"];
+            string connString = "server=localhost;user=root;database=ctp_noveno;port=3306;password=Alonso7157344/*-;";
+            List<Estudiante> lista = new List<Estudiante>(); ;
+
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connString))
+                {
+                    using (MySqlCommand cmd = new MySqlCommand("SELECT * FROM estudiantes_datos;", conn))
+                    {
+                        conn.Open();
+                        MySqlDataReader dr = cmd.ExecuteReader();
+
+                        if (dr.FieldCount > 0)
+                        {
+                            while (dr.Read())
+                            {
+                                Estudiante est = new Estudiante();
+                                est.IdEstudiante = dr.GetInt32(1);
+                                est.Cedula = dr.GetString(2);
+                                est.Nombre = dr.GetString(3);
+                                est.Apellido1 = dr.GetString(4);
+                                est.Apellido2 = dr.GetString(5);
+                                est.Celular = dr.GetString(6);
+                                est.Telefono = dr.GetString(7);
+                                est.Email = dr.GetString(8);
+                                est.Direccion = dr.GetString(9);
+                                est.Ctpp = dr.GetInt32(10);
+
+                                lista.Add(est);
+                            }
+                            dr.Close();
+                        }
+                    }
+                }
+                return lista;
             }
             catch (System.Exception ex)
             {

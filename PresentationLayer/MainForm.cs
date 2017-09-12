@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading;
+﻿using BussinesLayer;
+using System;
 using System.Windows.Forms;
 
 namespace PresentationLayer
@@ -14,19 +8,29 @@ namespace PresentationLayer
     {
         public MainForm()
         {
-            Thread t = new Thread(new ThreadStart(splash));
-            t.Start();
-            Thread.Sleep(15625);
-
             InitializeComponent();
-
-            t.Abort();
         }
 
-        public void splash()
+        private void tbPgEstudiantes_Enter(object sender, EventArgs e)
         {
-            Application.Run(new SplashScreen());
+            llenarEstudianteDatosDtGrdVw();
         }
 
+        private void llenarEstudianteDatosDtGrdVw()
+        {
+            EstudiantesBussines est = new EstudiantesBussines();
+            dtGrdVwEstudiantes.DataSource = est.listar();
+        }
+
+        private void dtGrdVwEstudiantes_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            MessageBox.Show(dtGrdVwEstudiantes.Rows[e.RowIndex].Cells[0].Value.ToString());
+        }
+
+        private void btnAddEstud_Click(object sender, EventArgs e)
+        {
+            EditStudent nuevoEst = new EditStudent(1);
+            nuevoEst.Show();
+        }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Entities;
 using MySql.Data.MySqlClient;
 using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 
@@ -114,6 +115,51 @@ namespace DataLayer
                         cmd.ExecuteNonQuery();
                     }
                 }
+            }
+            catch (System.Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        #endregion
+
+        #region ListMatricula
+        public List<Matricula> ListMatricula()
+        {
+            string connString = ConfigurationManager.AppSettings["connString"];
+            List<Matricula> lista = new List<Matricula>(); ;
+
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connString))
+                {
+                    using (MySqlCommand cmd = new MySqlCommand("SELECT matriculas_all;", conn))
+                    {
+                        MySqlDataReader dr = cmd.ExecuteReader();
+
+                        if (dr.FieldCount > 0)
+                        {
+                            Matricula mat = new Matricula();
+
+                            while (dr.Read())
+                            {
+                                for (int h = 0; h < dr.FieldCount; h++)
+                                {
+                                    mat.IdMatricula = int.Parse(dr[0].ToString());
+                                    mat.Estudiante = int.Parse(dr[1].ToString());
+                                    mat.CursoLectivo = int.Parse(dr[2].ToString());
+                                    mat.Especialidad1 = int.Parse(dr[3].ToString());
+                                    mat.Especialidad2 = int.Parse(dr[4].ToString());
+                                    mat.Especialidad3 = int.Parse(dr[5].ToString());
+
+                                    lista.Add(mat);
+                                }
+                            }
+                            dr.Close();
+                        }
+                    }
+                }
+                return lista;
             }
             catch (System.Exception ex)
             {
