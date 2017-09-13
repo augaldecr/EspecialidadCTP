@@ -130,6 +130,7 @@
             this.btnEditStudent.TabIndex = 1;
             this.btnEditStudent.Text = "Modificar";
             this.btnEditStudent.UseVisualStyleBackColor = true;
+            this.btnEditStudent.Click += new System.EventHandler(this.btnEditStudent_Click);
             // 
             // btnAddEstud
             // 

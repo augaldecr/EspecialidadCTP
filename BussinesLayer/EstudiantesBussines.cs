@@ -11,5 +11,11 @@ namespace BussinesLayer
             EstudianteData estu = new EstudianteData();
             return estu.ListEstudiante();
         }
+
+        public Estudiante estudianteXID(int id)
+        {
+            EstudianteData dt = new EstudianteData();
+            return dt.estudianteXId(id);
+        }
     }
 }

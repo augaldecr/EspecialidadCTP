@@ -24,13 +24,20 @@ namespace PresentationLayer
 
         private void dtGrdVwEstudiantes_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            MessageBox.Show(dtGrdVwEstudiantes.Rows[e.RowIndex].Cells[0].Value.ToString());
+            EditStudent editStudent = new EditStudent(2, int.Parse(dtGrdVwEstudiantes.Rows[e.RowIndex].Cells[0].Value.ToString()));
+            editStudent.Show();
         }
 
         private void btnAddEstud_Click(object sender, EventArgs e)
         {
             EditStudent nuevoEst = new EditStudent(1);
             nuevoEst.Show();
+        }
+
+        private void btnEditStudent_Click(object sender, EventArgs e)
+        {
+            EditStudent editStudent = new EditStudent(2, int.Parse(dtGrdVwEstudiantes.Rows[dtGrdVwEstudiantes.CurrentRow.Index].Cells[0].Value.ToString()));
+            editStudent.Show();
         }
     }
 }
