@@ -2,12 +2,6 @@
 using Entities;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PresentationLayer
@@ -22,6 +16,7 @@ namespace PresentationLayer
             InitializeComponent();
             type = tipo;
             asignaTitle(tipo);
+            cargaCombosEspe();
         }
 
         public EditStudent(int tipo, int id)
@@ -99,7 +94,8 @@ namespace PresentationLayer
                     Direccion = txtBoxDir.Text,
                     Email = txtBoxEmail.Text,
                     Telefono = txtBoxTel.Text,
-                    Ctpp = int.Parse(chkBoxLocal.Enabled.ToString()),
+                    Ctpp = 1,
+                    //Ctpp = int.Parse(chkBoxLocal.Enabled.ToString()),
                 };
 
                 MatriculaBussines mbs = new MatriculaBussines();
@@ -160,16 +156,41 @@ namespace PresentationLayer
                     throw new Exception(ex.Message);
                 }
             }
-        }
-
-        private void EditStudent_Load(object sender, EventArgs e)
-        {
-            //cargaCombosEspe();
+            MessageBox.Show("Información guardada de manera adecuada");
+            this.Close();
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
             this.Dispose();
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            DialogResult rs = MessageBox.Show("¿Desea eliminar al estudiantes",
+                "Borrar", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
+
+            if (rs == DialogResult.Yes)
+            {
+                EstudiantesBussines bs = new EstudiantesBussines();
+                MatriculaBussines mbs = new MatriculaBussines();
+                try
+                {
+                    mbs.borrarMatricula(mbs.idMatriculaXEstudiante(int.Parse(txtBoxID.Text)));
+                    bs.borrarEstudiante(int.Parse(txtBoxID.Text));
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.Message);
+                }
+                MessageBox.Show("Estudiante eliminado de manera exitosa");
+                this.Dispose();
+            }
+            else if (rs == DialogResult.No)
+            {
+
+            }
+
         }
     }
 }

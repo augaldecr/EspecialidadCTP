@@ -31,6 +31,8 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.lblTitle = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.cmbBoxEspe3 = new System.Windows.Forms.ComboBox();
+            this.cmbBoxEspe2 = new System.Windows.Forms.ComboBox();
             this.txtBoxCedula = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -50,17 +52,15 @@
             this.txtBoxDir = new System.Windows.Forms.TextBox();
             this.txtBoxCel = new System.Windows.Forms.TextBox();
             this.txtBoxApellido1 = new System.Windows.Forms.TextBox();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnEliminar = new System.Windows.Forms.Button();
-            this.btnGuardar = new System.Windows.Forms.Button();
-            this.btnSalir = new System.Windows.Forms.Button();
             this.chkBoxLocal = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.cmbBoxEspe1 = new System.Windows.Forms.ComboBox();
-            this.cmbBoxEspe2 = new System.Windows.Forms.ComboBox();
-            this.cmbBoxEspe3 = new System.Windows.Forms.ComboBox();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnEliminar = new System.Windows.Forms.Button();
+            this.btnGuardar = new System.Windows.Forms.Button();
+            this.btnSalir = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -140,6 +140,28 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28816F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(658, 415);
             this.tableLayoutPanel2.TabIndex = 1;
+            // 
+            // cmbBoxEspe3
+            // 
+            this.cmbBoxEspe3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cmbBoxEspe3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbBoxEspe3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbBoxEspe3.FormattingEnabled = true;
+            this.cmbBoxEspe3.Location = new System.Drawing.Point(134, 368);
+            this.cmbBoxEspe3.Name = "cmbBoxEspe3";
+            this.cmbBoxEspe3.Size = new System.Drawing.Size(191, 33);
+            this.cmbBoxEspe3.TabIndex = 26;
+            // 
+            // cmbBoxEspe2
+            // 
+            this.cmbBoxEspe2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cmbBoxEspe2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbBoxEspe2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbBoxEspe2.FormattingEnabled = true;
+            this.cmbBoxEspe2.Location = new System.Drawing.Point(463, 308);
+            this.cmbBoxEspe2.Name = "cmbBoxEspe2";
+            this.cmbBoxEspe2.Size = new System.Drawing.Size(191, 33);
+            this.cmbBoxEspe2.TabIndex = 25;
             // 
             // txtBoxCedula
             // 
@@ -333,58 +355,6 @@
             this.txtBoxApellido1.Size = new System.Drawing.Size(191, 32);
             this.txtBoxApellido1.TabIndex = 18;
             // 
-            // tableLayoutPanel3
-            // 
-            this.tableLayoutPanel3.ColumnCount = 3;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel3.Controls.Add(this.btnEliminar, 1, 0);
-            this.tableLayoutPanel3.Controls.Add(this.btnGuardar, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.btnSalir, 2, 0);
-            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 476);
-            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 1;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(658, 48);
-            this.tableLayoutPanel3.TabIndex = 2;
-            // 
-            // btnEliminar
-            // 
-            this.btnEliminar.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEliminar.Location = new System.Drawing.Point(275, 8);
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(107, 31);
-            this.btnEliminar.TabIndex = 2;
-            this.btnEliminar.Text = "Eliminar";
-            this.btnEliminar.UseVisualStyleBackColor = true;
-            // 
-            // btnGuardar
-            // 
-            this.btnGuardar.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGuardar.Location = new System.Drawing.Point(56, 8);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(107, 31);
-            this.btnGuardar.TabIndex = 0;
-            this.btnGuardar.Text = "Guardar";
-            this.btnGuardar.UseVisualStyleBackColor = true;
-            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
-            // 
-            // btnSalir
-            // 
-            this.btnSalir.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalir.Location = new System.Drawing.Point(494, 8);
-            this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(107, 31);
-            this.btnSalir.TabIndex = 1;
-            this.btnSalir.Text = "Salir";
-            this.btnSalir.UseVisualStyleBackColor = true;
-            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
-            // 
             // chkBoxLocal
             // 
             this.chkBoxLocal.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -437,32 +407,63 @@
             this.cmbBoxEspe1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbBoxEspe1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbBoxEspe1.FormattingEnabled = true;
-            this.cmbBoxEspe1.Location = new System.Drawing.Point(134, 314);
+            this.cmbBoxEspe1.Location = new System.Drawing.Point(134, 308);
             this.cmbBoxEspe1.Name = "cmbBoxEspe1";
             this.cmbBoxEspe1.Size = new System.Drawing.Size(191, 33);
             this.cmbBoxEspe1.TabIndex = 24;
             // 
-            // cmbBoxEspe2
+            // tableLayoutPanel3
             // 
-            this.cmbBoxEspe2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.cmbBoxEspe2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbBoxEspe2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbBoxEspe2.FormattingEnabled = true;
-            this.cmbBoxEspe2.Location = new System.Drawing.Point(463, 308);
-            this.cmbBoxEspe2.Name = "cmbBoxEspe2";
-            this.cmbBoxEspe2.Size = new System.Drawing.Size(191, 33);
-            this.cmbBoxEspe2.TabIndex = 25;
+            this.tableLayoutPanel3.ColumnCount = 3;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel3.Controls.Add(this.btnEliminar, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.btnGuardar, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.btnSalir, 2, 0);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 476);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 1;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(658, 48);
+            this.tableLayoutPanel3.TabIndex = 2;
             // 
-            // cmbBoxEspe3
+            // btnEliminar
             // 
-            this.cmbBoxEspe3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.cmbBoxEspe3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbBoxEspe3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbBoxEspe3.FormattingEnabled = true;
-            this.cmbBoxEspe3.Location = new System.Drawing.Point(134, 368);
-            this.cmbBoxEspe3.Name = "cmbBoxEspe3";
-            this.cmbBoxEspe3.Size = new System.Drawing.Size(191, 33);
-            this.cmbBoxEspe3.TabIndex = 26;
+            this.btnEliminar.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEliminar.Location = new System.Drawing.Point(275, 8);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(107, 31);
+            this.btnEliminar.TabIndex = 2;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            // 
+            // btnGuardar
+            // 
+            this.btnGuardar.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardar.Location = new System.Drawing.Point(56, 8);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(107, 31);
+            this.btnGuardar.TabIndex = 0;
+            this.btnGuardar.Text = "Guardar";
+            this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            // 
+            // btnSalir
+            // 
+            this.btnSalir.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSalir.Location = new System.Drawing.Point(494, 8);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(107, 31);
+            this.btnSalir.TabIndex = 1;
+            this.btnSalir.Text = "Salir";
+            this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // EditStudent
             // 
@@ -472,7 +473,6 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "EditStudent";
             this.Text = "Editar estudiante";
-            this.Load += new System.EventHandler(this.EditStudent_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);

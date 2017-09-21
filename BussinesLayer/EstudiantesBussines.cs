@@ -50,5 +50,18 @@ namespace BussinesLayer
                 throw new Exception(ex.Message);
             }
         }
+
+        public void borrarEstudiante(int id)
+        {
+            EstudianteData dt = new EstudianteData();
+            try
+            {
+                dt.BorraEstudiante(id);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

@@ -48,5 +48,18 @@ namespace BussinesLayer
             return matriculaData.matriculaXEstudiante(est);
         }
 
+        public void borrarMatricula(int id)
+        {
+            MatriculaData dt = new MatriculaData();
+            try
+            {
+                dt.BorraMatricula(id);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
     }
 }

@@ -124,9 +124,10 @@ namespace DataLayer
         #endregion
 
         #region BorrarEstudiante
-        public void BorraEstudiante()
+        public void BorraEstudiante(int id)
         {
-            string connString = ConfigurationManager.AppSettings["connString"];
+            //string connString = ConfigurationManager.AppSettings["connString"];
+            string connString = "server=localhost;user=root;database=ctp_noveno;port=3306;password=Alonso7157344/*-;";
 
             try
             {
@@ -138,10 +139,12 @@ namespace DataLayer
                         cmd.CommandText = "DeleteEstudiante";
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.Add("pidestudiante", MySqlDbType.VarChar);
-                        cmd.Parameters["pidestudiante"].Value = IdEstudiante;
+                        cmd.Parameters["pidestudiante"].Value = id;
                         cmd.Parameters["pidestudiante"].Direction = ParameterDirection.Input;
 
+                        conn.Open();
                         cmd.ExecuteNonQuery();
+                        conn.Close();
                     }
                 }
             }
@@ -563,7 +566,7 @@ namespace DataLayer
 
                 using (MySqlConnection conn = new MySqlConnection(connString))
                 {
-                    using (MySqlCommand cmd = new MySqlCommand("SELECT * FROM estudiantes WHERE cedula=" + cedula + ";", conn))
+                    using (MySqlCommand cmd = new MySqlCommand("SELECT * FROM estudiantes WHERE cedula='" + cedula + "';", conn))
                     {
                         conn.Open();
                         MySqlDataReader dr = cmd.ExecuteReader();

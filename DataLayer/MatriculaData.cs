@@ -117,9 +117,9 @@ namespace DataLayer
                         cmd.Connection = conn;
                         cmd.CommandText = "DeleteMatricula";
                         cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.Add("idmatricula_admision", MySqlDbType.Int16);
-                        cmd.Parameters["idmatricula_admision"].Value = id;
-                        cmd.Parameters["idmatricula_admision"].Direction = ParameterDirection.Input;
+                        cmd.Parameters.Add("pidmatricula", MySqlDbType.Int16);
+                        cmd.Parameters["pidmatricula"].Value = id;
+                        cmd.Parameters["pidmatricula"].Direction = ParameterDirection.Input;
 
                         conn.Open();
                         cmd.ExecuteNonQuery();
