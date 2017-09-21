@@ -11,6 +11,9 @@ namespace PresentationLayer
         int Id;
         int type;
 
+        public delegate void refreshDT();
+        public event refreshDT rfDT;
+
         public EditStudent(int tipo)
         {
             InitializeComponent();
@@ -45,7 +48,7 @@ namespace PresentationLayer
             txtBoxTel.Text = est.Telefono.ToString();
             txtBoxCel.Text = est.Celular.ToString();
             txtBoxEmail.Text = est.Email.ToString();
-            //chkBoxLocal.Enabled = bool.Parse(est.Ctpp);
+            chkBoxLocal.Checked = Convert.ToBoolean(est.Ctpp);
             cmbBoxEspe1.SelectedValue = mat.Especialidad1;
             cmbBoxEspe2.SelectedValue = mat.Especialidad2;
             cmbBoxEspe3.SelectedValue = mat.Especialidad3;
@@ -94,22 +97,29 @@ namespace PresentationLayer
                     Direccion = txtBoxDir.Text,
                     Email = txtBoxEmail.Text,
                     Telefono = txtBoxTel.Text,
-                    Ctpp = 1,
-                    //Ctpp = int.Parse(chkBoxLocal.Enabled.ToString()),
+                    Ctpp = chkBoxLocal.Checked ? 1 : 0,
                 };
+                try
+                {
+                    est.guardarEstudiante(estudiante);
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.Message);
+                }
 
                 MatriculaBussines mbs = new MatriculaBussines();
                 Matricula mat = new Matricula
                 {
                     Estudiante = est.iDEstudianteXCedula(txtBoxCedula.Text),
-                    CursoLectivo = 19,
+                    CursoLectivo = 2,
                     Especialidad1 = int.Parse(cmbBoxEspe1.SelectedValue.ToString()),
                     Especialidad2 = int.Parse(cmbBoxEspe2.SelectedValue.ToString()),
                     Especialidad3 = int.Parse(cmbBoxEspe3.SelectedValue.ToString()),
                 };
+
                 try
                 {
-                    est.guardarEstudiante(estudiante);
                     mbs.guardarMatricula(mat);
                 }
                 catch (Exception ex)
@@ -131,8 +141,7 @@ namespace PresentationLayer
                     Direccion = txtBoxDir.Text,
                     Email = txtBoxEmail.Text,
                     Telefono = txtBoxTel.Text,
-                    Ctpp = 1,
-                    //Ctpp = int.Parse(chkBoxLocal.Enabled.ToString()),
+                    Ctpp = chkBoxLocal.Checked ? 1 : 0,
                 };
 
                 MatriculaBussines mbs = new MatriculaBussines();
@@ -157,7 +166,8 @@ namespace PresentationLayer
                 }
             }
             MessageBox.Show("Información guardada de manera adecuada");
-            this.Close();
+            rfDT();
+            this.Dispose();
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
@@ -184,13 +194,9 @@ namespace PresentationLayer
                     throw new Exception(ex.Message);
                 }
                 MessageBox.Show("Estudiante eliminado de manera exitosa");
+                rfDT();
                 this.Dispose();
             }
-            else if (rs == DialogResult.No)
-            {
-
-            }
-
         }
     }
 }

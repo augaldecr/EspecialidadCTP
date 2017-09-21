@@ -147,7 +147,7 @@
             this.cmbBoxEspe3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbBoxEspe3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbBoxEspe3.FormattingEnabled = true;
-            this.cmbBoxEspe3.Location = new System.Drawing.Point(134, 368);
+            this.cmbBoxEspe3.Location = new System.Drawing.Point(134, 367);
             this.cmbBoxEspe3.Name = "cmbBoxEspe3";
             this.cmbBoxEspe3.Size = new System.Drawing.Size(191, 33);
             this.cmbBoxEspe3.TabIndex = 26;
@@ -158,7 +158,7 @@
             this.cmbBoxEspe2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbBoxEspe2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbBoxEspe2.FormattingEnabled = true;
-            this.cmbBoxEspe2.Location = new System.Drawing.Point(463, 308);
+            this.cmbBoxEspe2.Location = new System.Drawing.Point(463, 307);
             this.cmbBoxEspe2.Name = "cmbBoxEspe2";
             this.cmbBoxEspe2.Size = new System.Drawing.Size(191, 33);
             this.cmbBoxEspe2.TabIndex = 25;
@@ -324,6 +324,7 @@
             this.txtBoxTel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtBoxTel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBoxTel.Location = new System.Drawing.Point(134, 190);
+            this.txtBoxTel.MaxLength = 8;
             this.txtBoxTel.Name = "txtBoxTel";
             this.txtBoxTel.Size = new System.Drawing.Size(191, 32);
             this.txtBoxTel.TabIndex = 14;
@@ -342,6 +343,7 @@
             this.txtBoxCel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtBoxCel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBoxCel.Location = new System.Drawing.Point(463, 131);
+            this.txtBoxCel.MaxLength = 8;
             this.txtBoxCel.Name = "txtBoxCel";
             this.txtBoxCel.Size = new System.Drawing.Size(191, 32);
             this.txtBoxCel.TabIndex = 17;
@@ -407,7 +409,7 @@
             this.cmbBoxEspe1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbBoxEspe1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbBoxEspe1.FormattingEnabled = true;
-            this.cmbBoxEspe1.Location = new System.Drawing.Point(134, 308);
+            this.cmbBoxEspe1.Location = new System.Drawing.Point(134, 307);
             this.cmbBoxEspe1.Name = "cmbBoxEspe1";
             this.cmbBoxEspe1.Size = new System.Drawing.Size(191, 33);
             this.cmbBoxEspe1.TabIndex = 24;

@@ -11,6 +11,7 @@ namespace PresentationLayer
             InitializeComponent();
         }
 
+        #region TabEstudiantes
         private void tbPgEstudiantes_Enter(object sender, EventArgs e)
         {
             llenarEstudianteDatosDtGrdVw();
@@ -20,24 +21,155 @@ namespace PresentationLayer
         {
             EstudiantesBussines est = new EstudiantesBussines();
             dtGrdVwEstudiantes.DataSource = est.listar();
+            dtGrdVwEstudiantes.Refresh();
+            dtGrdVwEstudiantes.Update();
+        }
+
+        private void vaciarEstudianteDatosDtGrdVw()
+        {
+            EstudiantesBussines est = new EstudiantesBussines();
+            dtGrdVwEstudiantes.DataSource = null;
+            dtGrdVwEstudiantes.Refresh();
+            dtGrdVwEstudiantes.Update();
         }
 
         private void dtGrdVwEstudiantes_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             EditStudent editStudent = new EditStudent(2, int.Parse(dtGrdVwEstudiantes.Rows[e.RowIndex].Cells[0].Value.ToString()));
             editStudent.Show();
+            editStudent.rfDT += EditStudent_rfDT;
         }
 
         private void btnAddEstud_Click(object sender, EventArgs e)
         {
             EditStudent nuevoEst = new EditStudent(1);
             nuevoEst.Show();
+            nuevoEst.rfDT += EditStudent_rfDT;
         }
 
         private void btnEditStudent_Click(object sender, EventArgs e)
         {
             EditStudent editStudent = new EditStudent(2, int.Parse(dtGrdVwEstudiantes.Rows[dtGrdVwEstudiantes.CurrentRow.Index].Cells[0].Value.ToString()));
             editStudent.Show();
+            editStudent.rfDT += EditStudent_rfDT;
+        }
+
+        private void EditStudent_rfDT()
+        {
+            refrescaDTEstud();
+        }
+
+        private void btnDelStud_Click(object sender, EventArgs e)
+        {
+            DialogResult rs = MessageBox.Show("¿Desea eliminar al estudiantes",
+                "Borrar", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
+
+            if (rs == DialogResult.Yes)
+            {
+                EstudiantesBussines bs = new EstudiantesBussines();
+                MatriculaBussines mbs = new MatriculaBussines();
+                try
+                {
+                    mbs.borrarMatricula(mbs.idMatriculaXEstudiante(int.Parse(dtGrdVwEstudiantes.Rows[dtGrdVwEstudiantes.CurrentRow.Index].Cells[0].Value.ToString())));
+                    bs.borrarEstudiante(int.Parse(dtGrdVwEstudiantes.Rows[dtGrdVwEstudiantes.CurrentRow.Index].Cells[0].Value.ToString()));
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.Message);
+                }
+                MessageBox.Show("Estudiante eliminado de manera exitosa");
+                refrescaDTEstud();
+            }
+        }
+
+        private void refrescaDTEstud()
+        {
+            vaciarEstudianteDatosDtGrdVw();
+            llenarEstudianteDatosDtGrdVw();
+        }
+        #endregion
+
+        #region TabOrienta
+        private void tbPgOrienta_Enter(object sender, EventArgs e)
+        {
+            llenarOrientaDatosDtGrdVw();
+        }
+
+        private void llenarOrientaDatosDtGrdVw()
+        {
+            NotaBussines ori = new NotaBussines();
+            dtGrdVwOrienta.DataSource = ori.listarNotasOrienta();
+            dtGrdVwOrienta.Refresh();
+            dtGrdVwOrienta.Update();
+        }
+        /*
+        private void vaciarEstudianteDatosDtGrdVw()
+        {
+            EstudiantesBussines est = new EstudiantesBussines();
+            dtGrdVwEstudiantes.DataSource = null;
+            dtGrdVwEstudiantes.Refresh();
+            dtGrdVwEstudiantes.Update();
+        }
+
+        private void dtGrdVwEstudiantes_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            EditStudent editStudent = new EditStudent(2, int.Parse(dtGrdVwEstudiantes.Rows[e.RowIndex].Cells[0].Value.ToString()));
+            editStudent.Show();
+            editStudent.rfDT += EditStudent_rfDT;
+        }
+
+        private void btnAddEstud_Click(object sender, EventArgs e)
+        {
+            EditStudent nuevoEst = new EditStudent(1);
+            nuevoEst.Show();
+            nuevoEst.rfDT += EditStudent_rfDT;
+        }
+
+        private void btnEditStudent_Click(object sender, EventArgs e)
+        {
+            EditStudent editStudent = new EditStudent(2, int.Parse(dtGrdVwEstudiantes.Rows[dtGrdVwEstudiantes.CurrentRow.Index].Cells[0].Value.ToString()));
+            editStudent.Show();
+            editStudent.rfDT += EditStudent_rfDT;
+        }
+
+        private void EditStudent_rfDT()
+        {
+            refrescaDTEstud();
+        }
+
+        private void btnDelStud_Click(object sender, EventArgs e)
+        {
+            DialogResult rs = MessageBox.Show("¿Desea eliminar al estudiantes",
+                "Borrar", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
+
+            if (rs == DialogResult.Yes)
+            {
+                EstudiantesBussines bs = new EstudiantesBussines();
+                MatriculaBussines mbs = new MatriculaBussines();
+                try
+                {
+                    mbs.borrarMatricula(mbs.idMatriculaXEstudiante(int.Parse(dtGrdVwEstudiantes.Rows[dtGrdVwEstudiantes.CurrentRow.Index].Cells[0].Value.ToString())));
+                    bs.borrarEstudiante(int.Parse(dtGrdVwEstudiantes.Rows[dtGrdVwEstudiantes.CurrentRow.Index].Cells[0].Value.ToString()));
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.Message);
+                }
+                MessageBox.Show("Estudiante eliminado de manera exitosa");
+                refrescaDTEstud();
+            }
+        }
+
+        private void refrescaDTEstud()
+        {
+            vaciarEstudianteDatosDtGrdVw();
+            llenarEstudianteDatosDtGrdVw();
+        }*/
+        #endregion
+
+        private void btnAddOrienta_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
