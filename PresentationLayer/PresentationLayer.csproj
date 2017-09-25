@@ -50,6 +50,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EditNotasOctavo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditNotasOctavo.Designer.cs">
+      <DependentUpon>EditNotasOctavo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="editOrienta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="editOrienta.Designer.cs">
+      <DependentUpon>editOrienta.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditStudent.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -64,6 +76,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="EditNotasOctavo.resx">
+      <DependentUpon>EditNotasOctavo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="editOrienta.resx">
+      <DependentUpon>editOrienta.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EditStudent.resx">
       <DependentUpon>EditStudent.cs</DependentUpon>
     </EmbeddedResource>

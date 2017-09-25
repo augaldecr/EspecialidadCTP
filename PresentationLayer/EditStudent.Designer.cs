@@ -147,10 +147,10 @@
             this.cmbBoxEspe3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbBoxEspe3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbBoxEspe3.FormattingEnabled = true;
-            this.cmbBoxEspe3.Location = new System.Drawing.Point(134, 367);
+            this.cmbBoxEspe3.Location = new System.Drawing.Point(134, 368);
             this.cmbBoxEspe3.Name = "cmbBoxEspe3";
             this.cmbBoxEspe3.Size = new System.Drawing.Size(191, 33);
-            this.cmbBoxEspe3.TabIndex = 26;
+            this.cmbBoxEspe3.TabIndex = 12;
             // 
             // cmbBoxEspe2
             // 
@@ -158,19 +158,20 @@
             this.cmbBoxEspe2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbBoxEspe2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbBoxEspe2.FormattingEnabled = true;
-            this.cmbBoxEspe2.Location = new System.Drawing.Point(463, 307);
+            this.cmbBoxEspe2.Location = new System.Drawing.Point(463, 308);
             this.cmbBoxEspe2.Name = "cmbBoxEspe2";
             this.cmbBoxEspe2.Size = new System.Drawing.Size(191, 33);
-            this.cmbBoxEspe2.TabIndex = 25;
+            this.cmbBoxEspe2.TabIndex = 11;
             // 
             // txtBoxCedula
             // 
             this.txtBoxCedula.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtBoxCedula.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBoxCedula.Location = new System.Drawing.Point(463, 13);
+            this.txtBoxCedula.MaxLength = 45;
             this.txtBoxCedula.Name = "txtBoxCedula";
             this.txtBoxCedula.Size = new System.Drawing.Size(191, 32);
-            this.txtBoxCedula.TabIndex = 19;
+            this.txtBoxCedula.TabIndex = 1;
             // 
             // label2
             // 
@@ -297,27 +298,30 @@
             this.txtBoxNombre.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtBoxNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBoxNombre.Location = new System.Drawing.Point(134, 72);
+            this.txtBoxNombre.MaxLength = 45;
             this.txtBoxNombre.Name = "txtBoxNombre";
             this.txtBoxNombre.Size = new System.Drawing.Size(191, 32);
-            this.txtBoxNombre.TabIndex = 11;
+            this.txtBoxNombre.TabIndex = 2;
             // 
             // txtBoxApellido2
             // 
             this.txtBoxApellido2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtBoxApellido2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBoxApellido2.Location = new System.Drawing.Point(134, 131);
+            this.txtBoxApellido2.MaxLength = 45;
             this.txtBoxApellido2.Name = "txtBoxApellido2";
             this.txtBoxApellido2.Size = new System.Drawing.Size(191, 32);
-            this.txtBoxApellido2.TabIndex = 12;
+            this.txtBoxApellido2.TabIndex = 4;
             // 
             // txtBoxEmail
             // 
             this.txtBoxEmail.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtBoxEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBoxEmail.Location = new System.Drawing.Point(134, 249);
+            this.txtBoxEmail.MaxLength = 45;
             this.txtBoxEmail.Name = "txtBoxEmail";
             this.txtBoxEmail.Size = new System.Drawing.Size(191, 32);
-            this.txtBoxEmail.TabIndex = 13;
+            this.txtBoxEmail.TabIndex = 8;
             // 
             // txtBoxTel
             // 
@@ -327,16 +331,17 @@
             this.txtBoxTel.MaxLength = 8;
             this.txtBoxTel.Name = "txtBoxTel";
             this.txtBoxTel.Size = new System.Drawing.Size(191, 32);
-            this.txtBoxTel.TabIndex = 14;
+            this.txtBoxTel.TabIndex = 6;
             // 
             // txtBoxDir
             // 
             this.txtBoxDir.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtBoxDir.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBoxDir.Location = new System.Drawing.Point(463, 190);
+            this.txtBoxDir.MaxLength = 54;
             this.txtBoxDir.Name = "txtBoxDir";
             this.txtBoxDir.Size = new System.Drawing.Size(191, 32);
-            this.txtBoxDir.TabIndex = 16;
+            this.txtBoxDir.TabIndex = 7;
             // 
             // txtBoxCel
             // 
@@ -346,16 +351,17 @@
             this.txtBoxCel.MaxLength = 8;
             this.txtBoxCel.Name = "txtBoxCel";
             this.txtBoxCel.Size = new System.Drawing.Size(191, 32);
-            this.txtBoxCel.TabIndex = 17;
+            this.txtBoxCel.TabIndex = 5;
             // 
             // txtBoxApellido1
             // 
             this.txtBoxApellido1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtBoxApellido1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBoxApellido1.Location = new System.Drawing.Point(463, 72);
+            this.txtBoxApellido1.MaxLength = 45;
             this.txtBoxApellido1.Name = "txtBoxApellido1";
             this.txtBoxApellido1.Size = new System.Drawing.Size(191, 32);
-            this.txtBoxApellido1.TabIndex = 18;
+            this.txtBoxApellido1.TabIndex = 3;
             // 
             // chkBoxLocal
             // 
@@ -366,7 +372,7 @@
             this.chkBoxLocal.Location = new System.Drawing.Point(551, 258);
             this.chkBoxLocal.Name = "chkBoxLocal";
             this.chkBoxLocal.Size = new System.Drawing.Size(15, 14);
-            this.chkBoxLocal.TabIndex = 20;
+            this.chkBoxLocal.TabIndex = 9;
             this.chkBoxLocal.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.chkBoxLocal.UseVisualStyleBackColor = true;
             // 
@@ -409,10 +415,10 @@
             this.cmbBoxEspe1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbBoxEspe1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbBoxEspe1.FormattingEnabled = true;
-            this.cmbBoxEspe1.Location = new System.Drawing.Point(134, 307);
+            this.cmbBoxEspe1.Location = new System.Drawing.Point(134, 308);
             this.cmbBoxEspe1.Name = "cmbBoxEspe1";
             this.cmbBoxEspe1.Size = new System.Drawing.Size(191, 33);
-            this.cmbBoxEspe1.TabIndex = 24;
+            this.cmbBoxEspe1.TabIndex = 10;
             // 
             // tableLayoutPanel3
             // 
@@ -438,7 +444,7 @@
             this.btnEliminar.Location = new System.Drawing.Point(275, 8);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(107, 31);
-            this.btnEliminar.TabIndex = 2;
+            this.btnEliminar.TabIndex = 14;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
@@ -450,7 +456,7 @@
             this.btnGuardar.Location = new System.Drawing.Point(56, 8);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(107, 31);
-            this.btnGuardar.TabIndex = 0;
+            this.btnGuardar.TabIndex = 13;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
@@ -462,7 +468,7 @@
             this.btnSalir.Location = new System.Drawing.Point(494, 8);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(107, 31);
-            this.btnSalir.TabIndex = 1;
+            this.btnSalir.TabIndex = 15;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
