@@ -200,7 +200,8 @@ namespace DataLayer
                                 nota.Apellido2 = dr.GetString(3);
                                 nota.Nombre = dr.GetString(4);
                                 nota.Curso_lectivo = dr.GetInt32(5);
-                                nota.Calificacion = dr.GetDecimal(7);
+                                nota.Entrevista = dr.GetDecimal(7);
+                                nota.Vocacional = dr.GetDecimal(8);
 
                                 lista.Add(nota);
                             }
@@ -217,11 +218,11 @@ namespace DataLayer
         }
         #endregion
 
-        #region SeleccionaEstudiante
-        public Estudiante estudianteXId(int id)
+        #region SeleccionaNota
+        public Nota notaXId(int id)
         {
             string connString = "server=localhost;user=root;database=ctp_noveno;port=3306;password=Alonso7157344/*-;";
-            Estudiante est = new Estudiante();
+            Nota nota = new Nota();
 
             try
             {
@@ -315,7 +316,7 @@ namespace DataLayer
 
                 using (MySqlConnection conn = new MySqlConnection(connString))
                 {
-                    using (MySqlCommand cmd = new MySqlCommand("SELECT * FROM estudiantes WHERE idestudiante=" + id + ";", conn))
+                    using (MySqlCommand cmd = new MySqlCommand("SELECT * FROM notas WHERE idnotas=" + id + ";", conn))
                     {
                         conn.Open();
                         MySqlDataReader dr = cmd.ExecuteReader();
@@ -324,16 +325,12 @@ namespace DataLayer
                         {
                             while (dr.Read())
                             {
-                                est.IdEstudiante = dr.GetInt32(0);
-                                est.Cedula = dr.GetString(1);
-                                est.Nombre = dr.GetString(2);
-                                est.Apellido1 = dr.GetString(3);
-                                est.Apellido2 = dr.GetString(4);
-                                est.Celular = dr.GetString(7);
-                                est.Telefono = dr.GetString(6);
-                                est.Email = dr.GetString(5);
-                                est.Direccion = dr.GetString(8);
-                                est.Ctpp = dr.GetInt32(9);
+                                nota.IdNota = dr.GetInt32(0);
+                                nota.Matricula = dr.GetInt32(1);
+                                nota.Asignatura = dr.GetInt32(2);
+                                nota.Nivel = dr.GetInt32(3);
+                                nota.Periodo = dr.GetInt32(4);
+                                nota.Calificacion = dr.GetDecimal(5);
                             }
                             dr.Close();
 
@@ -345,7 +342,134 @@ namespace DataLayer
             {
                 throw new Exception(ex.Message);
             }
-            return est;
+            return nota;
+        }
+        #endregion
+
+        #region SeleccionaNota
+        public Nota notaOrientaXId(int id)
+        {
+            string connString = "server=localhost;user=root;database=ctp_noveno;port=3306;password=Alonso7157344/*-;";
+            Nota nota = new Nota();
+
+            try
+            {
+                #region Procedure
+                //using (MySqlConnection conn = new MySqlConnection())
+                //{
+                //    using (MySqlCommand cmd = new MySqlCommand())
+                //    {
+                //        conn.ConnectionString = connString;
+                //        cmd.Connection = conn;
+                //        cmd.CommandType = CommandType.StoredProcedure;
+                //        cmd.CommandText = "select_student_id";
+
+                //        MySqlParameter pidestudiante = new MySqlParameter();
+                //        pidestudiante.ParameterName = "@pidestudiante";
+                //        pidestudiante.Direction = ParameterDirection.Input;
+                //        pidestudiante.MySqlDbType = MySqlDbType.Int32;
+                //        pidestudiante.Value = id;
+                //        cmd.Parameters.Add(pidestudiante);
+
+                //        MySqlParameter pcedula = new MySqlParameter();
+                //        pcedula.ParameterName = "@pcedula";
+                //        pcedula.Direction = ParameterDirection.ReturnValue;
+                //        pcedula.MySqlDbType = MySqlDbType.VarChar;
+                //        cmd.Parameters.Add(pcedula);
+
+                //        MySqlParameter pnombre = new MySqlParameter();
+                //        pnombre.ParameterName = "@pnombre";
+                //        pnombre.Direction = ParameterDirection.ReturnValue;
+                //        pnombre.MySqlDbType = MySqlDbType.VarChar;
+                //        cmd.Parameters.Add(pnombre);
+
+                //        MySqlParameter papellido1 = new MySqlParameter();
+                //        papellido1.ParameterName = "@papellido1";
+                //        papellido1.Direction = ParameterDirection.ReturnValue;
+                //        papellido1.MySqlDbType = MySqlDbType.VarChar;
+                //        cmd.Parameters.Add(papellido1);
+
+                //        MySqlParameter papellido2 = new MySqlParameter();
+                //        papellido2.ParameterName = "@papellido2";
+                //        papellido2.Direction = ParameterDirection.ReturnValue;
+                //        papellido2.MySqlDbType = MySqlDbType.VarChar;
+                //        cmd.Parameters.Add(papellido2);
+
+                //        MySqlParameter pdireccion = new MySqlParameter();
+                //        pdireccion.ParameterName = "@pdireccion";
+                //        pdireccion.Direction = ParameterDirection.ReturnValue;
+                //        pdireccion.MySqlDbType = MySqlDbType.VarChar;
+                //        cmd.Parameters.Add(pdireccion);
+
+                //        MySqlParameter ptelefono = new MySqlParameter();
+                //        ptelefono.ParameterName = "@ptelefono";
+                //        ptelefono.Direction = ParameterDirection.ReturnValue;
+                //        ptelefono.MySqlDbType = MySqlDbType.VarChar;
+                //        cmd.Parameters.Add(ptelefono);
+
+                //        MySqlParameter pcelular = new MySqlParameter();
+                //        pcelular.ParameterName = "@pcelular";
+                //        pcelular.Direction = ParameterDirection.ReturnValue;
+                //        pcelular.MySqlDbType = MySqlDbType.VarChar;
+                //        cmd.Parameters.Add(pcelular);
+
+                //        MySqlParameter pemail = new MySqlParameter();
+                //        pemail.ParameterName = "@pemail";
+                //        pemail.Direction = ParameterDirection.ReturnValue;
+                //        pemail.MySqlDbType = MySqlDbType.VarChar;
+                //        cmd.Parameters.Add(pemail);
+
+                //        MySqlParameter pctpp = new MySqlParameter();
+                //        pctpp.ParameterName = "@pctpp";
+                //        pctpp.Direction = ParameterDirection.ReturnValue;
+                //        pctpp.MySqlDbType = MySqlDbType.VarChar;
+                //        cmd.Parameters.Add(pctpp);
+
+                //        conn.Open();
+                //        cmd.ExecuteNonQuery();
+
+                //        est.Cedula = pcedula.Value.ToString();
+                //        est.Nombre = pnombre.Value.ToString();
+                //        est.Apellido1 = papellido1.Value.ToString();
+                //        est.Apellido2 = papellido2.Value.ToString();
+                //        est.Direccion = pdireccion.Value.ToString();
+                //        est.Telefono = ptelefono.Value.ToString();
+                //        est.Celular = pcelular.Value.ToString();
+                //        est.Email = pemail.Value.ToString();
+                //        est.Ctpp = int.Parse(pctpp.Value.ToString());
+                //    }
+                //}
+                //return est;
+                #endregion
+
+                using (MySqlConnection conn = new MySqlConnection(connString))
+                {
+                    using (MySqlCommand cmd = new MySqlCommand("SELECT * FROM notas_orienta WHERE idnotas_orienta=" + id + ";", conn))
+                    {
+                        conn.Open();
+                        MySqlDataReader dr = cmd.ExecuteReader();
+
+                        if (dr.FieldCount > 0)
+                        {
+                            while (dr.Read())
+                            {
+                                nota.IdNota = dr.GetInt32(0);
+                                nota.Matricula = dr.GetInt32(1);
+                                nota.Curso_lectivo = dr.GetInt32(2);
+                                nota.Entrevista = dr.GetDecimal(3);
+                                nota.Vocacional = dr.GetDecimal(4);
+                            }
+                            dr.Close();
+
+                        }
+                    }
+                }
+            }
+            catch (System.Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return nota;
         }
         #endregion
 

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BussinesLayer;
+using Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +14,50 @@ namespace PresentationLayer
 {
     public partial class editOrienta : Form
     {
-        public editOrienta()
+        int Id;
+        int type;
+
+        public delegate void refreshDT();
+        public event refreshDT rfDT;
+
+        public editOrienta(int tipo)
         {
             InitializeComponent();
+            type = tipo;
+            asignaTitle(tipo);
+        }
+
+        public editOrienta(int tipo, int id)
+        {
+            InitializeComponent();
+            type = tipo;
+            asignaTitle(tipo);
+            Id = id;
+            llenaCampos(id);
+        }
+
+        private void llenaCampos(int id)
+        {
+            NotaBussines bs = new NotaBussines();
+            Nota nota = bs.NotaOrientaXId(id);
+
+            txtBoxStudent.Text = "";
+            txtBoxEntrevista.Text = "";
+            txtBoxVoca.Text = "";
+        }
+
+        private void asignaTitle(int tipo)
+        {
+            if (tipo == 1)
+            {
+                lblTitle.Text = "Nuevo estudiante";
+                btnGuardar.Text = "Guardar";
+            }
+            else
+            {
+                lblTitle.Text = "Editar estudiante";
+                btnGuardar.Text = "Modificar";
+            }
         }
     }
 }

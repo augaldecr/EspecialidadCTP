@@ -27,7 +27,6 @@ namespace PresentationLayer
 
         private void vaciarEstudianteDatosDtGrdVw()
         {
-            EstudiantesBussines est = new EstudiantesBussines();
             dtGrdVwEstudiantes.DataSource = null;
             dtGrdVwEstudiantes.Refresh();
             dtGrdVwEstudiantes.Update();
@@ -102,23 +101,22 @@ namespace PresentationLayer
             dtGrdVwOrienta.Refresh();
             dtGrdVwOrienta.Update();
         }
+
+        private void vaciarOrientaDatosDtGrdVw()
+        {
+            dtGrdVwOrienta.DataSource = null;
+            dtGrdVwOrienta.Refresh();
+            dtGrdVwOrienta.Update();
+        }
+        
+        private void dtGrdVwOrienta_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            editOrienta editOrienta1 = new editOrienta(2, int.Parse(dtGrdVwEstudiantes.Rows[e.RowIndex].Cells[0].Value.ToString()));
+            editOrienta1.Show();
+            editOrienta1.rfDT += EditStudent_rfDT;
+        }
         /*
-        private void vaciarEstudianteDatosDtGrdVw()
-        {
-            EstudiantesBussines est = new EstudiantesBussines();
-            dtGrdVwEstudiantes.DataSource = null;
-            dtGrdVwEstudiantes.Refresh();
-            dtGrdVwEstudiantes.Update();
-        }
-
-        private void dtGrdVwEstudiantes_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            EditStudent editStudent = new EditStudent(2, int.Parse(dtGrdVwEstudiantes.Rows[e.RowIndex].Cells[0].Value.ToString()));
-            editStudent.Show();
-            editStudent.rfDT += EditStudent_rfDT;
-        }
-
-        private void btnAddEstud_Click(object sender, EventArgs e)
+        private void btnAddOrienta_Click(object sender, EventArgs e)
         {
             EditStudent nuevoEst = new EditStudent(1);
             nuevoEst.Show();
@@ -166,10 +164,5 @@ namespace PresentationLayer
             llenarEstudianteDatosDtGrdVw();
         }*/
         #endregion
-
-        private void btnAddOrienta_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
