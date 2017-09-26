@@ -7,7 +7,7 @@ using System.Data;
 
 namespace DataLayer
 {
-    public class NotaData : Nota
+    public class NotaData
     {
         #region GuardarNota
         public void GuardaNota(Nota nota)
@@ -38,6 +38,46 @@ namespace DataLayer
                         cmd.Parameters.Add("nota", MySqlDbType.Decimal);
                         cmd.Parameters["nota"].Value = nota.Calificacion;
                         cmd.Parameters["nota"].Direction = ParameterDirection.Input;
+
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+                        conn.Close();
+                    }
+                }
+            }
+            catch (System.Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        #endregion
+
+        #region GuardarNotaOrienta
+        public void GuardaNotaOrienta(Nota nota)
+        {
+            string connString = ConfigurationManager.AppSettings["connString"];
+
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connString))
+                {
+                    using (MySqlCommand cmd = new MySqlCommand())
+                    {
+                        cmd.Connection = conn;
+                        cmd.CommandText = "InsertNotaOrienta";
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.Add("matricula", MySqlDbType.Int32);
+                        cmd.Parameters["matricula"].Value = nota.Matricula;
+                        cmd.Parameters["matricula"].Direction = ParameterDirection.Input;
+                        cmd.Parameters.Add("curso_lectivo", MySqlDbType.Int32);
+                        cmd.Parameters["curso_lectivo"].Value = nota.Curso_lectivo;
+                        cmd.Parameters["curso_lectivo"].Direction = ParameterDirection.Input;
+                        cmd.Parameters.Add("entrevista", MySqlDbType.Decimal);
+                        cmd.Parameters["entrevista"].Value = nota.Entrevista;
+                        cmd.Parameters["entrevista"].Direction = ParameterDirection.Input;
+                        cmd.Parameters.Add("vocacional", MySqlDbType.Decimal);
+                        cmd.Parameters["vocacional"].Value = nota.Vocacional;
+                        cmd.Parameters["vocacional"].Direction = ParameterDirection.Input;
 
                         conn.Open();
                         cmd.ExecuteNonQuery();
@@ -84,6 +124,53 @@ namespace DataLayer
                         cmd.Parameters.Add("pnota", MySqlDbType.Decimal);
                         cmd.Parameters["pnota"].Value = nota.Calificacion;
                         cmd.Parameters["pnota"].Direction = ParameterDirection.Input;
+
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+                        conn.Close();
+                    }
+                }
+            }
+            catch (System.Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        #endregion
+
+        #region ActualizarNotaOrienta
+        public void ActualizaNotaOrienta(Nota nota)
+        {
+            string connString = ConfigurationManager.AppSettings["connString"];
+
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connString))
+                {
+                    using (MySqlCommand cmd = new MySqlCommand())
+                    {
+                        cmd.Connection = conn;
+                        cmd.CommandText = "UpdateNotaOrienta";
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.Add("pidnota_orienta", MySqlDbType.Int32);
+                        cmd.Parameters["pidnota_orienta"].Value = nota.IdNota;
+                        cmd.Parameters["pidnota_orienta"].Direction = ParameterDirection.Input;
+
+                        cmd.Parameters.Add("pmatricula", MySqlDbType.Int32);
+                        cmd.Parameters["pmatricula"].Value = nota.Matricula;
+                        cmd.Parameters["pmatricula"].Direction = ParameterDirection.Input;
+
+                        cmd.Parameters.Add("pcurso_lectivo", MySqlDbType.Int32);
+                        cmd.Parameters["pcurso_lectivo"].Value = nota.Curso_lectivo;
+                        cmd.Parameters["pcurso_lectivo"].Direction = ParameterDirection.Input;
+
+                        cmd.Parameters.Add("pentrevista", MySqlDbType.Decimal);
+                        cmd.Parameters["pentrevista"].Value = nota.Entrevista;
+                        cmd.Parameters["pentrevista"].Direction = ParameterDirection.Input;
+
+                        cmd.Parameters.Add("pvocacional", MySqlDbType.Decimal);
+                        cmd.Parameters["pvocacional"].Value = nota.Vocacional;
+                        cmd.Parameters["pvocacional"].Direction = ParameterDirection.Input;
 
                         conn.Open();
                         cmd.ExecuteNonQuery();
@@ -183,7 +270,7 @@ namespace DataLayer
             {
                 using (MySqlConnection conn = new MySqlConnection(connString))
                 {
-                    using (MySqlCommand cmd = new MySqlCommand("SELECT * FROM ctp_noveno.notas_orientacion_all;", conn))
+                    using (MySqlCommand cmd = new MySqlCommand("SELECT * FROM notas_orientacion_all;", conn))
                     {
                         conn.Open();
                         MySqlDataReader dr = cmd.ExecuteReader();
@@ -194,14 +281,14 @@ namespace DataLayer
                             {
                                 Nota nota = new Nota();
 
-                                nota.IdNota = dr.GetInt32(6);
+                                nota.IdNota = dr.GetValue(6) == DBNull.Value ? (int?)null : dr.GetInt32(6);
                                 nota.Matricula = dr.GetInt32(0);
                                 nota.Apellido1 = dr.GetString(2);
                                 nota.Apellido2 = dr.GetString(3);
                                 nota.Nombre = dr.GetString(4);
                                 nota.Curso_lectivo = dr.GetInt32(5);
-                                nota.Entrevista = dr.GetDecimal(7);
-                                nota.Vocacional = dr.GetDecimal(8);
+                                nota.Entrevista = dr.GetValue(7) == DBNull.Value ? (decimal?)null : dr.GetDecimal(7);
+                                nota.Vocacional = dr.GetValue(8) == DBNull.Value ? (decimal?)null : dr.GetDecimal(8);
 
                                 lista.Add(nota);
                             }
@@ -330,7 +417,7 @@ namespace DataLayer
                                 nota.Asignatura = dr.GetInt32(2);
                                 nota.Nivel = dr.GetInt32(3);
                                 nota.Periodo = dr.GetInt32(4);
-                                nota.Calificacion = dr.GetDecimal(5);
+                                nota.Calificacion = dr.GetValue(7) == DBNull.Value ? (decimal?)null : dr.GetDecimal(5);
                             }
                             dr.Close();
 
@@ -456,8 +543,8 @@ namespace DataLayer
                                 nota.IdNota = dr.GetInt32(0);
                                 nota.Matricula = dr.GetInt32(1);
                                 nota.Curso_lectivo = dr.GetInt32(2);
-                                nota.Entrevista = dr.GetDecimal(3);
-                                nota.Vocacional = dr.GetDecimal(4);
+                                nota.Entrevista = dr.GetValue(7) == DBNull.Value ? (decimal?)null : dr.GetDecimal(3);
+                                nota.Vocacional = dr.GetValue(7) == DBNull.Value ? (decimal?)null : dr.GetDecimal(4);
                             }
                             dr.Close();
 

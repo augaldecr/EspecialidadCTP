@@ -17,8 +17,8 @@ namespace PresentationLayer
         int Id;
         int type;
 
-        public delegate void refreshDT();
-        public event refreshDT rfDT;
+        public delegate void refreshDTOri();
+        public event refreshDTOri rfDTOri;
 
         public editOrienta(int tipo)
         {
@@ -27,37 +27,45 @@ namespace PresentationLayer
             asignaTitle(tipo);
         }
 
-        public editOrienta(int tipo, int id)
+        public editOrienta(int tipo, int id, string nombre, decimal entrevista, decimal vocacional)
         {
             InitializeComponent();
             type = tipo;
             asignaTitle(tipo);
             Id = id;
-            llenaCampos(id);
+            llenaCampos(id, nombre, entrevista, vocacional);
         }
 
-        private void llenaCampos(int id)
+        private void llenaCampos(int id, string nombre, decimal entrevista, decimal vocacional)
         {
-            NotaBussines bs = new NotaBussines();
-            Nota nota = bs.NotaOrientaXId(id);
-
-            txtBoxStudent.Text = "";
-            txtBoxEntrevista.Text = "";
-            txtBoxVoca.Text = "";
+            txtBoxStudent.Text = nombre;
+            txtBoxEntrevista.Text = entrevista.ToString();
+            txtBoxVoca.Text = vocacional.ToString();
         }
 
         private void asignaTitle(int tipo)
         {
             if (tipo == 1)
             {
-                lblTitle.Text = "Nuevo estudiante";
+                lblTitle.Text = "Ingresar notas orientación";
                 btnGuardar.Text = "Guardar";
             }
             else
             {
-                lblTitle.Text = "Editar estudiante";
+                lblTitle.Text = "Editar notas orientación";
                 btnGuardar.Text = "Modificar";
             }
+        }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            NotaBussines bs = new NotaBussines();
+            
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
         }
     }
 }

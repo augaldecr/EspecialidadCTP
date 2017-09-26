@@ -27,5 +27,11 @@ namespace BussinesLayer
             NotaData nt = new NotaData();
             return nt.notaOrientaXId(id);
         }
+
+        public void guardaNota(int id, decimal entrevista, decimal vocacional)
+        {
+            NotaData dt = new NotaData();
+
+        }
     }
 }

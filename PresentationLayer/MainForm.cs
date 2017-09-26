@@ -108,36 +108,50 @@ namespace PresentationLayer
             dtGrdVwOrienta.Refresh();
             dtGrdVwOrienta.Update();
         }
-        
-        private void dtGrdVwOrienta_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+
+        private void dtGrdVwOrienta_CellDoubleClick_1(object sender, DataGridViewCellEventArgs e)
         {
-            editOrienta editOrienta1 = new editOrienta(2, int.Parse(dtGrdVwEstudiantes.Rows[e.RowIndex].Cells[0].Value.ToString()));
+            editOrienta editOrienta1 = new editOrienta(2,
+                dtGrdVwOrienta.Rows[e.RowIndex].Cells["idnotas_orienta"].Value != null ? 
+                int.Parse(dtGrdVwOrienta.Rows[e.RowIndex].Cells["idnotas_orienta"].Value.ToString()) : 0,
+
+                string.Format("{0} {1} {2}", dtGrdVwOrienta.Rows[e.RowIndex].Cells["Nombre1"].Value.ToString(), 
+                dtGrdVwOrienta.Rows[e.RowIndex].Cells["ApellidoOne"].Value.ToString(), 
+                dtGrdVwOrienta.Rows[e.RowIndex].Cells["ApellidoTwo"].Value.ToString()),
+
+                dtGrdVwOrienta.Rows[e.RowIndex].Cells["Entrevista"].Value != null ?
+                decimal.Parse(dtGrdVwOrienta.Rows[e.RowIndex].Cells["Entrevista"].Value.ToString()) : 0,
+                
+                dtGrdVwOrienta.Rows[e.RowIndex].Cells["Vocacional"].Value != null ?
+                decimal.Parse(dtGrdVwOrienta.Rows[e.RowIndex].Cells["Vocacional"].Value.ToString()) : 0);
+
             editOrienta1.Show();
-            editOrienta1.rfDT += EditStudent_rfDT;
-        }
-        /*
-        private void btnAddOrienta_Click(object sender, EventArgs e)
-        {
-            EditStudent nuevoEst = new EditStudent(1);
-            nuevoEst.Show();
-            nuevoEst.rfDT += EditStudent_rfDT;
+            editOrienta1.rfDTOri += EditStudent_rfDT;
         }
 
-        private void btnEditStudent_Click(object sender, EventArgs e)
+        private void btnEditOrienta_Click(object sender, EventArgs e)
         {
-            EditStudent editStudent = new EditStudent(2, int.Parse(dtGrdVwEstudiantes.Rows[dtGrdVwEstudiantes.CurrentRow.Index].Cells[0].Value.ToString()));
-            editStudent.Show();
-            editStudent.rfDT += EditStudent_rfDT;
+            editOrienta editOrienta1 = new editOrienta(2,
+                dtGrdVwOrienta.Rows[dtGrdVwOrienta.CurrentRow.Index].Cells["idnotas_orienta"].Value != null ?
+                int.Parse(dtGrdVwOrienta.Rows[dtGrdVwOrienta.CurrentRow.Index].Cells["idnotas_orienta"].Value.ToString()) : 0,
+                
+                string.Format("{0} {1} {2}", dtGrdVwOrienta.Rows[dtGrdVwOrienta.CurrentRow.Index].Cells["Nombre1"].Value.ToString(),
+                dtGrdVwOrienta.Rows[dtGrdVwOrienta.CurrentRow.Index].Cells["ApellidoOne"].Value.ToString(), 
+                dtGrdVwOrienta.Rows[dtGrdVwOrienta.CurrentRow.Index].Cells["ApellidoTwo"].Value.ToString()),
+
+                dtGrdVwOrienta.Rows[dtGrdVwOrienta.CurrentRow.Index].Cells["Entrevista"].Value != null ?
+                decimal.Parse(dtGrdVwOrienta.Rows[dtGrdVwOrienta.CurrentRow.Index].Cells["Entrevista"].Value.ToString()) : 0,
+
+                dtGrdVwOrienta.Rows[dtGrdVwOrienta.CurrentRow.Index].Cells["Vocacional"].Value != null ?
+                decimal.Parse(dtGrdVwOrienta.Rows[dtGrdVwOrienta.CurrentRow.Index].Cells["Vocacional"].Value.ToString()) : 0);
+
+            editOrienta1.Show();
+            editOrienta1.rfDTOri += EditNotasOrienta_rfDT;
         }
 
-        private void EditStudent_rfDT()
+        private void btnEliminarOrienta_Click(object sender, EventArgs e)
         {
-            refrescaDTEstud();
-        }
-
-        private void btnDelStud_Click(object sender, EventArgs e)
-        {
-            DialogResult rs = MessageBox.Show("¿Desea eliminar al estudiantes",
+            DialogResult rs = MessageBox.Show("¿Desea eliminar las notas",
                 "Borrar", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
 
             if (rs == DialogResult.Yes)
@@ -146,23 +160,28 @@ namespace PresentationLayer
                 MatriculaBussines mbs = new MatriculaBussines();
                 try
                 {
-                    mbs.borrarMatricula(mbs.idMatriculaXEstudiante(int.Parse(dtGrdVwEstudiantes.Rows[dtGrdVwEstudiantes.CurrentRow.Index].Cells[0].Value.ToString())));
-                    bs.borrarEstudiante(int.Parse(dtGrdVwEstudiantes.Rows[dtGrdVwEstudiantes.CurrentRow.Index].Cells[0].Value.ToString()));
+                    mbs.borrarMatricula(mbs.idMatriculaXEstudiante(int.Parse(dtGrdVwOrienta.Rows[dtGrdVwOrienta.CurrentRow.Index].Cells[0].Value.ToString())));
+                    bs.borrarEstudiante(int.Parse(dtGrdVwEstudiantes.Rows[dtGrdVwOrienta.CurrentRow.Index].Cells[0].Value.ToString()));
                 }
                 catch (Exception ex)
                 {
                     throw new Exception(ex.Message);
                 }
                 MessageBox.Show("Estudiante eliminado de manera exitosa");
-                refrescaDTEstud();
+                refrescaDTNotasOrienta();
             }
         }
 
-        private void refrescaDTEstud()
+        private void EditNotasOrienta_rfDT()
         {
-            vaciarEstudianteDatosDtGrdVw();
-            llenarEstudianteDatosDtGrdVw();
-        }*/
+            refrescaDTNotasOrienta();
+        }
+
+        private void refrescaDTNotasOrienta()
+        {
+            vaciarOrientaDatosDtGrdVw();
+            llenarOrientaDatosDtGrdVw();
+        }
         #endregion
     }
 }
