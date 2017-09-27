@@ -111,9 +111,14 @@ namespace PresentationLayer
 
         private void dtGrdVwOrienta_CellDoubleClick_1(object sender, DataGridViewCellEventArgs e)
         {
-            editOrienta editOrienta1 = new editOrienta(2,
-                dtGrdVwOrienta.Rows[e.RowIndex].Cells["idnotas_orienta"].Value != null ? 
-                int.Parse(dtGrdVwOrienta.Rows[e.RowIndex].Cells["idnotas_orienta"].Value.ToString()) : 0,
+            editOrienta editOrienta1 = new editOrienta(
+                //Indica si es nota nueva o existente
+                dtGrdVwOrienta.Rows[e.RowIndex].Cells["IdNota"].Value != null ? 2 : 1,
+
+                int.Parse(dtGrdVwOrienta.Rows[e.RowIndex].Cells["Matricula"].Value.ToString()), 
+
+                dtGrdVwOrienta.Rows[e.RowIndex].Cells["IdNota"].Value != null ? 
+                int.Parse(dtGrdVwOrienta.Rows[e.RowIndex].Cells["IdNota"].Value.ToString()) : 0,
 
                 string.Format("{0} {1} {2}", dtGrdVwOrienta.Rows[e.RowIndex].Cells["Nombre1"].Value.ToString(), 
                 dtGrdVwOrienta.Rows[e.RowIndex].Cells["ApellidoOne"].Value.ToString(), 
@@ -126,14 +131,19 @@ namespace PresentationLayer
                 decimal.Parse(dtGrdVwOrienta.Rows[e.RowIndex].Cells["Vocacional"].Value.ToString()) : 0);
 
             editOrienta1.Show();
-            editOrienta1.rfDTOri += EditStudent_rfDT;
+            editOrienta1.rfDTOri += EditNotasOrienta_rfDT;
         }
 
         private void btnEditOrienta_Click(object sender, EventArgs e)
         {
-            editOrienta editOrienta1 = new editOrienta(2,
-                dtGrdVwOrienta.Rows[dtGrdVwOrienta.CurrentRow.Index].Cells["idnotas_orienta"].Value != null ?
-                int.Parse(dtGrdVwOrienta.Rows[dtGrdVwOrienta.CurrentRow.Index].Cells["idnotas_orienta"].Value.ToString()) : 0,
+            editOrienta editOrienta1 = new editOrienta(
+                //Indica si es nota nueva o existente
+                dtGrdVwOrienta.Rows[dtGrdVwOrienta.CurrentRow.Index].Cells["IdNota"].Value != null ? 2 : 1,
+
+                int.Parse(dtGrdVwOrienta.Rows[dtGrdVwOrienta.CurrentRow.Index].Cells["Matricula"].Value.ToString()),
+
+                dtGrdVwOrienta.Rows[dtGrdVwOrienta.CurrentRow.Index].Cells["IdNota"].Value != null ?
+                int.Parse(dtGrdVwOrienta.Rows[dtGrdVwOrienta.CurrentRow.Index].Cells["IdNota"].Value.ToString()) : 0,
                 
                 string.Format("{0} {1} {2}", dtGrdVwOrienta.Rows[dtGrdVwOrienta.CurrentRow.Index].Cells["Nombre1"].Value.ToString(),
                 dtGrdVwOrienta.Rows[dtGrdVwOrienta.CurrentRow.Index].Cells["ApellidoOne"].Value.ToString(), 
@@ -149,6 +159,7 @@ namespace PresentationLayer
             editOrienta1.rfDTOri += EditNotasOrienta_rfDT;
         }
 
+        //Pendiente
         private void btnEliminarOrienta_Click(object sender, EventArgs e)
         {
             DialogResult rs = MessageBox.Show("¿Desea eliminar las notas",
@@ -156,19 +167,24 @@ namespace PresentationLayer
 
             if (rs == DialogResult.Yes)
             {
-                EstudiantesBussines bs = new EstudiantesBussines();
-                MatriculaBussines mbs = new MatriculaBussines();
+                NotaBussines bs = new NotaBussines();
                 try
                 {
-                    mbs.borrarMatricula(mbs.idMatriculaXEstudiante(int.Parse(dtGrdVwOrienta.Rows[dtGrdVwOrienta.CurrentRow.Index].Cells[0].Value.ToString())));
-                    bs.borrarEstudiante(int.Parse(dtGrdVwEstudiantes.Rows[dtGrdVwOrienta.CurrentRow.Index].Cells[0].Value.ToString()));
+                    if (dtGrdVwOrienta.Rows[dtGrdVwOrienta.CurrentRow.Index].Cells["IdNota"].Value == null)
+                    {
+                        MessageBox.Show("El estudiante no tiene notas asignadas");
+                    }
+                    else
+                    {
+                        bs.editNotaOrienta(int.Parse(dtGrdVwOrienta.Rows[dtGrdVwOrienta.CurrentRow.Index].Cells["IdNota"].Value.ToString()), 0, 0);
+                        MessageBox.Show("Notas eliminadas de manera exitosa");
+                        refrescaDTNotasOrienta();
+                    }
                 }
                 catch (Exception ex)
                 {
                     throw new Exception(ex.Message);
                 }
-                MessageBox.Show("Estudiante eliminado de manera exitosa");
-                refrescaDTNotasOrienta();
             }
         }
 
@@ -181,6 +197,15 @@ namespace PresentationLayer
         {
             vaciarOrientaDatosDtGrdVw();
             llenarOrientaDatosDtGrdVw();
+            dtGrdVwOrienta.Columns["IdNota"].Visible = false;
+            dtGrdVwOrienta.Columns["Matricula"].Visible = false;
+            dtGrdVwOrienta.Columns["Asignatura"].Visible = false;
+            dtGrdVwOrienta.Columns["Curso_lectivo"].Visible = false;
+            dtGrdVwOrienta.Columns["Nivel"].Visible = false;
+            dtGrdVwOrienta.Columns["Periodo"].Visible = false;
+            dtGrdVwOrienta.Columns["Calificacion"].Visible = false;
+            dtGrdVwOrienta.Columns["Apellido1"].HeaderText = "Primer apellido";
+            dtGrdVwOrienta.Columns["Apellido2"].HeaderText = "Segundo apellido";
         }
         #endregion
     }

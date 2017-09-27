@@ -12,7 +12,7 @@ namespace DataLayer
         #region GuardarNota
         public void GuardaNota(Nota nota)
         {
-            string connString = ConfigurationManager.AppSettings["connString"];
+            string connString = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
 
             try
             {
@@ -55,7 +55,7 @@ namespace DataLayer
         #region GuardarNotaOrienta
         public void GuardaNotaOrienta(Nota nota)
         {
-            string connString = ConfigurationManager.AppSettings["connString"];
+            string connString = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
 
             try
             {
@@ -72,10 +72,10 @@ namespace DataLayer
                         cmd.Parameters.Add("curso_lectivo", MySqlDbType.Int32);
                         cmd.Parameters["curso_lectivo"].Value = nota.Curso_lectivo;
                         cmd.Parameters["curso_lectivo"].Direction = ParameterDirection.Input;
-                        cmd.Parameters.Add("entrevista", MySqlDbType.Decimal);
+                        cmd.Parameters.Add("entrevista", MySqlDbType.Double);
                         cmd.Parameters["entrevista"].Value = nota.Entrevista;
                         cmd.Parameters["entrevista"].Direction = ParameterDirection.Input;
-                        cmd.Parameters.Add("vocacional", MySqlDbType.Decimal);
+                        cmd.Parameters.Add("vocacional", MySqlDbType.Double);
                         cmd.Parameters["vocacional"].Value = nota.Vocacional;
                         cmd.Parameters["vocacional"].Direction = ParameterDirection.Input;
 
@@ -95,7 +95,7 @@ namespace DataLayer
         #region ActualizarNota
         public void ActualizaNota(Nota nota)
         {
-            string connString = ConfigurationManager.AppSettings["connString"];
+            string connString = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
 
             try
             {
@@ -141,7 +141,7 @@ namespace DataLayer
         #region ActualizarNotaOrienta
         public void ActualizaNotaOrienta(Nota nota)
         {
-            string connString = ConfigurationManager.AppSettings["connString"];
+            string connString = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
 
             try
             {
@@ -152,23 +152,16 @@ namespace DataLayer
                         cmd.Connection = conn;
                         cmd.CommandText = "UpdateNotaOrienta";
                         cmd.CommandType = CommandType.StoredProcedure;
+
                         cmd.Parameters.Add("pidnota_orienta", MySqlDbType.Int32);
                         cmd.Parameters["pidnota_orienta"].Value = nota.IdNota;
                         cmd.Parameters["pidnota_orienta"].Direction = ParameterDirection.Input;
 
-                        cmd.Parameters.Add("pmatricula", MySqlDbType.Int32);
-                        cmd.Parameters["pmatricula"].Value = nota.Matricula;
-                        cmd.Parameters["pmatricula"].Direction = ParameterDirection.Input;
-
-                        cmd.Parameters.Add("pcurso_lectivo", MySqlDbType.Int32);
-                        cmd.Parameters["pcurso_lectivo"].Value = nota.Curso_lectivo;
-                        cmd.Parameters["pcurso_lectivo"].Direction = ParameterDirection.Input;
-
-                        cmd.Parameters.Add("pentrevista", MySqlDbType.Decimal);
+                        cmd.Parameters.Add("pentrevista", MySqlDbType.Double);
                         cmd.Parameters["pentrevista"].Value = nota.Entrevista;
                         cmd.Parameters["pentrevista"].Direction = ParameterDirection.Input;
 
-                        cmd.Parameters.Add("pvocacional", MySqlDbType.Decimal);
+                        cmd.Parameters.Add("pvocacional", MySqlDbType.Double);
                         cmd.Parameters["pvocacional"].Value = nota.Vocacional;
                         cmd.Parameters["pvocacional"].Direction = ParameterDirection.Input;
 
@@ -188,7 +181,7 @@ namespace DataLayer
         #region BorrarNota
         public void BorraNota(int id)
         {
-            string connString = ConfigurationManager.AppSettings["connString"];
+            string connString = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
 
             try
             {
@@ -216,11 +209,41 @@ namespace DataLayer
         }
         #endregion
 
+        #region BorrarNota
+        public void BorraNotaOrienta(int id)
+        {
+            string connString = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
+
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connString))
+                {
+                    using (MySqlCommand cmd = new MySqlCommand())
+                    {
+                        cmd.Connection = conn;
+                        cmd.CommandText = "DeleteNotaOrienta";
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.Add("pidnota", MySqlDbType.Int16);
+                        cmd.Parameters["pidnota"].Value = id;
+                        cmd.Parameters["pidnota"].Direction = ParameterDirection.Input;
+
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+                        conn.Close();
+                    }
+                }
+            }
+            catch (System.Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        #endregion
+
         #region ListarNotas
         public List<Nota> ListNotas()
         {
-            //string connString = ConfigurationManager.AppSettings["connString"];
-            string connString = "server=localhost;user=root;database=ctp_noveno;port=3306;password=Alonso7157344/*-;";
+            string connString = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
             List<Nota> lista = new List<Nota>(); ;
 
             try
@@ -262,8 +285,7 @@ namespace DataLayer
         #region ListarNotasOrienta
         public List<Nota> ListNotasOrienta()
         {
-            //string connString = ConfigurationManager.AppSettings["connString"];
-            string connString = "server=localhost;user=root;database=ctp_noveno;port=3306;password=Alonso7157344/*-;";
+            string connString = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
             List<Nota> lista = new List<Nota>(); ;
 
             try
@@ -308,7 +330,7 @@ namespace DataLayer
         #region SeleccionaNota
         public Nota notaXId(int id)
         {
-            string connString = "server=localhost;user=root;database=ctp_noveno;port=3306;password=Alonso7157344/*-;";
+            string connString = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
             Nota nota = new Nota();
 
             try
@@ -436,7 +458,7 @@ namespace DataLayer
         #region SeleccionaNota
         public Nota notaOrientaXId(int id)
         {
-            string connString = "server=localhost;user=root;database=ctp_noveno;port=3306;password=Alonso7157344/*-;";
+            string connString = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
             Nota nota = new Nota();
 
             try
@@ -563,7 +585,7 @@ namespace DataLayer
         #region SeleccionaEstudianteXCedula
         public Estudiante estudianteXCedula(string cedula)
         {
-            string connString = "server=localhost;user=root;database=ctp_noveno;port=3306;password=Alonso7157344/*-;";
+            string connString = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
             Estudiante est = new Estudiante();
 
             try
@@ -696,7 +718,7 @@ namespace DataLayer
         #region IdEstudianteXCedula
         public int idEstudianteXCedula(string cedula)
         {
-            string connString = "server=localhost;user=root;database=ctp_noveno;port=3306;password=Alonso7157344/*-;";
+            string connString = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
 
             try
             {

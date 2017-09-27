@@ -2,6 +2,7 @@
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,8 +14,7 @@ namespace DataLayer
         #region ListarEspecialidad
         public List<Especialidad> ListEspecialidad()
         {
-            //string connString = ConfigurationManager.AppSettings["connString"];
-            string connString = "server=localhost;user=root;database=ctp_noveno;port=3306;password=Alonso7157344/*-;";
+            string connString = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
             List<Especialidad> lista = new List<Especialidad>(); ;
 
             try
@@ -52,7 +52,7 @@ namespace DataLayer
         #region SeleccionaEspecialidad
         public Especialidad especialidadXId(int id)
         {
-            string connString = "server=localhost;user=root;database=ctp_noveno;port=3306;password=Alonso7157344/*-;";
+            string connString = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
             Especialidad espe = new Especialidad();
 
             try

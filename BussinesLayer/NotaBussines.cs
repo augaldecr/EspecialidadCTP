@@ -2,9 +2,6 @@
 using Entities;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BussinesLayer
 {
@@ -28,9 +25,64 @@ namespace BussinesLayer
             return nt.notaOrientaXId(id);
         }
 
-        public void guardaNota(int id, decimal entrevista, decimal vocacional)
+        public void editNotaOrienta(int id, decimal entrevista, decimal vocacional)
         {
             NotaData dt = new NotaData();
+            try
+            {
+                dt.ActualizaNotaOrienta(new Nota
+                {
+                    IdNota = id,
+                    Entrevista = entrevista,
+                    Vocacional = vocacional
+                });
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
+        }
+
+        public void delNotaOrienta(int id)
+        {
+            NotaData nota = new NotaData();
+            nota.BorraNota(id);
+        }
+
+        public void guardarNotaOrienta(int matricula, int curso, decimal entrevista, decimal vocacional)
+        {
+            NotaData dt = new NotaData();
+            try
+            {
+                dt.GuardaNotaOrienta(new Nota
+                {
+                    Matricula = matricula,
+                    Curso_lectivo = curso,
+                    Entrevista = entrevista,
+                    Vocacional = vocacional
+                });
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
+        }
+
+        public void editNota(int id)
+        {
+            NotaData dt = new NotaData();
+            try
+            {
+                dt.ActualizaNotaOrienta(new Nota
+                {
+                });
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
 
         }
     }

@@ -1,13 +1,5 @@
 ﻿using BussinesLayer;
-using Entities;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PresentationLayer
@@ -16,23 +8,18 @@ namespace PresentationLayer
     {
         int Id;
         int type;
+        int matricula;
 
         public delegate void refreshDTOri();
         public event refreshDTOri rfDTOri;
 
-        public editOrienta(int tipo)
-        {
-            InitializeComponent();
-            type = tipo;
-            asignaTitle(tipo);
-        }
-
-        public editOrienta(int tipo, int id, string nombre, decimal entrevista, decimal vocacional)
+        public editOrienta(int tipo, int matri, int id, string nombre, decimal entrevista, decimal vocacional)
         {
             InitializeComponent();
             type = tipo;
             asignaTitle(tipo);
             Id = id;
+            matricula = matri;
             llenaCampos(id, nombre, entrevista, vocacional);
         }
 
@@ -60,7 +47,16 @@ namespace PresentationLayer
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             NotaBussines bs = new NotaBussines();
-            
+            if (type == 1)
+            {
+                bs.guardarNotaOrienta(matricula, 3, decimal.Parse(txtBoxEntrevista.Text), decimal.Parse(txtBoxVoca.Text));
+            } else
+            {
+                bs.editNotaOrienta(Id, decimal.Parse(txtBoxEntrevista.Text), decimal.Parse(txtBoxVoca.Text));
+            }
+            MessageBox.Show("Información guardada de manera adecuada");
+            rfDTOri();
+            this.Close();
         }
 
         private void btnSalir_Click(object sender, EventArgs e)

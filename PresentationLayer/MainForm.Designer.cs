@@ -121,14 +121,13 @@
             this.btnAddNota9 = new System.Windows.Forms.Button();
             this.tbPgReportes = new System.Windows.Forms.TabPage();
             this.idmatricula_admision = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IdNota = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ApellidoOne = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ApellidoTwo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nombre1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idnotas_orienta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Entrevista = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Vocacional = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.asignatura = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IdNota = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.curso_lectivo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Matricula = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nivel = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -439,14 +438,13 @@
             this.dtGrdVwOrienta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtGrdVwOrienta.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idmatricula_admision,
+            this.IdNota,
             this.ApellidoOne,
             this.ApellidoTwo,
             this.Nombre1,
-            this.idnotas_orienta,
             this.Entrevista,
             this.Vocacional,
             this.asignatura,
-            this.IdNota,
             this.curso_lectivo,
             this.Matricula,
             this.Nivel,
@@ -1017,6 +1015,14 @@
             this.idmatricula_admision.ReadOnly = true;
             this.idmatricula_admision.Visible = false;
             // 
+            // IdNota
+            // 
+            this.IdNota.DataPropertyName = "IdNota";
+            this.IdNota.HeaderText = "IdNota";
+            this.IdNota.Name = "IdNota";
+            this.IdNota.ReadOnly = true;
+            this.IdNota.Visible = false;
+            // 
             // ApellidoOne
             // 
             this.ApellidoOne.DataPropertyName = "apellido1";
@@ -1037,13 +1043,6 @@
             this.Nombre1.HeaderText = "Nombre";
             this.Nombre1.Name = "Nombre1";
             this.Nombre1.ReadOnly = true;
-            // 
-            // idnotas_orienta
-            // 
-            this.idnotas_orienta.DataPropertyName = "idNota";
-            this.idnotas_orienta.HeaderText = "Id Notas";
-            this.idnotas_orienta.Name = "idnotas_orienta";
-            this.idnotas_orienta.ReadOnly = true;
             // 
             // Entrevista
             // 
@@ -1066,14 +1065,6 @@
             this.asignatura.Name = "asignatura";
             this.asignatura.ReadOnly = true;
             this.asignatura.Visible = false;
-            // 
-            // IdNota
-            // 
-            this.IdNota.DataPropertyName = "IdNota";
-            this.IdNota.HeaderText = "IdNota";
-            this.IdNota.Name = "IdNota";
-            this.IdNota.ReadOnly = true;
-            this.IdNota.Visible = false;
             // 
             // curso_lectivo
             // 
@@ -1243,14 +1234,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TallerIDos;
         private System.Windows.Forms.DataGridViewTextBoxColumn TallerIITres;
         private System.Windows.Forms.DataGridViewTextBoxColumn idmatricula_admision;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdNota;
         private System.Windows.Forms.DataGridViewTextBoxColumn ApellidoOne;
         private System.Windows.Forms.DataGridViewTextBoxColumn ApellidoTwo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idnotas_orienta;
         private System.Windows.Forms.DataGridViewTextBoxColumn Entrevista;
         private System.Windows.Forms.DataGridViewTextBoxColumn Vocacional;
         private System.Windows.Forms.DataGridViewTextBoxColumn asignatura;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IdNota;
         private System.Windows.Forms.DataGridViewTextBoxColumn curso_lectivo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Matricula;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nivel;

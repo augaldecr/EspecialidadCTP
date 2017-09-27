@@ -12,8 +12,7 @@ namespace DataLayer
         #region GuardarMatricula
         public void GuardaMatricula(Matricula mat)
         {
-            //string connString = ConfigurationManager.AppSettings["connString"];
-            string connString = "server=localhost;user=root;database=ctp_noveno;port=3306;password=Alonso7157344/*-;";
+            string connString = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
 
             try
             {
@@ -56,9 +55,7 @@ namespace DataLayer
         #region ActualizarMatricula
         public void ActualizaMatricula(Matricula mat)
         {
-            //string connString = ConfigurationManager.AppSettings["connString"];
-            string connString = "server=localhost;user=root;database=ctp_noveno;port=3306;password=Alonso7157344/*-;";
-
+            string connString = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
 
             try
             {
@@ -104,8 +101,7 @@ namespace DataLayer
         #region BorrarMatricula
         public void BorraMatricula(int id)
         {
-            //string connString = ConfigurationManager.AppSettings["connString"];
-            string connString = "server=localhost;user=root;database=ctp_noveno;port=3306;password=Alonso7157344/*-;";
+            string connString = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
 
 
             try
@@ -137,8 +133,7 @@ namespace DataLayer
         #region ListMatricula
         public List<Matricula> ListMatricula()
         {
-            //string connString = ConfigurationManager.AppSettings["connString"];
-            string connString = "server=localhost;user=root;database=ctp_noveno;port=3306;password=Alonso7157344/*-;";
+            string connString = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
 
             List<Matricula> lista = new List<Matricula>(); ;
 
@@ -184,7 +179,7 @@ namespace DataLayer
         #region IdMatriculaXEstudiante
         public int IdMatriculaXEstudiante(int est)
         {
-            string connString = "server=localhost;user=root;database=ctp_noveno;port=3306;password=Alonso7157344/*-;";
+            string connString = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
 
             try
             {
@@ -306,7 +301,7 @@ namespace DataLayer
         #region SeleccionaMatricula
         public Matricula matriculaXEstudiante(int id)
         {
-            string connString = "server=localhost;user=root;database=ctp_noveno;port=3306;password=Alonso7157344/*-;";
+            string connString = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
             Matricula mat = new Matricula();
 
             try

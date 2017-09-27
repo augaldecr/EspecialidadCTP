@@ -12,8 +12,7 @@ namespace DataLayer
         #region GuardarEstudiante
         public void GuardaEstudiante(Estudiante est)
         {
-            //string connString = ConfigurationManager.AppSettings["connString"];
-            string connString = "server=localhost;user=root;database=ctp_noveno;port=3306;password=Alonso7157344/*-;";
+            string connString = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
 
             try
             {
@@ -67,8 +66,7 @@ namespace DataLayer
         #region ActualizarEstudiante
         public void ActualizaEstudiante(Estudiante est)
         {
-            //string connString = ConfigurationManager.AppSettings["connString"];
-            string connString = "server=localhost;user=root;database=ctp_noveno;port=3306;password=Alonso7157344/*-;";
+            string connString = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
 
             try
             {
@@ -126,8 +124,7 @@ namespace DataLayer
         #region BorrarEstudiante
         public void BorraEstudiante(int id)
         {
-            //string connString = ConfigurationManager.AppSettings["connString"];
-            string connString = "server=localhost;user=root;database=ctp_noveno;port=3306;password=Alonso7157344/*-;";
+            string connString = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
 
             try
             {
@@ -158,8 +155,7 @@ namespace DataLayer
         #region ListarEstudiante
         public List<Estudiante> ListEstudiante()
         {
-            //string connString = ConfigurationManager.AppSettings["connString"];
-            string connString = "server=localhost;user=root;database=ctp_noveno;port=3306;password=Alonso7157344/*-;";
+            string connString = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
             List<Estudiante> lista = new List<Estudiante>(); ;
 
             try
@@ -205,7 +201,7 @@ namespace DataLayer
         #region SeleccionaEstudiante
         public Estudiante estudianteXId(int id)
         {
-            string connString = "server=localhost;user=root;database=ctp_noveno;port=3306;password=Alonso7157344/*-;";
+            string connString = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
             Estudiante est = new Estudiante();
 
             try
@@ -338,7 +334,7 @@ namespace DataLayer
         #region SeleccionaEstudianteXCedula
         public Estudiante estudianteXCedula(string cedula)
         {
-            string connString = "server=localhost;user=root;database=ctp_noveno;port=3306;password=Alonso7157344/*-;";
+            string connString = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
             Estudiante est = new Estudiante();
 
             try
@@ -471,7 +467,7 @@ namespace DataLayer
         #region IdEstudianteXCedula
         public int idEstudianteXCedula(string cedula)
         {
-            string connString = "server=localhost;user=root;database=ctp_noveno;port=3306;password=Alonso7157344/*-;";
+            string connString = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
 
             try
             {
