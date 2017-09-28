@@ -205,6 +205,9 @@ namespace PresentationLayer
             dtGrdVwOrienta.Columns["Calificacion"].Visible = false;
             dtGrdVwOrienta.Columns["Apellido1"].HeaderText = "Primer apellido";
             dtGrdVwOrienta.Columns["Apellido2"].HeaderText = "Segundo apellido";
+            dtGrdVwOrienta.Columns["nombre"].Name = "Nombre1";
+            dtGrdVwOrienta.Columns["Apellido1"].Name = "ApellidoOne";
+            dtGrdVwOrienta.Columns["Apellido2"].Name = "ApellidoTwo";
         }
         #endregion
 
@@ -326,6 +329,25 @@ namespace PresentationLayer
             dtGrdVwOrienta.Columns["Apellido1"].HeaderText = "Primer apellido";
             dtGrdVwOrienta.Columns["Apellido2"].HeaderText = "Segundo apellido";
         }*/
+        #endregion
+
+        #region Configuracion
+        private void btnConfig_Click(object sender, EventArgs e)
+        {
+            string pass;
+
+            pass = Microsoft.VisualBasic.Interaction.InputBox("Ingrese contraseña ", "Ingreso de contraseña", "Contraseña", 100, 0);
+
+            if (pass == "selvanegra$2015")
+            {
+                Config config = new Config();
+                config.Show();
+            }
+            else
+            {
+                MessageBox.Show("Contraseña incorrecta", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         #endregion
     }
 }

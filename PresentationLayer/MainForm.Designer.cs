@@ -55,6 +55,19 @@
             this.btnEliminarOrienta = new System.Windows.Forms.Button();
             this.btnEditOrienta = new System.Windows.Forms.Button();
             this.dtGrdVwOrienta = new System.Windows.Forms.DataGridView();
+            this.idmatricula_admision = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IdNota = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ApellidoOne = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ApellidoTwo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Entrevista = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Vocacional = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.asignatura = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.curso_lectivo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Matricula = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nivel = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Periodo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Calificacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tbPgNotas8 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.label3 = new System.Windows.Forms.Label();
@@ -120,19 +133,10 @@
             this.btnEditNota9 = new System.Windows.Forms.Button();
             this.btnAddNota9 = new System.Windows.Forms.Button();
             this.tbPgReportes = new System.Windows.Forms.TabPage();
-            this.idmatricula_admision = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IdNota = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ApellidoOne = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ApellidoTwo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nombre1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Entrevista = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Vocacional = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.asignatura = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.curso_lectivo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Matricula = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nivel = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Periodo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Calificacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnConfig = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tbPgEstudiantes.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -150,6 +154,9 @@
             this.tableLayoutPanel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGrdVwNotas9)).BeginInit();
             this.tableLayoutPanel8.SuspendLayout();
+            this.tbPgReportes.SuspendLayout();
+            this.tableLayoutPanel9.SuspendLayout();
+            this.tableLayoutPanel10.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -160,6 +167,7 @@
             this.tabControl1.Controls.Add(this.tbPgNotas9);
             this.tabControl1.Controls.Add(this.tbPgReportes);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -169,10 +177,10 @@
             // tbPgEstudiantes
             // 
             this.tbPgEstudiantes.Controls.Add(this.tableLayoutPanel1);
-            this.tbPgEstudiantes.Location = new System.Drawing.Point(4, 22);
+            this.tbPgEstudiantes.Location = new System.Drawing.Point(4, 29);
             this.tbPgEstudiantes.Name = "tbPgEstudiantes";
             this.tbPgEstudiantes.Padding = new System.Windows.Forms.Padding(3);
-            this.tbPgEstudiantes.Size = new System.Drawing.Size(1256, 575);
+            this.tbPgEstudiantes.Size = new System.Drawing.Size(1256, 568);
             this.tbPgEstudiantes.TabIndex = 0;
             this.tbPgEstudiantes.Text = "Estudiantes";
             this.tbPgEstudiantes.UseVisualStyleBackColor = true;
@@ -192,7 +200,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1250, 569);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1250, 562);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // tableLayoutPanel2
@@ -205,17 +213,17 @@
             this.tableLayoutPanel2.Controls.Add(this.btnEditStudent, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.btnAddEstud, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 486);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 480);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1244, 80);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1244, 79);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // btnDelStud
             // 
             this.btnDelStud.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnDelStud.Location = new System.Drawing.Point(976, 20);
+            this.btnDelStud.Location = new System.Drawing.Point(976, 19);
             this.btnDelStud.Name = "btnDelStud";
             this.btnDelStud.Size = new System.Drawing.Size(120, 40);
             this.btnDelStud.TabIndex = 2;
@@ -226,7 +234,7 @@
             // btnEditStudent
             // 
             this.btnEditStudent.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnEditStudent.Location = new System.Drawing.Point(561, 20);
+            this.btnEditStudent.Location = new System.Drawing.Point(561, 19);
             this.btnEditStudent.Name = "btnEditStudent";
             this.btnEditStudent.Size = new System.Drawing.Size(120, 40);
             this.btnEditStudent.TabIndex = 1;
@@ -237,7 +245,7 @@
             // btnAddEstud
             // 
             this.btnAddEstud.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnAddEstud.Location = new System.Drawing.Point(147, 20);
+            this.btnAddEstud.Location = new System.Drawing.Point(147, 19);
             this.btnAddEstud.Name = "btnAddEstud";
             this.btnAddEstud.Size = new System.Drawing.Size(120, 40);
             this.btnAddEstud.TabIndex = 0;
@@ -263,10 +271,10 @@
             this.Email,
             this.Ctpp});
             this.dtGrdVwEstudiantes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dtGrdVwEstudiantes.Location = new System.Drawing.Point(3, 88);
+            this.dtGrdVwEstudiantes.Location = new System.Drawing.Point(3, 87);
             this.dtGrdVwEstudiantes.Name = "dtGrdVwEstudiantes";
             this.dtGrdVwEstudiantes.ReadOnly = true;
-            this.dtGrdVwEstudiantes.Size = new System.Drawing.Size(1244, 392);
+            this.dtGrdVwEstudiantes.Size = new System.Drawing.Size(1244, 387);
             this.dtGrdVwEstudiantes.TabIndex = 1;
             this.dtGrdVwEstudiantes.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtGrdVwEstudiantes_CellDoubleClick);
             // 
@@ -347,7 +355,7 @@
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(269, 24);
+            this.label1.Location = new System.Drawing.Point(269, 23);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(712, 37);
             this.label1.TabIndex = 2;
@@ -356,10 +364,10 @@
             // tbPgOrienta
             // 
             this.tbPgOrienta.Controls.Add(this.tableLayoutPanel3);
-            this.tbPgOrienta.Location = new System.Drawing.Point(4, 22);
+            this.tbPgOrienta.Location = new System.Drawing.Point(4, 29);
             this.tbPgOrienta.Name = "tbPgOrienta";
             this.tbPgOrienta.Padding = new System.Windows.Forms.Padding(3);
-            this.tbPgOrienta.Size = new System.Drawing.Size(1256, 575);
+            this.tbPgOrienta.Size = new System.Drawing.Size(1256, 568);
             this.tbPgOrienta.TabIndex = 1;
             this.tbPgOrienta.Text = "Notas orientación";
             this.tbPgOrienta.UseVisualStyleBackColor = true;
@@ -379,7 +387,7 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(1250, 569);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1250, 562);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // label2
@@ -387,7 +395,7 @@
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(469, 24);
+            this.label2.Location = new System.Drawing.Point(469, 23);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(312, 37);
             this.label2.TabIndex = 3;
@@ -401,17 +409,17 @@
             this.tableLayoutPanel4.Controls.Add(this.btnEliminarOrienta, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.btnEditOrienta, 0, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 486);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 480);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(1244, 80);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(1244, 79);
             this.tableLayoutPanel4.TabIndex = 4;
             // 
             // btnEliminarOrienta
             // 
             this.btnEliminarOrienta.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnEliminarOrienta.Location = new System.Drawing.Point(873, 20);
+            this.btnEliminarOrienta.Location = new System.Drawing.Point(873, 19);
             this.btnEliminarOrienta.Name = "btnEliminarOrienta";
             this.btnEliminarOrienta.Size = new System.Drawing.Size(120, 40);
             this.btnEliminarOrienta.TabIndex = 3;
@@ -422,7 +430,7 @@
             // btnEditOrienta
             // 
             this.btnEditOrienta.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnEditOrienta.Location = new System.Drawing.Point(251, 20);
+            this.btnEditOrienta.Location = new System.Drawing.Point(251, 19);
             this.btnEditOrienta.Name = "btnEditOrienta";
             this.btnEditOrienta.Size = new System.Drawing.Size(120, 40);
             this.btnEditOrienta.TabIndex = 2;
@@ -451,20 +459,119 @@
             this.Periodo,
             this.Calificacion});
             this.dtGrdVwOrienta.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dtGrdVwOrienta.Location = new System.Drawing.Point(3, 88);
+            this.dtGrdVwOrienta.Location = new System.Drawing.Point(3, 87);
             this.dtGrdVwOrienta.Name = "dtGrdVwOrienta";
             this.dtGrdVwOrienta.ReadOnly = true;
-            this.dtGrdVwOrienta.Size = new System.Drawing.Size(1244, 392);
+            this.dtGrdVwOrienta.Size = new System.Drawing.Size(1244, 387);
             this.dtGrdVwOrienta.TabIndex = 5;
             this.dtGrdVwOrienta.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtGrdVwOrienta_CellDoubleClick_1);
+            // 
+            // idmatricula_admision
+            // 
+            this.idmatricula_admision.DataPropertyName = "idmatricula_admision";
+            this.idmatricula_admision.HeaderText = "IDMatricula";
+            this.idmatricula_admision.Name = "idmatricula_admision";
+            this.idmatricula_admision.ReadOnly = true;
+            this.idmatricula_admision.Visible = false;
+            // 
+            // IdNota
+            // 
+            this.IdNota.DataPropertyName = "IdNota";
+            this.IdNota.HeaderText = "IdNota";
+            this.IdNota.Name = "IdNota";
+            this.IdNota.ReadOnly = true;
+            this.IdNota.Visible = false;
+            // 
+            // ApellidoOne
+            // 
+            this.ApellidoOne.DataPropertyName = "apellido1";
+            this.ApellidoOne.HeaderText = "Primer apellido";
+            this.ApellidoOne.Name = "ApellidoOne";
+            this.ApellidoOne.ReadOnly = true;
+            // 
+            // ApellidoTwo
+            // 
+            this.ApellidoTwo.DataPropertyName = "apellido2";
+            this.ApellidoTwo.HeaderText = "Segundo apellido";
+            this.ApellidoTwo.Name = "ApellidoTwo";
+            this.ApellidoTwo.ReadOnly = true;
+            // 
+            // Nombre1
+            // 
+            this.Nombre1.DataPropertyName = "nombre";
+            this.Nombre1.HeaderText = "Nombre";
+            this.Nombre1.Name = "Nombre1";
+            this.Nombre1.ReadOnly = true;
+            // 
+            // Entrevista
+            // 
+            this.Entrevista.DataPropertyName = "entrevista";
+            this.Entrevista.HeaderText = "Entrevista";
+            this.Entrevista.Name = "Entrevista";
+            this.Entrevista.ReadOnly = true;
+            // 
+            // Vocacional
+            // 
+            this.Vocacional.DataPropertyName = "vocacional";
+            this.Vocacional.HeaderText = "Vocacional";
+            this.Vocacional.Name = "Vocacional";
+            this.Vocacional.ReadOnly = true;
+            // 
+            // asignatura
+            // 
+            this.asignatura.DataPropertyName = "Asignatura";
+            this.asignatura.HeaderText = "Asignatura";
+            this.asignatura.Name = "asignatura";
+            this.asignatura.ReadOnly = true;
+            this.asignatura.Visible = false;
+            // 
+            // curso_lectivo
+            // 
+            this.curso_lectivo.DataPropertyName = "curso_lectivo";
+            this.curso_lectivo.HeaderText = "curso_lectivo";
+            this.curso_lectivo.Name = "curso_lectivo";
+            this.curso_lectivo.ReadOnly = true;
+            this.curso_lectivo.Visible = false;
+            // 
+            // Matricula
+            // 
+            this.Matricula.DataPropertyName = "Matricula";
+            this.Matricula.HeaderText = "Matricula";
+            this.Matricula.Name = "Matricula";
+            this.Matricula.ReadOnly = true;
+            this.Matricula.Visible = false;
+            // 
+            // Nivel
+            // 
+            this.Nivel.DataPropertyName = "Nivel";
+            this.Nivel.HeaderText = "Nivel";
+            this.Nivel.Name = "Nivel";
+            this.Nivel.ReadOnly = true;
+            this.Nivel.Visible = false;
+            // 
+            // Periodo
+            // 
+            this.Periodo.DataPropertyName = "Periodo";
+            this.Periodo.HeaderText = "Periodo";
+            this.Periodo.Name = "Periodo";
+            this.Periodo.ReadOnly = true;
+            this.Periodo.Visible = false;
+            // 
+            // Calificacion
+            // 
+            this.Calificacion.DataPropertyName = "Calificacion";
+            this.Calificacion.HeaderText = "Calificacion";
+            this.Calificacion.Name = "Calificacion";
+            this.Calificacion.ReadOnly = true;
+            this.Calificacion.Visible = false;
             // 
             // tbPgNotas8
             // 
             this.tbPgNotas8.Controls.Add(this.tableLayoutPanel5);
-            this.tbPgNotas8.Location = new System.Drawing.Point(4, 22);
+            this.tbPgNotas8.Location = new System.Drawing.Point(4, 29);
             this.tbPgNotas8.Name = "tbPgNotas8";
             this.tbPgNotas8.Padding = new System.Windows.Forms.Padding(3);
-            this.tbPgNotas8.Size = new System.Drawing.Size(1256, 575);
+            this.tbPgNotas8.Size = new System.Drawing.Size(1256, 568);
             this.tbPgNotas8.TabIndex = 2;
             this.tbPgNotas8.Text = "Notas asignaturas 8";
             this.tbPgNotas8.UseVisualStyleBackColor = true;
@@ -484,7 +591,7 @@
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(1250, 569);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(1250, 562);
             this.tableLayoutPanel5.TabIndex = 0;
             // 
             // label3
@@ -492,7 +599,7 @@
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(414, 24);
+            this.label3.Location = new System.Drawing.Point(414, 23);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(422, 37);
             this.label3.TabIndex = 4;
@@ -508,17 +615,17 @@
             this.tableLayoutPanel6.Controls.Add(this.btnEditNota, 0, 0);
             this.tableLayoutPanel6.Controls.Add(this.btnAddNota, 0, 0);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 486);
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 480);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 1;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(1244, 80);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(1244, 79);
             this.tableLayoutPanel6.TabIndex = 5;
             // 
             // btnDelNota
             // 
             this.btnDelNota.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnDelNota.Location = new System.Drawing.Point(976, 20);
+            this.btnDelNota.Location = new System.Drawing.Point(976, 19);
             this.btnDelNota.Name = "btnDelNota";
             this.btnDelNota.Size = new System.Drawing.Size(120, 40);
             this.btnDelNota.TabIndex = 4;
@@ -528,7 +635,7 @@
             // btnEditNota
             // 
             this.btnEditNota.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnEditNota.Location = new System.Drawing.Point(561, 20);
+            this.btnEditNota.Location = new System.Drawing.Point(561, 19);
             this.btnEditNota.Name = "btnEditNota";
             this.btnEditNota.Size = new System.Drawing.Size(120, 40);
             this.btnEditNota.TabIndex = 3;
@@ -538,7 +645,7 @@
             // btnAddNota
             // 
             this.btnAddNota.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnAddNota.Location = new System.Drawing.Point(147, 20);
+            this.btnAddNota.Location = new System.Drawing.Point(147, 19);
             this.btnAddNota.Name = "btnAddNota";
             this.btnAddNota.Size = new System.Drawing.Size(120, 40);
             this.btnAddNota.TabIndex = 2;
@@ -581,10 +688,10 @@
             this.TallerIDos,
             this.TallerIITres});
             this.dtGrdVwNotas.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dtGrdVwNotas.Location = new System.Drawing.Point(3, 88);
+            this.dtGrdVwNotas.Location = new System.Drawing.Point(3, 87);
             this.dtGrdVwNotas.Name = "dtGrdVwNotas";
             this.dtGrdVwNotas.ReadOnly = true;
-            this.dtGrdVwNotas.Size = new System.Drawing.Size(1244, 392);
+            this.dtGrdVwNotas.Size = new System.Drawing.Size(1244, 387);
             this.dtGrdVwNotas.TabIndex = 6;
             // 
             // ID
@@ -759,10 +866,10 @@
             // tbPgNotas9
             // 
             this.tbPgNotas9.Controls.Add(this.tableLayoutPanel7);
-            this.tbPgNotas9.Location = new System.Drawing.Point(4, 22);
+            this.tbPgNotas9.Location = new System.Drawing.Point(4, 29);
             this.tbPgNotas9.Name = "tbPgNotas9";
             this.tbPgNotas9.Padding = new System.Windows.Forms.Padding(3);
-            this.tbPgNotas9.Size = new System.Drawing.Size(1256, 575);
+            this.tbPgNotas9.Size = new System.Drawing.Size(1256, 568);
             this.tbPgNotas9.TabIndex = 3;
             this.tbPgNotas9.Text = "Notas asignaturas 9";
             this.tbPgNotas9.UseVisualStyleBackColor = true;
@@ -781,7 +888,7 @@
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(1250, 569);
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(1250, 562);
             this.tableLayoutPanel7.TabIndex = 0;
             // 
             // dtGrdVwNotas9
@@ -812,10 +919,10 @@
             this.TallerII1,
             this.TallerII2});
             this.dtGrdVwNotas9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dtGrdVwNotas9.Location = new System.Drawing.Point(3, 88);
+            this.dtGrdVwNotas9.Location = new System.Drawing.Point(3, 87);
             this.dtGrdVwNotas9.Name = "dtGrdVwNotas9";
             this.dtGrdVwNotas9.ReadOnly = true;
-            this.dtGrdVwNotas9.Size = new System.Drawing.Size(1244, 392);
+            this.dtGrdVwNotas9.Size = new System.Drawing.Size(1244, 387);
             this.dtGrdVwNotas9.TabIndex = 7;
             // 
             // dataGridViewTextBoxColumn1
@@ -944,7 +1051,7 @@
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(414, 24);
+            this.label4.Location = new System.Drawing.Point(414, 23);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(422, 37);
             this.label4.TabIndex = 5;
@@ -960,17 +1067,17 @@
             this.tableLayoutPanel8.Controls.Add(this.btnEditNota9, 0, 0);
             this.tableLayoutPanel8.Controls.Add(this.btnAddNota9, 0, 0);
             this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel8.Location = new System.Drawing.Point(3, 486);
+            this.tableLayoutPanel8.Location = new System.Drawing.Point(3, 480);
             this.tableLayoutPanel8.Name = "tableLayoutPanel8";
             this.tableLayoutPanel8.RowCount = 1;
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel8.Size = new System.Drawing.Size(1244, 80);
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(1244, 79);
             this.tableLayoutPanel8.TabIndex = 6;
             // 
             // btnDelNota9
             // 
             this.btnDelNota9.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnDelNota9.Location = new System.Drawing.Point(976, 20);
+            this.btnDelNota9.Location = new System.Drawing.Point(976, 19);
             this.btnDelNota9.Name = "btnDelNota9";
             this.btnDelNota9.Size = new System.Drawing.Size(120, 40);
             this.btnDelNota9.TabIndex = 5;
@@ -980,7 +1087,7 @@
             // btnEditNota9
             // 
             this.btnEditNota9.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnEditNota9.Location = new System.Drawing.Point(561, 20);
+            this.btnEditNota9.Location = new System.Drawing.Point(561, 19);
             this.btnEditNota9.Name = "btnEditNota9";
             this.btnEditNota9.Size = new System.Drawing.Size(120, 40);
             this.btnEditNota9.TabIndex = 4;
@@ -990,7 +1097,7 @@
             // btnAddNota9
             // 
             this.btnAddNota9.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnAddNota9.Location = new System.Drawing.Point(147, 20);
+            this.btnAddNota9.Location = new System.Drawing.Point(147, 19);
             this.btnAddNota9.Name = "btnAddNota9";
             this.btnAddNota9.Size = new System.Drawing.Size(120, 40);
             this.btnAddNota9.TabIndex = 3;
@@ -999,112 +1106,71 @@
             // 
             // tbPgReportes
             // 
-            this.tbPgReportes.Location = new System.Drawing.Point(4, 22);
+            this.tbPgReportes.Controls.Add(this.tableLayoutPanel9);
+            this.tbPgReportes.Location = new System.Drawing.Point(4, 29);
             this.tbPgReportes.Name = "tbPgReportes";
             this.tbPgReportes.Padding = new System.Windows.Forms.Padding(3);
-            this.tbPgReportes.Size = new System.Drawing.Size(1256, 575);
+            this.tbPgReportes.Size = new System.Drawing.Size(1256, 568);
             this.tbPgReportes.TabIndex = 4;
             this.tbPgReportes.Text = "Reportes";
             this.tbPgReportes.UseVisualStyleBackColor = true;
             // 
-            // idmatricula_admision
+            // tableLayoutPanel9
             // 
-            this.idmatricula_admision.DataPropertyName = "idmatricula_admision";
-            this.idmatricula_admision.HeaderText = "IDMatricula";
-            this.idmatricula_admision.Name = "idmatricula_admision";
-            this.idmatricula_admision.ReadOnly = true;
-            this.idmatricula_admision.Visible = false;
+            this.tableLayoutPanel9.ColumnCount = 1;
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel9.Controls.Add(this.label5, 0, 0);
+            this.tableLayoutPanel9.Controls.Add(this.tableLayoutPanel10, 0, 1);
+            this.tableLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel9.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel9.Name = "tableLayoutPanel9";
+            this.tableLayoutPanel9.RowCount = 2;
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 75F));
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel9.Size = new System.Drawing.Size(1250, 562);
+            this.tableLayoutPanel9.TabIndex = 0;
             // 
-            // IdNota
+            // tableLayoutPanel10
             // 
-            this.IdNota.DataPropertyName = "IdNota";
-            this.IdNota.HeaderText = "IdNota";
-            this.IdNota.Name = "IdNota";
-            this.IdNota.ReadOnly = true;
-            this.IdNota.Visible = false;
+            this.tableLayoutPanel10.ColumnCount = 3;
+            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel10.Controls.Add(this.btnConfig, 2, 2);
+            this.tableLayoutPanel10.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel10.Location = new System.Drawing.Point(3, 143);
+            this.tableLayoutPanel10.Name = "tableLayoutPanel10";
+            this.tableLayoutPanel10.RowCount = 3;
+            this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel10.Size = new System.Drawing.Size(1244, 416);
+            this.tableLayoutPanel10.TabIndex = 0;
             // 
-            // ApellidoOne
+            // btnConfig
             // 
-            this.ApellidoOne.DataPropertyName = "apellido1";
-            this.ApellidoOne.HeaderText = "Primer apellido";
-            this.ApellidoOne.Name = "ApellidoOne";
-            this.ApellidoOne.ReadOnly = true;
+            this.btnConfig.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnConfig.Location = new System.Drawing.Point(976, 326);
+            this.btnConfig.Name = "btnConfig";
+            this.btnConfig.Size = new System.Drawing.Size(120, 40);
+            this.btnConfig.TabIndex = 0;
+            this.btnConfig.Text = "Configuración";
+            this.btnConfig.UseVisualStyleBackColor = true;
+            this.btnConfig.Click += new System.EventHandler(this.btnConfig_Click);
             // 
-            // ApellidoTwo
+            // label5
             // 
-            this.ApellidoTwo.DataPropertyName = "apellido2";
-            this.ApellidoTwo.HeaderText = "Segundo apellido";
-            this.ApellidoTwo.Name = "ApellidoTwo";
-            this.ApellidoTwo.ReadOnly = true;
-            // 
-            // Nombre1
-            // 
-            this.Nombre1.DataPropertyName = "nombre";
-            this.Nombre1.HeaderText = "Nombre";
-            this.Nombre1.Name = "Nombre1";
-            this.Nombre1.ReadOnly = true;
-            // 
-            // Entrevista
-            // 
-            this.Entrevista.DataPropertyName = "entrevista";
-            this.Entrevista.HeaderText = "Entrevista";
-            this.Entrevista.Name = "Entrevista";
-            this.Entrevista.ReadOnly = true;
-            // 
-            // Vocacional
-            // 
-            this.Vocacional.DataPropertyName = "vocacional";
-            this.Vocacional.HeaderText = "Vocacional";
-            this.Vocacional.Name = "Vocacional";
-            this.Vocacional.ReadOnly = true;
-            // 
-            // asignatura
-            // 
-            this.asignatura.DataPropertyName = "Asignatura";
-            this.asignatura.HeaderText = "Asignatura";
-            this.asignatura.Name = "asignatura";
-            this.asignatura.ReadOnly = true;
-            this.asignatura.Visible = false;
-            // 
-            // curso_lectivo
-            // 
-            this.curso_lectivo.DataPropertyName = "curso_lectivo";
-            this.curso_lectivo.HeaderText = "curso_lectivo";
-            this.curso_lectivo.Name = "curso_lectivo";
-            this.curso_lectivo.ReadOnly = true;
-            this.curso_lectivo.Visible = false;
-            // 
-            // Matricula
-            // 
-            this.Matricula.DataPropertyName = "Matricula";
-            this.Matricula.HeaderText = "Matricula";
-            this.Matricula.Name = "Matricula";
-            this.Matricula.ReadOnly = true;
-            this.Matricula.Visible = false;
-            // 
-            // Nivel
-            // 
-            this.Nivel.DataPropertyName = "Nivel";
-            this.Nivel.HeaderText = "Nivel";
-            this.Nivel.Name = "Nivel";
-            this.Nivel.ReadOnly = true;
-            this.Nivel.Visible = false;
-            // 
-            // Periodo
-            // 
-            this.Periodo.DataPropertyName = "Periodo";
-            this.Periodo.HeaderText = "Periodo";
-            this.Periodo.Name = "Periodo";
-            this.Periodo.ReadOnly = true;
-            this.Periodo.Visible = false;
-            // 
-            // Calificacion
-            // 
-            this.Calificacion.DataPropertyName = "Calificacion";
-            this.Calificacion.HeaderText = "Calificacion";
-            this.Calificacion.Name = "Calificacion";
-            this.Calificacion.ReadOnly = true;
-            this.Calificacion.Visible = false;
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(440, 51);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(370, 37);
+            this.label5.TabIndex = 6;
+            this.label5.Text = "Reportes y configuración";
             // 
             // MainForm
             // 
@@ -1136,6 +1202,10 @@
             this.tableLayoutPanel7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGrdVwNotas9)).EndInit();
             this.tableLayoutPanel8.ResumeLayout(false);
+            this.tbPgReportes.ResumeLayout(false);
+            this.tableLayoutPanel9.ResumeLayout(false);
+            this.tableLayoutPanel9.PerformLayout();
+            this.tableLayoutPanel10.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1246,5 +1316,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Nivel;
         private System.Windows.Forms.DataGridViewTextBoxColumn Periodo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Calificacion;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel10;
+        private System.Windows.Forms.Button btnConfig;
+        private System.Windows.Forms.Label label5;
     }
 }
