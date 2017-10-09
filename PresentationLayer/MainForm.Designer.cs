@@ -37,16 +37,6 @@
             this.btnEditStudent = new System.Windows.Forms.Button();
             this.btnAddEstud = new System.Windows.Forms.Button();
             this.dtGrdVwEstudiantes = new System.Windows.Forms.DataGridView();
-            this.IdEstudiante = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cedula = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Apellido1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Apellido2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Direccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Celular = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ctpp = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.tbPgOrienta = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
@@ -134,9 +124,19 @@
             this.btnAddNota9 = new System.Windows.Forms.Button();
             this.tbPgReportes = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
+            this.label5 = new System.Windows.Forms.Label();
             this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
             this.btnConfig = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
+            this.IdEstudiante = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cedula = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Apellido1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Apellido2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Direccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Celular = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ctpp = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tbPgEstudiantes.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -277,78 +277,6 @@
             this.dtGrdVwEstudiantes.Size = new System.Drawing.Size(1244, 387);
             this.dtGrdVwEstudiantes.TabIndex = 1;
             this.dtGrdVwEstudiantes.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtGrdVwEstudiantes_CellDoubleClick);
-            // 
-            // IdEstudiante
-            // 
-            this.IdEstudiante.DataPropertyName = "IdEstudiante";
-            this.IdEstudiante.HeaderText = "ID";
-            this.IdEstudiante.Name = "IdEstudiante";
-            this.IdEstudiante.ReadOnly = true;
-            this.IdEstudiante.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.IdEstudiante.Visible = false;
-            // 
-            // Cedula
-            // 
-            this.Cedula.DataPropertyName = "Cedula";
-            this.Cedula.HeaderText = "Cédula";
-            this.Cedula.Name = "Cedula";
-            this.Cedula.ReadOnly = true;
-            // 
-            // Nombre
-            // 
-            this.Nombre.DataPropertyName = "Nombre";
-            this.Nombre.HeaderText = "Nombre";
-            this.Nombre.Name = "Nombre";
-            this.Nombre.ReadOnly = true;
-            // 
-            // Apellido1
-            // 
-            this.Apellido1.DataPropertyName = "Apellido1";
-            this.Apellido1.HeaderText = "Primer apellido";
-            this.Apellido1.Name = "Apellido1";
-            this.Apellido1.ReadOnly = true;
-            // 
-            // Apellido2
-            // 
-            this.Apellido2.DataPropertyName = "Apellido2";
-            this.Apellido2.HeaderText = "Segundo apellido";
-            this.Apellido2.Name = "Apellido2";
-            this.Apellido2.ReadOnly = true;
-            // 
-            // Direccion
-            // 
-            this.Direccion.DataPropertyName = "Direccion";
-            this.Direccion.HeaderText = "Dirección";
-            this.Direccion.Name = "Direccion";
-            this.Direccion.ReadOnly = true;
-            // 
-            // Telefono
-            // 
-            this.Telefono.DataPropertyName = "Telefono";
-            this.Telefono.HeaderText = "Teléfono";
-            this.Telefono.Name = "Telefono";
-            this.Telefono.ReadOnly = true;
-            // 
-            // Celular
-            // 
-            this.Celular.DataPropertyName = "Celular";
-            this.Celular.HeaderText = "Celular";
-            this.Celular.Name = "Celular";
-            this.Celular.ReadOnly = true;
-            // 
-            // Email
-            // 
-            this.Email.DataPropertyName = "Email";
-            this.Email.HeaderText = "Correo electrónico";
-            this.Email.Name = "Email";
-            this.Email.ReadOnly = true;
-            // 
-            // Ctpp
-            // 
-            this.Ctpp.DataPropertyName = "Ctpp";
-            this.Ctpp.HeaderText = "Local";
-            this.Ctpp.Name = "Ctpp";
-            this.Ctpp.ReadOnly = true;
             // 
             // label1
             // 
@@ -1133,6 +1061,17 @@
             this.tableLayoutPanel9.Size = new System.Drawing.Size(1250, 562);
             this.tableLayoutPanel9.TabIndex = 0;
             // 
+            // label5
+            // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(440, 51);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(370, 37);
+            this.label5.TabIndex = 6;
+            this.label5.Text = "Reportes y configuración";
+            // 
             // tableLayoutPanel10
             // 
             this.tableLayoutPanel10.ColumnCount = 3;
@@ -1161,16 +1100,81 @@
             this.btnConfig.UseVisualStyleBackColor = true;
             this.btnConfig.Click += new System.EventHandler(this.btnConfig_Click);
             // 
-            // label5
+            // IdEstudiante
             // 
-            this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(440, 51);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(370, 37);
-            this.label5.TabIndex = 6;
-            this.label5.Text = "Reportes y configuración";
+            this.IdEstudiante.DataPropertyName = "IdEstudiante";
+            this.IdEstudiante.HeaderText = "ID";
+            this.IdEstudiante.Name = "IdEstudiante";
+            this.IdEstudiante.ReadOnly = true;
+            this.IdEstudiante.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.IdEstudiante.Visible = false;
+            // 
+            // Cedula
+            // 
+            this.Cedula.DataPropertyName = "Cedula";
+            this.Cedula.HeaderText = "Cédula";
+            this.Cedula.Name = "Cedula";
+            this.Cedula.ReadOnly = true;
+            // 
+            // Nombre
+            // 
+            this.Nombre.DataPropertyName = "Nombre";
+            this.Nombre.HeaderText = "Nombre";
+            this.Nombre.Name = "Nombre";
+            this.Nombre.ReadOnly = true;
+            // 
+            // Apellido1
+            // 
+            this.Apellido1.DataPropertyName = "Apellido1";
+            this.Apellido1.HeaderText = "Primer apellido";
+            this.Apellido1.Name = "Apellido1";
+            this.Apellido1.ReadOnly = true;
+            // 
+            // Apellido2
+            // 
+            this.Apellido2.DataPropertyName = "Apellido2";
+            this.Apellido2.HeaderText = "Segundo apellido";
+            this.Apellido2.Name = "Apellido2";
+            this.Apellido2.ReadOnly = true;
+            // 
+            // Direccion
+            // 
+            this.Direccion.DataPropertyName = "Direccion";
+            this.Direccion.HeaderText = "Dirección";
+            this.Direccion.Name = "Direccion";
+            this.Direccion.ReadOnly = true;
+            // 
+            // Telefono
+            // 
+            this.Telefono.DataPropertyName = "Telefono";
+            this.Telefono.HeaderText = "Teléfono";
+            this.Telefono.Name = "Telefono";
+            this.Telefono.ReadOnly = true;
+            // 
+            // Celular
+            // 
+            this.Celular.DataPropertyName = "Celular";
+            this.Celular.HeaderText = "Celular";
+            this.Celular.Name = "Celular";
+            this.Celular.ReadOnly = true;
+            // 
+            // Email
+            // 
+            this.Email.DataPropertyName = "Email";
+            this.Email.HeaderText = "Correo electrónico";
+            this.Email.Name = "Email";
+            this.Email.ReadOnly = true;
+            // 
+            // Ctpp
+            // 
+            this.Ctpp.DataPropertyName = "Ctpp";
+            this.Ctpp.FalseValue = "0";
+            this.Ctpp.HeaderText = "Local";
+            this.Ctpp.Name = "Ctpp";
+            this.Ctpp.ReadOnly = true;
+            this.Ctpp.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Ctpp.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Ctpp.TrueValue = "1";
             // 
             // MainForm
             // 
@@ -1219,16 +1223,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.DataGridView dtGrdVwEstudiantes;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IdEstudiante;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cedula;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Apellido1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Apellido2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Direccion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Telefono;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Celular;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Email;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Ctpp;
         private System.Windows.Forms.Button btnDelStud;
         private System.Windows.Forms.Button btnEditStudent;
         private System.Windows.Forms.Button btnAddEstud;
@@ -1320,5 +1314,15 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel10;
         private System.Windows.Forms.Button btnConfig;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdEstudiante;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cedula;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Apellido1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Apellido2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Direccion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Telefono;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Celular;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Email;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Ctpp;
     }
 }

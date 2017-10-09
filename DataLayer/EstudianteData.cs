@@ -313,8 +313,8 @@ namespace DataLayer
                                 est.Apellido2 = dr.GetString(4);
                                 est.Celular = dr.GetString(7);
                                 est.Telefono = dr.GetString(6);
-                                est.Email = dr.GetString(5);
-                                est.Direccion = dr.GetString(8);
+                                est.Email = dr.GetString(8);
+                                est.Direccion = dr.GetString(5);
                                 est.Ctpp = dr.GetInt32(9);
                             }
                             dr.Close();

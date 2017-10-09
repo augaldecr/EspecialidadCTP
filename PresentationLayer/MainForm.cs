@@ -6,6 +6,9 @@ namespace PresentationLayer
 {
     public partial class MainForm : Form
     {
+        //TODO: Agregado campo "especialidad_x" para llenar con especialidad ganada
+        //TODO: Jalar notas de base de datos de piad
+        //TODO: Filtrar estudiantes y notas por sección en el MainForm
         public MainForm()
         {
             InitializeComponent();

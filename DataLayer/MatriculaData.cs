@@ -66,22 +66,22 @@ namespace DataLayer
                         cmd.Connection = conn;
                         cmd.CommandText = "UpdateMatricula";
                         cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.Add("pidmatricula_admision", MySqlDbType.Int16);
+                        cmd.Parameters.Add("pidmatricula_admision", MySqlDbType.Int32);
                         cmd.Parameters["pidmatricula_admision"].Value = mat.IdMatricula;
                         cmd.Parameters["pidmatricula_admision"].Direction = ParameterDirection.Input;
-                        cmd.Parameters.Add("pestudiante", MySqlDbType.Int16);
+                        cmd.Parameters.Add("pestudiante", MySqlDbType.Int32);
                         cmd.Parameters["pestudiante"].Value = mat.Estudiante;
                         cmd.Parameters["pestudiante"].Direction = ParameterDirection.Input;
-                        cmd.Parameters.Add("pcurso_lectivo", MySqlDbType.Int16);
+                        cmd.Parameters.Add("pcurso_lectivo", MySqlDbType.Int32);
                         cmd.Parameters["pcurso_lectivo"].Value = mat.CursoLectivo;
                         cmd.Parameters["pcurso_lectivo"].Direction = ParameterDirection.Input;
-                        cmd.Parameters.Add("pespecialidad1", MySqlDbType.Int16);
+                        cmd.Parameters.Add("pespecialidad1", MySqlDbType.Int32);
                         cmd.Parameters["pespecialidad1"].Value = mat.Especialidad1;
                         cmd.Parameters["pespecialidad1"].Direction = ParameterDirection.Input;
-                        cmd.Parameters.Add("pespecialidad2", MySqlDbType.Int16);
+                        cmd.Parameters.Add("pespecialidad2", MySqlDbType.Int32);
                         cmd.Parameters["pespecialidad2"].Value = mat.Especialidad2;
                         cmd.Parameters["pespecialidad2"].Direction = ParameterDirection.Input;
-                        cmd.Parameters.Add("pespecialidad3", MySqlDbType.Int16);
+                        cmd.Parameters.Add("pespecialidad3", MySqlDbType.Int32);
                         cmd.Parameters["pespecialidad3"].Value = mat.Especialidad3;
                         cmd.Parameters["pespecialidad3"].Direction = ParameterDirection.Input;
 
@@ -397,7 +397,7 @@ namespace DataLayer
 
                 using (MySqlConnection conn = new MySqlConnection(connString))
                 {
-                    using (MySqlCommand cmd = new MySqlCommand("SELECT * FROM matriculas_admision WHERE estudiante=" + id + ";", conn))
+                    using (MySqlCommand cmd = new MySqlCommand("SELECT * FROM matriculas_all WHERE estudiante=" + id + ";", conn))
                     {
                         conn.Open();
                         MySqlDataReader dr = cmd.ExecuteReader();

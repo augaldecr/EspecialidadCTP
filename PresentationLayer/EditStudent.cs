@@ -112,7 +112,7 @@ namespace PresentationLayer
                 Matricula mat = new Matricula
                 {
                     Estudiante = est.iDEstudianteXCedula(txtBoxCedula.Text),
-                    CursoLectivo = 2,
+                    CursoLectivo = 19,
                     Especialidad1 = int.Parse(cmbBoxEspe1.SelectedValue.ToString()),
                     Especialidad2 = int.Parse(cmbBoxEspe2.SelectedValue.ToString()),
                     Especialidad3 = int.Parse(cmbBoxEspe3.SelectedValue.ToString()),
@@ -149,7 +149,7 @@ namespace PresentationLayer
                 {
                     Estudiante = est.iDEstudianteXCedula(txtBoxCedula.Text),
                     IdMatricula = mbs.idMatriculaXEstudiante(est.iDEstudianteXCedula(txtBoxCedula.Text)),
-                    CursoLectivo = 2,
+                    CursoLectivo = 19,
                     Especialidad1 = int.Parse(cmbBoxEspe1.SelectedValue.ToString()),
                     Especialidad2 = int.Parse(cmbBoxEspe2.SelectedValue.ToString()),
                     Especialidad3 = int.Parse(cmbBoxEspe3.SelectedValue.ToString()),
