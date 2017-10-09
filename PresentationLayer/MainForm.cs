@@ -9,6 +9,9 @@ namespace PresentationLayer
         //TODO: Agregado campo "especialidad_x" para llenar con especialidad ganada
         //TODO: Jalar notas de base de datos de piad
         //TODO: Filtrar estudiantes y notas por sección en el MainForm
+        //TODO: Agregada vista "curso_activo", "periodos_curso_activo"
+        //TODO: Agregado Stored Procedure "SeleccionarPeriodosXCursoLectivo"
+        //TODO: Agregado Stored Procedure "SeleccionarMatriculasXCursoLect"
         public MainForm()
         {
             InitializeComponent();
