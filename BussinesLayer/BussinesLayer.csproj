@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CalificacionesBussines.cs" />
     <Compile Include="EspecialidadBussines.cs" />
     <Compile Include="EstudiantesBussines.cs" />
     <Compile Include="MatriculaBussines.cs" />

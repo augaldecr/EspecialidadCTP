@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BussinesLayer;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -24,7 +25,8 @@ namespace PresentationLayer
 
         private void btnImpCalif_Click(object sender, EventArgs e)
         {
-
+            CalificacionesBussines cal = new CalificacionesBussines();
+            cal.ListarCalificaciones();
         }
     }
 }

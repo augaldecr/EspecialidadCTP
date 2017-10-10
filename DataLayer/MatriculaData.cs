@@ -426,5 +426,51 @@ namespace DataLayer
             return mat;
         }
         #endregion
+
+        #region SeleccionaMatriculasXCursoLectivo
+        public List<Matricula> MatriculasXCursoLectivo(int curso)
+        {
+            string connString = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
+            List<Matricula> matriculas = new List<Matricula>();
+
+            //TODO: Recuperar las matriculas por el curso lectivo
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connString))
+                {
+                    using (MySqlCommand cmd = new MySqlCommand())
+                    {
+                        cmd.Connection = conn;
+                        cmd.CommandText = "SeleccionarMatriculasXCursoLect";
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.Add("pcurso_lectivo", MySqlDbType.Int32);
+                        cmd.Parameters["pcurso_lectivo"].Value = curso;
+                        cmd.Parameters["pcurso_lectivo"].Direction = ParameterDirection.Input;
+
+                        conn.Open();
+                        MySqlDataReader dr = cmd.ExecuteReader();
+                        if (dr.FieldCount > 0)
+                        {
+                            while (dr.Read())
+                            {
+                                Matricula mat = new Matricula();
+                                mat.IdMatricula = dr.GetInt32(0);
+                                mat.Estudiante = dr.GetInt32(1);
+                                mat.Cedula = dr.GetString(2);
+
+                                matriculas.Add(mat);
+                            }
+                            dr.Close();
+                        }
+                    }
+                }
+                return matriculas;
+            }
+            catch (System.Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        #endregion
     }
 }

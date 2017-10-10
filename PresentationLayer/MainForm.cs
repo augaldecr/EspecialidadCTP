@@ -342,7 +342,7 @@ namespace PresentationLayer
         {
             string pass;
 
-            pass = Microsoft.VisualBasic.Interaction.InputBox("Ingrese contraseña ", "Ingreso de contraseña", "Contraseña", 100, 0);
+            pass = Microsoft.VisualBasic.Interaction.InputBox("Ingrese contraseña ", "Ingreso de contraseña", "selvanegra$2015", 100, 0);
 
             if (pass == "selvanegra$2015")
             {

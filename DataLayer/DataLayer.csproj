@@ -43,12 +43,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AsignaturaData.cs" />
     <Compile Include="CalificacionesData.cs" />
     <Compile Include="ConfigData.cs" />
+    <Compile Include="CursoLectivoData.cs" />
     <Compile Include="EspecialidadData.cs" />
     <Compile Include="EstudianteData.cs" />
     <Compile Include="MatriculaData.cs" />
     <Compile Include="NotaData.cs" />
+    <Compile Include="PeriodoData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
