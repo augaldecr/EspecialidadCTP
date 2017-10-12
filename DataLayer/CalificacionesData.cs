@@ -11,19 +11,19 @@ namespace DataLayer
     {
         enum Asig
         {
-            Espannol =1, 
-            Ciencias = 2, 
-            Estudios = 3, 
+            Espannol = 1,
+            Ciencias = 2,
+            Estudios = 3,
             Mate = 4,
-            Ingles= 6,
+            Ingles = 6,
             Civica = 11
         }
 
         string connString = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
         string connStringPIAD = ConfigurationManager.ConnectionStrings["connStringPIAD"].ConnectionString;
 
-        #region ListarCalificaciones
-        public List<Calificaciones> ListCalificaciones()
+        #region ListarCalificacionesTRendimiento
+        public List<Calificaciones> ListCalificacionesTRendimiento()
         {
             int cursoActivo = 0;
             int cursoInicial = 0;
@@ -37,29 +37,26 @@ namespace DataLayer
                 cursoActivo = new CursoLectivoData().CursoActivo();
                 cursoInicial = cursoActivo - 2;
 
-
                 matriculas = new MatriculaData().MatriculasXCursoLectivo(cursoActivo);
                 asignaturas = new AsignaturaData().listarAsignaturas();
 
-                for (int curso = cursoInicial; curso <= cursoActivo; curso++)
+
+                foreach (Matricula mat in matriculas)
                 {
-                    foreach (Matricula mat in matriculas)
+                    Calificaciones calificacion = new Calificaciones();
+                    calificacion.matricula = mat;
+                    calificacion.estudiante = new EstudianteData().estudianteXId(mat.Estudiante);
+                    bool tallerI = false;
+                    for (int curso = cursoInicial; curso <= cursoActivo; curso++)
                     {
-                        periodos = new PeriodoData().periodosXCurso(curso);
-
-                        Calificaciones calificacion = new Calificaciones();
-                        calificacion.matricula = mat;
-                        calificacion.estudiante = new EstudianteData().estudianteXId(mat.Estudiante);
-                        bool tallerI8 = false;
-                        bool tallerI9 = false;
-
-                        foreach (Periodo periodo in periodos)
-                        {
-                            for (int nivel = 8; nivel <= 9; nivel++)
+                            foreach (Asignatura asignatura in asignaturas)
                             {
-                                foreach (Asignatura asignatura in asignaturas)
+                                for (int nivel = 8; nivel <= 9; nivel++)
                                 {
-                                    Nota nota = notaXParam(mat.Cedula, periodo.IdPeriodo, asignatura.IdAsignatura, nivel, mat.IdMatricula);
+                            periodos = new PeriodoData().periodosXCurso(curso);
+                            foreach (Periodo periodo in periodos)
+                            {
+                                Nota nota = notaXParam(calificacion.estudiante.Cedula, periodo.IdPeriodo, asignatura.IdAsignatura, nivel, mat.IdMatricula);
                                     if (nota != null)
                                     {
                                         #region Octavo
@@ -68,15 +65,15 @@ namespace DataLayer
                                             #region Español
                                             if (nota.Asignatura == 1)
                                             {
-                                                if (periodo.Nombre.Contains("Primer periodo"))
+                                                if (nota.PeriodoNombre.Contains("Primer periodo"))
                                                 {
                                                     calificacion.califEspa1Oct = nota;
                                                 }
-                                                else if (periodo.Nombre.Contains("Segundo periodo"))
+                                                else if (nota.PeriodoNombre.Contains("Segundo periodo"))
                                                 {
                                                     calificacion.califEspa2Oct = nota;
                                                 }
-                                                else if (periodo.Nombre.Contains("Tercer periodo"))
+                                                else if (nota.PeriodoNombre.Contains("Tercer periodo"))
                                                 {
                                                     calificacion.califEspa3Oct = nota;
                                                 }
@@ -91,15 +88,15 @@ namespace DataLayer
                                             #region Ciencias
                                             if (nota.Asignatura == 2)
                                             {
-                                                if (periodo.Nombre.Contains("Primer periodo"))
+                                                if (nota.PeriodoNombre.Contains("Primer periodo"))
                                                 {
                                                     calificacion.califCiencias1Oct = nota;
                                                 }
-                                                else if (periodo.Nombre.Contains("Segundo periodo"))
+                                                else if (nota.PeriodoNombre.Contains("Segundo periodo"))
                                                 {
                                                     calificacion.califCiencias2Oct = nota;
                                                 }
-                                                else if (periodo.Nombre.Contains("Tercer periodo"))
+                                                else if (nota.PeriodoNombre.Contains("Tercer periodo"))
                                                 {
                                                     calificacion.califCiencias3Oct = nota;
                                                 }
@@ -114,15 +111,15 @@ namespace DataLayer
                                             #region Estudios sociales 
                                             if (nota.Asignatura == 3)
                                             {
-                                                if (periodo.Nombre.Contains("Primer periodo"))
+                                                if (nota.PeriodoNombre.Contains("Primer periodo"))
                                                 {
                                                     calificacion.califEstSoc1Oct = nota;
                                                 }
-                                                else if (periodo.Nombre.Contains("Segundo periodo"))
+                                                else if (nota.PeriodoNombre.Contains("Segundo periodo"))
                                                 {
                                                     calificacion.califEstSoc2Oct = nota;
                                                 }
-                                                else if (periodo.Nombre.Contains("Tercer periodo"))
+                                                else if (nota.PeriodoNombre.Contains("Tercer periodo"))
                                                 {
                                                     calificacion.califEstSoc3Oct = nota;
                                                 }
@@ -137,15 +134,15 @@ namespace DataLayer
                                             #region Matematica 
                                             if (nota.Asignatura == 4)
                                             {
-                                                if (periodo.Nombre.Contains("Primer periodo"))
+                                                if (nota.PeriodoNombre.Contains("Primer periodo"))
                                                 {
                                                     calificacion.califMate1Oct = nota;
                                                 }
-                                                else if (periodo.Nombre.Contains("Segundo periodo"))
+                                                else if (nota.PeriodoNombre.Contains("Segundo periodo"))
                                                 {
                                                     calificacion.califMate2Oct = nota;
                                                 }
-                                                else if (periodo.Nombre.Contains("Tercer periodo"))
+                                                else if (nota.PeriodoNombre.Contains("Tercer periodo"))
                                                 {
                                                     calificacion.califMate3Oct = nota;
                                                 }
@@ -160,15 +157,15 @@ namespace DataLayer
                                             #region Inglés 
                                             if (nota.Asignatura == 6)
                                             {
-                                                if (periodo.Nombre.Contains("Primer periodo"))
+                                                if (nota.PeriodoNombre.Contains("Primer periodo"))
                                                 {
                                                     calificacion.califIng1Oct = nota;
                                                 }
-                                                else if (periodo.Nombre.Contains("Segundo periodo"))
+                                                else if (nota.PeriodoNombre.Contains("Segundo periodo"))
                                                 {
                                                     calificacion.califIng2Oct = nota;
                                                 }
-                                                else if (periodo.Nombre.Contains("Tercer periodo"))
+                                                else if (nota.PeriodoNombre.Contains("Tercer periodo"))
                                                 {
                                                     calificacion.califIng3Oct = nota;
                                                 }
@@ -183,15 +180,15 @@ namespace DataLayer
                                             #region Civica 
                                             if (nota.Asignatura == 11)
                                             {
-                                                if (periodo.Nombre.Contains("Primer periodo"))
+                                                if (nota.PeriodoNombre.Contains("Primer periodo"))
                                                 {
                                                     calificacion.califCiv1Oct = nota;
                                                 }
-                                                else if (periodo.Nombre.Contains("Segundo periodo"))
+                                                else if (nota.PeriodoNombre.Contains("Segundo periodo"))
                                                 {
                                                     calificacion.califCiv2Oct = nota;
                                                 }
-                                                else if (periodo.Nombre.Contains("Tercer periodo"))
+                                                else if (nota.PeriodoNombre.Contains("Tercer periodo"))
                                                 {
                                                     calificacion.califCiv3Oct = nota;
                                                 }
@@ -206,35 +203,204 @@ namespace DataLayer
                                             #region Talleres 
                                             if (nota.Asignatura > 11)
                                             {
-                                                //TODO: Poner a funcionar la seleccion de taller
-                                                /*
-                                                if (periodo.Nombre.Contains("Primer periodo"))
+                                                if (tallerI == false)
                                                 {
-                                                    calificacion.califCiv1Oct = nota;
-                                                }
-                                                else if (periodo.Nombre.Contains("Segundo periodo"))
-                                                {
-                                                    calificacion.califCiv2Oct = nota;
-                                                }
-                                                else if (periodo.Nombre.Contains("Tercer periodo"))
-                                                {
-                                                    calificacion.califCiv3Oct = nota;
+                                                    if (nota.PeriodoNombre.Contains("Primer periodo"))
+                                                    {
+                                                        calificacion.califTallI1Oct = nota;
+                                                    }
+                                                    else if (nota.PeriodoNombre.Contains("Segundo periodo"))
+                                                    {
+                                                        calificacion.califTallI2Oct = nota;
+                                                    }
+                                                    else if (nota.PeriodoNombre.Contains("Tercer periodo"))
+                                                    {
+                                                        calificacion.califTallI3Oct = nota;
+                                                    }
+                                                    else
+                                                    {
+                                                        calificacion.califTallI1Oct = nota;
+                                                        calificacion.califTallI2Oct = nota;
+                                                        calificacion.califTallI3Oct = nota;
+                                                    }
+                                                    tallerI = true;
                                                 }
                                                 else
                                                 {
-                                                    calificacion.califCiv1Oct = nota;
-                                                    calificacion.califCiv2Oct = nota;
-                                                    calificacion.califCiv3Oct = nota;
-                                                }*/
+                                                    if (nota.PeriodoNombre.Contains("Primer periodo"))
+                                                    {
+                                                        calificacion.califTallII1Oct = nota;
+                                                    }
+                                                    else if (nota.PeriodoNombre.Contains("Segundo periodo"))
+                                                    {
+                                                        calificacion.califTallII2Oct = nota;
+                                                    }
+                                                    else if (nota.PeriodoNombre.Contains("Tercer periodo"))
+                                                    {
+                                                        calificacion.califTallII3Oct = nota;
+                                                    }
+                                                    else
+                                                    {
+                                                        calificacion.califTallII1Oct = nota;
+                                                        calificacion.califTallII2Oct = nota;
+                                                        calificacion.califTallII3Oct = nota;
+                                                    }
+                                                    tallerI = false;
+                                                }
                                             }
                                             #endregion
-
                                         }
                                         #endregion
                                         #region Noveno
                                         else if (nivel == 9)
                                         {
-                                            //TODO: Poner a funcionar la parte de novenos
+                                            #region Español
+                                            if (nota.Asignatura == 1)
+                                            {
+                                                if (nota.PeriodoNombre.Contains("Primer periodo"))
+                                                {
+                                                    calificacion.califEspa1Nov = nota;
+                                                }
+                                                else if (nota.PeriodoNombre.Contains("Segundo periodo"))
+                                                {
+                                                    calificacion.califEspa2Nov = nota;
+                                                }
+                                                else
+                                                {
+                                                    calificacion.califEspa1Nov = nota;
+                                                    calificacion.califEspa2Nov = nota;
+                                                }
+                                            }
+                                            #endregion
+                                            #region Ciencias
+                                            if (nota.Asignatura == 2)
+                                            {
+                                                if (nota.PeriodoNombre.Contains("Primer periodo"))
+                                                {
+                                                    calificacion.califCiencias1Nov = nota;
+                                                }
+                                                else if (nota.PeriodoNombre.Contains("Segundo periodo"))
+                                                {
+                                                    calificacion.califCiencias2Nov = nota;
+                                                }
+                                                else
+                                                {
+                                                    calificacion.califCiencias1Nov = nota;
+                                                    calificacion.califCiencias2Nov = nota;
+                                                }
+                                            }
+                                            #endregion
+                                            #region Estudios sociales 
+                                            if (nota.Asignatura == 3)
+                                            {
+                                                if (nota.PeriodoNombre.Contains("Primer periodo"))
+                                                {
+                                                    calificacion.califEstSoc1Nov = nota;
+                                                }
+                                                else if (nota.PeriodoNombre.Contains("Segundo periodo"))
+                                                {
+                                                    calificacion.califEstSoc2Nov = nota;
+                                                }
+                                                else
+                                                {
+                                                    calificacion.califEstSoc1Nov = nota;
+                                                    calificacion.califEstSoc2Nov = nota;
+                                                }
+                                            }
+                                            #endregion
+                                            #region Matematica 
+                                            if (nota.Asignatura == 4)
+                                            {
+                                                if (nota.PeriodoNombre.Contains("Primer periodo"))
+                                                {
+                                                    calificacion.califMate1Nov = nota;
+                                                }
+                                                else if (nota.PeriodoNombre.Contains("Segundo periodo"))
+                                                {
+                                                    calificacion.califMate2Nov = nota;
+                                                }
+                                                else
+                                                {
+                                                    calificacion.califMate1Nov = nota;
+                                                    calificacion.califMate2Nov = nota;
+                                                }
+                                            }
+                                            #endregion
+                                            #region Inglés 
+                                            if (nota.Asignatura == 6)
+                                            {
+                                                if (nota.PeriodoNombre.Contains("Primer periodo"))
+                                                {
+                                                    calificacion.califIng1Nov = nota;
+                                                }
+                                                else if (nota.PeriodoNombre.Contains("Segundo periodo"))
+                                                {
+                                                    calificacion.califIng2Nov = nota;
+                                                }
+                                                else
+                                                {
+                                                    calificacion.califIng1Nov = nota;
+                                                    calificacion.califIng2Nov = nota;
+                                                }
+                                            }
+                                            #endregion
+                                            #region Civica 
+                                            if (nota.Asignatura == 11)
+                                            {
+                                                if (nota.PeriodoNombre.Contains("Primer periodo"))
+                                                {
+                                                    calificacion.califCiv1Nov = nota;
+                                                }
+                                                else if (nota.PeriodoNombre.Contains("Segundo periodo"))
+                                                {
+                                                    calificacion.califCiv2Nov = nota;
+                                                }
+                                                else
+                                                {
+                                                    calificacion.califCiv1Nov = nota;
+                                                    calificacion.califCiv2Nov = nota;
+                                                }
+                                            }
+                                            #endregion
+                                            #region Talleres 
+                                            if (nota.Asignatura > 11)
+                                            {
+                                                if (tallerI == false)
+                                                {
+                                                    if (nota.PeriodoNombre.Contains("Primer periodo"))
+                                                    {
+                                                        calificacion.califTallI1Nov = nota;
+                                                    }
+                                                    else if (nota.PeriodoNombre.Contains("Segundo periodo"))
+                                                    {
+                                                        calificacion.califTallI2Nov = nota;
+                                                    }
+                                                    else
+                                                    {
+                                                        calificacion.califTallI1Nov = nota;
+                                                        calificacion.califTallI2Nov = nota;
+                                                    }
+                                                    tallerI = true;
+                                                }
+                                                else
+                                                {
+                                                    if (nota.PeriodoNombre.Contains("Primer periodo"))
+                                                    {
+                                                        calificacion.califTallII1Nov = nota;
+                                                    }
+                                                    else if (nota.PeriodoNombre.Contains("Segundo periodo"))
+                                                    {
+                                                        calificacion.califTallII2Nov = nota;
+                                                    }
+                                                    else
+                                                    {
+                                                        calificacion.califTallII1Nov = nota;
+                                                        calificacion.califTallII2Nov = nota;
+                                                    }
+                                                    tallerI = false;
+                                                }
+                                            }
+                                            #endregion
                                         }
                                         #endregion
                                     }
@@ -242,6 +408,7 @@ namespace DataLayer
                             }
                         }
                     }
+                    calificaciones.Add(calificacion);
                 }
             }
             catch (Exception ex)
@@ -256,14 +423,28 @@ namespace DataLayer
             using (MySqlConnection connPIAD = new MySqlConnection(connStringPIAD))
             {
                 //TODO: Selecciona la nota de trendimiento
-                using (MySqlCommand cmd = new MySqlCommand("SELECT nota FROM trendimiento r INNER JOIN tmatricula m " +
-                    "ON r.cedula=m.cedEstudiante WHERE r.cedula='" + cedula + "' AND r.codPeriodo=" + periodo +
+                using (MySqlCommand cmd = new MySqlCommand("SELECT nota, periodo FROM trendimiento r " +
+                    "INNER JOIN ctp_noveno.asignaturas a ON r.codAsignatura=a.idasignatura " +
+                    "INNER JOIN bdpiiad2.tperiodos p ON r.codPeriodo=p.idperiodo " +
+                    "INNER JOIN bdpiiad2.tmatricula m ON r.cedula=m.cedEstudiante AND p.curso_lectivo=codCursoLectivo " +
+                    "WHERE r.cedula='" + cedula + "' AND r.codPeriodo=" + periodo +
                     " AND r.codAsignatura=" + asignatura + " AND m.numNivel=" + nivel + ";", connPIAD))
                 {
                     Nota nota = new Nota();
                     cmd.CommandType = CommandType.Text;
                     connPIAD.Open();
-                    nota.Calificacion = Convert.ToInt32(cmd.ExecuteScalar());
+
+                    MySqlDataReader dr = cmd.ExecuteReader();
+
+                    if (dr.FieldCount > 0)
+                    {
+                        while (dr.Read())
+                        {
+                            nota.Calificacion = dr.GetDecimal(0);
+                            nota.PeriodoNombre = dr.GetString(1);
+                        }
+                        dr.Close();
+                    }
                     connPIAD.Close();
                     if (nota.Calificacion > 0)
                     {

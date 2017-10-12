@@ -2,19 +2,16 @@
 using Entities;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BussinesLayer
 {
     public class CalificacionesBussines
     {
-        public List<Calificaciones> ListarCalificaciones()
+        public List<Calificaciones> ListarCalificacionesTRendimiento()
         {
             try
             {
-                return new CalificacionesData().ListCalificaciones();
+                return new CalificacionesData().ListCalificacionesTRendimiento();
             }
             catch (Exception ex)
             {

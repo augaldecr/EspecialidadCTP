@@ -80,6 +80,7 @@ namespace DataLayer
                                 Periodo periodo = new Periodo();
                                 periodo.IdPeriodo = dr.GetInt32(0);
                                 periodo.Nombre = dr.GetString(1);
+                                periodo.CursoLectivo = curso;
 
                                 periodos.Add(periodo);
                             }

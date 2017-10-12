@@ -13,6 +13,9 @@ namespace PresentationLayer
 {
     public partial class Config : Form
     {
+        public delegate void muestraProgreso();
+        public event muestraProgreso addProgress;
+
         public Config()
         {
             InitializeComponent();
@@ -25,8 +28,16 @@ namespace PresentationLayer
 
         private void btnImpCalif_Click(object sender, EventArgs e)
         {
-            CalificacionesBussines cal = new CalificacionesBussines();
-            cal.ListarCalificaciones();
+            try
+            {
+                CalificacionesBussines cal = new CalificacionesBussines();
+                cal.ListarCalificacionesTRendimiento();
+                //addProgress(1);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
     }
 }

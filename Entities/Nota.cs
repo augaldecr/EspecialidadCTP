@@ -11,6 +11,7 @@
         public int? Curso_lectivo { get; set; }
         public int? Nivel { get; set; }
         public int? Periodo { get; set; }
+        public string PeriodoNombre { get; set; }
         public decimal? Calificacion { get; set; }
         public decimal? Entrevista { get; set; }
         public decimal? Vocacional { get; set; }
