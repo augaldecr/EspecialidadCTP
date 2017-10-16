@@ -28,7 +28,7 @@ namespace DataLayer
             try
             {
                 cursoActivo = new CursoLectivoData().CursoActivo();
-                cursoInicial = cursoActivo - 2;
+                cursoInicial = cursoActivo - 1;
 
                 matriculas = new MatriculaData().MatriculasXCursoLectivo(cursoActivo);
                 asignaturas = new AsignaturaData().listarAsignaturas();
@@ -61,11 +61,12 @@ namespace DataLayer
             calificacion.estudiante = new EstudianteData().estudianteXId(mat.Estudiante);
             bool tallerI = false;
             List<Periodo> periodos;
-            for (int curso = cursoInicial; curso <= cursoActivo; curso++)
+
+            for (int nivel = 8; nivel <= 9; nivel++)
             {
                 foreach (Asignatura asignatura in asignaturas)
                 {
-                    for (int nivel = 8; nivel <= 9; nivel++)
+                    for (int curso = cursoInicial; curso <= cursoActivo; curso++)
                     {
                         periodos = new PeriodoData().periodosXCurso(curso);
                         foreach (Periodo periodo in periodos)

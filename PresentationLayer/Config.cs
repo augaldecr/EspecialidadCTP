@@ -24,20 +24,14 @@ namespace PresentationLayer
                 cal.addAvance += Cal_addAvance;
                 List<Calificaciones> calis = cal.ListarCalificacionesTRendimiento();
 
-                /*new Nota
-                {
-                    Matricula = matricula,
-                    Asignatura = asignatura,
-                    Nivel = nivel,
-                    Periodo = periodo,
-                    Calificacion = nota
-                }
-
                 foreach (Calificaciones cali in calis)
                 {
-                    //cali.califCiencias1Oct
-
-                }*/
+                    foreach (Nota nota in cali.Notas)
+                    {
+                        new NotaBussines().guardarNota(nota);
+                    }
+                    avanzaBarra("Guardando", "calificaciones", calis.Count);
+                }
             }
             catch (Exception ex)
             {
@@ -53,14 +47,14 @@ namespace PresentationLayer
 
         private void Cal_addAvance()
         {
-            avanzaBarra("matriculas", new MatriculaBussines().qtyMatsCursoActivo());
-            statusStripConfig.Update();
+            avanzaBarra("Recuperando", "calificaciones", new MatriculaBussines().qtyMatsCursoActivo());
         }
-        private void avanzaBarra(string tipo, int max)
+        private void avanzaBarra(string accion, string tipo, int max)
         {
             prgBarConfig.Value++;
-            toolStripStatusLblConfig.Text = string.Format("Importando {0}: {1} de {2}.",
-                tipo, prgBarConfig.Value, max);
+            toolStripStatusLblConfig.Text = string.Format("{0} {1} desde PIAD: {2} de {3}.",
+                accion, tipo, prgBarConfig.Value, max);
+            statusStripConfig.Update();
         }
     }
 }
