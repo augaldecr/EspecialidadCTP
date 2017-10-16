@@ -136,6 +136,10 @@
       <Project>{1ADCF44D-43E0-4186-8CF9-22383AF457C3}</Project>
       <Name>BussinesLayer</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DataLayer\DataLayer.csproj">
+      <Project>{51E613E3-17DD-4193-BE79-2E217E821B06}</Project>
+      <Name>DataLayer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Entities\Entities.csproj">
       <Project>{50350185-5F8D-4AD3-B5E8-C6C4D895E74A}</Project>
       <Name>Entities</Name>

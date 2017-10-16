@@ -1,6 +1,6 @@
-﻿namespace PresentationLayer
+﻿namespace DataLayer
 {
-    partial class ProgressForm
+    partial class PrgShow
     {
         /// <summary>
         /// Required designer variable.
@@ -67,7 +67,7 @@
             this.prgBar.Size = new System.Drawing.Size(576, 66);
             this.prgBar.TabIndex = 1;
             // 
-            // ProgressForm
+            // PrgShow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -77,7 +77,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "ProgressForm";
+            this.Name = "PrgShow";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

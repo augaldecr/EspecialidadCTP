@@ -472,5 +472,33 @@ namespace DataLayer
             }
         }
         #endregion
+
+        #region Cantidad matriculas de Curso Activo
+        public int qtyMatsXCursoActivo()
+        {
+            string connString = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
+            int matriculas = 0;
+
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connString))
+                {
+                    //TODO: Selecciona Curso Lectivo activo
+                    using (MySqlCommand cmd = new MySqlCommand("SELECT qty FROM qty_mats_curso_act;", conn))
+                    {
+                        cmd.CommandType = CommandType.Text;
+                        conn.Open();
+                        matriculas = Convert.ToInt32(cmd.ExecuteScalar());
+                        conn.Close();
+                    }
+                }
+            }
+            catch (System.Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return matriculas;
+        }
+        #endregion
     }
 }

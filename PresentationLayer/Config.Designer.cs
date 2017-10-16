@@ -54,6 +54,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnImpCalif = new System.Windows.Forms.Button();
             this.chkBoxCalific = new System.Windows.Forms.CheckBox();
+            this.statusStripConfig = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLblConfig = new System.Windows.Forms.ToolStripStatusLabel();
+            this.prgBarConfig = new System.Windows.Forms.ToolStripProgressBar();
             this.tabControl1.SuspendLayout();
             this.tbPgValores.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -61,6 +64,7 @@
             this.tbPgImport.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
+            this.statusStripConfig.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -150,6 +154,7 @@
             // 
             // tbPgImport
             // 
+            this.tbPgImport.Controls.Add(this.statusStripConfig);
             this.tbPgImport.Controls.Add(this.tableLayoutPanel2);
             this.tbPgImport.Location = new System.Drawing.Point(4, 29);
             this.tbPgImport.Name = "tbPgImport";
@@ -161,6 +166,7 @@
             // 
             // tableLayoutPanel2
             // 
+            this.tableLayoutPanel2.AutoSize = true;
             this.tableLayoutPanel2.ColumnCount = 1;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Controls.Add(this.label5, 0, 0);
@@ -273,7 +279,6 @@
             this.btnImpCursoLectivo.TabIndex = 2;
             this.btnImpCursoLectivo.Text = "Importar";
             this.btnImpCursoLectivo.UseVisualStyleBackColor = true;
-            this.btnImpCursoLectivo.Click += new System.EventHandler(this.btnCursoLectivo_Click);
             // 
             // btnImpPeriodo
             // 
@@ -380,6 +385,31 @@
             this.chkBoxCalific.TabIndex = 18;
             this.chkBoxCalific.UseVisualStyleBackColor = true;
             // 
+            // statusStripConfig
+            // 
+            this.statusStripConfig.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLblConfig,
+            this.prgBarConfig});
+            this.statusStripConfig.Location = new System.Drawing.Point(3, 386);
+            this.statusStripConfig.Name = "statusStripConfig";
+            this.statusStripConfig.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.statusStripConfig.Size = new System.Drawing.Size(782, 22);
+            this.statusStripConfig.TabIndex = 2;
+            // 
+            // toolStripStatusLblConfig
+            // 
+            this.toolStripStatusLblConfig.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.toolStripStatusLblConfig.Name = "toolStripStatusLblConfig";
+            this.toolStripStatusLblConfig.Size = new System.Drawing.Size(665, 17);
+            this.toolStripStatusLblConfig.Spring = true;
+            this.toolStripStatusLblConfig.Text = "Estado";
+            this.toolStripStatusLblConfig.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // prgBarConfig
+            // 
+            this.prgBarConfig.Name = "prgBarConfig";
+            this.prgBarConfig.Size = new System.Drawing.Size(100, 16);
+            // 
             // Config
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -394,10 +424,13 @@
             this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tbPgImport.ResumeLayout(false);
+            this.tbPgImport.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
+            this.statusStripConfig.ResumeLayout(false);
+            this.statusStripConfig.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -430,5 +463,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnImpCalif;
         private System.Windows.Forms.CheckBox chkBoxCalific;
+        private System.Windows.Forms.StatusStrip statusStripConfig;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLblConfig;
+        private System.Windows.Forms.ToolStripProgressBar prgBarConfig;
     }
 }

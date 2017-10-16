@@ -1,4 +1,5 @@
 ﻿using BussinesLayer;
+using DataLayer;
 using Entities;
 using System;
 using System.Collections.Generic;
@@ -112,7 +113,7 @@ namespace PresentationLayer
                 Matricula mat = new Matricula
                 {
                     Estudiante = est.iDEstudianteXCedula(txtBoxCedula.Text),
-                    CursoLectivo = 19,
+                    CursoLectivo = new CursoLectivoData().CursoActivo(),
                     Especialidad1 = int.Parse(cmbBoxEspe1.SelectedValue.ToString()),
                     Especialidad2 = int.Parse(cmbBoxEspe2.SelectedValue.ToString()),
                     Especialidad3 = int.Parse(cmbBoxEspe3.SelectedValue.ToString()),

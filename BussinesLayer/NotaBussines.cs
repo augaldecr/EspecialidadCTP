@@ -50,6 +50,19 @@ namespace BussinesLayer
             nota.BorraNota(id);
         }
 
+        public void guardarNota(Nota nota)
+        {
+            try
+            {
+                new NotaData().GuardaNota(nota);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
+        }
+
         public void guardarNotaOrienta(int matricula, int curso, decimal entrevista, decimal vocacional)
         {
             NotaData dt = new NotaData();

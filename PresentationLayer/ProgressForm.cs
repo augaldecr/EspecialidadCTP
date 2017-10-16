@@ -1,27 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace PresentationLayer
 {
     public partial class ProgressForm : Form
     {
-
-
         public ProgressForm()
         {
             InitializeComponent();
-        }
-
-        private void ProgressForm_Load(object sender, EventArgs e)
-        {
-
+            prgBar.Maximum = 642;
+            prgBar.Step = 1;
+            prgBar.Minimum = 0;
         }
     }
 }

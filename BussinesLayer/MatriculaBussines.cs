@@ -61,5 +61,10 @@ namespace BussinesLayer
             }
         }
 
+        public int qtyMatsCursoActivo()
+        {
+            return new MatriculaData().qtyMatsXCursoActivo();
+        }
+
     }
 }

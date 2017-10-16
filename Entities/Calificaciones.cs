@@ -10,7 +10,8 @@ namespace Entities
     {
         public Matricula matricula { get; set; }
         public Estudiante estudiante { get; set; }
-        //Octavo
+        public List<Nota> Notas { get; set; }
+        /*//Octavo
         public Nota califCiencias1Oct { get; set; }
         public Nota califCiencias2Oct { get; set; }
         public Nota califCiencias3Oct { get; set; }
@@ -51,6 +52,6 @@ namespace Entities
         public Nota califTallI1Nov { get; set; }
         public Nota califTallI2Nov { get; set; }
         public Nota califTallII1Nov { get; set; }
-        public Nota califTallII2Nov { get; set; }
+        public Nota califTallII2Nov { get; set; }*/
     }
 }
