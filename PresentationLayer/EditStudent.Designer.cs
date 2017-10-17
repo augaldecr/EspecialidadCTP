@@ -31,7 +31,6 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.lblTitle = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.cmbBoxEspe3 = new System.Windows.Forms.ComboBox();
             this.cmbBoxEspe2 = new System.Windows.Forms.ComboBox();
             this.txtBoxCedula = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -57,6 +56,9 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.cmbBoxEspe1 = new System.Windows.Forms.ComboBox();
+            this.cmbBoxEspe3 = new System.Windows.Forms.ComboBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.cmbBoxGrupo = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
@@ -101,7 +103,6 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.tableLayoutPanel2.Controls.Add(this.cmbBoxEspe3, 1, 6);
             this.tableLayoutPanel2.Controls.Add(this.cmbBoxEspe2, 3, 5);
             this.tableLayoutPanel2.Controls.Add(this.txtBoxCedula, 3, 0);
             this.tableLayoutPanel2.Controls.Add(this.label2, 0, 0);
@@ -127,6 +128,9 @@
             this.tableLayoutPanel2.Controls.Add(this.label12, 2, 5);
             this.tableLayoutPanel2.Controls.Add(this.label13, 0, 6);
             this.tableLayoutPanel2.Controls.Add(this.cmbBoxEspe1, 1, 5);
+            this.tableLayoutPanel2.Controls.Add(this.cmbBoxEspe3, 1, 6);
+            this.tableLayoutPanel2.Controls.Add(this.label14, 2, 6);
+            this.tableLayoutPanel2.Controls.Add(this.cmbBoxGrupo, 3, 6);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 55);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -141,24 +145,13 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(658, 415);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
-            // cmbBoxEspe3
-            // 
-            this.cmbBoxEspe3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.cmbBoxEspe3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbBoxEspe3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbBoxEspe3.FormattingEnabled = true;
-            this.cmbBoxEspe3.Location = new System.Drawing.Point(134, 367);
-            this.cmbBoxEspe3.Name = "cmbBoxEspe3";
-            this.cmbBoxEspe3.Size = new System.Drawing.Size(191, 33);
-            this.cmbBoxEspe3.TabIndex = 12;
-            // 
             // cmbBoxEspe2
             // 
             this.cmbBoxEspe2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cmbBoxEspe2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbBoxEspe2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbBoxEspe2.FormattingEnabled = true;
-            this.cmbBoxEspe2.Location = new System.Drawing.Point(463, 307);
+            this.cmbBoxEspe2.Location = new System.Drawing.Point(463, 308);
             this.cmbBoxEspe2.Name = "cmbBoxEspe2";
             this.cmbBoxEspe2.Size = new System.Drawing.Size(191, 33);
             this.cmbBoxEspe2.TabIndex = 11;
@@ -375,6 +368,8 @@
             this.chkBoxLocal.TabIndex = 9;
             this.chkBoxLocal.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.chkBoxLocal.UseVisualStyleBackColor = true;
+            this.chkBoxLocal.CheckedChanged += new System.EventHandler(this.chkBoxLocal_CheckedChanged);
+            this.chkBoxLocal.CheckStateChanged += new System.EventHandler(this.chkBoxLocal_CheckStateChanged);
             // 
             // label1
             // 
@@ -415,10 +410,57 @@
             this.cmbBoxEspe1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbBoxEspe1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbBoxEspe1.FormattingEnabled = true;
-            this.cmbBoxEspe1.Location = new System.Drawing.Point(134, 307);
+            this.cmbBoxEspe1.Location = new System.Drawing.Point(134, 308);
             this.cmbBoxEspe1.Name = "cmbBoxEspe1";
             this.cmbBoxEspe1.Size = new System.Drawing.Size(191, 33);
             this.cmbBoxEspe1.TabIndex = 10;
+            // 
+            // cmbBoxEspe3
+            // 
+            this.cmbBoxEspe3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cmbBoxEspe3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbBoxEspe3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbBoxEspe3.FormattingEnabled = true;
+            this.cmbBoxEspe3.Location = new System.Drawing.Point(134, 368);
+            this.cmbBoxEspe3.Name = "cmbBoxEspe3";
+            this.cmbBoxEspe3.Size = new System.Drawing.Size(191, 33);
+            this.cmbBoxEspe3.TabIndex = 12;
+            // 
+            // label14
+            // 
+            this.label14.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(364, 374);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(58, 20);
+            this.label14.TabIndex = 24;
+            this.label14.Text = "Grupo:";
+            // 
+            // cmbBoxGrupo
+            // 
+            this.cmbBoxGrupo.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cmbBoxGrupo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbBoxGrupo.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbBoxGrupo.FormattingEnabled = true;
+            this.cmbBoxGrupo.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "N/A"});
+            this.cmbBoxGrupo.Location = new System.Drawing.Point(463, 368);
+            this.cmbBoxGrupo.Name = "cmbBoxGrupo";
+            this.cmbBoxGrupo.Size = new System.Drawing.Size(191, 33);
+            this.cmbBoxGrupo.TabIndex = 25;
             // 
             // tableLayoutPanel3
             // 
@@ -525,5 +567,7 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.ComboBox cmbBoxEspe1;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.ComboBox cmbBoxGrupo;
     }
 }

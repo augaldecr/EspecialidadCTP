@@ -46,9 +46,11 @@
     <Compile Include="CursoLectivo.cs" />
     <Compile Include="Especialidad.cs" />
     <Compile Include="Estudiante.cs" />
+    <Compile Include="Grupo.cs" />
     <Compile Include="Matricula.cs" />
     <Compile Include="Nivel.cs" />
     <Compile Include="Nota.cs" />
+    <Compile Include="NotasBasicas.cs" />
     <Compile Include="Periodo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

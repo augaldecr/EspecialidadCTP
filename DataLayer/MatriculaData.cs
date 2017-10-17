@@ -29,6 +29,9 @@ namespace DataLayer
                         cmd.Parameters.Add("curso_lectivo", MySqlDbType.Int16);
                         cmd.Parameters["curso_lectivo"].Value = mat.CursoLectivo;
                         cmd.Parameters["curso_lectivo"].Direction = ParameterDirection.Input;
+                        cmd.Parameters.Add("grupo", MySqlDbType.Int16);
+                        cmd.Parameters["grupo"].Value = mat.Grupo;
+                        cmd.Parameters["grupo"].Direction = ParameterDirection.Input;
                         cmd.Parameters.Add("especialidad1", MySqlDbType.Int16);
                         cmd.Parameters["especialidad1"].Value = mat.Especialidad1;
                         cmd.Parameters["especialidad1"].Direction = ParameterDirection.Input;
@@ -75,6 +78,9 @@ namespace DataLayer
                         cmd.Parameters.Add("pcurso_lectivo", MySqlDbType.Int32);
                         cmd.Parameters["pcurso_lectivo"].Value = mat.CursoLectivo;
                         cmd.Parameters["pcurso_lectivo"].Direction = ParameterDirection.Input;
+                        cmd.Parameters.Add("grupo", MySqlDbType.Int16);
+                        cmd.Parameters["grupo"].Value = mat.Grupo;
+                        cmd.Parameters["grupo"].Direction = ParameterDirection.Input;
                         cmd.Parameters.Add("pespecialidad1", MySqlDbType.Int32);
                         cmd.Parameters["pespecialidad1"].Value = mat.Especialidad1;
                         cmd.Parameters["pespecialidad1"].Direction = ParameterDirection.Input;
@@ -409,9 +415,10 @@ namespace DataLayer
                                 mat.IdMatricula = dr.GetInt32(0);
                                 mat.Estudiante = dr.GetInt32(1);
                                 mat.CursoLectivo = dr.GetInt32(2);
-                                mat.Especialidad1 = dr.GetInt32(3);
-                                mat.Especialidad2 = dr.GetInt32(4);
-                                mat.Especialidad3 = dr.GetInt32(5);
+                                mat.Grupo = dr.GetInt32(3);
+                                mat.Especialidad1 = dr.GetInt32(4);
+                                mat.Especialidad2 = dr.GetInt32(5);
+                                mat.Especialidad3 = dr.GetInt32(6);
 
                             }
                             dr.Close();

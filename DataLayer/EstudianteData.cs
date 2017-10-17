@@ -187,6 +187,7 @@ namespace DataLayer
                             }
                             dr.Close();
                         }
+                        conn.Close();
                     }
                 }
                 return lista;

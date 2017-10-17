@@ -658,5 +658,67 @@ namespace DataLayer
             return 0;
         }
         #endregion
+
+        #region Listar notas básicas
+        public List<NotasBasicas> listarNotasBasicas8()
+        {
+            string connString = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
+            List<NotasBasicas> lista = new List<NotasBasicas>(); ;
+
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connString))
+                {
+                    using (MySqlCommand cmd = new MySqlCommand("SELECT * FROM notas_curso_activo8;", conn))
+                    {
+                        conn.Open();
+                        MySqlDataReader dr = cmd.ExecuteReader();
+
+                        if (dr.FieldCount > 0)
+                        {
+                            while (dr.Read())
+                            {
+                                NotasBasicas notas = new NotasBasicas();
+                                notas.idMatricula = dr.GetInt32(0);
+                                notas.nombreCompleto = dr.GetString(1);
+                                notas.esp1 = dr.GetValue(2) == DBNull.Value ? (decimal?)null : dr.GetDecimal(2);
+                                notas.esp2 = dr.GetValue(3) == DBNull.Value ? (decimal?)null : dr.GetDecimal(3);
+                                notas.esp3 = dr.GetValue(4) == DBNull.Value ? (decimal?)null : dr.GetDecimal(4);
+                                notas.cie1 = dr.GetValue(5) == DBNull.Value ? (decimal?)null : dr.GetDecimal(5);
+                                notas.cie2 = dr.GetValue(6) == DBNull.Value ? (decimal?)null : dr.GetDecimal(6);
+                                notas.cie3 = dr.GetValue(7) == DBNull.Value ? (decimal?)null : dr.GetDecimal(7);
+                                notas.estsoc1 = dr.GetValue(8) == DBNull.Value ? (decimal?)null : dr.GetDecimal(8);
+                                notas.estsoc2 = dr.GetValue(9) == DBNull.Value ? (decimal?)null : dr.GetDecimal(9);
+                                notas.estsoc3 = dr.GetValue(10) == DBNull.Value ? (decimal?)null : dr.GetDecimal(10);
+                                notas.mat1 = dr.GetValue(11) == DBNull.Value ? (decimal?)null : dr.GetDecimal(11);
+                                notas.mat2 = dr.GetValue(12) == DBNull.Value ? (decimal?)null : dr.GetDecimal(12);
+                                notas.mat3 = dr.GetValue(13) == DBNull.Value ? (decimal?)null : dr.GetDecimal(13);
+                                notas.ing1 = dr.GetValue(14) == DBNull.Value ? (decimal?)null : dr.GetDecimal(14);
+                                notas.ing2 = dr.GetValue(15) == DBNull.Value ? (decimal?)null : dr.GetDecimal(15);
+                                notas.ing3 = dr.GetValue(16) == DBNull.Value ? (decimal?)null : dr.GetDecimal(16);
+                                notas.civ1 = dr.GetValue(17) == DBNull.Value ? (decimal?)null : dr.GetDecimal(17);
+                                notas.civ2 = dr.GetValue(18) == DBNull.Value ? (decimal?)null : dr.GetDecimal(18);
+                                notas.civ3 = dr.GetValue(19) == DBNull.Value ? (decimal?)null : dr.GetDecimal(19);
+                                notas.talI1 = dr.GetValue(20) == DBNull.Value ? (decimal?)null : dr.GetDecimal(20);
+                                notas.talI2 = dr.GetValue(21) == DBNull.Value ? (decimal?)null : dr.GetDecimal(21);
+                                notas.talI3 = dr.GetValue(22) == DBNull.Value ? (decimal?)null : dr.GetDecimal(22);
+                                notas.talII1 = dr.GetValue(23) == DBNull.Value ? (decimal?)null : dr.GetDecimal(23);
+                                notas.talII2 = dr.GetValue(24) == DBNull.Value ? (decimal?)null : dr.GetDecimal(24);
+                                notas.talII3 = dr.GetValue(25) == DBNull.Value ? (decimal?)null : dr.GetDecimal(25);
+
+                                lista.Add(notas);
+                            }
+                            dr.Close();
+                        }
+                    }
+                }
+                return lista;
+            }
+            catch (System.Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        #endregion
     }
 }

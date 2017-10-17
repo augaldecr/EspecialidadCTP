@@ -51,7 +51,6 @@ namespace DataLayer
             }
             return calificaciones;
         }
-        #endregion
 
         private Calificaciones calificacion(Matricula mat, int cursoInicial,
             int cursoActivo, List<Asignatura> asignaturas)
@@ -172,5 +171,13 @@ namespace DataLayer
                 }
             }
         }
+        #endregion
+
+        #region Listar notas
+        /*public List<Calificaciones> listarNotasCursoActivo8(int mat)
+        {
+
+        }*/
+        #endregion
     }
 }

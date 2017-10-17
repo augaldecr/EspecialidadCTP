@@ -37,6 +37,16 @@
             this.btnEditStudent = new System.Windows.Forms.Button();
             this.btnAddEstud = new System.Windows.Forms.Button();
             this.dtGrdVwEstudiantes = new System.Windows.Forms.DataGridView();
+            this.IdEstudiante = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cedula = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Apellido1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Apellido2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Direccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Celular = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ctpp = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.tbPgOrienta = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
@@ -66,34 +76,6 @@
             this.btnEditNota = new System.Windows.Forms.Button();
             this.btnAddNota = new System.Windows.Forms.Button();
             this.dtGrdVwNotas = new System.Windows.Forms.DataGridView();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ApellidoUno = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ApellidoDos = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NombreS = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ciencias1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ciencias2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ciencias3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Civica1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Civica2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Civica3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Espanol1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Espanol2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Espanol3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EstSoc1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EstSoc2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EstSoc3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Mate1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Mate2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Mate3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ingles1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ingles2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ingles3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TallerI1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TallerI2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TallerI3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TallerIIUno = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TallerIDos = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TallerIITres = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tbPgNotas9 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.dtGrdVwNotas9 = new System.Windows.Forms.DataGridView();
@@ -127,16 +109,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
             this.btnConfig = new System.Windows.Forms.Button();
-            this.IdEstudiante = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cedula = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Apellido1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Apellido2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Direccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Celular = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ctpp = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tbPgEstudiantes.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -277,6 +249,82 @@
             this.dtGrdVwEstudiantes.Size = new System.Drawing.Size(1244, 387);
             this.dtGrdVwEstudiantes.TabIndex = 1;
             this.dtGrdVwEstudiantes.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtGrdVwEstudiantes_CellDoubleClick);
+            // 
+            // IdEstudiante
+            // 
+            this.IdEstudiante.DataPropertyName = "IdEstudiante";
+            this.IdEstudiante.HeaderText = "ID";
+            this.IdEstudiante.Name = "IdEstudiante";
+            this.IdEstudiante.ReadOnly = true;
+            this.IdEstudiante.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.IdEstudiante.Visible = false;
+            // 
+            // Cedula
+            // 
+            this.Cedula.DataPropertyName = "Cedula";
+            this.Cedula.HeaderText = "Cédula";
+            this.Cedula.Name = "Cedula";
+            this.Cedula.ReadOnly = true;
+            // 
+            // Nombre
+            // 
+            this.Nombre.DataPropertyName = "Nombre";
+            this.Nombre.HeaderText = "Nombre";
+            this.Nombre.Name = "Nombre";
+            this.Nombre.ReadOnly = true;
+            // 
+            // Apellido1
+            // 
+            this.Apellido1.DataPropertyName = "Apellido1";
+            this.Apellido1.HeaderText = "Primer apellido";
+            this.Apellido1.Name = "Apellido1";
+            this.Apellido1.ReadOnly = true;
+            // 
+            // Apellido2
+            // 
+            this.Apellido2.DataPropertyName = "Apellido2";
+            this.Apellido2.HeaderText = "Segundo apellido";
+            this.Apellido2.Name = "Apellido2";
+            this.Apellido2.ReadOnly = true;
+            // 
+            // Direccion
+            // 
+            this.Direccion.DataPropertyName = "Direccion";
+            this.Direccion.HeaderText = "Dirección";
+            this.Direccion.Name = "Direccion";
+            this.Direccion.ReadOnly = true;
+            // 
+            // Telefono
+            // 
+            this.Telefono.DataPropertyName = "Telefono";
+            this.Telefono.HeaderText = "Teléfono";
+            this.Telefono.Name = "Telefono";
+            this.Telefono.ReadOnly = true;
+            // 
+            // Celular
+            // 
+            this.Celular.DataPropertyName = "Celular";
+            this.Celular.HeaderText = "Celular";
+            this.Celular.Name = "Celular";
+            this.Celular.ReadOnly = true;
+            // 
+            // Email
+            // 
+            this.Email.DataPropertyName = "Email";
+            this.Email.HeaderText = "Correo electrónico";
+            this.Email.Name = "Email";
+            this.Email.ReadOnly = true;
+            // 
+            // Ctpp
+            // 
+            this.Ctpp.DataPropertyName = "Ctpp";
+            this.Ctpp.FalseValue = "0";
+            this.Ctpp.HeaderText = "Local";
+            this.Ctpp.Name = "Ctpp";
+            this.Ctpp.ReadOnly = true;
+            this.Ctpp.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Ctpp.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Ctpp.TrueValue = "1";
             // 
             // label1
             // 
@@ -503,6 +551,7 @@
             this.tbPgNotas8.TabIndex = 2;
             this.tbPgNotas8.Text = "Notas asignaturas 8";
             this.tbPgNotas8.UseVisualStyleBackColor = true;
+            this.tbPgNotas8.Enter += new System.EventHandler(this.tbPgNotas8_Enter);
             // 
             // tableLayoutPanel5
             // 
@@ -586,210 +635,12 @@
             this.dtGrdVwNotas.AllowUserToDeleteRows = false;
             this.dtGrdVwNotas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtGrdVwNotas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtGrdVwNotas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ID,
-            this.ApellidoUno,
-            this.ApellidoDos,
-            this.NombreS,
-            this.Ciencias1,
-            this.Ciencias2,
-            this.Ciencias3,
-            this.Civica1,
-            this.Civica2,
-            this.Civica3,
-            this.Espanol1,
-            this.Espanol2,
-            this.Espanol3,
-            this.EstSoc1,
-            this.EstSoc2,
-            this.EstSoc3,
-            this.Mate1,
-            this.Mate2,
-            this.Mate3,
-            this.Ingles1,
-            this.Ingles2,
-            this.Ingles3,
-            this.TallerI1,
-            this.TallerI2,
-            this.TallerI3,
-            this.TallerIIUno,
-            this.TallerIDos,
-            this.TallerIITres});
             this.dtGrdVwNotas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dtGrdVwNotas.Location = new System.Drawing.Point(3, 87);
             this.dtGrdVwNotas.Name = "dtGrdVwNotas";
             this.dtGrdVwNotas.ReadOnly = true;
             this.dtGrdVwNotas.Size = new System.Drawing.Size(1244, 387);
             this.dtGrdVwNotas.TabIndex = 6;
-            // 
-            // ID
-            // 
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            this.ID.Visible = false;
-            // 
-            // ApellidoUno
-            // 
-            this.ApellidoUno.HeaderText = "Primer apellido";
-            this.ApellidoUno.Name = "ApellidoUno";
-            this.ApellidoUno.ReadOnly = true;
-            // 
-            // ApellidoDos
-            // 
-            this.ApellidoDos.HeaderText = "Segundo apellido";
-            this.ApellidoDos.Name = "ApellidoDos";
-            this.ApellidoDos.ReadOnly = true;
-            // 
-            // NombreS
-            // 
-            this.NombreS.HeaderText = "Nombre";
-            this.NombreS.Name = "NombreS";
-            this.NombreS.ReadOnly = true;
-            // 
-            // Ciencias1
-            // 
-            this.Ciencias1.HeaderText = "Ciencias 1";
-            this.Ciencias1.Name = "Ciencias1";
-            this.Ciencias1.ReadOnly = true;
-            // 
-            // Ciencias2
-            // 
-            this.Ciencias2.HeaderText = "Ciencias 2";
-            this.Ciencias2.Name = "Ciencias2";
-            this.Ciencias2.ReadOnly = true;
-            // 
-            // Ciencias3
-            // 
-            this.Ciencias3.HeaderText = "Ciencias 3";
-            this.Ciencias3.Name = "Ciencias3";
-            this.Ciencias3.ReadOnly = true;
-            // 
-            // Civica1
-            // 
-            this.Civica1.HeaderText = "Cívica 1";
-            this.Civica1.Name = "Civica1";
-            this.Civica1.ReadOnly = true;
-            // 
-            // Civica2
-            // 
-            this.Civica2.HeaderText = "Cívica 2";
-            this.Civica2.Name = "Civica2";
-            this.Civica2.ReadOnly = true;
-            // 
-            // Civica3
-            // 
-            this.Civica3.HeaderText = "Cívica 3";
-            this.Civica3.Name = "Civica3";
-            this.Civica3.ReadOnly = true;
-            // 
-            // Espanol1
-            // 
-            this.Espanol1.HeaderText = "Español 1";
-            this.Espanol1.Name = "Espanol1";
-            this.Espanol1.ReadOnly = true;
-            // 
-            // Espanol2
-            // 
-            this.Espanol2.HeaderText = "Español 2";
-            this.Espanol2.Name = "Espanol2";
-            this.Espanol2.ReadOnly = true;
-            // 
-            // Espanol3
-            // 
-            this.Espanol3.HeaderText = "Español 3";
-            this.Espanol3.Name = "Espanol3";
-            this.Espanol3.ReadOnly = true;
-            // 
-            // EstSoc1
-            // 
-            this.EstSoc1.HeaderText = "Est Soc 1";
-            this.EstSoc1.Name = "EstSoc1";
-            this.EstSoc1.ReadOnly = true;
-            // 
-            // EstSoc2
-            // 
-            this.EstSoc2.HeaderText = "Est Soc 2";
-            this.EstSoc2.Name = "EstSoc2";
-            this.EstSoc2.ReadOnly = true;
-            // 
-            // EstSoc3
-            // 
-            this.EstSoc3.HeaderText = "Est Soc 3";
-            this.EstSoc3.Name = "EstSoc3";
-            this.EstSoc3.ReadOnly = true;
-            // 
-            // Mate1
-            // 
-            this.Mate1.HeaderText = "Matemática 1";
-            this.Mate1.Name = "Mate1";
-            this.Mate1.ReadOnly = true;
-            // 
-            // Mate2
-            // 
-            this.Mate2.HeaderText = "Matemática 2";
-            this.Mate2.Name = "Mate2";
-            this.Mate2.ReadOnly = true;
-            // 
-            // Mate3
-            // 
-            this.Mate3.HeaderText = "Matemática 3";
-            this.Mate3.Name = "Mate3";
-            this.Mate3.ReadOnly = true;
-            // 
-            // Ingles1
-            // 
-            this.Ingles1.HeaderText = "Inglés 1";
-            this.Ingles1.Name = "Ingles1";
-            this.Ingles1.ReadOnly = true;
-            // 
-            // Ingles2
-            // 
-            this.Ingles2.HeaderText = "Inglés 2";
-            this.Ingles2.Name = "Ingles2";
-            this.Ingles2.ReadOnly = true;
-            // 
-            // Ingles3
-            // 
-            this.Ingles3.HeaderText = "Inglés 3";
-            this.Ingles3.Name = "Ingles3";
-            this.Ingles3.ReadOnly = true;
-            // 
-            // TallerI1
-            // 
-            this.TallerI1.HeaderText = "Taller I 1";
-            this.TallerI1.Name = "TallerI1";
-            this.TallerI1.ReadOnly = true;
-            // 
-            // TallerI2
-            // 
-            this.TallerI2.HeaderText = "Taller I 2";
-            this.TallerI2.Name = "TallerI2";
-            this.TallerI2.ReadOnly = true;
-            // 
-            // TallerI3
-            // 
-            this.TallerI3.HeaderText = "Taller I 3";
-            this.TallerI3.Name = "TallerI3";
-            this.TallerI3.ReadOnly = true;
-            // 
-            // TallerIIUno
-            // 
-            this.TallerIIUno.HeaderText = "Taller II 1";
-            this.TallerIIUno.Name = "TallerIIUno";
-            this.TallerIIUno.ReadOnly = true;
-            // 
-            // TallerIDos
-            // 
-            this.TallerIDos.HeaderText = "Taller II 2";
-            this.TallerIDos.Name = "TallerIDos";
-            this.TallerIDos.ReadOnly = true;
-            // 
-            // TallerIITres
-            // 
-            this.TallerIITres.HeaderText = "Taller II 3";
-            this.TallerIITres.Name = "TallerIITres";
-            this.TallerIITres.ReadOnly = true;
             // 
             // tbPgNotas9
             // 
@@ -1092,6 +943,7 @@
             // btnConfig
             // 
             this.btnConfig.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnConfig.Enabled = false;
             this.btnConfig.Location = new System.Drawing.Point(976, 326);
             this.btnConfig.Name = "btnConfig";
             this.btnConfig.Size = new System.Drawing.Size(120, 40);
@@ -1099,82 +951,6 @@
             this.btnConfig.Text = "Configuración";
             this.btnConfig.UseVisualStyleBackColor = true;
             this.btnConfig.Click += new System.EventHandler(this.btnConfig_Click);
-            // 
-            // IdEstudiante
-            // 
-            this.IdEstudiante.DataPropertyName = "IdEstudiante";
-            this.IdEstudiante.HeaderText = "ID";
-            this.IdEstudiante.Name = "IdEstudiante";
-            this.IdEstudiante.ReadOnly = true;
-            this.IdEstudiante.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.IdEstudiante.Visible = false;
-            // 
-            // Cedula
-            // 
-            this.Cedula.DataPropertyName = "Cedula";
-            this.Cedula.HeaderText = "Cédula";
-            this.Cedula.Name = "Cedula";
-            this.Cedula.ReadOnly = true;
-            // 
-            // Nombre
-            // 
-            this.Nombre.DataPropertyName = "Nombre";
-            this.Nombre.HeaderText = "Nombre";
-            this.Nombre.Name = "Nombre";
-            this.Nombre.ReadOnly = true;
-            // 
-            // Apellido1
-            // 
-            this.Apellido1.DataPropertyName = "Apellido1";
-            this.Apellido1.HeaderText = "Primer apellido";
-            this.Apellido1.Name = "Apellido1";
-            this.Apellido1.ReadOnly = true;
-            // 
-            // Apellido2
-            // 
-            this.Apellido2.DataPropertyName = "Apellido2";
-            this.Apellido2.HeaderText = "Segundo apellido";
-            this.Apellido2.Name = "Apellido2";
-            this.Apellido2.ReadOnly = true;
-            // 
-            // Direccion
-            // 
-            this.Direccion.DataPropertyName = "Direccion";
-            this.Direccion.HeaderText = "Dirección";
-            this.Direccion.Name = "Direccion";
-            this.Direccion.ReadOnly = true;
-            // 
-            // Telefono
-            // 
-            this.Telefono.DataPropertyName = "Telefono";
-            this.Telefono.HeaderText = "Teléfono";
-            this.Telefono.Name = "Telefono";
-            this.Telefono.ReadOnly = true;
-            // 
-            // Celular
-            // 
-            this.Celular.DataPropertyName = "Celular";
-            this.Celular.HeaderText = "Celular";
-            this.Celular.Name = "Celular";
-            this.Celular.ReadOnly = true;
-            // 
-            // Email
-            // 
-            this.Email.DataPropertyName = "Email";
-            this.Email.HeaderText = "Correo electrónico";
-            this.Email.Name = "Email";
-            this.Email.ReadOnly = true;
-            // 
-            // Ctpp
-            // 
-            this.Ctpp.DataPropertyName = "Ctpp";
-            this.Ctpp.FalseValue = "0";
-            this.Ctpp.HeaderText = "Local";
-            this.Ctpp.Name = "Ctpp";
-            this.Ctpp.ReadOnly = true;
-            this.Ctpp.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Ctpp.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Ctpp.TrueValue = "1";
             // 
             // MainForm
             // 
@@ -1269,34 +1045,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn24;
         private System.Windows.Forms.DataGridViewTextBoxColumn TallerII1;
         private System.Windows.Forms.DataGridViewTextBoxColumn TallerII2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ApellidoUno;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ApellidoDos;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NombreS;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Ciencias1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Ciencias2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Ciencias3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Civica1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Civica2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Civica3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Espanol1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Espanol2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Espanol3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EstSoc1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EstSoc2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EstSoc3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Mate1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Mate2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Mate3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Ingles1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Ingles2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Ingles3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TallerI1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TallerI2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TallerI3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TallerIIUno;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TallerIDos;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TallerIITres;
         private System.Windows.Forms.DataGridViewTextBoxColumn idmatricula_admision;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdNota;
         private System.Windows.Forms.DataGridViewTextBoxColumn ApellidoOne;

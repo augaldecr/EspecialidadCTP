@@ -11,6 +11,7 @@ namespace PresentationLayer
     {
         int Id;
         int type;
+        int grupo;
 
         public delegate void refreshDT();
         public event refreshDT rfDT;
@@ -53,6 +54,8 @@ namespace PresentationLayer
             cmbBoxEspe1.SelectedValue = mat.Especialidad1;
             cmbBoxEspe2.SelectedValue = mat.Especialidad2;
             cmbBoxEspe3.SelectedValue = mat.Especialidad3;
+            cmbBoxGrupo.SelectedValue = mat.Grupo;
+            grupo = mat.Grupo;
         }
 
         private void cargaCombosEspe()
@@ -67,6 +70,11 @@ namespace PresentationLayer
             cmbBoxEspe3.DataSource = new BindingSource(especialidades, null);
             cmbBoxEspe3.DisplayMember = "Nombre";
             cmbBoxEspe3.ValueMember = "idEspecialidad";
+            //Combobox de grupo
+            List<Grupo> grupos = new GrupoBussines().listar();
+            cmbBoxGrupo.DataSource = new BindingSource(grupos, null);
+            cmbBoxGrupo.DisplayMember = "Numero";
+            cmbBoxGrupo.ValueMember = "IdGrupo";
         }
 
         private void asignaTitle(int tipo)
@@ -114,6 +122,8 @@ namespace PresentationLayer
                 {
                     Estudiante = est.iDEstudianteXCedula(txtBoxCedula.Text),
                     CursoLectivo = new CursoLectivoData().CursoActivo(),
+                    //TODO: Poner a leer el ComboBos de Grupo
+                    Grupo = int.Parse(cmbBoxGrupo.SelectedValue.ToString()),
                     Especialidad1 = int.Parse(cmbBoxEspe1.SelectedValue.ToString()),
                     Especialidad2 = int.Parse(cmbBoxEspe2.SelectedValue.ToString()),
                     Especialidad3 = int.Parse(cmbBoxEspe3.SelectedValue.ToString()),
@@ -150,7 +160,9 @@ namespace PresentationLayer
                 {
                     Estudiante = est.iDEstudianteXCedula(txtBoxCedula.Text),
                     IdMatricula = mbs.idMatriculaXEstudiante(est.iDEstudianteXCedula(txtBoxCedula.Text)),
-                    CursoLectivo = 19,
+                    CursoLectivo = new CursoLectivoData().CursoActivo(),
+                    //TODO: Poner a leer el ComboBos de Grupo
+                    Grupo = int.Parse(cmbBoxGrupo.SelectedValue.ToString()),
                     Especialidad1 = int.Parse(cmbBoxEspe1.SelectedValue.ToString()),
                     Especialidad2 = int.Parse(cmbBoxEspe2.SelectedValue.ToString()),
                     Especialidad3 = int.Parse(cmbBoxEspe3.SelectedValue.ToString()),
@@ -197,6 +209,32 @@ namespace PresentationLayer
                 MessageBox.Show("Estudiante eliminado de manera exitosa");
                 rfDT();
                 this.Dispose();
+            }
+        }
+
+        private void chkBoxLocal_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkBoxLocal.Checked)
+            {
+                cmbBoxGrupo.Enabled = true;
+            } else if (!chkBoxLocal.Checked)
+            {
+                cmbBoxGrupo.Enabled = false;
+                cmbBoxGrupo.SelectedValue = 13;
+            }
+        }
+
+        private void chkBoxLocal_CheckStateChanged(object sender, EventArgs e)
+        {
+            if (chkBoxLocal.Checked)
+            {
+                cmbBoxGrupo.Enabled = true;
+                cmbBoxGrupo.SelectedValue = grupo;
+            }
+            else if (!chkBoxLocal.Checked)
+            {
+                cmbBoxGrupo.Enabled = false;
+                cmbBoxGrupo.SelectedValue = 13;
             }
         }
     }

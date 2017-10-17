@@ -44,6 +44,7 @@
     <Compile Include="CalificacionesBussines.cs" />
     <Compile Include="EspecialidadBussines.cs" />
     <Compile Include="EstudiantesBussines.cs" />
+    <Compile Include="GrupoBussines.cs" />
     <Compile Include="MatriculaBussines.cs" />
     <Compile Include="NotaBussines.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

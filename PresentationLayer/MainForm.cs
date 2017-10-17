@@ -12,6 +12,7 @@ namespace PresentationLayer
         //TODO: Agregada vista "curso_activo", "periodos_curso_activo"
         //TODO: Agregado Stored Procedure "SeleccionarPeriodosXCursoLectivo"
         //TODO: Agregado Stored Procedure "SeleccionarMatriculasXCursoLect"
+        //TODO: Agregadas Views "notas_curso_activo8" y "notas_curso_activo9"
         public MainForm()
         {
             InitializeComponent();
@@ -218,19 +219,19 @@ namespace PresentationLayer
         #endregion
 
         #region TabNotas8
-        /*private void tbPgOrienta_Enter(object sender, EventArgs e)
+        private void tbPgNotas8_Enter(object sender, EventArgs e)
         {
-            llenarOrientaDatosDtGrdVw();
+            llenarNotas8DtGrdVw();
         }
 
-        private void llenarOrientaDatosDtGrdVw()
+        private void llenarNotas8DtGrdVw()
         {
-            NotaBussines ori = new NotaBussines();
-            dtGrdVwOrienta.DataSource = ori.listarNotasOrienta();
+            NotaBussines nt = new NotaBussines();
+            dtGrdVwNotas.DataSource = nt.listarNotasBasicas8();
             dtGrdVwOrienta.Refresh();
             dtGrdVwOrienta.Update();
         }
-
+        /*
         private void vaciarOrientaDatosDtGrdVw()
         {
             dtGrdVwOrienta.DataSource = null;

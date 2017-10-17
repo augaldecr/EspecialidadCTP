@@ -51,15 +51,10 @@
     <Compile Include="CursoLectivoData.cs" />
     <Compile Include="EspecialidadData.cs" />
     <Compile Include="EstudianteData.cs" />
+    <Compile Include="GrupoData.cs" />
     <Compile Include="MatriculaData.cs" />
     <Compile Include="NotaData.cs" />
     <Compile Include="PeriodoData.cs" />
-    <Compile Include="PrgShow.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PrgShow.Designer.cs">
-      <DependentUpon>PrgShow.cs</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -70,11 +65,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="PrgShow.resx">
-      <DependentUpon>PrgShow.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

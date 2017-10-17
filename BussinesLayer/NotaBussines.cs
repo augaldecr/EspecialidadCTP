@@ -19,6 +19,12 @@ namespace BussinesLayer
             return ndt.ListNotas();
         }
 
+        public List<NotasBasicas> listarNotasBasicas8()
+        {
+            NotaData ndt = new NotaData();
+            return ndt.listarNotasBasicas8();
+        }
+
         public Nota NotaOrientaXId(int id)
         {
             NotaData nt = new NotaData();
