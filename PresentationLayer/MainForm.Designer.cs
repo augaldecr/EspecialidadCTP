@@ -502,6 +502,7 @@
             this.btnAddNota.TabIndex = 2;
             this.btnAddNota.Text = "Agregar";
             this.btnAddNota.UseVisualStyleBackColor = true;
+            this.btnAddNota.Click += new System.EventHandler(this.btnAddNota_Click);
             // 
             // dtGrdVwNotas
             // 
@@ -515,6 +516,7 @@
             this.dtGrdVwNotas.ReadOnly = true;
             this.dtGrdVwNotas.Size = new System.Drawing.Size(1244, 387);
             this.dtGrdVwNotas.TabIndex = 6;
+            this.dtGrdVwNotas.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtGrdVwNotas_CellDoubleClick);
             // 
             // tbPgNotas9
             // 

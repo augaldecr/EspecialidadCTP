@@ -120,18 +120,18 @@ namespace PresentationLayer
                 //Indica si es nota nueva o existente
                 dtGrdVwOrienta.Rows[e.RowIndex].Cells["IdNota"].Value != null ? 2 : 1,
 
-                int.Parse(dtGrdVwOrienta.Rows[e.RowIndex].Cells["Matricula"].Value.ToString()), 
+                int.Parse(dtGrdVwOrienta.Rows[e.RowIndex].Cells["Matricula"].Value.ToString()),
 
-                dtGrdVwOrienta.Rows[e.RowIndex].Cells["IdNota"].Value != null ? 
+                dtGrdVwOrienta.Rows[e.RowIndex].Cells["IdNota"].Value != null ?
                 int.Parse(dtGrdVwOrienta.Rows[e.RowIndex].Cells["IdNota"].Value.ToString()) : 0,
 
-                string.Format("{0} {1} {2}", dtGrdVwOrienta.Rows[e.RowIndex].Cells["Nombre1"].Value.ToString(), 
-                dtGrdVwOrienta.Rows[e.RowIndex].Cells["ApellidoOne"].Value.ToString(), 
+                string.Format("{0} {1} {2}", dtGrdVwOrienta.Rows[e.RowIndex].Cells["Nombre1"].Value.ToString(),
+                dtGrdVwOrienta.Rows[e.RowIndex].Cells["ApellidoOne"].Value.ToString(),
                 dtGrdVwOrienta.Rows[e.RowIndex].Cells["ApellidoTwo"].Value.ToString()),
 
                 dtGrdVwOrienta.Rows[e.RowIndex].Cells["Entrevista"].Value != null ?
                 decimal.Parse(dtGrdVwOrienta.Rows[e.RowIndex].Cells["Entrevista"].Value.ToString()) : 0,
-                
+
                 dtGrdVwOrienta.Rows[e.RowIndex].Cells["Vocacional"].Value != null ?
                 decimal.Parse(dtGrdVwOrienta.Rows[e.RowIndex].Cells["Vocacional"].Value.ToString()) : 0);
 
@@ -149,9 +149,9 @@ namespace PresentationLayer
 
                 dtGrdVwOrienta.Rows[dtGrdVwOrienta.CurrentRow.Index].Cells["IdNota"].Value != null ?
                 int.Parse(dtGrdVwOrienta.Rows[dtGrdVwOrienta.CurrentRow.Index].Cells["IdNota"].Value.ToString()) : 0,
-                
+
                 string.Format("{0} {1} {2}", dtGrdVwOrienta.Rows[dtGrdVwOrienta.CurrentRow.Index].Cells["Nombre1"].Value.ToString(),
-                dtGrdVwOrienta.Rows[dtGrdVwOrienta.CurrentRow.Index].Cells["ApellidoOne"].Value.ToString(), 
+                dtGrdVwOrienta.Rows[dtGrdVwOrienta.CurrentRow.Index].Cells["ApellidoOne"].Value.ToString(),
                 dtGrdVwOrienta.Rows[dtGrdVwOrienta.CurrentRow.Index].Cells["ApellidoTwo"].Value.ToString()),
 
                 dtGrdVwOrienta.Rows[dtGrdVwOrienta.CurrentRow.Index].Cells["Entrevista"].Value != null ?
@@ -236,17 +236,23 @@ namespace PresentationLayer
             dtGrdVwNotas.DataSource = nt.listarNotasBasicas8();
             formateaDTNotas8();
         }
-        
+
         private void vaciarDtGrdVwNotas8()
         {
             dtGrdVwNotas.DataSource = null;
             dtGrdVwNotas.Refresh();
             dtGrdVwNotas.Update();
-        }/*
+        }
 
-        private void dtGrdVwOrienta_CellDoubleClick_1(object sender, DataGridViewCellEventArgs e)
+        private void btnAddNota_Click(object sender, EventArgs e)
         {
-            editOrienta editOrienta1 = new editOrienta(
+            EditNotas8 notas8 = new EditNotas8();
+            notas8.Show();
+        }
+
+        private void dtGrdVwNotas_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            EditNotas8 notas8 = new EditNotas8(
                 //Indica si es nota nueva o existente
                 dtGrdVwOrienta.Rows[e.RowIndex].Cells["IdNota"].Value != null ? 2 : 1,
 
@@ -265,10 +271,10 @@ namespace PresentationLayer
                 dtGrdVwOrienta.Rows[e.RowIndex].Cells["Vocacional"].Value != null ?
                 decimal.Parse(dtGrdVwOrienta.Rows[e.RowIndex].Cells["Vocacional"].Value.ToString()) : 0);
 
-            editOrienta1.Show();
-            editOrienta1.rfDTOri += EditNotasOrienta_rfDT;
+            EditNotas8.Show();
+            EditNotas8.rfDTOri += EditNotasOrienta_rfDT;
         }
-
+        /*
         private void btnEditOrienta_Click(object sender, EventArgs e)
         {
             editOrienta editOrienta1 = new editOrienta(
@@ -326,7 +332,7 @@ namespace PresentationLayer
         {
             refrescaDTNotas8();
         }*/
-        
+
         private void refrescaDTNotas8()
         {
             vaciarOrientaDatosDtGrdVw();
