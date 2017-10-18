@@ -105,15 +105,13 @@ namespace PresentationLayer
         {
             NotaBussines ori = new NotaBussines();
             dtGrdVwOrienta.DataSource = ori.listarNotasOrienta();
-            dtGrdVwOrienta.Refresh();
-            dtGrdVwOrienta.Update();
+            formateaDTNotasOrienta();
         }
 
         private void vaciarOrientaDatosDtGrdVw()
         {
             dtGrdVwOrienta.DataSource = null;
-            dtGrdVwOrienta.Refresh();
-            dtGrdVwOrienta.Update();
+            formateaDTNotasOrienta();
         }
 
         private void dtGrdVwOrienta_CellDoubleClick_1(object sender, DataGridViewCellEventArgs e)
@@ -203,6 +201,11 @@ namespace PresentationLayer
         {
             vaciarOrientaDatosDtGrdVw();
             llenarOrientaDatosDtGrdVw();
+            formateaDTNotasOrienta();
+        }
+
+        private void formateaDTNotasOrienta()
+        {
             dtGrdVwOrienta.Columns["IdNota"].Visible = false;
             dtGrdVwOrienta.Columns["Matricula"].Visible = false;
             dtGrdVwOrienta.Columns["Asignatura"].Visible = false;
@@ -210,11 +213,14 @@ namespace PresentationLayer
             dtGrdVwOrienta.Columns["Nivel"].Visible = false;
             dtGrdVwOrienta.Columns["Periodo"].Visible = false;
             dtGrdVwOrienta.Columns["Calificacion"].Visible = false;
-            dtGrdVwOrienta.Columns["Apellido1"].HeaderText = "Primer apellido";
-            dtGrdVwOrienta.Columns["Apellido2"].HeaderText = "Segundo apellido";
-            dtGrdVwOrienta.Columns["nombre"].Name = "Nombre1";
-            dtGrdVwOrienta.Columns["Apellido1"].Name = "ApellidoOne";
-            dtGrdVwOrienta.Columns["Apellido2"].Name = "ApellidoTwo";
+            dtGrdVwOrienta.Columns["PeriodoNombre"].Visible = false;
+            //dtGrdVwOrienta.Columns["Apellido1"].HeaderText = "Primer apellido";
+            //dtGrdVwOrienta.Columns["Apellido2"].HeaderText = "Segundo apellido";
+            //dtGrdVwOrienta.Columns["nombre"].Name = "Nombre1";
+            //dtGrdVwOrienta.Columns["Apellido1"].Name = "ApellidoOne";
+            //dtGrdVwOrienta.Columns["Apellido2"].Name = "ApellidoTwo";
+            dtGrdVwOrienta.Refresh();
+            dtGrdVwOrienta.Update();
         }
         #endregion
 
@@ -228,16 +234,15 @@ namespace PresentationLayer
         {
             NotaBussines nt = new NotaBussines();
             dtGrdVwNotas.DataSource = nt.listarNotasBasicas8();
-            dtGrdVwOrienta.Refresh();
-            dtGrdVwOrienta.Update();
+            formateaDTNotas8();
         }
-        /*
-        private void vaciarOrientaDatosDtGrdVw()
+        
+        private void vaciarDtGrdVwNotas8()
         {
-            dtGrdVwOrienta.DataSource = null;
-            dtGrdVwOrienta.Refresh();
-            dtGrdVwOrienta.Update();
-        }
+            dtGrdVwNotas.DataSource = null;
+            dtGrdVwNotas.Refresh();
+            dtGrdVwNotas.Update();
+        }/*
 
         private void dtGrdVwOrienta_CellDoubleClick_1(object sender, DataGridViewCellEventArgs e)
         {
@@ -315,27 +320,53 @@ namespace PresentationLayer
                     throw new Exception(ex.Message);
                 }
             }
-        }
+        }*
 
         private void EditNotasOrienta_rfDT()
         {
-            refrescaDTNotasOrienta();
-        }
-
-        private void refrescaDTNotasOrienta()
+            refrescaDTNotas8();
+        }*/
+        
+        private void refrescaDTNotas8()
         {
             vaciarOrientaDatosDtGrdVw();
             llenarOrientaDatosDtGrdVw();
-            dtGrdVwOrienta.Columns["IdNota"].Visible = false;
-            dtGrdVwOrienta.Columns["Matricula"].Visible = false;
-            dtGrdVwOrienta.Columns["Asignatura"].Visible = false;
-            dtGrdVwOrienta.Columns["Curso_lectivo"].Visible = false;
-            dtGrdVwOrienta.Columns["Nivel"].Visible = false;
-            dtGrdVwOrienta.Columns["Periodo"].Visible = false;
-            dtGrdVwOrienta.Columns["Calificacion"].Visible = false;
-            dtGrdVwOrienta.Columns["Apellido1"].HeaderText = "Primer apellido";
-            dtGrdVwOrienta.Columns["Apellido2"].HeaderText = "Segundo apellido";
-        }*/
+            formateaDTNotas8();
+        }
+
+        private void formateaDTNotas8()
+        {
+            dtGrdVwNotas.Columns["id_esp1"].Visible = false;
+            dtGrdVwNotas.Columns["id_esp2"].Visible = false;
+            dtGrdVwNotas.Columns["id_esp3"].Visible = false;
+            dtGrdVwNotas.Columns["id_cie1"].Visible = false;
+            dtGrdVwNotas.Columns["id_cie2"].Visible = false;
+            dtGrdVwNotas.Columns["id_cie3"].Visible = false;
+            dtGrdVwNotas.Columns["id_estsoc1"].Visible = false;
+            dtGrdVwNotas.Columns["id_estsoc2"].Visible = false;
+            dtGrdVwNotas.Columns["id_estsoc3"].Visible = false;
+            dtGrdVwNotas.Columns["id_mat1"].Visible = false;
+            dtGrdVwNotas.Columns["id_mat2"].Visible = false;
+            dtGrdVwNotas.Columns["id_mat3"].Visible = false;
+            dtGrdVwNotas.Columns["id_ing1"].Visible = false;
+            dtGrdVwNotas.Columns["id_ing2"].Visible = false;
+            dtGrdVwNotas.Columns["id_ing3"].Visible = false;
+            dtGrdVwNotas.Columns["id_civ1"].Visible = false;
+            dtGrdVwNotas.Columns["id_civ2"].Visible = false;
+            dtGrdVwNotas.Columns["id_civ3"].Visible = false;
+            dtGrdVwNotas.Columns["id_talI1"].Visible = false;
+            dtGrdVwNotas.Columns["id_talI2"].Visible = false;
+            dtGrdVwNotas.Columns["id_talI3"].Visible = false;
+            dtGrdVwNotas.Columns["id_talII1"].Visible = false;
+            dtGrdVwNotas.Columns["id_talII2"].Visible = false;
+            dtGrdVwNotas.Columns["id_talII3"].Visible = false;
+            foreach (DataGridViewColumn column in dtGrdVwNotas.Columns)
+            {
+                column.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            }
+            dtGrdVwNotas.Refresh();
+            dtGrdVwNotas.Update();
+        }
         #endregion
 
         #region Configuracion

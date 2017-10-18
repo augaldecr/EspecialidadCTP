@@ -55,19 +55,6 @@
             this.btnEliminarOrienta = new System.Windows.Forms.Button();
             this.btnEditOrienta = new System.Windows.Forms.Button();
             this.dtGrdVwOrienta = new System.Windows.Forms.DataGridView();
-            this.idmatricula_admision = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IdNota = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ApellidoOne = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ApellidoTwo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nombre1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Entrevista = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Vocacional = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.asignatura = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.curso_lectivo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Matricula = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nivel = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Periodo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Calificacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tbPgNotas8 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.label3 = new System.Windows.Forms.Label();
@@ -420,20 +407,6 @@
             this.dtGrdVwOrienta.AllowUserToDeleteRows = false;
             this.dtGrdVwOrienta.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtGrdVwOrienta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtGrdVwOrienta.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idmatricula_admision,
-            this.IdNota,
-            this.ApellidoOne,
-            this.ApellidoTwo,
-            this.Nombre1,
-            this.Entrevista,
-            this.Vocacional,
-            this.asignatura,
-            this.curso_lectivo,
-            this.Matricula,
-            this.Nivel,
-            this.Periodo,
-            this.Calificacion});
             this.dtGrdVwOrienta.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dtGrdVwOrienta.Location = new System.Drawing.Point(3, 87);
             this.dtGrdVwOrienta.Name = "dtGrdVwOrienta";
@@ -441,105 +414,6 @@
             this.dtGrdVwOrienta.Size = new System.Drawing.Size(1244, 387);
             this.dtGrdVwOrienta.TabIndex = 5;
             this.dtGrdVwOrienta.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtGrdVwOrienta_CellDoubleClick_1);
-            // 
-            // idmatricula_admision
-            // 
-            this.idmatricula_admision.DataPropertyName = "idmatricula_admision";
-            this.idmatricula_admision.HeaderText = "IDMatricula";
-            this.idmatricula_admision.Name = "idmatricula_admision";
-            this.idmatricula_admision.ReadOnly = true;
-            this.idmatricula_admision.Visible = false;
-            // 
-            // IdNota
-            // 
-            this.IdNota.DataPropertyName = "IdNota";
-            this.IdNota.HeaderText = "IdNota";
-            this.IdNota.Name = "IdNota";
-            this.IdNota.ReadOnly = true;
-            this.IdNota.Visible = false;
-            // 
-            // ApellidoOne
-            // 
-            this.ApellidoOne.DataPropertyName = "apellido1";
-            this.ApellidoOne.HeaderText = "Primer apellido";
-            this.ApellidoOne.Name = "ApellidoOne";
-            this.ApellidoOne.ReadOnly = true;
-            // 
-            // ApellidoTwo
-            // 
-            this.ApellidoTwo.DataPropertyName = "apellido2";
-            this.ApellidoTwo.HeaderText = "Segundo apellido";
-            this.ApellidoTwo.Name = "ApellidoTwo";
-            this.ApellidoTwo.ReadOnly = true;
-            // 
-            // Nombre1
-            // 
-            this.Nombre1.DataPropertyName = "nombre";
-            this.Nombre1.HeaderText = "Nombre";
-            this.Nombre1.Name = "Nombre1";
-            this.Nombre1.ReadOnly = true;
-            // 
-            // Entrevista
-            // 
-            this.Entrevista.DataPropertyName = "entrevista";
-            this.Entrevista.HeaderText = "Entrevista";
-            this.Entrevista.Name = "Entrevista";
-            this.Entrevista.ReadOnly = true;
-            // 
-            // Vocacional
-            // 
-            this.Vocacional.DataPropertyName = "vocacional";
-            this.Vocacional.HeaderText = "Vocacional";
-            this.Vocacional.Name = "Vocacional";
-            this.Vocacional.ReadOnly = true;
-            // 
-            // asignatura
-            // 
-            this.asignatura.DataPropertyName = "Asignatura";
-            this.asignatura.HeaderText = "Asignatura";
-            this.asignatura.Name = "asignatura";
-            this.asignatura.ReadOnly = true;
-            this.asignatura.Visible = false;
-            // 
-            // curso_lectivo
-            // 
-            this.curso_lectivo.DataPropertyName = "curso_lectivo";
-            this.curso_lectivo.HeaderText = "curso_lectivo";
-            this.curso_lectivo.Name = "curso_lectivo";
-            this.curso_lectivo.ReadOnly = true;
-            this.curso_lectivo.Visible = false;
-            // 
-            // Matricula
-            // 
-            this.Matricula.DataPropertyName = "Matricula";
-            this.Matricula.HeaderText = "Matricula";
-            this.Matricula.Name = "Matricula";
-            this.Matricula.ReadOnly = true;
-            this.Matricula.Visible = false;
-            // 
-            // Nivel
-            // 
-            this.Nivel.DataPropertyName = "Nivel";
-            this.Nivel.HeaderText = "Nivel";
-            this.Nivel.Name = "Nivel";
-            this.Nivel.ReadOnly = true;
-            this.Nivel.Visible = false;
-            // 
-            // Periodo
-            // 
-            this.Periodo.DataPropertyName = "Periodo";
-            this.Periodo.HeaderText = "Periodo";
-            this.Periodo.Name = "Periodo";
-            this.Periodo.ReadOnly = true;
-            this.Periodo.Visible = false;
-            // 
-            // Calificacion
-            // 
-            this.Calificacion.DataPropertyName = "Calificacion";
-            this.Calificacion.HeaderText = "Calificacion";
-            this.Calificacion.Name = "Calificacion";
-            this.Calificacion.ReadOnly = true;
-            this.Calificacion.Visible = false;
             // 
             // tbPgNotas8
             // 
@@ -943,7 +817,6 @@
             // btnConfig
             // 
             this.btnConfig.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnConfig.Enabled = false;
             this.btnConfig.Location = new System.Drawing.Point(976, 326);
             this.btnConfig.Name = "btnConfig";
             this.btnConfig.Size = new System.Drawing.Size(120, 40);
@@ -1045,19 +918,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn24;
         private System.Windows.Forms.DataGridViewTextBoxColumn TallerII1;
         private System.Windows.Forms.DataGridViewTextBoxColumn TallerII2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idmatricula_admision;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IdNota;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ApellidoOne;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ApellidoTwo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Entrevista;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Vocacional;
-        private System.Windows.Forms.DataGridViewTextBoxColumn asignatura;
-        private System.Windows.Forms.DataGridViewTextBoxColumn curso_lectivo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Matricula;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nivel;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Periodo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Calificacion;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel10;
         private System.Windows.Forms.Button btnConfig;
