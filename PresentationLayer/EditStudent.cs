@@ -122,7 +122,6 @@ namespace PresentationLayer
                 {
                     Estudiante = est.iDEstudianteXCedula(txtBoxCedula.Text),
                     CursoLectivo = new CursoLectivoData().CursoActivo(),
-                    //TODO: Poner a leer el ComboBos de Grupo
                     Grupo = int.Parse(cmbBoxGrupo.SelectedValue.ToString()),
                     Especialidad1 = int.Parse(cmbBoxEspe1.SelectedValue.ToString()),
                     Especialidad2 = int.Parse(cmbBoxEspe2.SelectedValue.ToString()),

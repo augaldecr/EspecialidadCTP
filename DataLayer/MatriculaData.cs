@@ -18,27 +18,48 @@ namespace DataLayer
             {
                 using (MySqlConnection conn = new MySqlConnection(connString))
                 {
+                    //TODO: Selecciona Curso Lectivo activo
+                    using (MySqlCommand cmd = new MySqlCommand("call InsertMatricula("+ mat.Estudiante +", "+ mat.CursoLectivo +
+                        ", " + mat.Grupo + ", "+ mat.Especialidad1 +", "+ mat.Especialidad2 +", "+ mat.Especialidad3 +")", conn))
+                    {
+                        cmd.CommandType = CommandType.Text;
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+                        conn.Close();
+                    }
+                }
+            }
+            catch (System.Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            #region Stored Procedure
+            /*
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connString))
+                {
                     using (MySqlCommand cmd = new MySqlCommand())
                     {
                         cmd.Connection = conn;
                         cmd.CommandText = "InsertMatricula";
                         cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.Add("estudiante", MySqlDbType.Int16);
+                        cmd.Parameters.Add("estudiante", MySqlDbType.Int32);
                         cmd.Parameters["estudiante"].Value = mat.Estudiante;
                         cmd.Parameters["estudiante"].Direction = ParameterDirection.Input;
-                        cmd.Parameters.Add("curso_lectivo", MySqlDbType.Int16);
+                        cmd.Parameters.Add("curso_lectivo", MySqlDbType.Int32);
                         cmd.Parameters["curso_lectivo"].Value = mat.CursoLectivo;
                         cmd.Parameters["curso_lectivo"].Direction = ParameterDirection.Input;
-                        cmd.Parameters.Add("grupo", MySqlDbType.Int16);
+                        cmd.Parameters.Add("grupo", MySqlDbType.Int32);
                         cmd.Parameters["grupo"].Value = mat.Grupo;
                         cmd.Parameters["grupo"].Direction = ParameterDirection.Input;
-                        cmd.Parameters.Add("especialidad1", MySqlDbType.Int16);
+                        cmd.Parameters.Add("especialidad1", MySqlDbType.Int32);
                         cmd.Parameters["especialidad1"].Value = mat.Especialidad1;
                         cmd.Parameters["especialidad1"].Direction = ParameterDirection.Input;
-                        cmd.Parameters.Add("especialidad2", MySqlDbType.Int16);
+                        cmd.Parameters.Add("especialidad2", MySqlDbType.Int32);
                         cmd.Parameters["especialidad2"].Value = mat.Especialidad2;
                         cmd.Parameters["especialidad2"].Direction = ParameterDirection.Input;
-                        cmd.Parameters.Add("especialidad3", MySqlDbType.Int16);
+                        cmd.Parameters.Add("especialidad3", MySqlDbType.Int32);
                         cmd.Parameters["especialidad3"].Value = mat.Especialidad3;
                         cmd.Parameters["especialidad3"].Direction = ParameterDirection.Input;
 
@@ -52,6 +73,8 @@ namespace DataLayer
             {
                 throw new Exception(ex.Message);
             }
+            */
+            #endregion
         }
         #endregion
 
@@ -61,6 +84,27 @@ namespace DataLayer
             string connString = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
 
             try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connString))
+                {
+                    //TODO: Selecciona Curso Lectivo activo
+                    using (MySqlCommand cmd = new MySqlCommand("call UpdateMatricula("+ mat.IdMatricula +"," + mat.Estudiante + ", " + mat.CursoLectivo +
+                        ", " + mat.Grupo + ", " + mat.Especialidad1 + ", " + mat.Especialidad2 + ", " + mat.Especialidad3 + ")", conn))
+                    {
+                        cmd.CommandType = CommandType.Text;
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+                        conn.Close();
+                    }
+                }
+            }
+            catch (System.Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
+            #region Stored Procedure
+            /*try
             {
                 using (MySqlConnection conn = new MySqlConnection(connString))
                 {
@@ -78,9 +122,9 @@ namespace DataLayer
                         cmd.Parameters.Add("pcurso_lectivo", MySqlDbType.Int32);
                         cmd.Parameters["pcurso_lectivo"].Value = mat.CursoLectivo;
                         cmd.Parameters["pcurso_lectivo"].Direction = ParameterDirection.Input;
-                        cmd.Parameters.Add("grupo", MySqlDbType.Int16);
-                        cmd.Parameters["grupo"].Value = mat.Grupo;
-                        cmd.Parameters["grupo"].Direction = ParameterDirection.Input;
+                        cmd.Parameters.Add("pgrupo", MySqlDbType.Int16);
+                        cmd.Parameters["pgrupo"].Value = mat.Grupo;
+                        cmd.Parameters["pgrupo"].Direction = ParameterDirection.Input;
                         cmd.Parameters.Add("pespecialidad1", MySqlDbType.Int32);
                         cmd.Parameters["pespecialidad1"].Value = mat.Especialidad1;
                         cmd.Parameters["pespecialidad1"].Direction = ParameterDirection.Input;
@@ -100,7 +144,8 @@ namespace DataLayer
             catch (System.Exception ex)
             {
                 throw new Exception(ex.Message);
-            }
+            }*/
+            #endregion
         }
         #endregion
 

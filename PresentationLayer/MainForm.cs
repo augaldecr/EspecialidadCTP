@@ -41,7 +41,7 @@ namespace PresentationLayer
 
         private void dtGrdVwEstudiantes_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            EditStudent editStudent = new EditStudent(2, int.Parse(dtGrdVwEstudiantes.Rows[e.RowIndex].Cells[0].Value.ToString()));
+            EditStudent editStudent = new EditStudent(2, int.Parse(dtGrdVwEstudiantes.Rows[e.RowIndex].Cells["IdEstudiante"].Value.ToString()));
             editStudent.Show();
             editStudent.rfDT += EditStudent_rfDT;
         }
@@ -206,7 +206,7 @@ namespace PresentationLayer
 
         private void formateaDTNotasOrienta()
         {
-            dtGrdVwOrienta.Columns["IdNota"].Visible = false;
+            /*dtGrdVwOrienta.Columns["IdNota"].Visible = false;
             dtGrdVwOrienta.Columns["Matricula"].Visible = false;
             dtGrdVwOrienta.Columns["Asignatura"].Visible = false;
             dtGrdVwOrienta.Columns["Curso_lectivo"].Visible = false;
@@ -220,7 +220,7 @@ namespace PresentationLayer
             //dtGrdVwOrienta.Columns["Apellido1"].Name = "ApellidoOne";
             //dtGrdVwOrienta.Columns["Apellido2"].Name = "ApellidoTwo";
             dtGrdVwOrienta.Refresh();
-            dtGrdVwOrienta.Update();
+            dtGrdVwOrienta.Update();*/
         }
         #endregion
 

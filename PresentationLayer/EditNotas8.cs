@@ -64,106 +64,435 @@ namespace PresentationLayer
         {
             if (txtBoxEsp1.Text != notas.esp1.ToString())
             {
-                if (notas.id_esp1!=null)
+                if (notas.id_esp1 != null)
                 {
-                    new NotaBussines().editNota(new Nota() { IdNota = notas.id_esp1, Calificacion = notas.esp1 });
-                } else
+                    new NotaBussines().editNota(new Nota() { IdNota = notas.id_esp1, Calificacion = decimal.Parse(txtBoxEsp1.Text) });
+                }
+                else
                 {
-                    new NotaBussines().guardarNota(new Nota() { Matricula = notas.idMatricula, Asignatura = 1,
-                        Nivel = 8, Periodo = 1, Calificacion = decimal.Parse(txtBoxEsp1.Text)});
+                    new NotaBussines().guardarNota(new Nota()
+                    {
+                        Matricula = notas.idMatricula,
+                        Asignatura = 1,
+                        Nivel = 8,
+                        Periodo = 1,
+                        Calificacion = decimal.Parse(txtBoxEsp1.Text)
+                    });
                 }
             }
             if (txtBoxEsp2.Text != notas.esp2.ToString())
             {
-                new NotaBussines().editNota(new Nota() { IdNota = notas.id_esp2, Calificacion = notas.esp2 });
+                if (notas.id_esp2 != null)
+                {
+                    new NotaBussines().editNota(new Nota() { IdNota = notas.id_esp2, Calificacion = decimal.Parse(txtBoxEsp2.Text) });
+                }
+                else
+                {
+                    new NotaBussines().guardarNota(new Nota()
+                    {
+                        Matricula = notas.idMatricula,
+                        Asignatura = 1,
+                        Nivel = 8,
+                        Periodo = 2,
+                        Calificacion = decimal.Parse(txtBoxEsp2.Text)
+                    });
+                }
             }
             if (txtBoxEsp3.Text != notas.esp3.ToString())
             {
-                new NotaBussines().editNota(new Nota() { IdNota = notas.id_esp3, Calificacion = notas.esp2 });
+                if (notas.id_esp3 != null)
+                {
+                    new NotaBussines().editNota(new Nota() { IdNota = notas.id_esp3, Calificacion = decimal.Parse(txtBoxEsp3.Text) });
+                }
+                else
+                {
+                    new NotaBussines().guardarNota(new Nota()
+                    {
+                        Matricula = notas.idMatricula,
+                        Asignatura = 1,
+                        Nivel = 8,
+                        Periodo = 3,
+                        Calificacion = decimal.Parse(txtBoxEsp3.Text)
+                    });
+                }
             }
             if (txtBoxCie1.Text != notas.cie1.ToString())
             {
-                new NotaBussines().editNota(new Nota() { IdNota = notas.id_cie1, Calificacion = notas.cie1 });
+                if (notas.id_cie1 != null)
+                {
+                    new NotaBussines().editNota(new Nota() { IdNota = notas.id_cie1, Calificacion = decimal.Parse(txtBoxCie1.Text) });
+                }
+                else
+                {
+                    new NotaBussines().guardarNota(new Nota()
+                    {
+                        Matricula = notas.idMatricula,
+                        Asignatura = 2,
+                        Nivel = 8,
+                        Periodo = 1,
+                        Calificacion = decimal.Parse(txtBoxCie1.Text)
+                    });
+                }
             }
             if (txtBoxCie2.Text != notas.cie2.ToString())
             {
-                new NotaBussines().editNota(new Nota() { IdNota = notas.id_cie2, Calificacion = notas.cie2 });
+                if (notas.id_cie2 != null)
+                {
+                    new NotaBussines().editNota(new Nota() { IdNota = notas.id_cie2, Calificacion = decimal.Parse(txtBoxCie2.Text) });
+                }
+                else
+                {
+                    new NotaBussines().guardarNota(new Nota()
+                    {
+                        Matricula = notas.idMatricula,
+                        Asignatura = 2,
+                        Nivel = 8,
+                        Periodo = 2,
+                        Calificacion = decimal.Parse(txtBoxCie2.Text)
+                    });
+                }
             }
             if (txtBoxCie3.Text != notas.cie3.ToString())
             {
-                new NotaBussines().editNota(new Nota() { IdNota = notas.id_cie3, Calificacion = notas.cie3 });
+                if (notas.id_cie3 != null)
+                {
+                    new NotaBussines().editNota(new Nota() { IdNota = notas.id_cie3, Calificacion = decimal.Parse(txtBoxCie3.Text) });
+                }
+                else
+                {
+                    new NotaBussines().guardarNota(new Nota()
+                    {
+                        Matricula = notas.idMatricula,
+                        Asignatura = 2,
+                        Nivel = 8,
+                        Periodo = 3,
+                        Calificacion = decimal.Parse(txtBoxCie3.Text)
+                    });
+                }
             }
             if (txtBoxEstSoc1.Text != notas.estsoc1.ToString())
             {
-                new NotaBussines().editNota(new Nota() { IdNota = notas.id_estsoc1, Calificacion = notas.estsoc1 });
+                if (notas.id_estsoc1 != null)
+                {
+                    new NotaBussines().editNota(new Nota() { IdNota = notas.id_estsoc1, Calificacion = decimal.Parse(txtBoxEstSoc1.Text) });
+                }
+                else
+                {
+                    new NotaBussines().guardarNota(new Nota()
+                    {
+                        Matricula = notas.idMatricula,
+                        Asignatura = 3,
+                        Nivel = 8,
+                        Periodo = 1,
+                        Calificacion = decimal.Parse(txtBoxEstSoc1.Text)
+                    });
+                }
             }
             if (txtBoxEstSoc2.Text != notas.estsoc2.ToString())
             {
-                new NotaBussines().editNota(new Nota() { IdNota = notas.id_estsoc2, Calificacion = notas.estsoc2 });
+                if (notas.id_estsoc2 != null)
+                {
+                    new NotaBussines().editNota(new Nota() { IdNota = notas.id_estsoc2, Calificacion = decimal.Parse(txtBoxEstSoc2.Text) });
+                }
+                else
+                {
+                    new NotaBussines().guardarNota(new Nota()
+                    {
+                        Matricula = notas.idMatricula,
+                        Asignatura = 3,
+                        Nivel = 8,
+                        Periodo =2,
+                        Calificacion = decimal.Parse(txtBoxEstSoc2.Text)
+                    });
+                }
             }
             if (txtBoxEstSoc3.Text != notas.estsoc3.ToString())
             {
-                new NotaBussines().editNota(new Nota() { IdNota = notas.id_estsoc3, Calificacion = notas.estsoc3 });
+                if (notas.id_estsoc3 != null)
+                {
+                    new NotaBussines().editNota(new Nota() { IdNota = notas.id_estsoc3, Calificacion = decimal.Parse(txtBoxEstSoc3.Text) });
+                }
+                else
+                {
+                    new NotaBussines().guardarNota(new Nota()
+                    {
+                        Matricula = notas.idMatricula,
+                        Asignatura = 3,
+                        Nivel = 8,
+                        Periodo = 3,
+                        Calificacion = decimal.Parse(txtBoxEstSoc3.Text)
+                    });
+                }
             }
             if (txtBoxMate1.Text != notas.mat1.ToString())
             {
-                new NotaBussines().editNota(new Nota() { IdNota = notas.id_mat1, Calificacion = notas.mat1 });
+                if (notas.id_mat1 != null)
+                {
+                    new NotaBussines().editNota(new Nota() { IdNota = notas.id_mat1, Calificacion = decimal.Parse(txtBoxMate1.Text) });
+                }
+                else
+                {
+                    new NotaBussines().guardarNota(new Nota()
+                    {
+                        Matricula = notas.idMatricula,
+                        Asignatura = 4,
+                        Nivel = 8,
+                        Periodo = 1,
+                        Calificacion = decimal.Parse(txtBoxMate1.Text)
+                    });
+                }
             }
             if (txtBoxMate2.Text != notas.mat2.ToString())
             {
-                new NotaBussines().editNota(new Nota() { IdNota = notas.id_mat2, Calificacion = notas.mat2 });
+                if (notas.id_mat2 != null)
+                {
+                    new NotaBussines().editNota(new Nota() { IdNota = notas.id_mat2, Calificacion = decimal.Parse(txtBoxMate2.Text) });
+                }
+                else
+                {
+                    new NotaBussines().guardarNota(new Nota()
+                    {
+                        Matricula = notas.idMatricula,
+                        Asignatura = 4,
+                        Nivel = 8,
+                        Periodo = 2,
+                        Calificacion = decimal.Parse(txtBoxMate2.Text)
+                    });
+                }
             }
             if (txtBoxMate3.Text != notas.mat3.ToString())
             {
-                new NotaBussines().editNota(new Nota() { IdNota = notas.id_mat3, Calificacion = notas.mat3 });
+                if (notas.id_mat3 != null)
+                {
+                    new NotaBussines().editNota(new Nota() { IdNota = notas.id_mat3, Calificacion = decimal.Parse(txtBoxMate3.Text) });
+                }
+                else
+                {
+                    new NotaBussines().guardarNota(new Nota()
+                    {
+                        Matricula = notas.idMatricula,
+                        Asignatura = 4,
+                        Nivel = 8,
+                        Periodo = 3,
+                        Calificacion = decimal.Parse(txtBoxMate3.Text)
+                    });
+                }
             }
             if (txtBoxIng1.Text != notas.ing1.ToString())
             {
-                new NotaBussines().editNota(new Nota() { IdNota = notas.id_ing1, Calificacion = notas.ing1 });
+                if (notas.id_ing1 != null)
+                {
+                    new NotaBussines().editNota(new Nota() { IdNota = notas.id_ing1, Calificacion = decimal.Parse(txtBoxIng1.Text) });
+                }
+                else
+                {
+                    new NotaBussines().guardarNota(new Nota()
+                    {
+                        Matricula = notas.idMatricula,
+                        Asignatura = 6,
+                        Nivel = 8,
+                        Periodo = 1,
+                        Calificacion = decimal.Parse(txtBoxIng1.Text)
+                    });
+                }
             }
             if (txtBoxIng2.Text != notas.ing2.ToString())
             {
-                new NotaBussines().editNota(new Nota() { IdNota = notas.id_ing2, Calificacion = notas.ing2 });
+                if (notas.id_ing2 != null)
+                {
+                    new NotaBussines().editNota(new Nota() { IdNota = notas.id_ing2, Calificacion = decimal.Parse(txtBoxIng2.Text) });
+                }
+                else
+                {
+                    new NotaBussines().guardarNota(new Nota()
+                    {
+                        Matricula = notas.idMatricula,
+                        Asignatura = 6,
+                        Nivel = 8,
+                        Periodo = 2,
+                        Calificacion = decimal.Parse(txtBoxIng2.Text)
+                    });
+                }
             }
             if (txtBoxIng3.Text != notas.ing3.ToString())
             {
-                new NotaBussines().editNota(new Nota() { IdNota = notas.id_ing3, Calificacion = notas.ing3 });
+                if (notas.id_ing3 != null)
+                {
+                    new NotaBussines().editNota(new Nota() { IdNota = notas.id_ing3, Calificacion = decimal.Parse(txtBoxIng3.Text) });
+                }
+                else
+                {
+                    new NotaBussines().guardarNota(new Nota()
+                    {
+                        Matricula = notas.idMatricula,
+                        Asignatura = 6,
+                        Nivel = 8,
+                        Periodo = 3,
+                        Calificacion = decimal.Parse(txtBoxIng3.Text)
+                    });
+                }
             }
             if (txtBoxCiv1.Text != notas.civ1.ToString())
             {
-                new NotaBussines().editNota(new Nota() { IdNota = notas.id_civ1, Calificacion = notas.civ1 });
+                if (notas.id_civ1 != null)
+                {
+                    new NotaBussines().editNota(new Nota() { IdNota = notas.id_civ1, Calificacion = decimal.Parse(txtBoxCiv1.Text) });
+                }
+                else
+                {
+                    new NotaBussines().guardarNota(new Nota()
+                    {
+                        Matricula = notas.idMatricula,
+                        Asignatura = 11,
+                        Nivel = 8,
+                        Periodo = 1,
+                        Calificacion = decimal.Parse(txtBoxCiv1.Text)
+                    });
+                }
             }
             if (txtBoxCiv2.Text != notas.civ2.ToString())
             {
-                new NotaBussines().editNota(new Nota() { IdNota = notas.id_civ2, Calificacion = notas.civ2 });
+                if (notas.id_civ2 != null)
+                {
+                    new NotaBussines().editNota(new Nota() { IdNota = notas.id_civ2, Calificacion = decimal.Parse(txtBoxCiv2.Text) });
+                }
+                else
+                {
+                    new NotaBussines().guardarNota(new Nota()
+                    {
+                        Matricula = notas.idMatricula,
+                        Asignatura = 11,
+                        Nivel = 8,
+                        Periodo = 2,
+                        Calificacion = decimal.Parse(txtBoxCiv2.Text)
+                    });
+                }
             }
             if (txtBoxCiv3.Text != notas.civ3.ToString())
             {
-                new NotaBussines().editNota(new Nota() { IdNota = notas.id_civ3, Calificacion = notas.civ3 });
+                if (notas.id_civ3 != null)
+                {
+                    new NotaBussines().editNota(new Nota() { IdNota = notas.id_civ3, Calificacion = decimal.Parse(txtBoxCiv3.Text) });
+                }
+                else
+                {
+                    new NotaBussines().guardarNota(new Nota()
+                    {
+                        Matricula = notas.idMatricula,
+                        Asignatura = 11,
+                        Nivel = 8,
+                        Periodo = 3,
+                        Calificacion = decimal.Parse(txtBoxCiv3.Text)
+                    });
+                }
             }
             if (txtBoxTali1.Text != notas.talI1.ToString())
             {
-                new NotaBussines().editNota(new Nota() { IdNota = notas.id_talI1, Calificacion = notas.talI1 });
+                if (notas.id_talI1 != null)
+                {
+                    new NotaBussines().editNota(new Nota() { IdNota = notas.id_talI1, Calificacion = decimal.Parse(txtBoxTali1.Text) });
+                }
+                else
+                {
+                    new NotaBussines().guardarNota(new Nota()
+                    {
+                        Matricula = notas.idMatricula,
+                        Asignatura = 12,
+                        Nivel = 8,
+                        Periodo = 1,
+                        Calificacion = decimal.Parse(txtBoxTali1.Text)
+                    });
+                }
             }
             if (txtBoxTali2.Text != notas.talI2.ToString())
             {
-                new NotaBussines().editNota(new Nota() { IdNota = notas.id_talI2, Calificacion = notas.talI2 });
+                if (notas.id_talI2 != null)
+                {
+                    new NotaBussines().editNota(new Nota() { IdNota = notas.id_talI2, Calificacion = decimal.Parse(txtBoxTali2.Text) });
+                }
+                else
+                {
+                    new NotaBussines().guardarNota(new Nota()
+                    {
+                        Matricula = notas.idMatricula,
+                        Asignatura = 12,
+                        Nivel = 8,
+                        Periodo = 2,
+                        Calificacion = decimal.Parse(txtBoxTali2.Text)
+                    });
+                }
             }
             if (txtBoxTali3.Text != notas.talI3.ToString())
             {
-                new NotaBussines().editNota(new Nota() { IdNota = notas.id_talI3, Calificacion = notas.talI3 });
+                if (notas.id_talI3 != null)
+                {
+                    new NotaBussines().editNota(new Nota() { IdNota = notas.id_talI3, Calificacion = decimal.Parse(txtBoxTali3.Text) });
+                }
+                else
+                {
+                    new NotaBussines().guardarNota(new Nota()
+                    {
+                        Matricula = notas.idMatricula,
+                        Asignatura = 12,
+                        Nivel = 8,
+                        Periodo = 3,
+                        Calificacion = decimal.Parse(txtBoxTali3.Text)
+                    });
+                }
             }
             if (txtBoxTalii1.Text != notas.talII1.ToString())
             {
-                new NotaBussines().editNota(new Nota() { IdNota = notas.id_esp1, Calificacion = notas.esp1 });
+                if (notas.id_talII1 != null)
+                {
+                    new NotaBussines().editNota(new Nota() { IdNota = notas.id_talII1, Calificacion = decimal.Parse(txtBoxTalii1.Text) });
+                }
+                else
+                {
+                    new NotaBussines().guardarNota(new Nota()
+                    {
+                        Matricula = notas.idMatricula,
+                        Asignatura = 13,
+                        Nivel = 8,
+                        Periodo = 1,
+                        Calificacion = decimal.Parse(txtBoxTalii1.Text)
+                    });
+                }
             }
             if (txtBoxTalii2.Text != notas.talII2.ToString())
             {
-                new NotaBussines().editNota(new Nota() { IdNota = notas.id_talII1, Calificacion = notas.talII1 });
+                if (notas.id_talII2 != null)
+                {
+                    new NotaBussines().editNota(new Nota() { IdNota = notas.id_talII2, Calificacion = decimal.Parse(txtBoxTalii2.Text) });
+                }
+                else
+                {
+                    new NotaBussines().guardarNota(new Nota()
+                    {
+                        Matricula = notas.idMatricula,
+                        Asignatura = 13,
+                        Nivel = 8,
+                        Periodo = 2,
+                        Calificacion = decimal.Parse(txtBoxTalii2.Text)
+                    });
+                }
             }
             if (txtBoxTalii3.Text != notas.talII3.ToString())
             {
-                new NotaBussines().editNota(new Nota() { IdNota = notas.id_talII3, Calificacion = notas.talII3 });
+                if (notas.id_talII3 != null)
+                {
+                    new NotaBussines().editNota(new Nota() { IdNota = notas.id_talII3, Calificacion = decimal.Parse(txtBoxTalii3.Text) });
+                }
+                else
+                {
+                    new NotaBussines().guardarNota(new Nota()
+                    {
+                        Matricula = notas.idMatricula,
+                        Asignatura = 13,
+                        Nivel = 8,
+                        Periodo = 3,
+                        Calificacion = decimal.Parse(txtBoxTalii3.Text)
+                    });
+                }
             }
             RfDTNotas8();
             MessageBox.Show("Cambios aplicados de manera adecuada");
