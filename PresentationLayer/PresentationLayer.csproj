@@ -64,12 +64,6 @@
     <Compile Include="EditNotas8.Designer.cs">
       <DependentUpon>EditNotas8.cs</DependentUpon>
     </Compile>
-    <Compile Include="EditNotasOctavo.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="EditNotasOctavo.Designer.cs">
-      <DependentUpon>EditNotasOctavo.cs</DependentUpon>
-    </Compile>
     <Compile Include="editOrienta.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -101,9 +95,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EditNotas8.resx">
       <DependentUpon>EditNotas8.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="EditNotasOctavo.resx">
-      <DependentUpon>EditNotasOctavo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="editOrienta.resx">
       <DependentUpon>editOrienta.cs</DependentUpon>

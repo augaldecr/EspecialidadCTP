@@ -244,63 +244,29 @@ namespace PresentationLayer
             dtGrdVwNotas.Update();
         }
 
-        private void btnAddNota_Click(object sender, EventArgs e)
+        private void btnEditNota_Click(object sender, EventArgs e)
         {
-            EditNotas8 notas8 = new EditNotas8();
+            EditNotas8 notas8 = new EditNotas8(
+                int.Parse(dtGrdVwNotas.Rows[dtGrdVwOrienta.CurrentRow.Index].Cells[0].Value.ToString()));
             notas8.Show();
+            notas8.RfDTNotas8 += Notas8_RfDTNotas8;
         }
 
         private void dtGrdVwNotas_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             EditNotas8 notas8 = new EditNotas8(
-                //Indica si es nota nueva o existente
-                dtGrdVwOrienta.Rows[e.RowIndex].Cells["IdNota"].Value != null ? 2 : 1,
+                int.Parse(dtGrdVwNotas.Rows[e.RowIndex].Cells["IdMatricula"].Value.ToString()));
 
-                int.Parse(dtGrdVwOrienta.Rows[e.RowIndex].Cells["Matricula"].Value.ToString()),
-
-                dtGrdVwOrienta.Rows[e.RowIndex].Cells["IdNota"].Value != null ?
-                int.Parse(dtGrdVwOrienta.Rows[e.RowIndex].Cells["IdNota"].Value.ToString()) : 0,
-
-                string.Format("{0} {1} {2}", dtGrdVwOrienta.Rows[e.RowIndex].Cells["Nombre1"].Value.ToString(),
-                dtGrdVwOrienta.Rows[e.RowIndex].Cells["ApellidoOne"].Value.ToString(),
-                dtGrdVwOrienta.Rows[e.RowIndex].Cells["ApellidoTwo"].Value.ToString()),
-
-                dtGrdVwOrienta.Rows[e.RowIndex].Cells["Entrevista"].Value != null ?
-                decimal.Parse(dtGrdVwOrienta.Rows[e.RowIndex].Cells["Entrevista"].Value.ToString()) : 0,
-
-                dtGrdVwOrienta.Rows[e.RowIndex].Cells["Vocacional"].Value != null ?
-                decimal.Parse(dtGrdVwOrienta.Rows[e.RowIndex].Cells["Vocacional"].Value.ToString()) : 0);
-
-            EditNotas8.Show();
-            EditNotas8.rfDTOri += EditNotasOrienta_rfDT;
+            notas8.Show();
+            notas8.RfDTNotas8 += Notas8_RfDTNotas8;
         }
-        /*
-        private void btnEditOrienta_Click(object sender, EventArgs e)
+
+        private void Notas8_RfDTNotas8()
         {
-            editOrienta editOrienta1 = new editOrienta(
-                //Indica si es nota nueva o existente
-                dtGrdVwOrienta.Rows[dtGrdVwOrienta.CurrentRow.Index].Cells["IdNota"].Value != null ? 2 : 1,
-
-                int.Parse(dtGrdVwOrienta.Rows[dtGrdVwOrienta.CurrentRow.Index].Cells["Matricula"].Value.ToString()),
-
-                dtGrdVwOrienta.Rows[dtGrdVwOrienta.CurrentRow.Index].Cells["IdNota"].Value != null ?
-                int.Parse(dtGrdVwOrienta.Rows[dtGrdVwOrienta.CurrentRow.Index].Cells["IdNota"].Value.ToString()) : 0,
-
-                string.Format("{0} {1} {2}", dtGrdVwOrienta.Rows[dtGrdVwOrienta.CurrentRow.Index].Cells["Nombre1"].Value.ToString(),
-                dtGrdVwOrienta.Rows[dtGrdVwOrienta.CurrentRow.Index].Cells["ApellidoOne"].Value.ToString(),
-                dtGrdVwOrienta.Rows[dtGrdVwOrienta.CurrentRow.Index].Cells["ApellidoTwo"].Value.ToString()),
-
-                dtGrdVwOrienta.Rows[dtGrdVwOrienta.CurrentRow.Index].Cells["Entrevista"].Value != null ?
-                decimal.Parse(dtGrdVwOrienta.Rows[dtGrdVwOrienta.CurrentRow.Index].Cells["Entrevista"].Value.ToString()) : 0,
-
-                dtGrdVwOrienta.Rows[dtGrdVwOrienta.CurrentRow.Index].Cells["Vocacional"].Value != null ?
-                decimal.Parse(dtGrdVwOrienta.Rows[dtGrdVwOrienta.CurrentRow.Index].Cells["Vocacional"].Value.ToString()) : 0);
-
-            editOrienta1.Show();
-            editOrienta1.rfDTOri += EditNotasOrienta_rfDT;
+            refrescaDTNotas8();
         }
 
-        private void btnEliminarOrienta_Click(object sender, EventArgs e)
+        private void btnDelNota_Click(object sender, EventArgs e)
         {
             DialogResult rs = MessageBox.Show("¿Desea eliminar las notas",
                 "Borrar", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
@@ -310,28 +276,16 @@ namespace PresentationLayer
                 NotaBussines bs = new NotaBussines();
                 try
                 {
-                    if (dtGrdVwOrienta.Rows[dtGrdVwOrienta.CurrentRow.Index].Cells["IdNota"].Value == null)
-                    {
-                        MessageBox.Show("El estudiante no tiene notas asignadas");
-                    }
-                    else
-                    {
-                        bs.editNotaOrienta(int.Parse(dtGrdVwOrienta.Rows[dtGrdVwOrienta.CurrentRow.Index].Cells["IdNota"].Value.ToString()), 0, 0);
+                        bs.delNotasXMatYNivel(int.Parse(dtGrdVwNotas.Rows[dtGrdVwOrienta.CurrentRow.Index].Cells["IdMatricula"].Value.ToString()), 8);
                         MessageBox.Show("Notas eliminadas de manera exitosa");
                         refrescaDTNotasOrienta();
-                    }
                 }
                 catch (Exception ex)
                 {
                     throw new Exception(ex.Message);
                 }
             }
-        }*
-
-        private void EditNotasOrienta_rfDT()
-        {
-            refrescaDTNotas8();
-        }*/
+        }
 
         private void refrescaDTNotas8()
         {

@@ -61,7 +61,6 @@
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.btnDelNota = new System.Windows.Forms.Button();
             this.btnEditNota = new System.Windows.Forms.Button();
-            this.btnAddNota = new System.Windows.Forms.Button();
             this.dtGrdVwNotas = new System.Windows.Forms.DataGridView();
             this.tbPgNotas9 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
@@ -458,13 +457,11 @@
             // 
             // tableLayoutPanel6
             // 
-            this.tableLayoutPanel6.ColumnCount = 3;
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel6.ColumnCount = 2;
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel6.Controls.Add(this.btnDelNota, 0, 0);
             this.tableLayoutPanel6.Controls.Add(this.btnEditNota, 0, 0);
-            this.tableLayoutPanel6.Controls.Add(this.btnAddNota, 0, 0);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 480);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
@@ -476,33 +473,25 @@
             // btnDelNota
             // 
             this.btnDelNota.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnDelNota.Location = new System.Drawing.Point(976, 19);
+            this.btnDelNota.Location = new System.Drawing.Point(873, 19);
             this.btnDelNota.Name = "btnDelNota";
             this.btnDelNota.Size = new System.Drawing.Size(120, 40);
             this.btnDelNota.TabIndex = 4;
             this.btnDelNota.Text = "Eliminar";
             this.btnDelNota.UseVisualStyleBackColor = true;
+            this.btnDelNota.Click += new System.EventHandler(this.btnDelNota_Click);
             // 
             // btnEditNota
             // 
             this.btnEditNota.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnEditNota.Location = new System.Drawing.Point(561, 19);
+            this.btnEditNota.Enabled = false;
+            this.btnEditNota.Location = new System.Drawing.Point(251, 19);
             this.btnEditNota.Name = "btnEditNota";
             this.btnEditNota.Size = new System.Drawing.Size(120, 40);
             this.btnEditNota.TabIndex = 3;
             this.btnEditNota.Text = "Modificar";
             this.btnEditNota.UseVisualStyleBackColor = true;
-            // 
-            // btnAddNota
-            // 
-            this.btnAddNota.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnAddNota.Location = new System.Drawing.Point(147, 19);
-            this.btnAddNota.Name = "btnAddNota";
-            this.btnAddNota.Size = new System.Drawing.Size(120, 40);
-            this.btnAddNota.TabIndex = 2;
-            this.btnAddNota.Text = "Agregar";
-            this.btnAddNota.UseVisualStyleBackColor = true;
-            this.btnAddNota.Click += new System.EventHandler(this.btnAddNota_Click);
+            this.btnEditNota.Click += new System.EventHandler(this.btnEditNota_Click);
             // 
             // dtGrdVwNotas
             // 
@@ -819,6 +808,7 @@
             // btnConfig
             // 
             this.btnConfig.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnConfig.Enabled = false;
             this.btnConfig.Location = new System.Drawing.Point(976, 326);
             this.btnConfig.Name = "btnConfig";
             this.btnConfig.Size = new System.Drawing.Size(120, 40);
@@ -889,7 +879,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
         private System.Windows.Forms.Button btnDelNota;
         private System.Windows.Forms.Button btnEditNota;
-        private System.Windows.Forms.Button btnAddNota;
         private System.Windows.Forms.DataGridView dtGrdVwNotas;
         private System.Windows.Forms.TabPage tbPgNotas9;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;

@@ -30,6 +30,11 @@ namespace BussinesLayer
             NotaData nt = new NotaData();
             return nt.notaOrientaXId(id);
         }
+        
+        public NotasBasicas notasBasicasXMatYNivel(int mat, int nivel)
+        {
+            return new NotaData().notasBasicasXMatricula(mat, nivel);
+        }
 
         public void editNotaOrienta(int id, decimal entrevista, decimal vocacional)
         {
@@ -50,10 +55,22 @@ namespace BussinesLayer
 
         }
 
-        public void delNotaOrienta(int id)
+        public void delNota(int id)
         {
             NotaData nota = new NotaData();
             nota.BorraNota(id);
+        }
+
+        public void delNotaOrienta(int id)
+        {
+            NotaData nota = new NotaData();
+            nota.BorraNotaOrienta(id);
+        }
+
+        public void delNotasXMatYNivel(int mat, int nivel)
+        {
+            NotaData nota = new NotaData();
+            nota.BorraNotasXMatYNivel(mat, nivel);
         }
 
         public void guardarNota(Nota nota)
@@ -89,20 +106,16 @@ namespace BussinesLayer
 
         }
 
-        public void editNota(int id)
+        public void editNota(Nota nota)
         {
-            NotaData dt = new NotaData();
             try
             {
-                dt.ActualizaNotaOrienta(new Nota
-                {
-                });
+                new NotaData().ActualizaNota(nota);
             }
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
-
         }
     }
 }

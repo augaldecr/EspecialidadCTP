@@ -172,12 +172,5 @@ namespace DataLayer
             }
         }
         #endregion
-
-        #region Listar notas
-        /*public List<Calificaciones> listarNotasCursoActivo8(int mat)
-        {
-
-        }*/
-        #endregion
     }
 }

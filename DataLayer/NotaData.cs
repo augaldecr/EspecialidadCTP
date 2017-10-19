@@ -106,21 +106,9 @@ namespace DataLayer
                         cmd.Connection = conn;
                         cmd.CommandText = "UpdateNota";
                         cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.Add("pidnota", MySqlDbType.Int16);
+                        cmd.Parameters.Add("pidnota", MySqlDbType.Int32);
                         cmd.Parameters["pidnota"].Value = nota.IdNota;
                         cmd.Parameters["pidnota"].Direction = ParameterDirection.Input;
-                        cmd.Parameters.Add("pestudiante", MySqlDbType.Int16);
-                        cmd.Parameters["pestudiante"].Value = nota.Matricula;
-                        cmd.Parameters["pestudiante"].Direction = ParameterDirection.Input;
-                        cmd.Parameters.Add("pasignatura", MySqlDbType.Int16);
-                        cmd.Parameters["pasignatura"].Value = nota.Asignatura;
-                        cmd.Parameters["pasignatura"].Direction = ParameterDirection.Input;
-                        cmd.Parameters.Add("pnivel", MySqlDbType.Int16);
-                        cmd.Parameters["pnivel"].Value = nota.Nivel;
-                        cmd.Parameters["pnivel"].Direction = ParameterDirection.Input;
-                        cmd.Parameters.Add("pperiodo", MySqlDbType.Int16);
-                        cmd.Parameters["pperiodo"].Value = nota.Periodo;
-                        cmd.Parameters["pperiodo"].Direction = ParameterDirection.Input;
                         cmd.Parameters.Add("pnota", MySqlDbType.Decimal);
                         cmd.Parameters["pnota"].Value = nota.Calificacion;
                         cmd.Parameters["pnota"].Direction = ParameterDirection.Input;
@@ -226,6 +214,40 @@ namespace DataLayer
                         cmd.Parameters.Add("pidnota", MySqlDbType.Int16);
                         cmd.Parameters["pidnota"].Value = id;
                         cmd.Parameters["pidnota"].Direction = ParameterDirection.Input;
+
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+                        conn.Close();
+                    }
+                }
+            }
+            catch (System.Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        #endregion
+
+        #region BorrarNota por matrícula y nivel
+        public void BorraNotasXMatYNivel(int mat, int nivel)
+        {
+            string connString = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
+
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connString))
+                {
+                    using (MySqlCommand cmd = new MySqlCommand())
+                    {
+                        cmd.Connection = conn;
+                        cmd.CommandText = "DeleteNotaXMatYNivel";
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.Add("pmatricula", MySqlDbType.Int32);
+                        cmd.Parameters["pmatricula"].Value = mat;
+                        cmd.Parameters["pmatricula"].Direction = ParameterDirection.Input;
+                        cmd.Parameters.Add("pnivel", MySqlDbType.Int32);
+                        cmd.Parameters["pnivel"].Value = nivel;
+                        cmd.Parameters["pnivel"].Direction = ParameterDirection.Input;
 
                         conn.Open();
                         cmd.ExecuteNonQuery();
@@ -721,18 +743,28 @@ namespace DataLayer
         }
         #endregion
 
-        #region Notas x matrícula
-        public NotasBasicas notasBasicas8XMatricula( int mat)
+        #region Notas x matrícula y nivel
+        public NotasBasicas notasBasicasXMatricula(int mat, int nivel)
         {
             string connString = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
+            NotasBasicas notas = new NotasBasicas();
 
             try
             {
-                NotasBasicas notas = new NotasBasicas();
                 using (MySqlConnection conn = new MySqlConnection(connString))
                 {
-                    using (MySqlCommand cmd = new MySqlCommand("SELECT * FROM notas_curso_activo8 WHERE idmatricula_admision=" + mat + ";", conn))
+                    using (MySqlCommand cmd = new MySqlCommand())
                     {
+                        cmd.Connection = conn;
+                        cmd.CommandText = "notas_estudiante_matricula";
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.Add("pidmatricula", MySqlDbType.Int32);
+                        cmd.Parameters["pidmatricula"].Value = mat;
+                        cmd.Parameters["pidmatricula"].Direction = ParameterDirection.Input;
+                        cmd.Parameters.Add("pnivel", MySqlDbType.Int32);
+                        cmd.Parameters["pnivel"].Value = nivel;
+                        cmd.Parameters["pnivel"].Direction = ParameterDirection.Input;
+
                         conn.Open();
                         MySqlDataReader dr = cmd.ExecuteReader();
 
@@ -740,36 +772,59 @@ namespace DataLayer
                         {
                             while (dr.Read())
                             {
-
                                 notas.idMatricula = dr.GetInt32(0);
                                 notas.nombreCompleto = dr.GetString(1);
-                                notas.esp1 = dr.GetValue(2) == DBNull.Value ? (decimal?)null : dr.GetDecimal(2);
-                                notas.esp2 = dr.GetValue(3) == DBNull.Value ? (decimal?)null : dr.GetDecimal(3);
-                                notas.esp3 = dr.GetValue(4) == DBNull.Value ? (decimal?)null : dr.GetDecimal(4);
-                                notas.cie1 = dr.GetValue(5) == DBNull.Value ? (decimal?)null : dr.GetDecimal(5);
-                                notas.cie2 = dr.GetValue(6) == DBNull.Value ? (decimal?)null : dr.GetDecimal(6);
-                                notas.cie3 = dr.GetValue(7) == DBNull.Value ? (decimal?)null : dr.GetDecimal(7);
-                                notas.estsoc1 = dr.GetValue(8) == DBNull.Value ? (decimal?)null : dr.GetDecimal(8);
-                                notas.estsoc2 = dr.GetValue(9) == DBNull.Value ? (decimal?)null : dr.GetDecimal(9);
-                                notas.estsoc3 = dr.GetValue(10) == DBNull.Value ? (decimal?)null : dr.GetDecimal(10);
-                                notas.mat1 = dr.GetValue(11) == DBNull.Value ? (decimal?)null : dr.GetDecimal(11);
-                                notas.mat2 = dr.GetValue(12) == DBNull.Value ? (decimal?)null : dr.GetDecimal(12);
-                                notas.mat3 = dr.GetValue(13) == DBNull.Value ? (decimal?)null : dr.GetDecimal(13);
-                                notas.ing1 = dr.GetValue(14) == DBNull.Value ? (decimal?)null : dr.GetDecimal(14);
-                                notas.ing2 = dr.GetValue(15) == DBNull.Value ? (decimal?)null : dr.GetDecimal(15);
-                                notas.ing3 = dr.GetValue(16) == DBNull.Value ? (decimal?)null : dr.GetDecimal(16);
-                                notas.civ1 = dr.GetValue(17) == DBNull.Value ? (decimal?)null : dr.GetDecimal(17);
-                                notas.civ2 = dr.GetValue(18) == DBNull.Value ? (decimal?)null : dr.GetDecimal(18);
-                                notas.civ3 = dr.GetValue(19) == DBNull.Value ? (decimal?)null : dr.GetDecimal(19);
-                                notas.talI1 = dr.GetValue(20) == DBNull.Value ? (decimal?)null : dr.GetDecimal(20);
-                                notas.talI2 = dr.GetValue(21) == DBNull.Value ? (decimal?)null : dr.GetDecimal(21);
-                                notas.talI3 = dr.GetValue(22) == DBNull.Value ? (decimal?)null : dr.GetDecimal(22);
-                                notas.talII1 = dr.GetValue(23) == DBNull.Value ? (decimal?)null : dr.GetDecimal(23);
-                                notas.talII2 = dr.GetValue(24) == DBNull.Value ? (decimal?)null : dr.GetDecimal(24);
-                                notas.talII3 = dr.GetValue(25) == DBNull.Value ? (decimal?)null : dr.GetDecimal(25);
-                                dr.Close();
-                                conn.Close();
+                                notas.id_esp1 = dr.GetValue(2) == DBNull.Value ? (int?)null : dr.GetInt32(2);
+                                notas.esp1 = dr.GetValue(3) == DBNull.Value ? (decimal?)null : dr.GetDecimal(3);
+                                notas.id_esp2 = dr.GetValue(4) == DBNull.Value ? (int?)null : dr.GetInt32(4);
+                                notas.esp2 = dr.GetValue(5) == DBNull.Value ? (decimal?)null : dr.GetDecimal(5);
+                                notas.id_esp3 = dr.GetValue(6) == DBNull.Value ? (int?)null : dr.GetInt32(6);
+                                notas.esp3 = dr.GetValue(7) == DBNull.Value ? (decimal?)null : dr.GetDecimal(7);
+                                notas.id_cie1 = dr.GetValue(8) == DBNull.Value ? (int?)null : dr.GetInt32(8);
+                                notas.cie1 = dr.GetValue(9) == DBNull.Value ? (decimal?)null : dr.GetDecimal(9);
+                                notas.id_cie2 = dr.GetValue(10) == DBNull.Value ? (int?)null : dr.GetInt32(10);
+                                notas.cie2 = dr.GetValue(11) == DBNull.Value ? (decimal?)null : dr.GetDecimal(11);
+                                notas.id_cie3 = dr.GetValue(12) == DBNull.Value ? (int?)null : dr.GetInt32(12);
+                                notas.cie3 = dr.GetValue(13) == DBNull.Value ? (decimal?)null : dr.GetDecimal(13);
+                                notas.id_estsoc1 = dr.GetValue(14) == DBNull.Value ? (int?)null : dr.GetInt32(14);
+                                notas.estsoc1 = dr.GetValue(15) == DBNull.Value ? (decimal?)null : dr.GetDecimal(15);
+                                notas.id_estsoc2 = dr.GetValue(16) == DBNull.Value ? (int?)null : dr.GetInt32(16);
+                                notas.estsoc2 = dr.GetValue(17) == DBNull.Value ? (decimal?)null : dr.GetDecimal(17);
+                                notas.id_estsoc3 = dr.GetValue(18) == DBNull.Value ? (int?)null : dr.GetInt32(18);
+                                notas.estsoc3 = dr.GetValue(19) == DBNull.Value ? (decimal?)null : dr.GetDecimal(19);
+                                notas.id_mat1 = dr.GetValue(20) == DBNull.Value ? (int?)null : dr.GetInt32(20);
+                                notas.mat1 = dr.GetValue(21) == DBNull.Value ? (decimal?)null : dr.GetDecimal(21);
+                                notas.id_mat2 = dr.GetValue(22) == DBNull.Value ? (int?)null : dr.GetInt32(22);
+                                notas.mat2 = dr.GetValue(23) == DBNull.Value ? (decimal?)null : dr.GetDecimal(23);
+                                notas.id_mat3 = dr.GetValue(24) == DBNull.Value ? (int?)null : dr.GetInt32(24);
+                                notas.mat3 = dr.GetValue(25) == DBNull.Value ? (decimal?)null : dr.GetDecimal(25);
+                                notas.id_ing1 = dr.GetValue(26) == DBNull.Value ? (int?)null : dr.GetInt32(26);
+                                notas.ing1 = dr.GetValue(27) == DBNull.Value ? (decimal?)null : dr.GetDecimal(27);
+                                notas.id_ing2 = dr.GetValue(28) == DBNull.Value ? (int?)null : dr.GetInt32(28);
+                                notas.ing2 = dr.GetValue(29) == DBNull.Value ? (decimal?)null : dr.GetDecimal(29);
+                                notas.id_ing3 = dr.GetValue(30) == DBNull.Value ? (int?)null : dr.GetInt32(30);
+                                notas.ing3 = dr.GetValue(31) == DBNull.Value ? (decimal?)null : dr.GetDecimal(31);
+                                notas.id_civ1 = dr.GetValue(32) == DBNull.Value ? (int?)null : dr.GetInt32(32);
+                                notas.civ1 = dr.GetValue(33) == DBNull.Value ? (decimal?)null : dr.GetDecimal(33);
+                                notas.id_civ2 = dr.GetValue(34) == DBNull.Value ? (int?)null : dr.GetInt32(34);
+                                notas.civ2 = dr.GetValue(35) == DBNull.Value ? (decimal?)null : dr.GetDecimal(35);
+                                notas.id_civ3 = dr.GetValue(36) == DBNull.Value ? (int?)null : dr.GetInt32(36);
+                                notas.civ3 = dr.GetValue(37) == DBNull.Value ? (decimal?)null : dr.GetDecimal(37);
+                                notas.id_talI1 = dr.GetValue(38) == DBNull.Value ? (int?)null : dr.GetInt32(38);
+                                notas.talI1 = dr.GetValue(39) == DBNull.Value ? (decimal?)null : dr.GetDecimal(39);
+                                notas.id_talI2 = dr.GetValue(40) == DBNull.Value ? (int?)null : dr.GetInt32(40);
+                                notas.talI2 = dr.GetValue(41) == DBNull.Value ? (decimal?)null : dr.GetDecimal(41);
+                                notas.id_talI3 = dr.GetValue(42) == DBNull.Value ? (int?)null : dr.GetInt32(42);
+                                notas.talI3 = dr.GetValue(43) == DBNull.Value ? (decimal?)null : dr.GetDecimal(43);
+                                notas.id_talII1 = dr.GetValue(44) == DBNull.Value ? (int?)null : dr.GetInt32(44);
+                                notas.talII1 = dr.GetValue(45) == DBNull.Value ? (decimal?)null : dr.GetDecimal(45);
+                                notas.id_talII2 = dr.GetValue(46) == DBNull.Value ? (int?)null : dr.GetInt32(46);
+                                notas.talII2 = dr.GetValue(47) == DBNull.Value ? (decimal?)null : dr.GetDecimal(47);
+                                notas.id_talII3 = dr.GetValue(48) == DBNull.Value ? (int?)null : dr.GetInt32(48);
+                                notas.talII3 = dr.GetValue(49) == DBNull.Value ? (decimal?)null : dr.GetDecimal(49);
                             }
+                            dr.Close();
+                            conn.Close();
                         }
                     }
                 }
