@@ -5,26 +5,14 @@ using System.Windows.Forms;
 
 namespace PresentationLayer
 {
-    public partial class EditNotas8 : Form
+    public partial class EditNotas9 : Form
     {
-        enum asign
-        {
-            Spa = 1,
-            Cie = 2,
-            Stud = 3,
-            Mate = 4,
-            Ing = 6,
-            Civ = 11,
-            Tal1 = 12,
-            Tal2 = 13
-        };
-
-        public delegate void refreshDTNotas8();
-        public event refreshDTNotas8 RfDTNotas8;
+        public delegate void refreshDTNotas9();
+        public event refreshDTNotas9 RfDTNotas9;
 
         NotasBasicas notas;
 
-        public EditNotas8(int matricula)
+        public EditNotas9(int matricula)
         {
             InitializeComponent();
             llenaCampos(matricula);
@@ -32,32 +20,24 @@ namespace PresentationLayer
 
         private void llenaCampos(int matricula)
         {
-            notas = new NotaBussines().notasBasicasXMatYNivel(matricula, 8);
+            notas = new NotaBussines().notasBasicasXMatYNivel(matricula, 9);
             txtBoxStudent.Text = notas.nombreCompleto;
             txtBoxEsp1.Text = notas.esp1.ToString();
             txtBoxEsp2.Text = notas.esp2.ToString();
-            txtBoxEsp3.Text = notas.esp3.ToString();
             txtBoxCie1.Text = notas.cie1.ToString();
             txtBoxCie2.Text = notas.cie2.ToString();
-            txtBoxCie3.Text = notas.cie3.ToString();
             txtBoxEstSoc1.Text = notas.estsoc1.ToString();
             txtBoxEstSoc2.Text = notas.estsoc2.ToString();
-            txtBoxEstSoc3.Text = notas.estsoc3.ToString();
             txtBoxMate1.Text = notas.mat1.ToString();
             txtBoxMate2.Text = notas.mat2.ToString();
-            txtBoxMate3.Text = notas.mat3.ToString();
             txtBoxIng1.Text = notas.ing1.ToString();
             txtBoxIng2.Text = notas.ing2.ToString();
-            txtBoxIng3.Text = notas.ing3.ToString();
             txtBoxCiv1.Text = notas.civ1.ToString();
             txtBoxCiv2.Text = notas.civ2.ToString();
-            txtBoxCiv3.Text = notas.civ3.ToString();
             txtBoxTali1.Text = notas.talI1.ToString();
             txtBoxTali2.Text = notas.talI2.ToString();
-            txtBoxTali3.Text = notas.talI3.ToString();
             txtBoxTalii1.Text = notas.talII1.ToString();
             txtBoxTalii2.Text = notas.talII2.ToString();
-            txtBoxTalii3.Text = notas.talII3.ToString();
         }
 
         private void btnEditNotas_Click(object sender, EventArgs e)
@@ -74,7 +54,7 @@ namespace PresentationLayer
                     {
                         Matricula = notas.idMatricula,
                         Asignatura = 1,
-                        Nivel = 8,
+                        Nivel = 9,
                         Periodo = 1,
                         Calificacion = decimal.Parse(txtBoxEsp1.Text)
                     });
@@ -92,27 +72,9 @@ namespace PresentationLayer
                     {
                         Matricula = notas.idMatricula,
                         Asignatura = 1,
-                        Nivel = 8,
+                        Nivel = 9,
                         Periodo = 2,
                         Calificacion = decimal.Parse(txtBoxEsp2.Text)
-                    });
-                }
-            }
-            if (txtBoxEsp3.Text != notas.esp3.ToString())
-            {
-                if (notas.id_esp3 != null)
-                {
-                    new NotaBussines().editNota(new Nota() { IdNota = notas.id_esp3, Calificacion = decimal.Parse(txtBoxEsp3.Text) });
-                }
-                else
-                {
-                    new NotaBussines().guardarNota(new Nota()
-                    {
-                        Matricula = notas.idMatricula,
-                        Asignatura = 1,
-                        Nivel = 8,
-                        Periodo = 3,
-                        Calificacion = decimal.Parse(txtBoxEsp3.Text)
                     });
                 }
             }
@@ -128,7 +90,7 @@ namespace PresentationLayer
                     {
                         Matricula = notas.idMatricula,
                         Asignatura = 2,
-                        Nivel = 8,
+                        Nivel = 9,
                         Periodo = 1,
                         Calificacion = decimal.Parse(txtBoxCie1.Text)
                     });
@@ -146,27 +108,9 @@ namespace PresentationLayer
                     {
                         Matricula = notas.idMatricula,
                         Asignatura = 2,
-                        Nivel = 8,
+                        Nivel = 9,
                         Periodo = 2,
                         Calificacion = decimal.Parse(txtBoxCie2.Text)
-                    });
-                }
-            }
-            if (txtBoxCie3.Text != notas.cie3.ToString())
-            {
-                if (notas.id_cie3 != null)
-                {
-                    new NotaBussines().editNota(new Nota() { IdNota = notas.id_cie3, Calificacion = decimal.Parse(txtBoxCie3.Text) });
-                }
-                else
-                {
-                    new NotaBussines().guardarNota(new Nota()
-                    {
-                        Matricula = notas.idMatricula,
-                        Asignatura = 2,
-                        Nivel = 8,
-                        Periodo = 3,
-                        Calificacion = decimal.Parse(txtBoxCie3.Text)
                     });
                 }
             }
@@ -182,7 +126,7 @@ namespace PresentationLayer
                     {
                         Matricula = notas.idMatricula,
                         Asignatura = 3,
-                        Nivel = 8,
+                        Nivel = 9,
                         Periodo = 1,
                         Calificacion = decimal.Parse(txtBoxEstSoc1.Text)
                     });
@@ -200,27 +144,9 @@ namespace PresentationLayer
                     {
                         Matricula = notas.idMatricula,
                         Asignatura = 3,
-                        Nivel = 8,
+                        Nivel = 9,
                         Periodo =2,
                         Calificacion = decimal.Parse(txtBoxEstSoc2.Text)
-                    });
-                }
-            }
-            if (txtBoxEstSoc3.Text != notas.estsoc3.ToString())
-            {
-                if (notas.id_estsoc3 != null)
-                {
-                    new NotaBussines().editNota(new Nota() { IdNota = notas.id_estsoc3, Calificacion = decimal.Parse(txtBoxEstSoc3.Text) });
-                }
-                else
-                {
-                    new NotaBussines().guardarNota(new Nota()
-                    {
-                        Matricula = notas.idMatricula,
-                        Asignatura = 3,
-                        Nivel = 8,
-                        Periodo = 3,
-                        Calificacion = decimal.Parse(txtBoxEstSoc3.Text)
                     });
                 }
             }
@@ -236,7 +162,7 @@ namespace PresentationLayer
                     {
                         Matricula = notas.idMatricula,
                         Asignatura = 4,
-                        Nivel = 8,
+                        Nivel = 9,
                         Periodo = 1,
                         Calificacion = decimal.Parse(txtBoxMate1.Text)
                     });
@@ -254,27 +180,9 @@ namespace PresentationLayer
                     {
                         Matricula = notas.idMatricula,
                         Asignatura = 4,
-                        Nivel = 8,
+                        Nivel = 9,
                         Periodo = 2,
                         Calificacion = decimal.Parse(txtBoxMate2.Text)
-                    });
-                }
-            }
-            if (txtBoxMate3.Text != notas.mat3.ToString())
-            {
-                if (notas.id_mat3 != null)
-                {
-                    new NotaBussines().editNota(new Nota() { IdNota = notas.id_mat3, Calificacion = decimal.Parse(txtBoxMate3.Text) });
-                }
-                else
-                {
-                    new NotaBussines().guardarNota(new Nota()
-                    {
-                        Matricula = notas.idMatricula,
-                        Asignatura = 4,
-                        Nivel = 8,
-                        Periodo = 3,
-                        Calificacion = decimal.Parse(txtBoxMate3.Text)
                     });
                 }
             }
@@ -290,7 +198,7 @@ namespace PresentationLayer
                     {
                         Matricula = notas.idMatricula,
                         Asignatura = 6,
-                        Nivel = 8,
+                        Nivel = 9,
                         Periodo = 1,
                         Calificacion = decimal.Parse(txtBoxIng1.Text)
                     });
@@ -308,27 +216,9 @@ namespace PresentationLayer
                     {
                         Matricula = notas.idMatricula,
                         Asignatura = 6,
-                        Nivel = 8,
+                        Nivel = 9,
                         Periodo = 2,
                         Calificacion = decimal.Parse(txtBoxIng2.Text)
-                    });
-                }
-            }
-            if (txtBoxIng3.Text != notas.ing3.ToString())
-            {
-                if (notas.id_ing3 != null)
-                {
-                    new NotaBussines().editNota(new Nota() { IdNota = notas.id_ing3, Calificacion = decimal.Parse(txtBoxIng3.Text) });
-                }
-                else
-                {
-                    new NotaBussines().guardarNota(new Nota()
-                    {
-                        Matricula = notas.idMatricula,
-                        Asignatura = 6,
-                        Nivel = 8,
-                        Periodo = 3,
-                        Calificacion = decimal.Parse(txtBoxIng3.Text)
                     });
                 }
             }
@@ -344,7 +234,7 @@ namespace PresentationLayer
                     {
                         Matricula = notas.idMatricula,
                         Asignatura = 11,
-                        Nivel = 8,
+                        Nivel = 9,
                         Periodo = 1,
                         Calificacion = decimal.Parse(txtBoxCiv1.Text)
                     });
@@ -362,27 +252,9 @@ namespace PresentationLayer
                     {
                         Matricula = notas.idMatricula,
                         Asignatura = 11,
-                        Nivel = 8,
+                        Nivel = 9,
                         Periodo = 2,
                         Calificacion = decimal.Parse(txtBoxCiv2.Text)
-                    });
-                }
-            }
-            if (txtBoxCiv3.Text != notas.civ3.ToString())
-            {
-                if (notas.id_civ3 != null)
-                {
-                    new NotaBussines().editNota(new Nota() { IdNota = notas.id_civ3, Calificacion = decimal.Parse(txtBoxCiv3.Text) });
-                }
-                else
-                {
-                    new NotaBussines().guardarNota(new Nota()
-                    {
-                        Matricula = notas.idMatricula,
-                        Asignatura = 11,
-                        Nivel = 8,
-                        Periodo = 3,
-                        Calificacion = decimal.Parse(txtBoxCiv3.Text)
                     });
                 }
             }
@@ -398,7 +270,7 @@ namespace PresentationLayer
                     {
                         Matricula = notas.idMatricula,
                         Asignatura = 12,
-                        Nivel = 8,
+                        Nivel = 9,
                         Periodo = 1,
                         Calificacion = decimal.Parse(txtBoxTali1.Text)
                     });
@@ -416,27 +288,9 @@ namespace PresentationLayer
                     {
                         Matricula = notas.idMatricula,
                         Asignatura = 12,
-                        Nivel = 8,
+                        Nivel = 9,
                         Periodo = 2,
                         Calificacion = decimal.Parse(txtBoxTali2.Text)
-                    });
-                }
-            }
-            if (txtBoxTali3.Text != notas.talI3.ToString())
-            {
-                if (notas.id_talI3 != null)
-                {
-                    new NotaBussines().editNota(new Nota() { IdNota = notas.id_talI3, Calificacion = decimal.Parse(txtBoxTali3.Text) });
-                }
-                else
-                {
-                    new NotaBussines().guardarNota(new Nota()
-                    {
-                        Matricula = notas.idMatricula,
-                        Asignatura = 12,
-                        Nivel = 8,
-                        Periodo = 3,
-                        Calificacion = decimal.Parse(txtBoxTali3.Text)
                     });
                 }
             }
@@ -452,7 +306,7 @@ namespace PresentationLayer
                     {
                         Matricula = notas.idMatricula,
                         Asignatura = 13,
-                        Nivel = 8,
+                        Nivel = 9,
                         Periodo = 1,
                         Calificacion = decimal.Parse(txtBoxTalii1.Text)
                     });
@@ -470,38 +324,20 @@ namespace PresentationLayer
                     {
                         Matricula = notas.idMatricula,
                         Asignatura = 13,
-                        Nivel = 8,
+                        Nivel = 9,
                         Periodo = 2,
                         Calificacion = decimal.Parse(txtBoxTalii2.Text)
                     });
                 }
             }
-            if (txtBoxTalii3.Text != notas.talII3.ToString())
-            {
-                if (notas.id_talII3 != null)
-                {
-                    new NotaBussines().editNota(new Nota() { IdNota = notas.id_talII3, Calificacion = decimal.Parse(txtBoxTalii3.Text) });
-                }
-                else
-                {
-                    new NotaBussines().guardarNota(new Nota()
-                    {
-                        Matricula = notas.idMatricula,
-                        Asignatura = 13,
-                        Nivel = 8,
-                        Periodo = 3,
-                        Calificacion = decimal.Parse(txtBoxTalii3.Text)
-                    });
-                }
-            }
-            RfDTNotas8();
+            RfDTNotas9();
             MessageBox.Show("Cambios aplicados de manera adecuada");
             this.Dispose();
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
-            RfDTNotas8();
+            RfDTNotas9();
             this.Dispose();
         }
     }

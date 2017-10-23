@@ -37,16 +37,6 @@
             this.btnEditStudent = new System.Windows.Forms.Button();
             this.btnAddEstud = new System.Windows.Forms.Button();
             this.dtGrdVwEstudiantes = new System.Windows.Forms.DataGridView();
-            this.IdEstudiante = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cedula = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Apellido1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Apellido2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Direccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Celular = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ctpp = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.tbPgOrienta = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
@@ -65,36 +55,16 @@
             this.tbPgNotas9 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.dtGrdVwNotas9 = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn23 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn24 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TallerII1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TallerII2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label4 = new System.Windows.Forms.Label();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.btnDelNota9 = new System.Windows.Forms.Button();
             this.btnEditNota9 = new System.Windows.Forms.Button();
-            this.btnAddNota9 = new System.Windows.Forms.Button();
             this.tbPgReportes = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
             this.label5 = new System.Windows.Forms.Label();
             this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
             this.btnConfig = new System.Windows.Forms.Button();
+            this.btnEscogenciaEspec = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tbPgEstudiantes.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -215,102 +185,21 @@
             // 
             this.dtGrdVwEstudiantes.AllowUserToAddRows = false;
             this.dtGrdVwEstudiantes.AllowUserToDeleteRows = false;
+            this.dtGrdVwEstudiantes.AllowUserToResizeRows = false;
+            this.dtGrdVwEstudiantes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dtGrdVwEstudiantes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtGrdVwEstudiantes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtGrdVwEstudiantes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.IdEstudiante,
-            this.Cedula,
-            this.Nombre,
-            this.Apellido1,
-            this.Apellido2,
-            this.Direccion,
-            this.Telefono,
-            this.Celular,
-            this.Email,
-            this.Ctpp});
-            this.dtGrdVwEstudiantes.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dtGrdVwEstudiantes.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dtGrdVwEstudiantes.Location = new System.Drawing.Point(3, 87);
+            this.dtGrdVwEstudiantes.MultiSelect = false;
             this.dtGrdVwEstudiantes.Name = "dtGrdVwEstudiantes";
             this.dtGrdVwEstudiantes.ReadOnly = true;
+            this.dtGrdVwEstudiantes.ShowEditingIcon = false;
             this.dtGrdVwEstudiantes.Size = new System.Drawing.Size(1244, 387);
             this.dtGrdVwEstudiantes.TabIndex = 1;
             this.dtGrdVwEstudiantes.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtGrdVwEstudiantes_CellDoubleClick);
-            // 
-            // IdEstudiante
-            // 
-            this.IdEstudiante.DataPropertyName = "IdEstudiante";
-            this.IdEstudiante.HeaderText = "ID";
-            this.IdEstudiante.Name = "IdEstudiante";
-            this.IdEstudiante.ReadOnly = true;
-            this.IdEstudiante.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.IdEstudiante.Visible = false;
-            // 
-            // Cedula
-            // 
-            this.Cedula.DataPropertyName = "Cedula";
-            this.Cedula.HeaderText = "Cédula";
-            this.Cedula.Name = "Cedula";
-            this.Cedula.ReadOnly = true;
-            // 
-            // Nombre
-            // 
-            this.Nombre.DataPropertyName = "Nombre";
-            this.Nombre.HeaderText = "Nombre";
-            this.Nombre.Name = "Nombre";
-            this.Nombre.ReadOnly = true;
-            // 
-            // Apellido1
-            // 
-            this.Apellido1.DataPropertyName = "Apellido1";
-            this.Apellido1.HeaderText = "Primer apellido";
-            this.Apellido1.Name = "Apellido1";
-            this.Apellido1.ReadOnly = true;
-            // 
-            // Apellido2
-            // 
-            this.Apellido2.DataPropertyName = "Apellido2";
-            this.Apellido2.HeaderText = "Segundo apellido";
-            this.Apellido2.Name = "Apellido2";
-            this.Apellido2.ReadOnly = true;
-            // 
-            // Direccion
-            // 
-            this.Direccion.DataPropertyName = "Direccion";
-            this.Direccion.HeaderText = "Dirección";
-            this.Direccion.Name = "Direccion";
-            this.Direccion.ReadOnly = true;
-            // 
-            // Telefono
-            // 
-            this.Telefono.DataPropertyName = "Telefono";
-            this.Telefono.HeaderText = "Teléfono";
-            this.Telefono.Name = "Telefono";
-            this.Telefono.ReadOnly = true;
-            // 
-            // Celular
-            // 
-            this.Celular.DataPropertyName = "Celular";
-            this.Celular.HeaderText = "Celular";
-            this.Celular.Name = "Celular";
-            this.Celular.ReadOnly = true;
-            // 
-            // Email
-            // 
-            this.Email.DataPropertyName = "Email";
-            this.Email.HeaderText = "Correo electrónico";
-            this.Email.Name = "Email";
-            this.Email.ReadOnly = true;
-            // 
-            // Ctpp
-            // 
-            this.Ctpp.DataPropertyName = "Ctpp";
-            this.Ctpp.FalseValue = "0";
-            this.Ctpp.HeaderText = "Local";
-            this.Ctpp.Name = "Ctpp";
-            this.Ctpp.ReadOnly = true;
-            this.Ctpp.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Ctpp.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Ctpp.TrueValue = "1";
             // 
             // label1
             // 
@@ -517,6 +406,7 @@
             this.tbPgNotas9.TabIndex = 3;
             this.tbPgNotas9.Text = "Notas asignaturas 9";
             this.tbPgNotas9.UseVisualStyleBackColor = true;
+            this.tbPgNotas9.Enter += new System.EventHandler(this.tbPgNotas9_Enter);
             // 
             // tableLayoutPanel7
             // 
@@ -541,154 +431,13 @@
             this.dtGrdVwNotas9.AllowUserToDeleteRows = false;
             this.dtGrdVwNotas9.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtGrdVwNotas9.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtGrdVwNotas9.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4,
-            this.dataGridViewTextBoxColumn5,
-            this.dataGridViewTextBoxColumn6,
-            this.dataGridViewTextBoxColumn8,
-            this.dataGridViewTextBoxColumn9,
-            this.dataGridViewTextBoxColumn11,
-            this.dataGridViewTextBoxColumn12,
-            this.dataGridViewTextBoxColumn14,
-            this.dataGridViewTextBoxColumn15,
-            this.dataGridViewTextBoxColumn17,
-            this.dataGridViewTextBoxColumn18,
-            this.dataGridViewTextBoxColumn20,
-            this.dataGridViewTextBoxColumn21,
-            this.dataGridViewTextBoxColumn23,
-            this.dataGridViewTextBoxColumn24,
-            this.TallerII1,
-            this.TallerII2});
             this.dtGrdVwNotas9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dtGrdVwNotas9.Location = new System.Drawing.Point(3, 87);
             this.dtGrdVwNotas9.Name = "dtGrdVwNotas9";
             this.dtGrdVwNotas9.ReadOnly = true;
             this.dtGrdVwNotas9.Size = new System.Drawing.Size(1244, 387);
             this.dtGrdVwNotas9.TabIndex = 7;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "ID";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "Primer apellido";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.HeaderText = "Segundo apellido";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.HeaderText = "Nombre";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.HeaderText = "Ciencias 1";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.HeaderText = "Ciencias 2";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn8
-            // 
-            this.dataGridViewTextBoxColumn8.HeaderText = "Cívica 1";
-            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            this.dataGridViewTextBoxColumn8.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn9
-            // 
-            this.dataGridViewTextBoxColumn9.HeaderText = "Cívica 2";
-            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            this.dataGridViewTextBoxColumn9.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn11
-            // 
-            this.dataGridViewTextBoxColumn11.HeaderText = "Español 1";
-            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
-            this.dataGridViewTextBoxColumn11.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn12
-            // 
-            this.dataGridViewTextBoxColumn12.HeaderText = "Español 2";
-            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
-            this.dataGridViewTextBoxColumn12.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn14
-            // 
-            this.dataGridViewTextBoxColumn14.HeaderText = "Est Soc 1";
-            this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
-            this.dataGridViewTextBoxColumn14.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn15
-            // 
-            this.dataGridViewTextBoxColumn15.HeaderText = "Est Soc 2";
-            this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
-            this.dataGridViewTextBoxColumn15.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn17
-            // 
-            this.dataGridViewTextBoxColumn17.HeaderText = "Matemática 1";
-            this.dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
-            this.dataGridViewTextBoxColumn17.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn18
-            // 
-            this.dataGridViewTextBoxColumn18.HeaderText = "Matemática 2";
-            this.dataGridViewTextBoxColumn18.Name = "dataGridViewTextBoxColumn18";
-            this.dataGridViewTextBoxColumn18.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn20
-            // 
-            this.dataGridViewTextBoxColumn20.HeaderText = "Inglés 1";
-            this.dataGridViewTextBoxColumn20.Name = "dataGridViewTextBoxColumn20";
-            this.dataGridViewTextBoxColumn20.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn21
-            // 
-            this.dataGridViewTextBoxColumn21.HeaderText = "Inglés 2";
-            this.dataGridViewTextBoxColumn21.Name = "dataGridViewTextBoxColumn21";
-            this.dataGridViewTextBoxColumn21.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn23
-            // 
-            this.dataGridViewTextBoxColumn23.HeaderText = "Taller I 1";
-            this.dataGridViewTextBoxColumn23.Name = "dataGridViewTextBoxColumn23";
-            this.dataGridViewTextBoxColumn23.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn24
-            // 
-            this.dataGridViewTextBoxColumn24.HeaderText = "Taller I 2";
-            this.dataGridViewTextBoxColumn24.Name = "dataGridViewTextBoxColumn24";
-            this.dataGridViewTextBoxColumn24.ReadOnly = true;
-            // 
-            // TallerII1
-            // 
-            this.TallerII1.HeaderText = "Taller II 1";
-            this.TallerII1.Name = "TallerII1";
-            this.TallerII1.ReadOnly = true;
-            // 
-            // TallerII2
-            // 
-            this.TallerII2.HeaderText = "Taller II 2";
-            this.TallerII2.Name = "TallerII2";
-            this.TallerII2.ReadOnly = true;
+            this.dtGrdVwNotas9.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtGrdVwNotas9_CellDoubleClick);
             // 
             // label4
             // 
@@ -703,13 +452,12 @@
             // 
             // tableLayoutPanel8
             // 
-            this.tableLayoutPanel8.ColumnCount = 3;
-            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel8.ColumnCount = 2;
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel8.Controls.Add(this.btnDelNota9, 0, 0);
             this.tableLayoutPanel8.Controls.Add(this.btnEditNota9, 0, 0);
-            this.tableLayoutPanel8.Controls.Add(this.btnAddNota9, 0, 0);
             this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel8.Location = new System.Drawing.Point(3, 480);
             this.tableLayoutPanel8.Name = "tableLayoutPanel8";
@@ -721,32 +469,24 @@
             // btnDelNota9
             // 
             this.btnDelNota9.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnDelNota9.Location = new System.Drawing.Point(976, 19);
+            this.btnDelNota9.Location = new System.Drawing.Point(873, 19);
             this.btnDelNota9.Name = "btnDelNota9";
             this.btnDelNota9.Size = new System.Drawing.Size(120, 40);
             this.btnDelNota9.TabIndex = 5;
             this.btnDelNota9.Text = "Eliminar";
             this.btnDelNota9.UseVisualStyleBackColor = true;
+            this.btnDelNota9.Click += new System.EventHandler(this.btnDelNota9_Click);
             // 
             // btnEditNota9
             // 
             this.btnEditNota9.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnEditNota9.Location = new System.Drawing.Point(561, 19);
+            this.btnEditNota9.Location = new System.Drawing.Point(251, 19);
             this.btnEditNota9.Name = "btnEditNota9";
             this.btnEditNota9.Size = new System.Drawing.Size(120, 40);
             this.btnEditNota9.TabIndex = 4;
             this.btnEditNota9.Text = "Modificar";
             this.btnEditNota9.UseVisualStyleBackColor = true;
-            // 
-            // btnAddNota9
-            // 
-            this.btnAddNota9.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnAddNota9.Location = new System.Drawing.Point(147, 19);
-            this.btnAddNota9.Name = "btnAddNota9";
-            this.btnAddNota9.Size = new System.Drawing.Size(120, 40);
-            this.btnAddNota9.TabIndex = 3;
-            this.btnAddNota9.Text = "Agregar";
-            this.btnAddNota9.UseVisualStyleBackColor = true;
+            this.btnEditNota9.Click += new System.EventHandler(this.btnEditNota9_Click);
             // 
             // tbPgReportes
             // 
@@ -795,6 +535,7 @@
             this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel10.Controls.Add(this.btnConfig, 2, 2);
+            this.tableLayoutPanel10.Controls.Add(this.btnEscogenciaEspec, 0, 0);
             this.tableLayoutPanel10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel10.Location = new System.Drawing.Point(3, 143);
             this.tableLayoutPanel10.Name = "tableLayoutPanel10";
@@ -808,14 +549,25 @@
             // btnConfig
             // 
             this.btnConfig.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnConfig.Enabled = false;
-            this.btnConfig.Location = new System.Drawing.Point(976, 326);
+            this.btnConfig.Location = new System.Drawing.Point(916, 306);
             this.btnConfig.Name = "btnConfig";
-            this.btnConfig.Size = new System.Drawing.Size(120, 40);
+            this.btnConfig.Size = new System.Drawing.Size(240, 80);
             this.btnConfig.TabIndex = 0;
             this.btnConfig.Text = "Configuración";
             this.btnConfig.UseVisualStyleBackColor = true;
             this.btnConfig.Click += new System.EventHandler(this.btnConfig_Click);
+            // 
+            // btnEscogenciaEspec
+            // 
+            this.btnEscogenciaEspec.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnEscogenciaEspec.Enabled = false;
+            this.btnEscogenciaEspec.Location = new System.Drawing.Point(87, 29);
+            this.btnEscogenciaEspec.Name = "btnEscogenciaEspec";
+            this.btnEscogenciaEspec.Size = new System.Drawing.Size(240, 80);
+            this.btnEscogenciaEspec.TabIndex = 1;
+            this.btnEscogenciaEspec.Text = "Escogencia de especialidad por estudiante";
+            this.btnEscogenciaEspec.UseVisualStyleBackColor = true;
+            this.btnEscogenciaEspec.Click += new System.EventHandler(this.btnEscogenciaEspec_Click);
             // 
             // MainForm
             // 
@@ -887,41 +639,11 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
         private System.Windows.Forms.Button btnDelNota9;
         private System.Windows.Forms.Button btnEditNota9;
-        private System.Windows.Forms.Button btnAddNota9;
         private System.Windows.Forms.TabPage tbPgReportes;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn17;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn18;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn20;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn21;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn23;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn24;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TallerII1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TallerII2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel10;
         private System.Windows.Forms.Button btnConfig;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IdEstudiante;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cedula;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Apellido1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Apellido2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Direccion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Telefono;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Celular;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Email;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Ctpp;
+        private System.Windows.Forms.Button btnEscogenciaEspec;
     }
 }

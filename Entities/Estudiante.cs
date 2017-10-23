@@ -7,6 +7,8 @@
         public string Nombre { get; set; }
         public string Apellido1 { get; set; }
         public string Apellido2 { get; set; }
+        public string IdGrupo { get; set; }
+        public string Grupo { get; set; }
         public string Direccion { get; set; }
         public string Telefono { get; set; }
         public string Celular { get; set; }

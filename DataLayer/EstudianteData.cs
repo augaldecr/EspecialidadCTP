@@ -177,11 +177,13 @@ namespace DataLayer
                                 est.Nombre = dr.GetString(3);
                                 est.Apellido1 = dr.GetString(4);
                                 est.Apellido2 = dr.GetString(5);
-                                est.Celular = dr.GetString(6);
-                                est.Telefono = dr.GetString(7);
-                                est.Email = dr.GetString(8);
-                                est.Direccion = dr.GetString(9);
-                                est.Ctpp = dr.GetInt32(10);
+                                est.IdGrupo = dr.GetString(6);
+                                est.Grupo = dr.GetString(7);
+                                est.Celular = dr.GetString(8);
+                                est.Telefono = dr.GetString(9);
+                                est.Email = dr.GetString(10);
+                                est.Direccion = dr.GetString(11);
+                                est.Ctpp = dr.GetInt32(12);
 
                                 lista.Add(est);
                             }

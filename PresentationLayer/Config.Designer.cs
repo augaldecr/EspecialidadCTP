@@ -36,6 +36,9 @@
             this.btnSalir = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.tbPgImport = new System.Windows.Forms.TabPage();
+            this.statusStripConfig = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLblConfig = new System.Windows.Forms.ToolStripStatusLabel();
+            this.prgBarConfig = new System.Windows.Forms.ToolStripProgressBar();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.label5 = new System.Windows.Forms.Label();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
@@ -54,17 +57,14 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnImpCalif = new System.Windows.Forms.Button();
             this.chkBoxCalific = new System.Windows.Forms.CheckBox();
-            this.statusStripConfig = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLblConfig = new System.Windows.Forms.ToolStripStatusLabel();
-            this.prgBarConfig = new System.Windows.Forms.ToolStripProgressBar();
             this.tabControl1.SuspendLayout();
             this.tbPgValores.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.tbPgImport.SuspendLayout();
+            this.statusStripConfig.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
-            this.statusStripConfig.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -164,6 +164,31 @@
             this.tbPgImport.Text = "Importar";
             this.tbPgImport.UseVisualStyleBackColor = true;
             // 
+            // statusStripConfig
+            // 
+            this.statusStripConfig.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLblConfig,
+            this.prgBarConfig});
+            this.statusStripConfig.Location = new System.Drawing.Point(3, 386);
+            this.statusStripConfig.Name = "statusStripConfig";
+            this.statusStripConfig.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.statusStripConfig.Size = new System.Drawing.Size(782, 22);
+            this.statusStripConfig.TabIndex = 2;
+            // 
+            // toolStripStatusLblConfig
+            // 
+            this.toolStripStatusLblConfig.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.toolStripStatusLblConfig.Name = "toolStripStatusLblConfig";
+            this.toolStripStatusLblConfig.Size = new System.Drawing.Size(665, 17);
+            this.toolStripStatusLblConfig.Spring = true;
+            this.toolStripStatusLblConfig.Text = "Estado";
+            this.toolStripStatusLblConfig.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // prgBarConfig
+            // 
+            this.prgBarConfig.Name = "prgBarConfig";
+            this.prgBarConfig.Size = new System.Drawing.Size(100, 16);
+            // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.AutoSize = true;
@@ -215,12 +240,13 @@
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 104);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 5;
+            this.tableLayoutPanel3.RowCount = 6;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(776, 298);
             this.tableLayoutPanel3.TabIndex = 8;
             // 
@@ -228,7 +254,7 @@
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(74, 257);
+            this.label3.Location = new System.Drawing.Point(74, 237);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(110, 20);
             this.label3.TabIndex = 16;
@@ -240,7 +266,7 @@
             this.chkBoxEstud.AutoSize = true;
             this.chkBoxEstud.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.chkBoxEstud.Enabled = false;
-            this.chkBoxEstud.Location = new System.Drawing.Point(638, 199);
+            this.chkBoxEstud.Location = new System.Drawing.Point(638, 185);
             this.chkBoxEstud.Name = "chkBoxEstud";
             this.chkBoxEstud.Size = new System.Drawing.Size(15, 14);
             this.chkBoxEstud.TabIndex = 15;
@@ -252,7 +278,7 @@
             this.chkBoxEspec.AutoSize = true;
             this.chkBoxEspec.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.chkBoxEspec.Enabled = false;
-            this.chkBoxEspec.Location = new System.Drawing.Point(638, 140);
+            this.chkBoxEspec.Location = new System.Drawing.Point(638, 130);
             this.chkBoxEspec.Name = "chkBoxEspec";
             this.chkBoxEspec.Size = new System.Drawing.Size(15, 14);
             this.chkBoxEspec.TabIndex = 14;
@@ -264,7 +290,7 @@
             this.chkBoxPeriodos.AutoSize = true;
             this.chkBoxPeriodos.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.chkBoxPeriodos.Enabled = false;
-            this.chkBoxPeriodos.Location = new System.Drawing.Point(638, 81);
+            this.chkBoxPeriodos.Location = new System.Drawing.Point(638, 75);
             this.chkBoxPeriodos.Name = "chkBoxPeriodos";
             this.chkBoxPeriodos.Size = new System.Drawing.Size(15, 14);
             this.chkBoxPeriodos.TabIndex = 13;
@@ -273,7 +299,7 @@
             // btnImpCursoLectivo
             // 
             this.btnImpCursoLectivo.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnImpCursoLectivo.Location = new System.Drawing.Point(327, 9);
+            this.btnImpCursoLectivo.Location = new System.Drawing.Point(327, 7);
             this.btnImpCursoLectivo.Name = "btnImpCursoLectivo";
             this.btnImpCursoLectivo.Size = new System.Drawing.Size(120, 40);
             this.btnImpCursoLectivo.TabIndex = 2;
@@ -283,7 +309,7 @@
             // btnImpPeriodo
             // 
             this.btnImpPeriodo.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnImpPeriodo.Location = new System.Drawing.Point(327, 68);
+            this.btnImpPeriodo.Location = new System.Drawing.Point(327, 62);
             this.btnImpPeriodo.Name = "btnImpPeriodo";
             this.btnImpPeriodo.Size = new System.Drawing.Size(120, 40);
             this.btnImpPeriodo.TabIndex = 3;
@@ -293,7 +319,7 @@
             // btnImpEspe
             // 
             this.btnImpEspe.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnImpEspe.Location = new System.Drawing.Point(327, 127);
+            this.btnImpEspe.Location = new System.Drawing.Point(327, 117);
             this.btnImpEspe.Name = "btnImpEspe";
             this.btnImpEspe.Size = new System.Drawing.Size(120, 40);
             this.btnImpEspe.TabIndex = 4;
@@ -303,7 +329,7 @@
             // btnImpEstud
             // 
             this.btnImpEstud.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnImpEstud.Location = new System.Drawing.Point(327, 186);
+            this.btnImpEstud.Location = new System.Drawing.Point(327, 172);
             this.btnImpEstud.Name = "btnImpEstud";
             this.btnImpEstud.Size = new System.Drawing.Size(120, 40);
             this.btnImpEstud.TabIndex = 5;
@@ -314,7 +340,7 @@
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(80, 196);
+            this.label4.Location = new System.Drawing.Point(80, 182);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(98, 20);
             this.label4.TabIndex = 9;
@@ -326,7 +352,7 @@
             this.chkBoxCursoLect.AutoSize = true;
             this.chkBoxCursoLect.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.chkBoxCursoLect.Enabled = false;
-            this.chkBoxCursoLect.Location = new System.Drawing.Point(638, 22);
+            this.chkBoxCursoLect.Location = new System.Drawing.Point(638, 20);
             this.chkBoxCursoLect.Name = "chkBoxCursoLect";
             this.chkBoxCursoLect.Size = new System.Drawing.Size(15, 14);
             this.chkBoxCursoLect.TabIndex = 12;
@@ -336,7 +362,7 @@
             // 
             this.label7.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(69, 137);
+            this.label7.Location = new System.Drawing.Point(69, 127);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(120, 20);
             this.label7.TabIndex = 11;
@@ -346,7 +372,7 @@
             // 
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(91, 78);
+            this.label6.Location = new System.Drawing.Point(91, 72);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(75, 20);
             this.label6.TabIndex = 10;
@@ -356,7 +382,7 @@
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(77, 19);
+            this.label2.Location = new System.Drawing.Point(77, 17);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(103, 20);
             this.label2.TabIndex = 7;
@@ -365,7 +391,7 @@
             // btnImpCalif
             // 
             this.btnImpCalif.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnImpCalif.Location = new System.Drawing.Point(327, 247);
+            this.btnImpCalif.Location = new System.Drawing.Point(327, 227);
             this.btnImpCalif.Name = "btnImpCalif";
             this.btnImpCalif.Size = new System.Drawing.Size(120, 40);
             this.btnImpCalif.TabIndex = 17;
@@ -379,36 +405,11 @@
             this.chkBoxCalific.AutoSize = true;
             this.chkBoxCalific.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.chkBoxCalific.Enabled = false;
-            this.chkBoxCalific.Location = new System.Drawing.Point(638, 260);
+            this.chkBoxCalific.Location = new System.Drawing.Point(638, 240);
             this.chkBoxCalific.Name = "chkBoxCalific";
             this.chkBoxCalific.Size = new System.Drawing.Size(15, 14);
             this.chkBoxCalific.TabIndex = 18;
             this.chkBoxCalific.UseVisualStyleBackColor = true;
-            // 
-            // statusStripConfig
-            // 
-            this.statusStripConfig.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLblConfig,
-            this.prgBarConfig});
-            this.statusStripConfig.Location = new System.Drawing.Point(3, 386);
-            this.statusStripConfig.Name = "statusStripConfig";
-            this.statusStripConfig.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.statusStripConfig.Size = new System.Drawing.Size(782, 22);
-            this.statusStripConfig.TabIndex = 2;
-            // 
-            // toolStripStatusLblConfig
-            // 
-            this.toolStripStatusLblConfig.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.toolStripStatusLblConfig.Name = "toolStripStatusLblConfig";
-            this.toolStripStatusLblConfig.Size = new System.Drawing.Size(665, 17);
-            this.toolStripStatusLblConfig.Spring = true;
-            this.toolStripStatusLblConfig.Text = "Estado";
-            this.toolStripStatusLblConfig.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // prgBarConfig
-            // 
-            this.prgBarConfig.Name = "prgBarConfig";
-            this.prgBarConfig.Size = new System.Drawing.Size(100, 16);
             // 
             // Config
             // 
@@ -416,8 +417,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(796, 444);
             this.Controls.Add(this.tabControl1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.MaximizeBox = false;
             this.Name = "Config";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Configuración";
+            this.TopMost = true;
             this.tabControl1.ResumeLayout(false);
             this.tbPgValores.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -425,12 +431,12 @@
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tbPgImport.ResumeLayout(false);
             this.tbPgImport.PerformLayout();
+            this.statusStripConfig.ResumeLayout(false);
+            this.statusStripConfig.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
-            this.statusStripConfig.ResumeLayout(false);
-            this.statusStripConfig.PerformLayout();
             this.ResumeLayout(false);
 
         }

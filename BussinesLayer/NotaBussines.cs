@@ -9,39 +9,81 @@ namespace BussinesLayer
     {
         public List<Nota> listarNotasOrienta()
         {
-            NotaData ndt = new NotaData();
-            return ndt.ListNotasOrienta();
+            try
+            {
+                return new NotaData().ListNotasOrienta();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         public List<Nota> listarNotas()
         {
-            NotaData ndt = new NotaData();
-            return ndt.ListNotas();
+            try
+            {
+                return new NotaData().ListNotas();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         public List<NotasBasicas> listarNotasBasicas8()
         {
-            NotaData ndt = new NotaData();
-            return ndt.listarNotasBasicas8();
+            try
+            {
+                return new NotaData().listarNotasBasicas8();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public List<NotasBasicas> listarNotasBasicas9()
+        {
+            try
+            {
+                return new NotaData().listarNotasBasicas9();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         public Nota NotaOrientaXId(int id)
         {
-            NotaData nt = new NotaData();
-            return nt.notaOrientaXId(id);
+            try
+            {
+                return new NotaData().notaOrientaXId(id);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
-        
+
         public NotasBasicas notasBasicasXMatYNivel(int mat, int nivel)
         {
-            return new NotaData().notasBasicasXMatricula(mat, nivel);
+            try
+            {
+                return new NotaData().notasBasicasXMatricula(mat, nivel);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         public void editNotaOrienta(int id, decimal entrevista, decimal vocacional)
         {
-            NotaData dt = new NotaData();
             try
             {
-                dt.ActualizaNotaOrienta(new Nota
+                new NotaData().ActualizaNotaOrienta(new Nota
                 {
                     IdNota = id,
                     Entrevista = entrevista,
@@ -57,20 +99,38 @@ namespace BussinesLayer
 
         public void delNota(int id)
         {
-            NotaData nota = new NotaData();
-            nota.BorraNota(id);
+            try
+            {
+                new NotaData().BorraNota(id);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         public void delNotaOrienta(int id)
         {
-            NotaData nota = new NotaData();
-            nota.BorraNotaOrienta(id);
+            try
+            {
+                new NotaData().BorraNotaOrienta(id);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         public void delNotasXMatYNivel(int mat, int nivel)
         {
-            NotaData nota = new NotaData();
-            nota.BorraNotasXMatYNivel(mat, nivel);
+            try
+            {
+                new NotaData().BorraNotasXMatYNivel(mat, nivel);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         public void guardarNota(Nota nota)
@@ -83,15 +143,13 @@ namespace BussinesLayer
             {
                 throw new Exception(ex.Message);
             }
-
         }
 
         public void guardarNotaOrienta(int matricula, int curso, decimal entrevista, decimal vocacional)
         {
-            NotaData dt = new NotaData();
             try
             {
-                dt.GuardaNotaOrienta(new Nota
+                new NotaData().GuardaNotaOrienta(new Nota
                 {
                     Matricula = matricula,
                     Curso_lectivo = curso,
@@ -103,7 +161,6 @@ namespace BussinesLayer
             {
                 throw new Exception(ex.Message);
             }
-
         }
 
         public void editNota(Nota nota)

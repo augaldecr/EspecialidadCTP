@@ -28,7 +28,7 @@ namespace DataLayer
             try
             {
                 cursoActivo = new CursoLectivoData().CursoActivo();
-                cursoInicial = cursoActivo - 1;
+                cursoInicial = cursoActivo - 2;
 
                 matriculas = new MatriculaData().MatriculasXCursoLectivo(cursoActivo);
                 asignaturas = new AsignaturaData().listarAsignaturas();
@@ -58,7 +58,7 @@ namespace DataLayer
             Calificaciones calificacion = new Calificaciones();
             calificacion.matricula = mat;
             calificacion.estudiante = new EstudianteData().estudianteXId(mat.Estudiante);
-            bool tallerI = false;
+            int tallerI = 0;
             List<Periodo> periodos;
 
             for (int nivel = 8; nivel <= 9; nivel++)
@@ -76,20 +76,24 @@ namespace DataLayer
                                 #region Talleres 
                                 if (nota.Asignatura > 11)
                                 {
-                                    #region Selección de taller 1 o 2
-                                    if (tallerI == false)
+                                    if (tallerI == 0)
                                     {
-                                        nota.Asignatura = 12;
-                                        tallerI = true;
+                                        tallerI = (int)nota.Asignatura;
+                                    }
+
+                                    #region Selección de taller 1 o 2
+                                    if (tallerI == nota.Asignatura)
+                                    {
+                                        nota.Asignatura = 312;
                                     }
                                     else
                                     {
-                                        nota.Asignatura = 13;
-                                        tallerI = false;
+                                        nota.Asignatura = 313;
                                     }
                                     #endregion
                                 }
                                 #endregion
+
                                 #region Selección de período
                                 if (nota.PeriodoNombre.Contains("Primer periodo") ||
                                         nota.PeriodoNombre.Contains("Segundo periodo") ||
@@ -111,6 +115,11 @@ namespace DataLayer
                                 }
                                 else
                                 {
+                                    calificacion.Notas.RemoveAll(
+                                        n => n.Matricula == nota.Matricula &&
+                                        n.Asignatura == nota.Asignatura &&
+                                        n.Nivel == nota.Nivel);
+
                                     nota.Periodo = 1;
                                     calificacion.Notas.Add(nota);
                                     nota.Periodo = 2;
@@ -129,20 +138,17 @@ namespace DataLayer
 
         private Nota notaXParam(string cedula, int periodo, int asignatura, int nivel, int idMatricula)
         {
-            string connStringPIAD = ConfigurationManager.ConnectionStrings["connStringPIAD"].ConnectionString;
-            using (MySqlConnection connPIAD = new MySqlConnection(connStringPIAD))
+            string connString = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
+            using (MySqlConnection conn = new MySqlConnection(connString))
             {
                 //TODO: Selecciona la nota de trendimiento
-                using (MySqlCommand cmd = new MySqlCommand("SELECT nota, periodo FROM trendimiento r " +
-                    "INNER JOIN ctp_noveno.asignaturas a ON r.codAsignatura=a.idasignatura " +
-                    "INNER JOIN bdpiiad2.tperiodos p ON r.codPeriodo=p.idperiodo " +
-                    "INNER JOIN bdpiiad2.tmatricula m ON r.cedula=m.cedEstudiante AND p.curso_lectivo=codCursoLectivo " +
-                    "WHERE r.cedula='" + cedula + "' AND r.codPeriodo=" + periodo +
-                    " AND r.codAsignatura=" + asignatura + " AND m.numNivel=" + nivel + ";", connPIAD))
+                using (MySqlCommand cmd = new MySqlCommand("SELECT nota, periodo, tipo FROM notas_trendimiento " +
+                    "WHERE cedula='" + cedula + "' AND codPeriodo=" + periodo +
+                    " AND codAsignatura=" + asignatura + " AND numNivel=" + nivel + ";", conn))
                 {
                     Nota nota = new Nota();
                     cmd.CommandType = CommandType.Text;
-                    connPIAD.Open();
+                    conn.Open();
 
                     MySqlDataReader dr = cmd.ExecuteReader();
 
@@ -152,10 +158,17 @@ namespace DataLayer
                         {
                             nota.Calificacion = dr.GetDecimal(0);
                             nota.PeriodoNombre = dr.GetString(1);
+                            nota.Tipo = dr.GetInt32(2);
                         }
                         dr.Close();
                     }
-                    connPIAD.Close();
+                    conn.Close();
+
+                    if (nota.Calificacion > 100)
+                    {
+                        nota.Calificacion = 100;
+                    }
+
                     if (nota.Calificacion > 0)
                     {
                         nota.Matricula = idMatricula;
@@ -163,7 +176,15 @@ namespace DataLayer
                         nota.Nivel = nivel;
                         nota.Periodo = periodo;
                         return nota;
-                    }
+                    }/*else if(nota.Calificacion == 0 && nota.Tipo == 2)
+                    {
+                        nota.Matricula = idMatricula;
+                        nota.Asignatura = asignatura;
+                        nota.Nivel = nivel;
+                        nota.Periodo = periodo;
+                        nota.Calificacion = null;
+                        return nota;
+                    } */
                     else
                     {
                         return null;

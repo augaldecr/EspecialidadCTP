@@ -13,6 +13,7 @@
         public int? Periodo { get; set; }
         public string PeriodoNombre { get; set; }
         public decimal? Calificacion { get; set; }
+        public int? Tipo { get; set; }
         public decimal? Entrevista { get; set; }
         public decimal? Vocacional { get; set; }
     }

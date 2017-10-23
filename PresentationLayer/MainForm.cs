@@ -6,13 +6,11 @@ namespace PresentationLayer
 {
     public partial class MainForm : Form
     {
-        //TODO: Agregado campo "especialidad_x" para llenar con especialidad ganada
         //TODO: Jalar notas de base de datos de piad
         //TODO: Filtrar estudiantes y notas por sección en el MainForm
-        //TODO: Agregada vista "curso_activo", "periodos_curso_activo"
-        //TODO: Agregado Stored Procedure "SeleccionarPeriodosXCursoLectivo"
-        //TODO: Agregado Stored Procedure "SeleccionarMatriculasXCursoLect"
-        //TODO: Agregadas Views "notas_curso_activo8" y "notas_curso_activo9"
+        //TODO: Crear vista "notas_trendimiento"
+        //TODO: Cambio de "idasignatura" de Taller1 y Taller2 a 312 y 313 respectivamente
+        //TODO: Cambio de id a talleres en vistas "notas_curso_activo8" y "notas_curso_activo9"
         public MainForm()
         {
             InitializeComponent();
@@ -28,6 +26,39 @@ namespace PresentationLayer
         {
             EstudiantesBussines est = new EstudiantesBussines();
             dtGrdVwEstudiantes.DataSource = est.listar();
+            formateaDTEstudiantes();
+        }
+
+        private void formateaDTEstudiantes()
+        {
+            dtGrdVwEstudiantes.Columns["IdEstudiante"].HeaderText = "Id";
+            dtGrdVwEstudiantes.Columns["Cedula"].HeaderText = "Cédula";
+            dtGrdVwEstudiantes.Columns["Nombre"].HeaderText = "Nombre";
+            dtGrdVwEstudiantes.Columns["Apellido1"].HeaderText = "Primer apellido";
+            dtGrdVwEstudiantes.Columns["Apellido2"].HeaderText = "Segundo apellido";
+            dtGrdVwEstudiantes.Columns["IdGrupo"].Visible = false;
+            dtGrdVwEstudiantes.Columns["Direccion"].HeaderText = "Dirección";
+            dtGrdVwEstudiantes.Columns["Telefono"].HeaderText = "Teléfono";
+            dtGrdVwEstudiantes.Columns["Celular"].HeaderText = "Celular";
+            dtGrdVwEstudiantes.Columns["Email"].HeaderText = "Correo electrónico";
+            dtGrdVwEstudiantes.Columns["Ctpp"].Visible = false;
+
+            if(!dtGrdVwEstudiantes.Columns.Contains("Local"))
+            {
+                DataGridViewCheckBoxColumn DtGVCl = new DataGridViewCheckBoxColumn();
+                DtGVCl.DataPropertyName = "Ctpp";
+                DtGVCl.TrueValue = "1";
+                DtGVCl.FalseValue = "0";
+                DtGVCl.HeaderText = "Local";
+                DtGVCl.Name = "Local";
+                DtGVCl.ReadOnly = true;
+                dtGrdVwEstudiantes.Columns.AddRange(new DataGridViewColumn[] { DtGVCl });
+            }
+
+            foreach (DataGridViewColumn column in dtGrdVwEstudiantes.Columns)
+            {
+                column.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            }
             dtGrdVwEstudiantes.Refresh();
             dtGrdVwEstudiantes.Update();
         }
@@ -206,21 +237,27 @@ namespace PresentationLayer
 
         private void formateaDTNotasOrienta()
         {
-            /*dtGrdVwOrienta.Columns["IdNota"].Visible = false;
+            #region Oculta columnas nulas
+            dtGrdVwOrienta.Columns["IdNota"].Visible = false;
             dtGrdVwOrienta.Columns["Matricula"].Visible = false;
             dtGrdVwOrienta.Columns["Asignatura"].Visible = false;
             dtGrdVwOrienta.Columns["Curso_lectivo"].Visible = false;
             dtGrdVwOrienta.Columns["Nivel"].Visible = false;
             dtGrdVwOrienta.Columns["Periodo"].Visible = false;
-            dtGrdVwOrienta.Columns["Calificacion"].Visible = false;
             dtGrdVwOrienta.Columns["PeriodoNombre"].Visible = false;
-            //dtGrdVwOrienta.Columns["Apellido1"].HeaderText = "Primer apellido";
-            //dtGrdVwOrienta.Columns["Apellido2"].HeaderText = "Segundo apellido";
-            //dtGrdVwOrienta.Columns["nombre"].Name = "Nombre1";
-            //dtGrdVwOrienta.Columns["Apellido1"].Name = "ApellidoOne";
-            //dtGrdVwOrienta.Columns["Apellido2"].Name = "ApellidoTwo";
+            dtGrdVwOrienta.Columns["Calificacion"].Visible = false;
+            #endregion
+
+            #region Nombre de columnas
+            dtGrdVwOrienta.Columns["Apellido1"].HeaderText = "Primer apellido";
+            dtGrdVwOrienta.Columns["Apellido2"].HeaderText = "Segundo apellido";
+            dtGrdVwOrienta.Columns["Nombre"].HeaderText = "Nombre";
+            dtGrdVwOrienta.Columns["Entrevista"].HeaderText = "Entrevista";
+            dtGrdVwOrienta.Columns["Vocacional"].HeaderText = "Vocacional";
+            #endregion
+
             dtGrdVwOrienta.Refresh();
-            dtGrdVwOrienta.Update();*/
+            dtGrdVwOrienta.Update();
         }
         #endregion
 
@@ -247,7 +284,7 @@ namespace PresentationLayer
         private void btnEditNota_Click(object sender, EventArgs e)
         {
             EditNotas8 notas8 = new EditNotas8(
-                int.Parse(dtGrdVwNotas.Rows[dtGrdVwOrienta.CurrentRow.Index].Cells[0].Value.ToString()));
+                int.Parse(dtGrdVwNotas.Rows[dtGrdVwNotas.CurrentRow.Index].Cells[0].Value.ToString()));
             notas8.Show();
             notas8.RfDTNotas8 += Notas8_RfDTNotas8;
         }
@@ -276,9 +313,9 @@ namespace PresentationLayer
                 NotaBussines bs = new NotaBussines();
                 try
                 {
-                        bs.delNotasXMatYNivel(int.Parse(dtGrdVwNotas.Rows[dtGrdVwOrienta.CurrentRow.Index].Cells["IdMatricula"].Value.ToString()), 8);
-                        MessageBox.Show("Notas eliminadas de manera exitosa");
-                        refrescaDTNotasOrienta();
+                    bs.delNotasXMatYNivel(int.Parse(dtGrdVwNotas.Rows[dtGrdVwNotas.CurrentRow.Index].Cells["IdMatricula"].Value.ToString()), 8);
+                    MessageBox.Show("Notas eliminadas de manera exitosa");
+                    refrescaDTNotas8();
                 }
                 catch (Exception ex)
                 {
@@ -289,8 +326,8 @@ namespace PresentationLayer
 
         private void refrescaDTNotas8()
         {
-            vaciarOrientaDatosDtGrdVw();
-            llenarOrientaDatosDtGrdVw();
+            vaciarDtGrdVwNotas8();
+            llenarNotas8DtGrdVw();
             formateaDTNotas8();
         }
 
@@ -329,6 +366,119 @@ namespace PresentationLayer
         }
         #endregion
 
+        #region TabNotas9
+        private void tbPgNotas9_Enter(object sender, EventArgs e)
+        {
+            llenarNotas9DtGrdVw();
+        }
+
+        private void llenarNotas9DtGrdVw()
+        {
+            NotaBussines nt = new NotaBussines();
+            dtGrdVwNotas9.DataSource = nt.listarNotasBasicas9();
+            formateaDTNotas9();
+        }
+
+        private void vaciarDtGrdVwNotas9()
+        {
+            dtGrdVwNotas9.DataSource = null;
+            dtGrdVwNotas9.Refresh();
+            dtGrdVwNotas9.Update();
+        }
+
+        private void btnEditNota9_Click(object sender, EventArgs e)
+        {
+            EditNotas9 notas9 = new EditNotas9(
+                int.Parse(dtGrdVwNotas9.Rows[dtGrdVwNotas9.CurrentRow.Index].Cells[0].Value.ToString()));
+            notas9.Show();
+            notas9.RfDTNotas9 += Notas9_RfDTNotas9;
+        }
+
+        private void dtGrdVwNotas9_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            EditNotas9 notas9 = new EditNotas9(
+                int.Parse(dtGrdVwNotas9.Rows[e.RowIndex].Cells["IdMatricula"].Value.ToString()));
+
+            notas9.Show();
+            notas9.RfDTNotas9 += Notas9_RfDTNotas9;
+        }
+
+        private void Notas9_RfDTNotas9()
+        {
+            refrescaDTNotas9();
+        }
+
+        private void btnDelNota9_Click(object sender, EventArgs e)
+        {
+            DialogResult rs = MessageBox.Show("¿Desea eliminar las notas",
+                "Borrar", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
+
+            if (rs == DialogResult.Yes)
+            {
+                NotaBussines bs = new NotaBussines();
+                try
+                {
+                    bs.delNotasXMatYNivel(int.Parse(dtGrdVwNotas9.Rows[dtGrdVwNotas9.CurrentRow.Index].Cells["IdMatricula"].Value.ToString()), 9);
+                    MessageBox.Show("Notas eliminadas de manera exitosa");
+                    refrescaDTNotas9();
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.Message);
+                }
+            }
+        }
+
+        private void refrescaDTNotas9()
+        {
+            vaciarDtGrdVwNotas9();
+            llenarNotas9DtGrdVw();
+            formateaDTNotas9();
+        }
+
+        private void formateaDTNotas9()
+        {
+            dtGrdVwNotas9.Columns["id_esp1"].Visible = false;
+            dtGrdVwNotas9.Columns["id_esp2"].Visible = false;
+            dtGrdVwNotas9.Columns["id_esp3"].Visible = false;
+            dtGrdVwNotas9.Columns["esp3"].Visible = false;
+            dtGrdVwNotas9.Columns["id_cie1"].Visible = false;
+            dtGrdVwNotas9.Columns["id_cie2"].Visible = false;
+            dtGrdVwNotas9.Columns["id_cie3"].Visible = false;
+            dtGrdVwNotas9.Columns["cie3"].Visible = false;
+            dtGrdVwNotas9.Columns["id_estsoc1"].Visible = false;
+            dtGrdVwNotas9.Columns["id_estsoc2"].Visible = false;
+            dtGrdVwNotas9.Columns["id_estsoc3"].Visible = false;
+            dtGrdVwNotas9.Columns["estsoc3"].Visible = false;
+            dtGrdVwNotas9.Columns["id_mat1"].Visible = false;
+            dtGrdVwNotas9.Columns["id_mat2"].Visible = false;
+            dtGrdVwNotas9.Columns["id_mat3"].Visible = false;
+            dtGrdVwNotas9.Columns["mat3"].Visible = false;
+            dtGrdVwNotas9.Columns["id_ing1"].Visible = false;
+            dtGrdVwNotas9.Columns["id_ing2"].Visible = false;
+            dtGrdVwNotas9.Columns["id_ing3"].Visible = false;
+            dtGrdVwNotas9.Columns["ing3"].Visible = false;
+            dtGrdVwNotas9.Columns["id_civ1"].Visible = false;
+            dtGrdVwNotas9.Columns["id_civ2"].Visible = false;
+            dtGrdVwNotas9.Columns["id_civ3"].Visible = false;
+            dtGrdVwNotas9.Columns["civ3"].Visible = false;
+            dtGrdVwNotas9.Columns["id_talI1"].Visible = false;
+            dtGrdVwNotas9.Columns["id_talI2"].Visible = false;
+            dtGrdVwNotas9.Columns["id_talI3"].Visible = false;
+            dtGrdVwNotas9.Columns["talI3"].Visible = false;
+            dtGrdVwNotas9.Columns["id_talII1"].Visible = false;
+            dtGrdVwNotas9.Columns["id_talII2"].Visible = false;
+            dtGrdVwNotas9.Columns["id_talII3"].Visible = false;
+            dtGrdVwNotas9.Columns["talII3"].Visible = false;
+            foreach (DataGridViewColumn column in dtGrdVwNotas9.Columns)
+            {
+                column.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            }
+            dtGrdVwNotas9.Refresh();
+            dtGrdVwNotas9.Update();
+        }
+        #endregion
+
         #region Configuracion
         private void btnConfig_Click(object sender, EventArgs e)
         {
@@ -346,6 +496,11 @@ namespace PresentationLayer
                 MessageBox.Show("Contraseña incorrecta", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        #endregion
+
+        private void btnEscogenciaEspec_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Muestra la escogencia de especialidad por los estudiantes");
+        }
     }
+    #endregion
 }
