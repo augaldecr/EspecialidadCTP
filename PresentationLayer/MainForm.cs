@@ -8,9 +8,9 @@ namespace PresentationLayer
     {
         //TODO: Jalar notas de base de datos de piad
         //TODO: Filtrar estudiantes y notas por sección en el MainForm
-        //TODO: Crear vista "notas_trendimiento"
-        //TODO: Cambio de "idasignatura" de Taller1 y Taller2 a 312 y 313 respectivamente
-        //TODO: Cambio de id a talleres en vistas "notas_curso_activo8" y "notas_curso_activo9"
+        //TODO: Creación de vista: "seleccion_especialidad_estudiantes"
+        //TODO: Modificación de vista "asignaturas_all"
+        //TODO: Creación de vista "talleres_all"
         public MainForm()
         {
             InitializeComponent();

@@ -23,8 +23,6 @@ namespace DataLayer
             List<Calificaciones> calificaciones = new List<Calificaciones>();
             List<Asignatura> asignaturas = new List<Asignatura>();
 
-            int prueba = 0;
-
             try
             {
                 cursoActivo = new CursoLectivoData().CursoActivo();
@@ -38,11 +36,6 @@ namespace DataLayer
                     calificaciones.Add(calificacion(mat, cursoInicial, cursoActivo,
                         asignaturas));
                     addAvanceDT();
-                    prueba++;
-                    if (prueba == 3)
-                    {
-                        break;
-                    }
                 }
             }
             catch (Exception ex)
@@ -58,8 +51,14 @@ namespace DataLayer
             Calificaciones calificacion = new Calificaciones();
             calificacion.matricula = mat;
             calificacion.estudiante = new EstudianteData().estudianteXId(mat.Estudiante);
-            int tallerI = 0;
+            int tallerI8 = 0;
+            int tallerI9 = 0;
             List<Periodo> periodos;
+
+            foreach (Asignatura asig in new AsignaturaData().listarTalleresXCedula(calificacion.estudiante.Cedula))
+            {
+                asignaturas.Add(asig);
+            }
 
             for (int nivel = 8; nivel <= 9; nivel++)
             {
@@ -76,19 +75,45 @@ namespace DataLayer
                                 #region Talleres 
                                 if (nota.Asignatura > 11)
                                 {
-                                    if (tallerI == 0)
+                                    #region Seleccion de taller 1 para octavo
+                                    if (nota.Nivel == 8)
                                     {
-                                        tallerI = (int)nota.Asignatura;
-                                    }
 
-                                    #region Selección de taller 1 o 2
-                                    if (tallerI == nota.Asignatura)
-                                    {
-                                        nota.Asignatura = 312;
+                                        if (tallerI8 == 0)
+                                        {
+                                            tallerI8 = (int)nota.Asignatura;
+                                        }
+
+                                        #region Selección de taller 1 o 2
+                                        if (tallerI8 == nota.Asignatura)
+                                        {
+                                            nota.Asignatura = 312;
+                                        }
+                                        else
+                                        {
+                                            nota.Asignatura = 313;
+                                        }
+                                        #endregion
                                     }
-                                    else
+                                    #endregion
+                                    #region Seleccion de taller 1 para noveno
+                                    if (nota.Nivel == 9)
                                     {
-                                        nota.Asignatura = 313;
+                                        if (tallerI9 == 0)
+                                        {
+                                            tallerI9 = (int)nota.Asignatura;
+                                        }
+
+                                        #region Selección de taller 1 o 2
+                                        if (tallerI9 == nota.Asignatura)
+                                        {
+                                            nota.Asignatura = 312;
+                                        }
+                                        else
+                                        {
+                                            nota.Asignatura = 313;
+                                        }
+                                        #endregion
                                     }
                                     #endregion
                                 }
@@ -112,20 +137,47 @@ namespace DataLayer
                                         nota.Periodo = 3;
                                     }
                                     calificacion.Notas.Add(nota);
+                                    Console.WriteLine(nota.Matricula + ", " + nota.Asignatura + ", " + nota.Nivel + ", " + nota.Periodo + ", " + nota.Calificacion);
                                 }
                                 else
                                 {
-                                    calificacion.Notas.RemoveAll(
-                                        n => n.Matricula == nota.Matricula &&
+                                    calificacion.Notas.RemoveAll(n =>
+                                        n.Matricula == nota.Matricula &&
                                         n.Asignatura == nota.Asignatura &&
                                         n.Nivel == nota.Nivel);
 
-                                    nota.Periodo = 1;
-                                    calificacion.Notas.Add(nota);
-                                    nota.Periodo = 2;
-                                    calificacion.Notas.Add(nota);
-                                    nota.Periodo = 3;
-                                    calificacion.Notas.Add(nota);
+                                    calificacion.Notas.Add(new Nota()
+                                    {
+                                        Asignatura = nota.Asignatura,
+                                        Calificacion = nota.Calificacion,
+                                        Matricula = nota.Matricula,
+                                        Nivel = nota.Nivel,
+                                        Periodo = 1,
+                                        PeriodoNombre = "Primer periodo",
+                                    });
+                                    Console.WriteLine(nota.Matricula + ", " + nota.Asignatura + ", " + nota.Nivel + ", " + nota.Periodo + ", " + nota.Calificacion);
+
+                                    calificacion.Notas.Add(new Nota()
+                                    {
+                                        Asignatura = nota.Asignatura,
+                                        Calificacion = nota.Calificacion,
+                                        Matricula = nota.Matricula,
+                                        Nivel = nota.Nivel,
+                                        Periodo = 2,
+                                        PeriodoNombre = "Segundo periodo",
+                                    });
+                                    Console.WriteLine(nota.Matricula + ", " + nota.Asignatura + ", " + nota.Nivel + ", " + nota.Periodo + ", " + nota.Calificacion);
+
+                                    calificacion.Notas.Add(new Nota()
+                                    {
+                                        Asignatura = nota.Asignatura,
+                                        Calificacion = nota.Calificacion,
+                                        Matricula = nota.Matricula,
+                                        Nivel = nota.Nivel,
+                                        Periodo = 3,
+                                        PeriodoNombre = "Tercer periodo",
+                                    });
+                                    Console.WriteLine(nota.Matricula + ", " + nota.Asignatura + ", " + nota.Nivel + ", " + nota.Periodo + ", " + nota.Calificacion);
                                 }
                                 #endregion
                             }
@@ -139,10 +191,14 @@ namespace DataLayer
         private Nota notaXParam(string cedula, int periodo, int asignatura, int nivel, int idMatricula)
         {
             string connString = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
-            using (MySqlConnection conn = new MySqlConnection(connString))
+            #region SQL con texto
+            /*using (MySqlConnection conn = new MySqlConnection(connString))
             {
                 //TODO: Selecciona la nota de trendimiento
-                using (MySqlCommand cmd = new MySqlCommand("SELECT nota, periodo, tipo FROM notas_trendimiento " +
+                /*using (MySqlCommand cmd = new MySqlCommand("SELECT nota, periodo, tipo FROM ctp_noveno.notas_trendimiento " +
+                    "WHERE cedula='" + cedula + "' AND codPeriodo=" + periodo +
+                    " AND codAsignatura=" + asignatura + " AND numNivel=" + nivel + ";", conn))
+                using (MySqlCommand cmd = new MySqlCommand("SELECT nota, periodo, tipo FROM ctp_noveno.notas_trendimiento " +
                     "WHERE cedula='" + cedula + "' AND codPeriodo=" + periodo +
                     " AND codAsignatura=" + asignatura + " AND numNivel=" + nivel + ";", conn))
                 {
@@ -158,10 +214,47 @@ namespace DataLayer
                         {
                             nota.Calificacion = dr.GetDecimal(0);
                             nota.PeriodoNombre = dr.GetString(1);
-                            nota.Tipo = dr.GetInt32(2);
+                            //nota.Tipo = dr.GetInt32(2);
                         }
                         dr.Close();
                     }
+                    conn.Close();*/
+            #endregion
+            using (MySqlConnection conn = new MySqlConnection())
+            {
+                using (MySqlCommand cmd = new MySqlCommand())
+                {
+                    Nota nota = new Nota();
+
+                    conn.ConnectionString = connString;
+                    conn.Open();
+                    
+                    cmd.Connection = conn;
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandText = "nota_x_param_viejo";
+
+                    cmd.Parameters.Add("@pnumNivel", MySqlDbType.Int32).Value = nivel;
+                    cmd.Parameters.Add("@pcodPeriodo", MySqlDbType.Int32).Value = periodo;
+                    cmd.Parameters.Add("@pasignatura", MySqlDbType.Int32).Value = asignatura;
+                    cmd.Parameters.Add("@pcedula", MySqlDbType.VarChar).Value = cedula;
+
+                    MySqlParameter pnota = new MySqlParameter();
+                    pnota.ParameterName = "@pnota";
+                    pnota.Direction = ParameterDirection.Output;
+                    pnota.MySqlDbType = MySqlDbType.Decimal;
+                    cmd.Parameters.Add(pnota);
+
+                    MySqlParameter pperiodo = new MySqlParameter();
+                    pperiodo.ParameterName = "@pperiodo";
+                    pperiodo.Direction = ParameterDirection.Output;
+                    pperiodo.MySqlDbType = MySqlDbType.VarChar;
+                    cmd.Parameters.Add(pperiodo);
+
+                    cmd.ExecuteNonQuery();
+
+                    nota.Calificacion = cmd.Parameters["@pnota"].Value == DBNull.Value ? 0 : (Decimal)cmd.Parameters["@pnota"].Value;
+                    nota.PeriodoNombre = cmd.Parameters["@pperiodo"].Value == DBNull.Value ? null : (string)cmd.Parameters["@pperiodo"].Value;
+
                     conn.Close();
 
                     if (nota.Calificacion > 100)
@@ -176,15 +269,7 @@ namespace DataLayer
                         nota.Nivel = nivel;
                         nota.Periodo = periodo;
                         return nota;
-                    }/*else if(nota.Calificacion == 0 && nota.Tipo == 2)
-                    {
-                        nota.Matricula = idMatricula;
-                        nota.Asignatura = asignatura;
-                        nota.Nivel = nivel;
-                        nota.Periodo = periodo;
-                        nota.Calificacion = null;
-                        return nota;
-                    } */
+                    }
                     else
                     {
                         return null;
