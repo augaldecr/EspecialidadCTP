@@ -2,6 +2,8 @@
 using Entities;
 using System;
 using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PresentationLayer
@@ -16,7 +18,12 @@ namespace PresentationLayer
             prgBarConfig.Step = 1;
         }
 
-        private void btnImpCalif_Click(object sender, EventArgs e)
+        private async void btnImpCalif_Click(object sender, EventArgs e)
+        {
+            await importaNotas();
+        }
+
+        private async Task importaNotas()
         {
             try
             {

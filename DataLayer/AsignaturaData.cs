@@ -80,6 +80,7 @@ namespace DataLayer
                                 Asignatura taller = new Asignatura();
                                 taller.IdAsignatura = dr.GetInt32(0);
                                 taller.Nombre = dr.GetString(1);
+                                taller.Nivel = dr.GetInt32(2);
 
                                 talleres.Add(taller);
                             }

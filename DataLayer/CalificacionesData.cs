@@ -12,6 +12,11 @@ namespace DataLayer
         public delegate void AddAvanceDT();
         public event AddAvanceDT addAvanceDT;
 
+        int tallerI8 = 0;
+        int tallerII8 = 0;
+        int tallerI9 = 0;
+        int tallerII9 = 0;
+
         #region ListarCalificacionesTRendimiento
         public List<Calificaciones> ListCalificacionesTRendimiento()
         {
@@ -33,9 +38,40 @@ namespace DataLayer
 
                 foreach (Matricula mat in matriculas)
                 {
+                    foreach (Asignatura asig in new AsignaturaData().listarTalleresXCedula(new EstudianteData().estudianteXId(mat.Estudiante).Cedula))
+                    {
+                        asignaturas.Add(asig);
+                        if (asig.Nivel == 8)
+                        {
+                            if (tallerI8 != 0 && tallerII8 == 0)
+                            {
+                                tallerII8 = asig.IdAsignatura;
+                            }
+                            if (tallerI8 == 0 && tallerII8 == 0)
+                            {
+                                tallerI8 = asig.IdAsignatura;
+                            }
+                        }
+                        if (asig.Nivel == 9)
+                        {
+                            if (tallerI9 != 0 && tallerII9 == 0)
+                            {
+                                tallerII9 = asig.IdAsignatura;
+                            }
+                            if (tallerI9 == 0 && tallerII9 == 0)
+                            {
+                                tallerI9 = asig.IdAsignatura;
+                            }
+                        }
+                    }
                     calificaciones.Add(calificacion(mat, cursoInicial, cursoActivo,
                         asignaturas));
                     addAvanceDT();
+
+                    tallerI8 = 0;
+                    tallerII8 = 0;
+                    tallerI9 = 0;
+                    tallerII9 = 0;
                 }
             }
             catch (Exception ex)
@@ -51,14 +87,7 @@ namespace DataLayer
             Calificaciones calificacion = new Calificaciones();
             calificacion.matricula = mat;
             calificacion.estudiante = new EstudianteData().estudianteXId(mat.Estudiante);
-            int tallerI8 = 0;
-            int tallerI9 = 0;
             List<Periodo> periodos;
-
-            foreach (Asignatura asig in new AsignaturaData().listarTalleresXCedula(calificacion.estudiante.Cedula))
-            {
-                asignaturas.Add(asig);
-            }
 
             for (int nivel = 8; nivel <= 9; nivel++)
             {
@@ -78,18 +107,12 @@ namespace DataLayer
                                     #region Seleccion de taller 1 para octavo
                                     if (nota.Nivel == 8)
                                     {
-
-                                        if (tallerI8 == 0)
-                                        {
-                                            tallerI8 = (int)nota.Asignatura;
-                                        }
-
                                         #region Selección de taller 1 o 2
-                                        if (tallerI8 == nota.Asignatura)
+                                        if (nota.Asignatura == tallerI8)
                                         {
                                             nota.Asignatura = 312;
                                         }
-                                        else
+                                        else if(nota.Asignatura == tallerII8)
                                         {
                                             nota.Asignatura = 313;
                                         }
@@ -99,17 +122,12 @@ namespace DataLayer
                                     #region Seleccion de taller 1 para noveno
                                     if (nota.Nivel == 9)
                                     {
-                                        if (tallerI9 == 0)
-                                        {
-                                            tallerI9 = (int)nota.Asignatura;
-                                        }
-
                                         #region Selección de taller 1 o 2
-                                        if (tallerI9 == nota.Asignatura)
+                                        if (nota.Asignatura == tallerI9)
                                         {
                                             nota.Asignatura = 312;
                                         }
-                                        else
+                                        else if (nota.Asignatura == tallerII9)
                                         {
                                             nota.Asignatura = 313;
                                         }
@@ -146,7 +164,7 @@ namespace DataLayer
                                         n.Asignatura == nota.Asignatura &&
                                         n.Nivel == nota.Nivel);
 
-                                    calificacion.Notas.Add(new Nota()
+                                    Nota nota1 = new Nota()
                                     {
                                         Asignatura = nota.Asignatura,
                                         Calificacion = nota.Calificacion,
@@ -154,10 +172,12 @@ namespace DataLayer
                                         Nivel = nota.Nivel,
                                         Periodo = 1,
                                         PeriodoNombre = "Primer periodo",
-                                    });
-                                    Console.WriteLine(nota.Matricula + ", " + nota.Asignatura + ", " + nota.Nivel + ", " + nota.Periodo + ", " + nota.Calificacion);
+                                    };
+                                    calificacion.Notas.Add(nota1);
+                                    Console.WriteLine(nota1.Matricula + ", " + nota1.Asignatura + ", " + nota1.Nivel + ", " + nota1.Periodo + ", " + nota1.Calificacion);
+                                    nota1 = null;
 
-                                    calificacion.Notas.Add(new Nota()
+                                    Nota nota2 = new Nota()
                                     {
                                         Asignatura = nota.Asignatura,
                                         Calificacion = nota.Calificacion,
@@ -165,10 +185,12 @@ namespace DataLayer
                                         Nivel = nota.Nivel,
                                         Periodo = 2,
                                         PeriodoNombre = "Segundo periodo",
-                                    });
-                                    Console.WriteLine(nota.Matricula + ", " + nota.Asignatura + ", " + nota.Nivel + ", " + nota.Periodo + ", " + nota.Calificacion);
+                                    };
+                                    calificacion.Notas.Add(nota2);
+                                    Console.WriteLine(nota2.Matricula + ", " + nota2.Asignatura + ", " + nota2.Nivel + ", " + nota2.Periodo + ", " + nota2.Calificacion);
+                                    nota2 = null;
 
-                                    calificacion.Notas.Add(new Nota()
+                                    Nota nota3 = new Nota()
                                     {
                                         Asignatura = nota.Asignatura,
                                         Calificacion = nota.Calificacion,
@@ -176,8 +198,10 @@ namespace DataLayer
                                         Nivel = nota.Nivel,
                                         Periodo = 3,
                                         PeriodoNombre = "Tercer periodo",
-                                    });
+                                    };
+                                    calificacion.Notas.Add(nota3);
                                     Console.WriteLine(nota.Matricula + ", " + nota.Asignatura + ", " + nota.Nivel + ", " + nota.Periodo + ", " + nota.Calificacion);
+                                    nota3 = null;
                                 }
                                 #endregion
                             }
@@ -191,35 +215,7 @@ namespace DataLayer
         private Nota notaXParam(string cedula, int periodo, int asignatura, int nivel, int idMatricula)
         {
             string connString = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
-            #region SQL con texto
-            /*using (MySqlConnection conn = new MySqlConnection(connString))
-            {
-                //TODO: Selecciona la nota de trendimiento
-                /*using (MySqlCommand cmd = new MySqlCommand("SELECT nota, periodo, tipo FROM ctp_noveno.notas_trendimiento " +
-                    "WHERE cedula='" + cedula + "' AND codPeriodo=" + periodo +
-                    " AND codAsignatura=" + asignatura + " AND numNivel=" + nivel + ";", conn))
-                using (MySqlCommand cmd = new MySqlCommand("SELECT nota, periodo, tipo FROM ctp_noveno.notas_trendimiento " +
-                    "WHERE cedula='" + cedula + "' AND codPeriodo=" + periodo +
-                    " AND codAsignatura=" + asignatura + " AND numNivel=" + nivel + ";", conn))
-                {
-                    Nota nota = new Nota();
-                    cmd.CommandType = CommandType.Text;
-                    conn.Open();
 
-                    MySqlDataReader dr = cmd.ExecuteReader();
-
-                    if (dr.FieldCount > 0)
-                    {
-                        while (dr.Read())
-                        {
-                            nota.Calificacion = dr.GetDecimal(0);
-                            nota.PeriodoNombre = dr.GetString(1);
-                            //nota.Tipo = dr.GetInt32(2);
-                        }
-                        dr.Close();
-                    }
-                    conn.Close();*/
-            #endregion
             using (MySqlConnection conn = new MySqlConnection())
             {
                 using (MySqlCommand cmd = new MySqlCommand())
