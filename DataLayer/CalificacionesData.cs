@@ -231,7 +231,7 @@ namespace DataLayer
                     
                     cmd.Connection = conn;
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.CommandText = "nota_x_param_viejo";
+                    cmd.CommandText = "nota_x_param";
 
                     cmd.Parameters.Add("@pnumNivel", MySqlDbType.Int32).Value = nivel;
                     cmd.Parameters.Add("@pcodPeriodo", MySqlDbType.Int32).Value = periodo;

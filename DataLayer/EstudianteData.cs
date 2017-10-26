@@ -156,13 +156,62 @@ namespace DataLayer
         public List<Estudiante> ListEstudiante()
         {
             string connString = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
-            List<Estudiante> lista = new List<Estudiante>(); ;
+            List<Estudiante> lista = new List<Estudiante>();
 
             try
             {
                 using (MySqlConnection conn = new MySqlConnection(connString))
                 {
                     using (MySqlCommand cmd = new MySqlCommand("SELECT * FROM estudiantes_datos;", conn))
+                    {
+                        conn.Open();
+                        MySqlDataReader dr = cmd.ExecuteReader();
+
+                        if (dr.FieldCount > 0)
+                        {
+                            while (dr.Read())
+                            {
+                                Estudiante est = new Estudiante();
+                                est.IdEstudiante = dr.GetInt32(1);
+                                est.Cedula = dr.GetString(2);
+                                est.Nombre = dr.GetString(3);
+                                est.Apellido1 = dr.GetString(4);
+                                est.Apellido2 = dr.GetString(5);
+                                est.IdGrupo = dr.GetString(6);
+                                est.Grupo = dr.GetString(7);
+                                est.Celular = dr.GetString(8);
+                                est.Telefono = dr.GetString(9);
+                                est.Email = dr.GetString(10);
+                                est.Direccion = dr.GetString(11);
+                                est.Ctpp = dr.GetInt32(12);
+
+                                lista.Add(est);
+                            }
+                            dr.Close();
+                        }
+                        conn.Close();
+                    }
+                }
+                return lista;
+            }
+            catch (System.Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        #endregion
+
+        #region ListarEstudiante X Grupo
+        public List<Estudiante> ListEstudianteXGrupo(string grupo)
+        {
+            string connString = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
+            List<Estudiante> lista = new List<Estudiante>(); 
+
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connString))
+                {
+                    using (MySqlCommand cmd = new MySqlCommand("SELECT * FROM estudiantes_datos WHERE idgrupo="+ grupo +";", conn))
                     {
                         conn.Open();
                         MySqlDataReader dr = cmd.ExecuteReader();

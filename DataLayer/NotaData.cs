@@ -228,6 +228,37 @@ namespace DataLayer
         }
         #endregion
 
+        #region BorrarNotaOrientaXMatricula
+        public void BorraNotaOrientaXMAt(int mat)
+        {
+            string connString = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
+
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connString))
+                {
+                    using (MySqlCommand cmd = new MySqlCommand())
+                    {
+                        cmd.Connection = conn;
+                        cmd.CommandText = "DeleteNotaOrientaXMat";
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.Add("pmatricula", MySqlDbType.Int32);
+                        cmd.Parameters["pmatricula"].Value = mat;
+                        cmd.Parameters["pmatricula"].Direction = ParameterDirection.Input;
+
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+                        conn.Close();
+                    }
+                }
+            }
+            catch (System.Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        #endregion
+
         #region BorrarNota por matrícula y nivel
         public void BorraNotasXMatYNivel(int mat, int nivel)
         {

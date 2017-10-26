@@ -1,7 +1,10 @@
 ﻿using DataLayer;
 using Entities;
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
 
 namespace BussinesLayer
 {
@@ -9,8 +12,15 @@ namespace BussinesLayer
     {
         public List<Estudiante> listar()
         {
-            EstudianteData estu = new EstudianteData();
-            return estu.ListEstudiante();
+            try
+            {
+                EstudianteData estu = new EstudianteData();
+                return estu.ListEstudiante();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         public Estudiante estudianteXID(int id)

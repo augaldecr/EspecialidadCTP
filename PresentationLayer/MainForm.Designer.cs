@@ -38,6 +38,11 @@
             this.btnAddEstud = new System.Windows.Forms.Button();
             this.dtGrdVwEstudiantes = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.cmbBoxSeccionesEstud = new System.Windows.Forms.ComboBox();
+            this.txtBoxBusqEst = new System.Windows.Forms.TextBox();
             this.tbPgOrienta = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
@@ -70,6 +75,7 @@
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGrdVwEstudiantes)).BeginInit();
+            this.tableLayoutPanel11.SuspendLayout();
             this.tbPgOrienta.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
@@ -118,16 +124,19 @@
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.dtGrdVwEstudiantes, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.dtGrdVwEstudiantes, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel11, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanel1.RowCount = 4;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1250, 562);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
@@ -141,17 +150,17 @@
             this.tableLayoutPanel2.Controls.Add(this.btnEditStudent, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.btnAddEstud, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 480);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 508);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1244, 79);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1244, 51);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // btnDelStud
             // 
             this.btnDelStud.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnDelStud.Location = new System.Drawing.Point(976, 19);
+            this.btnDelStud.Location = new System.Drawing.Point(976, 5);
             this.btnDelStud.Name = "btnDelStud";
             this.btnDelStud.Size = new System.Drawing.Size(120, 40);
             this.btnDelStud.TabIndex = 2;
@@ -162,7 +171,7 @@
             // btnEditStudent
             // 
             this.btnEditStudent.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnEditStudent.Location = new System.Drawing.Point(561, 19);
+            this.btnEditStudent.Location = new System.Drawing.Point(561, 5);
             this.btnEditStudent.Name = "btnEditStudent";
             this.btnEditStudent.Size = new System.Drawing.Size(120, 40);
             this.btnEditStudent.TabIndex = 1;
@@ -173,7 +182,7 @@
             // btnAddEstud
             // 
             this.btnAddEstud.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnAddEstud.Location = new System.Drawing.Point(147, 19);
+            this.btnAddEstud.Location = new System.Drawing.Point(147, 5);
             this.btnAddEstud.Name = "btnAddEstud";
             this.btnAddEstud.Size = new System.Drawing.Size(120, 40);
             this.btnAddEstud.TabIndex = 0;
@@ -192,7 +201,7 @@
             this.dtGrdVwEstudiantes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtGrdVwEstudiantes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtGrdVwEstudiantes.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dtGrdVwEstudiantes.Location = new System.Drawing.Point(3, 87);
+            this.dtGrdVwEstudiantes.Location = new System.Drawing.Point(3, 115);
             this.dtGrdVwEstudiantes.MultiSelect = false;
             this.dtGrdVwEstudiantes.Name = "dtGrdVwEstudiantes";
             this.dtGrdVwEstudiantes.ReadOnly = true;
@@ -206,11 +215,74 @@
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(269, 23);
+            this.label1.Location = new System.Drawing.Point(277, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(712, 37);
+            this.label1.Size = new System.Drawing.Size(696, 37);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Datos de estudiantes y selección de especialidad";
+            this.label1.Text = "Datos de estudiante y selección de especialidad";
+            // 
+            // tableLayoutPanel11
+            // 
+            this.tableLayoutPanel11.ColumnCount = 4;
+            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel11.Controls.Add(this.label7, 2, 0);
+            this.tableLayoutPanel11.Controls.Add(this.label6, 0, 0);
+            this.tableLayoutPanel11.Controls.Add(this.cmbBoxSeccionesEstud, 1, 0);
+            this.tableLayoutPanel11.Controls.Add(this.txtBoxBusqEst, 3, 0);
+            this.tableLayoutPanel11.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel11.Location = new System.Drawing.Point(3, 59);
+            this.tableLayoutPanel11.Name = "tableLayoutPanel11";
+            this.tableLayoutPanel11.RowCount = 1;
+            this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel11.Size = new System.Drawing.Size(1244, 50);
+            this.tableLayoutPanel11.TabIndex = 3;
+            // 
+            // label7
+            // 
+            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(834, 10);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(96, 29);
+            this.label7.TabIndex = 2;
+            this.label7.Text = "Cédula:";
+            // 
+            // label6
+            // 
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(202, 10);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(106, 29);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "Sección:";
+            // 
+            // cmbBoxSeccionesEstud
+            // 
+            this.cmbBoxSeccionesEstud.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.cmbBoxSeccionesEstud.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbBoxSeccionesEstud.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbBoxSeccionesEstud.FormattingEnabled = true;
+            this.cmbBoxSeccionesEstud.Location = new System.Drawing.Point(314, 9);
+            this.cmbBoxSeccionesEstud.Name = "cmbBoxSeccionesEstud";
+            this.cmbBoxSeccionesEstud.Size = new System.Drawing.Size(225, 32);
+            this.cmbBoxSeccionesEstud.TabIndex = 1;
+            this.cmbBoxSeccionesEstud.SelectedIndexChanged += new System.EventHandler(this.cmbBoxSeccionesEstud_SelectedIndexChanged);
+            // 
+            // txtBoxBusqEst
+            // 
+            this.txtBoxBusqEst.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.txtBoxBusqEst.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBoxBusqEst.Location = new System.Drawing.Point(936, 9);
+            this.txtBoxBusqEst.Name = "txtBoxBusqEst";
+            this.txtBoxBusqEst.Size = new System.Drawing.Size(288, 32);
+            this.txtBoxBusqEst.TabIndex = 3;
+            this.txtBoxBusqEst.TextChanged += new System.EventHandler(this.txtBoxBusqEst_TextChanged);
             // 
             // tbPgOrienta
             // 
@@ -584,6 +656,8 @@
             this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtGrdVwEstudiantes)).EndInit();
+            this.tableLayoutPanel11.ResumeLayout(false);
+            this.tableLayoutPanel11.PerformLayout();
             this.tbPgOrienta.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
@@ -619,7 +693,6 @@
         private System.Windows.Forms.Button btnDelStud;
         private System.Windows.Forms.Button btnEditStudent;
         private System.Windows.Forms.Button btnAddEstud;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
@@ -645,5 +718,11 @@
         private System.Windows.Forms.Button btnConfig;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnEscogenciaEspec;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel11;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox cmbBoxSeccionesEstud;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtBoxBusqEst;
     }
 }

@@ -121,6 +121,18 @@ namespace BussinesLayer
             }
         }
 
+        public void delNotaOrientaXMatricula(int mat)
+        {
+            try
+            {
+                new NotaData().BorraNotaOrientaXMAt(mat);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
         public void delNotasXMatYNivel(int mat, int nivel)
         {
             try

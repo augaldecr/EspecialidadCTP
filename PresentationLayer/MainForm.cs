@@ -1,5 +1,10 @@
 ﻿using BussinesLayer;
+using Entities;
 using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Text;
 using System.Windows.Forms;
 
 namespace PresentationLayer
@@ -8,25 +13,36 @@ namespace PresentationLayer
     {
         //TODO: Jalar notas de base de datos de piad
         //TODO: Filtrar estudiantes y notas por sección en el MainForm
-        //TODO: Creación de vista: "seleccion_especialidad_estudiantes"
-        //TODO: Modificación de vista "asignaturas_all"
-        //TODO: Creación de vista "talleres_all"
         public MainForm()
         {
             InitializeComponent();
         }
 
         #region TabEstudiantes
+        List<Estudiante> listaEstudiantes = new EstudiantesBussines().listar();
+
         private void tbPgEstudiantes_Enter(object sender, EventArgs e)
         {
             llenarEstudianteDatosDtGrdVw();
+            llenaComboSecciones();
         }
 
         private void llenarEstudianteDatosDtGrdVw()
         {
-            EstudiantesBussines est = new EstudiantesBussines();
-            dtGrdVwEstudiantes.DataSource = est.listar();
+            BindingSource bs = new BindingSource();
+            bs.DataSource = listaEstudiantes;
+            dtGrdVwEstudiantes.DataSource = bs;
             formateaDTEstudiantes();
+        }
+
+        private void llenaComboSecciones()
+        {
+            List<Grupo> grupos = new GrupoBussines().listar();
+            grupos.Insert(0, new Grupo() { IdGrupo = 0, Numero = "Todos", });
+            BindingSource bs = new BindingSource(grupos, null);           
+            cmbBoxSeccionesEstud.DataSource = bs;
+            cmbBoxSeccionesEstud.DisplayMember = "Numero";
+            cmbBoxSeccionesEstud.ValueMember = "IdGrupo";
         }
 
         private void formateaDTEstudiantes()
@@ -43,7 +59,7 @@ namespace PresentationLayer
             dtGrdVwEstudiantes.Columns["Email"].HeaderText = "Correo electrónico";
             dtGrdVwEstudiantes.Columns["Ctpp"].Visible = false;
 
-            if(!dtGrdVwEstudiantes.Columns.Contains("Local"))
+            if (!dtGrdVwEstudiantes.Columns.Contains("Local"))
             {
                 DataGridViewCheckBoxColumn DtGVCl = new DataGridViewCheckBoxColumn();
                 DtGVCl.DataPropertyName = "Ctpp";
@@ -105,8 +121,10 @@ namespace PresentationLayer
             {
                 EstudiantesBussines bs = new EstudiantesBussines();
                 MatriculaBussines mbs = new MatriculaBussines();
+                NotaBussines ns = new NotaBussines();
                 try
                 {
+                    ns.delNotaOrientaXMatricula(int.Parse(dtGrdVwEstudiantes.Rows[dtGrdVwEstudiantes.CurrentRow.Index].Cells[0].Value.ToString()));
                     mbs.borrarMatricula(mbs.idMatriculaXEstudiante(int.Parse(dtGrdVwEstudiantes.Rows[dtGrdVwEstudiantes.CurrentRow.Index].Cells[0].Value.ToString())));
                     bs.borrarEstudiante(int.Parse(dtGrdVwEstudiantes.Rows[dtGrdVwEstudiantes.CurrentRow.Index].Cells[0].Value.ToString()));
                 }
@@ -123,6 +141,29 @@ namespace PresentationLayer
         {
             vaciarEstudianteDatosDtGrdVw();
             llenarEstudianteDatosDtGrdVw();
+        }
+
+        private void cmbBoxSeccionesEstud_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            vaciarEstudianteDatosDtGrdVw();
+            BindingSource bs = new BindingSource();
+            if (cmbBoxSeccionesEstud.SelectedValue.ToString()=="0")
+            {
+                bs.DataSource = listaEstudiantes;
+            }
+            else
+            {
+                bs.DataSource = listaEstudiantes.Where(x => x.IdGrupo == cmbBoxSeccionesEstud.SelectedValue.ToString());
+            }
+            dtGrdVwEstudiantes.DataSource = bs;
+        }
+
+        private void txtBoxBusqEst_TextChanged(object sender, EventArgs e)
+        {
+            vaciarEstudianteDatosDtGrdVw();
+            BindingSource bs = new BindingSource();
+            bs.DataSource = listaEstudiantes.Where(x => x.Cedula.Contains(txtBoxBusqEst.Text));
+            dtGrdVwEstudiantes.DataSource = bs;
         }
         #endregion
 
