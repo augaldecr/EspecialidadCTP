@@ -445,7 +445,6 @@
             // btnEditNota
             // 
             this.btnEditNota.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnEditNota.Enabled = false;
             this.btnEditNota.Location = new System.Drawing.Point(251, 19);
             this.btnEditNota.Name = "btnEditNota";
             this.btnEditNota.Size = new System.Drawing.Size(120, 40);

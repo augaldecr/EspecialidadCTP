@@ -725,7 +725,8 @@ namespace DataLayer
                     using (MySqlCommand cmd = new MySqlCommand("SELECT * FROM notas_curso_activo8;", conn))
                     {
                         conn.Open();
-                        MySqlDataReader dr = cmd.ExecuteReader();
+                        #region Utilizando una List de Clases
+                                                MySqlDataReader dr = cmd.ExecuteReader();
 
                         if (dr.FieldCount > 0)
                         {
@@ -763,6 +764,8 @@ namespace DataLayer
                             }
                             dr.Close();
                         }
+                        #endregion
+
                     }
                 }
                 return lista;

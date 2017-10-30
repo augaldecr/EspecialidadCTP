@@ -269,7 +269,7 @@ namespace PresentationLayer
                     new NotaBussines().guardarNota(new Nota()
                     {
                         Matricula = notas.idMatricula,
-                        Asignatura = 12,
+                        Asignatura = 312,
                         Nivel = 9,
                         Periodo = 1,
                         Calificacion = decimal.Parse(txtBoxTali1.Text)
@@ -287,7 +287,7 @@ namespace PresentationLayer
                     new NotaBussines().guardarNota(new Nota()
                     {
                         Matricula = notas.idMatricula,
-                        Asignatura = 12,
+                        Asignatura = 312,
                         Nivel = 9,
                         Periodo = 2,
                         Calificacion = decimal.Parse(txtBoxTali2.Text)
@@ -305,7 +305,7 @@ namespace PresentationLayer
                     new NotaBussines().guardarNota(new Nota()
                     {
                         Matricula = notas.idMatricula,
-                        Asignatura = 13,
+                        Asignatura = 313,
                         Nivel = 9,
                         Periodo = 1,
                         Calificacion = decimal.Parse(txtBoxTalii1.Text)
@@ -323,7 +323,7 @@ namespace PresentationLayer
                     new NotaBussines().guardarNota(new Nota()
                     {
                         Matricula = notas.idMatricula,
-                        Asignatura = 13,
+                        Asignatura = 313,
                         Nivel = 9,
                         Periodo = 2,
                         Calificacion = decimal.Parse(txtBoxTalii2.Text)

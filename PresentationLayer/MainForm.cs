@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace PresentationLayer
@@ -13,6 +12,7 @@ namespace PresentationLayer
     {
         //TODO: Jalar notas de base de datos de piad
         //TODO: Filtrar estudiantes y notas por sección en el MainForm
+
         public MainForm()
         {
             InitializeComponent();
@@ -525,7 +525,7 @@ namespace PresentationLayer
         {
             string pass;
 
-            pass = Microsoft.VisualBasic.Interaction.InputBox("Ingrese contraseña ", "Ingreso de contraseña", "selvanegra$2015", 100, 0);
+            pass = Microsoft.VisualBasic.Interaction.InputBox("Ingrese contraseña ", "Ingreso de contraseña", "Contraseña", 100, 0);
 
             if (pass == "selvanegra$2015")
             {
