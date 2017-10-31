@@ -68,8 +68,12 @@
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
             this.label5 = new System.Windows.Forms.Label();
             this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnEstXEspec = new System.Windows.Forms.Button();
             this.btnConfig = new System.Windows.Forms.Button();
             this.btnEscogenciaEspec = new System.Windows.Forms.Button();
+            this.btnListarInconsistencias = new System.Windows.Forms.Button();
+            this.svFileDg = new System.Windows.Forms.SaveFileDialog();
+            this.dirBrwsDlg = new System.Windows.Forms.FolderBrowserDialog();
             this.tabControl1.SuspendLayout();
             this.tbPgEstudiantes.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -605,8 +609,10 @@
             this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel10.Controls.Add(this.btnEstXEspec, 1, 0);
             this.tableLayoutPanel10.Controls.Add(this.btnConfig, 2, 2);
             this.tableLayoutPanel10.Controls.Add(this.btnEscogenciaEspec, 0, 0);
+            this.tableLayoutPanel10.Controls.Add(this.btnListarInconsistencias, 2, 0);
             this.tableLayoutPanel10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel10.Location = new System.Drawing.Point(3, 143);
             this.tableLayoutPanel10.Name = "tableLayoutPanel10";
@@ -616,6 +622,17 @@
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel10.Size = new System.Drawing.Size(1244, 416);
             this.tableLayoutPanel10.TabIndex = 0;
+            // 
+            // btnEstXEspec
+            // 
+            this.btnEstXEspec.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnEstXEspec.Location = new System.Drawing.Point(501, 29);
+            this.btnEstXEspec.Name = "btnEstXEspec";
+            this.btnEstXEspec.Size = new System.Drawing.Size(240, 80);
+            this.btnEstXEspec.TabIndex = 3;
+            this.btnEstXEspec.Text = "Estudiantes por especialidad";
+            this.btnEstXEspec.UseVisualStyleBackColor = true;
+            this.btnEstXEspec.Click += new System.EventHandler(this.btnEstXEspec_Click);
             // 
             // btnConfig
             // 
@@ -631,7 +648,6 @@
             // btnEscogenciaEspec
             // 
             this.btnEscogenciaEspec.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnEscogenciaEspec.Enabled = false;
             this.btnEscogenciaEspec.Location = new System.Drawing.Point(87, 29);
             this.btnEscogenciaEspec.Name = "btnEscogenciaEspec";
             this.btnEscogenciaEspec.Size = new System.Drawing.Size(240, 80);
@@ -639,6 +655,21 @@
             this.btnEscogenciaEspec.Text = "Escogencia de especialidad por estudiante";
             this.btnEscogenciaEspec.UseVisualStyleBackColor = true;
             this.btnEscogenciaEspec.Click += new System.EventHandler(this.btnEscogenciaEspec_Click);
+            // 
+            // btnListarInconsistencias
+            // 
+            this.btnListarInconsistencias.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnListarInconsistencias.Location = new System.Drawing.Point(916, 29);
+            this.btnListarInconsistencias.Name = "btnListarInconsistencias";
+            this.btnListarInconsistencias.Size = new System.Drawing.Size(240, 80);
+            this.btnListarInconsistencias.TabIndex = 2;
+            this.btnListarInconsistencias.Text = "Listar incosistencias";
+            this.btnListarInconsistencias.UseVisualStyleBackColor = true;
+            this.btnListarInconsistencias.Click += new System.EventHandler(this.btnListarInconsistencias_Click);
+            // 
+            // svFileDg
+            // 
+            this.svFileDg.DefaultExt = "xlsx";
             // 
             // MainForm
             // 
@@ -723,5 +754,9 @@
         private System.Windows.Forms.ComboBox cmbBoxSeccionesEstud;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtBoxBusqEst;
+        private System.Windows.Forms.Button btnListarInconsistencias;
+        private System.Windows.Forms.SaveFileDialog svFileDg;
+        private System.Windows.Forms.Button btnEstXEspec;
+        private System.Windows.Forms.FolderBrowserDialog dirBrwsDlg;
     }
 }

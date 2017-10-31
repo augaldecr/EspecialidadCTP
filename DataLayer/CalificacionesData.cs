@@ -267,7 +267,7 @@ namespace DataLayer
                 }
             }
 
-            /*try
+            try
             {
                 foreach (Nota nota in calificacion.Notas)
                 {
@@ -281,7 +281,7 @@ namespace DataLayer
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
-            }*/
+            }
 
             return calificacion;
         }
@@ -338,8 +338,8 @@ namespace DataLayer
                     }
                 }
             }
-            #endregion
             return notas;
         }
+#endregion
     }
 }

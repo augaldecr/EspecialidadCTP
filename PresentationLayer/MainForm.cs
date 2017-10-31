@@ -540,7 +540,60 @@ namespace PresentationLayer
 
         private void btnEscogenciaEspec_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Muestra la escogencia de especialidad por los estudiantes");
+            svFileDg.FileName = "Especialidades por estudiante.xlsx";
+            svFileDg.DefaultExt = "xlsx";
+            svFileDg.Filter = "Archivo de MS Excel|.xlsx";
+            svFileDg.Title = "Seleccione el destino del reporte";
+            svFileDg.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+
+            svFileDg.FileOk += SvFileDg_FileOk;
+
+            svFileDg.ShowDialog();
+        }
+
+        private void btnEstXEspec_Click(object sender, EventArgs e)
+        {
+            //svFileDg.FileName = "Estudiantes por especialidad.xlsx";
+            //svFileDg.DefaultExt = "xlsx";
+            //svFileDg.Filter = "Archivo de MS Excel|.xlsx";
+            //dirBrwsDlg. = "Seleccione el destino del reporte";
+            dirBrwsDlg.Description = "Seleccione el destino del reporte";
+            dirBrwsDlg.RootFolder = Environment.SpecialFolder.Desktop;
+
+            DialogResult rs = dirBrwsDlg.ShowDialog();
+            if (rs == DialogResult.OK)
+            {
+                new EspecialidadBussines().listarEstudXEspec(dirBrwsDlg.SelectedPath);
+                MessageBox.Show("Reporte generado");
+            }
+        }
+
+        private void btnListarInconsistencias_Click(object sender, EventArgs e)
+        {
+            svFileDg.FileName = "Inconsistencias.xlsx";
+            svFileDg.DefaultExt = "xlsx";
+            svFileDg.Filter = "Archivo de MS Excel|.xlsx";
+            svFileDg.Title = "Seleccione el destino del reporte";
+            svFileDg.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+
+            svFileDg.FileOk += SvFileDg_FileOk;
+
+            svFileDg.ShowDialog();
+        }
+
+        private void SvFileDg_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            SaveFileDialog sv = (SaveFileDialog)sender;
+
+            if (sv.FileName.Contains("Especialidades por estudiante"))
+            {
+                new EspecialidadBussines().listarEspecXEstud(svFileDg.FileName);
+            }
+            else if (sv.FileName.Contains("Inconsistencias"))
+            {
+                new EspecialidadBussines().listarIncosistencias(svFileDg.FileName);
+            }
+            MessageBox.Show("Reporte generado");
         }
     }
     #endregion

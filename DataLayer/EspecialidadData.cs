@@ -173,8 +173,85 @@ namespace DataLayer
         }
         #endregion
 
+        #region Listar escogencia de especialidades por estudiante, para reporte
+        public DataTable listEspecXEstud(string path)
+        {
+            string connString = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
+            DataTable dt = new DataTable();
+
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connString))
+                {
+                    using (MySqlCommand cmd = new MySqlCommand("SELECT * FROM seleccion_especialidad_estudiantes;", conn))
+                    {
+                        using (MySqlDataAdapter sda = new MySqlDataAdapter())
+                        {
+                            sda.SelectCommand = cmd;
+                            using (DataTable dat = new DataTable())
+                            {
+                                sda.Fill(dat);
+                                Utilities.ExportDataSet(path, dat);
+                                return dat;
+                            }
+                        }
+
+                    }
+                }
+            }
+            catch (System.Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        #endregion
+
+        #region Listar estudiantes por especialidad, para reporte
+        public DataTable listEstudXEspecialidad(int espe, string path)
+        {
+            string connString = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
+            DataTable dt = new DataTable();
+
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection())
+                {
+                    using (MySqlCommand cmd = new MySqlCommand())
+                    {
+                        Nota nota = new Nota();
+
+                        conn.ConnectionString = connString;
+                        conn.Open();
+
+                        cmd.Connection = conn;
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.CommandText = "estudiantes_x_especialidad";
+
+                        cmd.Parameters.Add("@pespecialidad", MySqlDbType.Int32).Value = espe;
+
+                        using (MySqlDataAdapter sda = new MySqlDataAdapter())
+                        {
+                            sda.SelectCommand = cmd;
+                            using (DataTable dat = new DataTable())
+                            {
+                                sda.Fill(dat);
+                                Utilities.ExportDataSet(path, dat);
+                                return dat;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (System.Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        #endregion
+
+
         #region Listar escogencia erronea, para reporte
-        public DataTable ListErroneas()
+        public DataTable listErroneas(string path)
         {
             string connString = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
             DataTable dt = new DataTable();
@@ -191,13 +268,13 @@ namespace DataLayer
                             using (DataTable dat = new DataTable())
                             {
                                 sda.Fill(dat);
-
+                                Utilities.ExportDataSet(path, dat);
+                                return dat;
                             }
                         }
 
                     }
                 }
-                return null;
             }
             catch (System.Exception ex)
             {
@@ -205,68 +282,5 @@ namespace DataLayer
             }
         }
         #endregion
-        private void ExportDataSet(DataSet ds, string destination)
-        {
-            using (var workbook = SpreadsheetDocument.Create(destination, DocumentFormat.OpenXml.SpreadsheetDocumentType.Workbook))
-            {
-                var workbookPart = workbook.AddWorkbookPart();
-
-                workbook.WorkbookPart.Workbook = new DocumentFormat.OpenXml.Spreadsheet.Workbook();
-
-                workbook.WorkbookPart.Workbook.Sheets = new DocumentFormat.OpenXml.Spreadsheet.Sheets();
-
-                foreach (System.Data.DataTable table in ds.Tables)
-                {
-
-                    var sheetPart = workbook.WorkbookPart.AddNewPart<WorksheetPart>();
-                    var sheetData = new DocumentFormat.OpenXml.Spreadsheet.SheetData();
-                    sheetPart.Worksheet = new DocumentFormat.OpenXml.Spreadsheet.Worksheet(sheetData);
-
-                    DocumentFormat.OpenXml.Spreadsheet.Sheets sheets = workbook.WorkbookPart.Workbook.GetFirstChild<DocumentFormat.OpenXml.Spreadsheet.Sheets>();
-                    string relationshipId = workbook.WorkbookPart.GetIdOfPart(sheetPart);
-
-                    uint sheetId = 1;
-                    if (sheets.Elements<DocumentFormat.OpenXml.Spreadsheet.Sheet>().Count() > 0)
-                    {
-                        sheetId =
-                            sheets.Elements<DocumentFormat.OpenXml.Spreadsheet.Sheet>().Select(s => s.SheetId.Value).Max() + 1;
-                    }
-
-                    DocumentFormat.OpenXml.Spreadsheet.Sheet sheet = new DocumentFormat.OpenXml.Spreadsheet.Sheet() { Id = relationshipId, SheetId = sheetId, Name = table.TableName };
-                    sheets.Append(sheet);
-
-                    DocumentFormat.OpenXml.Spreadsheet.Row headerRow = new DocumentFormat.OpenXml.Spreadsheet.Row();
-
-                    List<String> columns = new List<string>();
-                    foreach (System.Data.DataColumn column in table.Columns)
-                    {
-                        columns.Add(column.ColumnName);
-
-                        DocumentFormat.OpenXml.Spreadsheet.Cell cell = new DocumentFormat.OpenXml.Spreadsheet.Cell();
-                        cell.DataType = DocumentFormat.OpenXml.Spreadsheet.CellValues.String;
-                        cell.CellValue = new DocumentFormat.OpenXml.Spreadsheet.CellValue(column.ColumnName);
-                        headerRow.AppendChild(cell);
-                    }
-
-
-                    sheetData.AppendChild(headerRow);
-
-                    foreach (System.Data.DataRow dsrow in table.Rows)
-                    {
-                        DocumentFormat.OpenXml.Spreadsheet.Row newRow = new DocumentFormat.OpenXml.Spreadsheet.Row();
-                        foreach (String col in columns)
-                        {
-                            DocumentFormat.OpenXml.Spreadsheet.Cell cell = new DocumentFormat.OpenXml.Spreadsheet.Cell();
-                            cell.DataType = DocumentFormat.OpenXml.Spreadsheet.CellValues.String;
-                            cell.CellValue = new DocumentFormat.OpenXml.Spreadsheet.CellValue(dsrow[col].ToString()); //
-                            newRow.AppendChild(cell);
-                        }
-
-                        sheetData.AppendChild(newRow);
-                    }
-
-                }
-            }
-        }
     }
 }
