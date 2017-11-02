@@ -12,6 +12,7 @@ namespace PresentationLayer
     {
         //TODO: Jalar notas de base de datos de piad
         //TODO: Filtrar estudiantes y notas por sección en el MainForm
+        //TODO: Creada tabla "periodos_basicos"
 
         public MainForm()
         {

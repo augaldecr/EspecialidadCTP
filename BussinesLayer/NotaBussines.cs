@@ -2,7 +2,7 @@
 using Entities;
 using System;
 using System.Collections.Generic;
-
+using System.Data;
 
 namespace BussinesLayer
 {
@@ -44,11 +44,11 @@ namespace BussinesLayer
             }
         }
 
-        public void listarNotasFaltantes8(string path)
+        public DataTable listarNotasFaltantes8(string path)
         {
             try
             {
-                new NotaData().listNotas8(path);
+                return new NotaData().listarNotasFaltantes8(path);
             }
             catch (Exception ex)
             {
@@ -68,11 +68,11 @@ namespace BussinesLayer
             }
         }
 
-        public void listarNotasFaltantes9(string path)
+        public DataTable listarNotasFaltantes9(string path)
         {
             try
             {
-                new NotaData().listNotas9(path);
+                return new NotaData().listarNotasFaltantes9(path);
             }
             catch (Exception ex)
             {
