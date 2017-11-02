@@ -3,6 +3,7 @@ using Entities;
 using System;
 using System.Collections.Generic;
 
+
 namespace BussinesLayer
 {
     public class NotaBussines
@@ -43,11 +44,35 @@ namespace BussinesLayer
             }
         }
 
+        public void listarNotasFaltantes8(string path)
+        {
+            try
+            {
+                new NotaData().listNotas8(path);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
         public List<NotasBasicas> listarNotasBasicas9()
         {
             try
             {
                 return new NotaData().listarNotasBasicas9();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public void listarNotasFaltantes9(string path)
+        {
+            try
+            {
+                new NotaData().listNotas9(path);
             }
             catch (Exception ex)
             {

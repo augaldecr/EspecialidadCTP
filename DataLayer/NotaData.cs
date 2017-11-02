@@ -924,5 +924,71 @@ namespace DataLayer
             }
         }
         #endregion
+
+        #region Listar notas octavo, para reporte
+        public DataTable listNotas8(string path)
+        {
+            string connString = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
+            DataTable dt = new DataTable();
+
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connString))
+                {
+                    using (MySqlCommand cmd = new MySqlCommand("SELECT * FROM notas_curso_activo8;", conn))
+                    {
+                        using (MySqlDataAdapter sda = new MySqlDataAdapter())
+                        {
+                            sda.SelectCommand = cmd;
+                            using (DataTable dat = new DataTable())
+                            {
+                                sda.Fill(dat);
+                                Utilities.ExportDataSet(path, dat);
+                                return dat;
+                            }
+                        }
+
+                    }
+                }
+            }
+            catch (System.Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        #endregion
+
+        #region Listar notas noveno, para reporte
+        public DataTable listNotas9(string path)
+        {
+            string connString = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
+            DataTable dt = new DataTable();
+
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connString))
+                {
+                    using (MySqlCommand cmd = new MySqlCommand("SELECT * FROM notas_curso_activo9;", conn))
+                    {
+                        using (MySqlDataAdapter sda = new MySqlDataAdapter())
+                        {
+                            sda.SelectCommand = cmd;
+                            using (DataTable dat = new DataTable())
+                            {
+                                sda.Fill(dat);
+                                Utilities.ExportDataSet(path, dat);
+                                return dat;
+                            }
+                        }
+
+                    }
+                }
+            }
+            catch (System.Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        #endregion
     }
 }

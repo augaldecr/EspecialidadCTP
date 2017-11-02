@@ -124,6 +124,8 @@ namespace PresentationLayer
                 NotaBussines ns = new NotaBussines();
                 try
                 {
+                    ns.delNotasXMatYNivel(int.Parse(dtGrdVwEstudiantes.Rows[dtGrdVwEstudiantes.CurrentRow.Index].Cells[0].Value.ToString()), 8);
+                    ns.delNotasXMatYNivel(int.Parse(dtGrdVwEstudiantes.Rows[dtGrdVwEstudiantes.CurrentRow.Index].Cells[0].Value.ToString()), 9);
                     ns.delNotaOrientaXMatricula(int.Parse(dtGrdVwEstudiantes.Rows[dtGrdVwEstudiantes.CurrentRow.Index].Cells[0].Value.ToString()));
                     mbs.borrarMatricula(mbs.idMatriculaXEstudiante(int.Parse(dtGrdVwEstudiantes.Rows[dtGrdVwEstudiantes.CurrentRow.Index].Cells[0].Value.ToString())));
                     bs.borrarEstudiante(int.Parse(dtGrdVwEstudiantes.Rows[dtGrdVwEstudiantes.CurrentRow.Index].Cells[0].Value.ToString()));
@@ -197,9 +199,9 @@ namespace PresentationLayer
                 dtGrdVwOrienta.Rows[e.RowIndex].Cells["IdNota"].Value != null ?
                 int.Parse(dtGrdVwOrienta.Rows[e.RowIndex].Cells["IdNota"].Value.ToString()) : 0,
 
-                string.Format("{0} {1} {2}", dtGrdVwOrienta.Rows[e.RowIndex].Cells["Nombre1"].Value.ToString(),
-                dtGrdVwOrienta.Rows[e.RowIndex].Cells["ApellidoOne"].Value.ToString(),
-                dtGrdVwOrienta.Rows[e.RowIndex].Cells["ApellidoTwo"].Value.ToString()),
+                string.Format("{0} {1} {2}", dtGrdVwOrienta.Rows[e.RowIndex].Cells["Nombre"].Value.ToString(),
+                dtGrdVwOrienta.Rows[e.RowIndex].Cells["apellido1"].Value.ToString(),
+                dtGrdVwOrienta.Rows[e.RowIndex].Cells["apellido2"].Value.ToString()),
 
                 dtGrdVwOrienta.Rows[e.RowIndex].Cells["Entrevista"].Value != null ?
                 decimal.Parse(dtGrdVwOrienta.Rows[e.RowIndex].Cells["Entrevista"].Value.ToString()) : 0,
@@ -581,6 +583,32 @@ namespace PresentationLayer
             svFileDg.ShowDialog();
         }
 
+        private void btnNotasFaltantes_Click(object sender, EventArgs e)
+        {
+            svFileDg.FileName = "Notas_8.xlsx";
+            svFileDg.DefaultExt = "xlsx";
+            svFileDg.Filter = "Archivo de MS Excel|.xlsx";
+            svFileDg.Title = "Seleccione el destino del reporte";
+            svFileDg.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+
+            svFileDg.FileOk += SvFileDg_FileOk;
+
+            svFileDg.ShowDialog();
+        }
+
+        private void btnNotasFaltantes9_Click(object sender, EventArgs e)
+        {
+            svFileDg.FileName = "Notas_9.xlsx";
+            svFileDg.DefaultExt = "xlsx";
+            svFileDg.Filter = "Archivo de MS Excel|.xlsx";
+            svFileDg.Title = "Seleccione el destino del reporte";
+            svFileDg.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+
+            svFileDg.FileOk += SvFileDg_FileOk;
+
+            svFileDg.ShowDialog();
+        }
+
         private void SvFileDg_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
         {
             SaveFileDialog sv = (SaveFileDialog)sender;
@@ -592,6 +620,14 @@ namespace PresentationLayer
             else if (sv.FileName.Contains("Inconsistencias"))
             {
                 new EspecialidadBussines().listarIncosistencias(svFileDg.FileName);
+            }
+            else if (sv.FileName.Contains("Notas_8"))
+            {
+                new NotaBussines().listarNotasFaltantes8(svFileDg.FileName);
+            }
+            else if (sv.FileName.Contains("Notas_9"))
+            {
+                new NotaBussines().listarNotasFaltantes9(svFileDg.FileName);
             }
             MessageBox.Show("Reporte generado");
         }

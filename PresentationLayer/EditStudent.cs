@@ -196,8 +196,12 @@ namespace PresentationLayer
             {
                 EstudiantesBussines bs = new EstudiantesBussines();
                 MatriculaBussines mbs = new MatriculaBussines();
+                NotaBussines ns = new NotaBussines();
                 try
                 {
+                    ns.delNotasXMatYNivel(mbs.idMatriculaXEstudiante(int.Parse(txtBoxID.Text)), 8);
+                    ns.delNotasXMatYNivel(mbs.idMatriculaXEstudiante(int.Parse(txtBoxID.Text)), 9);
+                    ns.delNotaOrientaXMatricula(mbs.idMatriculaXEstudiante(int.Parse(txtBoxID.Text)));  
                     mbs.borrarMatricula(mbs.idMatriculaXEstudiante(int.Parse(txtBoxID.Text)));
                     bs.borrarEstudiante(int.Parse(txtBoxID.Text));
                 }

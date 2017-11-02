@@ -249,7 +249,6 @@ namespace DataLayer
         }
         #endregion
 
-
         #region Listar escogencia erronea, para reporte
         public DataTable listErroneas(string path)
         {
