@@ -12,12 +12,17 @@ namespace PresentationLayer
     {
         //TODO: Jalar notas de base de datos de piad
         //TODO: Filtrar estudiantes y notas por sección en el MainForm
-        //TODO: Creada tabla "periodos_basicos"
+        //TODO: Creada tabla "periodos_basicos"//
+        // TODO: Agregadas las vistas notas_faltantes8 y notas_faltantes9
+        //TODO: Eliminado el campo entrevista de tabla notas_orienta
+        // TODO: Se crea la tabla "elecciones_especialidad" y se copian los valores desde matriculas_admision
+        //QUERY:
+        //INSERT INTO elecciones_especialidad(identrevista, matricula, especialidad, prioridad, nota)
+        //SELECT null, idmatricula_admision, especialidad1, 1, null FROM matriculas_admision
+        //TODO: Comenzando el query de especialidad_x
+        //SELECT (((AVG(n.calificacion)/100)*40) + 10) FROM ctp_noveno.notas n INNER JOIN notas_orienta o ON n.matricula=o.matricula WHERE n.matricula=2
 
-        public MainForm()
-        {
-            InitializeComponent();
-        }
+        public MainForm() => InitializeComponent();
 
         #region TabEstudiantes
         List<Estudiante> listaEstudiantes = new EstudiantesBussines().listar();
@@ -584,7 +589,7 @@ namespace PresentationLayer
             svFileDg.ShowDialog();
         }
 
-        private void btnNotasFaltantes_Click(object sender, EventArgs e)
+        private void btnNotas8_Click(object sender, EventArgs e)
         {
             svFileDg.FileName = "Notas_8.xlsx";
             svFileDg.DefaultExt = "xlsx";
@@ -597,9 +602,35 @@ namespace PresentationLayer
             svFileDg.ShowDialog();
         }
 
-        private void btnNotasFaltantes9_Click(object sender, EventArgs e)
+        private void btnNotas9_Click(object sender, EventArgs e)
         {
             svFileDg.FileName = "Notas_9.xlsx";
+            svFileDg.DefaultExt = "xlsx";
+            svFileDg.Filter = "Archivo de MS Excel|.xlsx";
+            svFileDg.Title = "Seleccione el destino del reporte";
+            svFileDg.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+
+            svFileDg.FileOk += SvFileDg_FileOk;
+
+            svFileDg.ShowDialog();
+        }
+
+        private void btnNotasFaltantes8_Click(object sender, EventArgs e)
+        {
+            svFileDg.FileName = "Notas_faltantes_8.xlsx";
+            svFileDg.DefaultExt = "xlsx";
+            svFileDg.Filter = "Archivo de MS Excel|.xlsx";
+            svFileDg.Title = "Seleccione el destino del reporte";
+            svFileDg.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+
+            svFileDg.FileOk += SvFileDg_FileOk;
+
+            svFileDg.ShowDialog();
+        }
+
+        private void btnNotasFaltantes9_Click_1(object sender, EventArgs e)
+        {
+            svFileDg.FileName = "Notas_faltantes_9.xlsx";
             svFileDg.DefaultExt = "xlsx";
             svFileDg.Filter = "Archivo de MS Excel|.xlsx";
             svFileDg.Title = "Seleccione el destino del reporte";
@@ -624,9 +655,17 @@ namespace PresentationLayer
             }
             else if (sv.FileName.Contains("Notas_8"))
             {
-                new NotaBussines().listarNotasFaltantes8(svFileDg.FileName);
+                new NotaBussines().listarNotas8(svFileDg.FileName);
             }
             else if (sv.FileName.Contains("Notas_9"))
+            {
+                new NotaBussines().listarNotas9(svFileDg.FileName);
+            }
+            else if (sv.FileName.Contains("Notas_faltantes_8"))
+            {
+                new NotaBussines().listarNotasFaltantes8(svFileDg.FileName);
+            }
+            else if (sv.FileName.Contains("Notas_faltantes_9"))
             {
                 new NotaBussines().listarNotasFaltantes9(svFileDg.FileName);
             }

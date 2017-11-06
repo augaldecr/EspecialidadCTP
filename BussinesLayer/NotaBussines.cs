@@ -56,6 +56,18 @@ namespace BussinesLayer
             }
         }
 
+        public DataTable listarNotas8(string path)
+        {
+            try
+            {
+                return new NotaData().listarNotas8(path);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
         public List<NotasBasicas> listarNotasBasicas9()
         {
             try
@@ -73,6 +85,18 @@ namespace BussinesLayer
             try
             {
                 return new NotaData().listarNotasFaltantes9(path);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public DataTable listarNotas9(string path)
+        {
+            try
+            {
+                return new NotaData().listarNotas9(path);
             }
             catch (Exception ex)
             {

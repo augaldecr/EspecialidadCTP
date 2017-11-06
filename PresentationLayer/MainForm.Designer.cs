@@ -68,14 +68,16 @@
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
             this.label5 = new System.Windows.Forms.Label();
             this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnNotasFaltantes9 = new System.Windows.Forms.Button();
+            this.btnNotasFaltantes8 = new System.Windows.Forms.Button();
             this.btnEstXEspec = new System.Windows.Forms.Button();
             this.btnConfig = new System.Windows.Forms.Button();
             this.btnEscogenciaEspec = new System.Windows.Forms.Button();
             this.btnListarInconsistencias = new System.Windows.Forms.Button();
-            this.btnNotasFaltantes8 = new System.Windows.Forms.Button();
+            this.btnNotas8 = new System.Windows.Forms.Button();
+            this.btnNotas9 = new System.Windows.Forms.Button();
             this.svFileDg = new System.Windows.Forms.SaveFileDialog();
             this.dirBrwsDlg = new System.Windows.Forms.FolderBrowserDialog();
-            this.btnNotasFaltantes9 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tbPgEstudiantes.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -611,12 +613,14 @@
             this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel10.Controls.Add(this.btnNotasFaltantes9, 0, 2);
+            this.tableLayoutPanel10.Controls.Add(this.btnNotasFaltantes8, 0, 2);
             this.tableLayoutPanel10.Controls.Add(this.btnEstXEspec, 1, 0);
             this.tableLayoutPanel10.Controls.Add(this.btnConfig, 2, 2);
             this.tableLayoutPanel10.Controls.Add(this.btnEscogenciaEspec, 0, 0);
             this.tableLayoutPanel10.Controls.Add(this.btnListarInconsistencias, 2, 0);
-            this.tableLayoutPanel10.Controls.Add(this.btnNotasFaltantes8, 0, 1);
-            this.tableLayoutPanel10.Controls.Add(this.btnNotasFaltantes9, 1, 1);
+            this.tableLayoutPanel10.Controls.Add(this.btnNotas8, 0, 1);
+            this.tableLayoutPanel10.Controls.Add(this.btnNotas9, 1, 1);
             this.tableLayoutPanel10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel10.Location = new System.Drawing.Point(3, 143);
             this.tableLayoutPanel10.Name = "tableLayoutPanel10";
@@ -626,6 +630,28 @@
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel10.Size = new System.Drawing.Size(1244, 416);
             this.tableLayoutPanel10.TabIndex = 0;
+            // 
+            // btnNotasFaltantes9
+            // 
+            this.btnNotasFaltantes9.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnNotasFaltantes9.Location = new System.Drawing.Point(501, 306);
+            this.btnNotasFaltantes9.Name = "btnNotasFaltantes9";
+            this.btnNotasFaltantes9.Size = new System.Drawing.Size(240, 80);
+            this.btnNotasFaltantes9.TabIndex = 7;
+            this.btnNotasFaltantes9.Text = "Notas faltantes por estudiante 9";
+            this.btnNotasFaltantes9.UseVisualStyleBackColor = true;
+            this.btnNotasFaltantes9.Click += new System.EventHandler(this.btnNotasFaltantes9_Click_1);
+            // 
+            // btnNotasFaltantes8
+            // 
+            this.btnNotasFaltantes8.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnNotasFaltantes8.Location = new System.Drawing.Point(87, 306);
+            this.btnNotasFaltantes8.Name = "btnNotasFaltantes8";
+            this.btnNotasFaltantes8.Size = new System.Drawing.Size(240, 80);
+            this.btnNotasFaltantes8.TabIndex = 6;
+            this.btnNotasFaltantes8.Text = "Notas faltantes por estudiante 8";
+            this.btnNotasFaltantes8.UseVisualStyleBackColor = true;
+            this.btnNotasFaltantes8.Click += new System.EventHandler(this.btnNotasFaltantes8_Click);
             // 
             // btnEstXEspec
             // 
@@ -671,31 +697,31 @@
             this.btnListarInconsistencias.UseVisualStyleBackColor = true;
             this.btnListarInconsistencias.Click += new System.EventHandler(this.btnListarInconsistencias_Click);
             // 
-            // btnNotasFaltantes8
+            // btnNotas8
             // 
-            this.btnNotasFaltantes8.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnNotasFaltantes8.Location = new System.Drawing.Point(87, 167);
-            this.btnNotasFaltantes8.Name = "btnNotasFaltantes8";
-            this.btnNotasFaltantes8.Size = new System.Drawing.Size(240, 80);
-            this.btnNotasFaltantes8.TabIndex = 4;
-            this.btnNotasFaltantes8.Text = "Notas faltantes por estudiante 8";
-            this.btnNotasFaltantes8.UseVisualStyleBackColor = true;
-            this.btnNotasFaltantes8.Click += new System.EventHandler(this.btnNotasFaltantes_Click);
+            this.btnNotas8.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnNotas8.Location = new System.Drawing.Point(87, 167);
+            this.btnNotas8.Name = "btnNotas8";
+            this.btnNotas8.Size = new System.Drawing.Size(240, 80);
+            this.btnNotas8.TabIndex = 4;
+            this.btnNotas8.Text = "Notas por estudiante 8";
+            this.btnNotas8.UseVisualStyleBackColor = true;
+            this.btnNotas8.Click += new System.EventHandler(this.btnNotas8_Click);
+            // 
+            // btnNotas9
+            // 
+            this.btnNotas9.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnNotas9.Location = new System.Drawing.Point(501, 167);
+            this.btnNotas9.Name = "btnNotas9";
+            this.btnNotas9.Size = new System.Drawing.Size(240, 80);
+            this.btnNotas9.TabIndex = 5;
+            this.btnNotas9.Text = "Notas por estudiante 9";
+            this.btnNotas9.UseVisualStyleBackColor = true;
+            this.btnNotas9.Click += new System.EventHandler(this.btnNotas9_Click);
             // 
             // svFileDg
             // 
             this.svFileDg.DefaultExt = "xlsx";
-            // 
-            // btnNotasFaltantes9
-            // 
-            this.btnNotasFaltantes9.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnNotasFaltantes9.Location = new System.Drawing.Point(501, 167);
-            this.btnNotasFaltantes9.Name = "btnNotasFaltantes9";
-            this.btnNotasFaltantes9.Size = new System.Drawing.Size(240, 80);
-            this.btnNotasFaltantes9.TabIndex = 5;
-            this.btnNotasFaltantes9.Text = "Notas faltantes por estudiante 9";
-            this.btnNotasFaltantes9.UseVisualStyleBackColor = true;
-            this.btnNotasFaltantes9.Click += new System.EventHandler(this.btnNotasFaltantes9_Click);
             // 
             // MainForm
             // 
@@ -784,7 +810,9 @@
         private System.Windows.Forms.SaveFileDialog svFileDg;
         private System.Windows.Forms.Button btnEstXEspec;
         private System.Windows.Forms.FolderBrowserDialog dirBrwsDlg;
-        private System.Windows.Forms.Button btnNotasFaltantes8;
+        private System.Windows.Forms.Button btnNotas8;
+        private System.Windows.Forms.Button btnNotas9;
         private System.Windows.Forms.Button btnNotasFaltantes9;
+        private System.Windows.Forms.Button btnNotasFaltantes8;
     }
 }

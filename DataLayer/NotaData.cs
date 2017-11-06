@@ -925,15 +925,41 @@ namespace DataLayer
         }
         #endregion
 
-        #region Listar notas faltantes 8
-        public DataTable listarNotasFaltantes8( string path)
+        #region Listar notas faltantes 8 para reporte
+        public DataTable listarNotasFaltantes8(string path)
         {
             DataTable table = new DataTable();
-            table.Columns.Add("ID", typeof(string));
-            table.Columns.Add("Cedula", typeof(string));
-            table.Columns.Add("Nombre_completo", typeof(string));
-            table.Columns.Add("Calificaciones_faltantes", typeof(string));
+            string connString = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
 
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connString))
+                {
+                    using (MySqlCommand cmd = new MySqlCommand("SELECT * FROM notas_faltantes8;", conn))
+                    {
+                        using (MySqlDataAdapter sda = new MySqlDataAdapter())
+                        {
+                            sda.SelectCommand = cmd;
+                            using (DataTable dat = new DataTable())
+                            {
+                                sda.Fill(dat);
+                                Utilities.ExportDataSet(path, dat);
+                                return dat;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (System.Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        #endregion
+
+        #region Listar notas 8 para reporte
+        public DataTable listarNotas8( string path)
+        {
             string connString = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
 
             try
@@ -942,129 +968,18 @@ namespace DataLayer
                 {
                     using (MySqlCommand cmd = new MySqlCommand("SELECT * FROM notas_curso_activo8;", conn))
                     {
-                        conn.Open();
-                        #region Utilizando una List de Clases
-                        MySqlDataReader dr = cmd.ExecuteReader();
-
-                        if (dr.FieldCount > 0)
+                        using (MySqlDataAdapter sda = new MySqlDataAdapter())
                         {
-                            while (dr.Read())
+                            sda.SelectCommand = cmd;
+                            using (DataTable dat = new DataTable())
                             {
-                                string asignaturas = "";
-
-                                string id = dr.GetString(0);
-                                string cedula = dr.GetString(0);
-                                string nombre = dr.GetString(1);
-
-                                if (dr.GetValue(2) == DBNull.Value)
-                                {
-                                    asignaturas = asignaturas + dr.GetDecimal(2) + ", ";
-                                }
-                                if (dr.GetValue(3) == DBNull.Value)
-                                {
-                                    asignaturas = asignaturas + dr.GetDecimal(3) + ", ";
-                                }
-                                if (dr.GetValue(4) == DBNull.Value)
-                                {
-                                    asignaturas = asignaturas + dr.GetDecimal(4) + ", ";
-                                }
-                                if (dr.GetValue(5) == DBNull.Value)
-                                {
-                                    asignaturas = asignaturas + dr.GetDecimal(5) + ", ";
-                                }
-                                if (dr.GetValue(6) == DBNull.Value)
-                                {
-                                    asignaturas = asignaturas + dr.GetDecimal(6) + ", ";
-                                }
-                                if (dr.GetValue(7) == DBNull.Value)
-                                {
-                                    asignaturas = asignaturas + dr.GetDecimal(7) + ", ";
-                                }
-                                if (dr.GetValue(8) == DBNull.Value)
-                                {
-                                    asignaturas = asignaturas + dr.GetDecimal(8) + ", ";
-                                }
-                                if (dr.GetValue(9) == DBNull.Value)
-                                {
-                                    asignaturas = asignaturas + dr.GetDecimal(9) + ", ";
-                                }
-                                if (dr.GetValue(10) == DBNull.Value)
-                                {
-                                    asignaturas = asignaturas + dr.GetDecimal(10) + ", ";
-                                }
-                                if (dr.GetValue(11) == DBNull.Value)
-                                {
-                                    asignaturas = asignaturas + dr.GetDecimal(11) + ", ";
-                                }
-                                if (dr.GetValue(12) == DBNull.Value)
-                                {
-                                    asignaturas = asignaturas + dr.GetDecimal(12) + ", ";
-                                }
-                                if (dr.GetValue(13) == DBNull.Value)
-                                {
-                                    asignaturas = asignaturas + dr.GetDecimal(13) + ", ";
-                                }
-                                if (dr.GetValue(14) == DBNull.Value)
-                                {
-                                    asignaturas = asignaturas + dr.GetDecimal(14) + ", ";
-                                }
-                                if (dr.GetValue(15) == DBNull.Value)
-                                {
-                                    asignaturas = asignaturas + dr.GetDecimal(15) + ", ";
-                                }
-                                if (dr.GetValue(16) == DBNull.Value)
-                                {
-                                    asignaturas = asignaturas + dr.GetDecimal(16) + ", ";
-                                }
-                                if (dr.GetValue(17) == DBNull.Value)
-                                {
-                                    asignaturas = asignaturas + dr.GetDecimal(17) + ", ";
-                                }
-                                if (dr.GetValue(18) == DBNull.Value)
-                                {
-                                    asignaturas = asignaturas + dr.GetDecimal(18) + ", ";
-                                }
-                                if (dr.GetValue(19) == DBNull.Value)
-                                {
-                                    asignaturas = asignaturas + dr.GetDecimal(19) + ", ";
-                                }
-                                if (dr.GetValue(20) == DBNull.Value)
-                                {
-                                    asignaturas = asignaturas + dr.GetDecimal(20) + ", ";
-                                }
-                                if (dr.GetValue(21) == DBNull.Value)
-                                {
-                                    asignaturas = asignaturas + dr.GetDecimal(21) + ", ";
-                                }
-                                if (dr.GetValue(22) == DBNull.Value)
-                                {
-                                    asignaturas = asignaturas + dr.GetDecimal(22) + ", ";
-                                }
-                                if (dr.GetValue(23) == DBNull.Value)
-                                {
-                                    asignaturas = asignaturas + dr.GetDecimal(23) + ", ";
-                                }
-                                if (dr.GetValue(24) == DBNull.Value)
-                                {
-                                    asignaturas = asignaturas + dr.GetDecimal(24) + ", ";
-                                }
-                                if (dr.GetValue(25) == DBNull.Value)
-                                {
-                                    asignaturas = asignaturas + dr.GetDecimal(25) + ", ";
-                                }
-
-                                asignaturas = asignaturas.Remove(asignaturas.Length - 2);
-
-                                table.Rows.Add(id, cedula, nombre, asignaturas);
-
+                                sda.Fill(dat);
+                                Utilities.ExportDataSet(path, dat);
+                                return dat;
                             }
-                            dr.Close();
                         }
-                        #endregion
                     }
                 }
-                Utilities.ExportDataSet(path, table);
-                return table;
             }
             catch (System.Exception ex)
             {
@@ -1073,15 +988,9 @@ namespace DataLayer
         }
         #endregion
 
-        #region Listar notas faltantes 9
-        public DataTable listarNotasFaltantes9(string path)
+        #region Listar notas 9  para reporte
+        public DataTable listarNotas9(string path)
         {
-            DataTable table = new DataTable();
-            table.Columns.Add("ID", typeof(string));
-            table.Columns.Add("Cedula", typeof(string));
-            table.Columns.Add("Nombre_completo", typeof(string));
-            table.Columns.Add("Calificaciones_faltantes", typeof(string));
-
             string connString = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
 
             try
@@ -1090,101 +999,25 @@ namespace DataLayer
                 {
                     using (MySqlCommand cmd = new MySqlCommand("SELECT * FROM notas_curso_activo9;", conn))
                     {
-                        conn.Open();
-                        MySqlDataReader dr = cmd.ExecuteReader();
-
-                        if (dr.FieldCount > 0)
+                        using (MySqlDataAdapter sda = new MySqlDataAdapter())
                         {
-                            while (dr.Read())
+                            sda.SelectCommand = cmd;
+                            using (DataTable dat = new DataTable())
                             {
-                                string asignaturas = "";
-
-                                string id = dr.GetString(0);
-                                string cedula = dr.GetString(0);
-                                string nombre = dr.GetString(1);
-
-                                if (dr.GetValue(2) == DBNull.Value)
-                                {
-                                    asignaturas = asignaturas + dr.GetDecimal(2) + ", ";
-                                }
-                                if (dr.GetValue(3) == DBNull.Value)
-                                {
-                                    asignaturas = asignaturas + dr.GetDecimal(3) + ", ";
-                                }
-                                if (dr.GetValue(4) == DBNull.Value)
-                                {
-                                    asignaturas = asignaturas + dr.GetDecimal(4) + ", ";
-                                }
-                                if (dr.GetValue(5) == DBNull.Value)
-                                {
-                                    asignaturas = asignaturas + dr.GetDecimal(5) + ", ";
-                                }
-                                if (dr.GetValue(6) == DBNull.Value)
-                                {
-                                    asignaturas = asignaturas + dr.GetDecimal(6) + ", ";
-                                }
-                                if (dr.GetValue(7) == DBNull.Value)
-                                {
-                                    asignaturas = asignaturas + dr.GetDecimal(7) + ", ";
-                                }
-                                if (dr.GetValue(8) == DBNull.Value)
-                                {
-                                    asignaturas = asignaturas + dr.GetDecimal(8) + ", ";
-                                }
-                                if (dr.GetValue(9) == DBNull.Value)
-                                {
-                                    asignaturas = asignaturas + dr.GetDecimal(9) + ", ";
-                                }
-                                if (dr.GetValue(10) == DBNull.Value)
-                                {
-                                    asignaturas = asignaturas + dr.GetDecimal(10) + ", ";
-                                }
-                                if (dr.GetValue(11) == DBNull.Value)
-                                {
-                                    asignaturas = asignaturas + dr.GetDecimal(11) + ", ";
-                                }
-                                if (dr.GetValue(12) == DBNull.Value)
-                                {
-                                    asignaturas = asignaturas + dr.GetDecimal(12) + ", ";
-                                }
-                                if (dr.GetValue(13) == DBNull.Value)
-                                {
-                                    asignaturas = asignaturas + dr.GetDecimal(13) + ", ";
-                                }
-                                if (dr.GetValue(14) == DBNull.Value)
-                                {
-                                    asignaturas = asignaturas + dr.GetDecimal(14) + ", ";
-                                }
-                                if (dr.GetValue(15) == DBNull.Value)
-                                {
-                                    asignaturas = asignaturas + dr.GetDecimal(15) + ", ";
-                                }
-                                if (dr.GetValue(16) == DBNull.Value)
-                                {
-                                    asignaturas = asignaturas + dr.GetDecimal(16) + ", ";
-                                }
-                                if (dr.GetValue(17) == DBNull.Value)
-                                {
-                                    asignaturas = asignaturas + dr.GetDecimal(17) + ", ";
-                                }
-
-                                asignaturas = asignaturas.Remove(asignaturas.Length - 2);
-
-                                table.Rows.Add(id, cedula, nombre, asignaturas);
+                                sda.Fill(dat);
+                                Utilities.ExportDataSet(path, dat);
+                                return dat;
                             }
-                            dr.Close();
                         }
                     }
                 }
-                Utilities.ExportDataSet(path, table);
-                return table;
             }
             catch (System.Exception ex)
             {
                 throw new Exception(ex.Message);
             }
         }
-        #endregion
+        #endregion 
 
     }
 }
