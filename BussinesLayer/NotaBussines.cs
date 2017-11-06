@@ -135,7 +135,7 @@ namespace BussinesLayer
                 new NotaData().ActualizaNotaOrienta(new Nota
                 {
                     IdNota = id,
-                    Entrevista = entrevista,
+                    //Entrevista = entrevista,
                     Vocacional = vocacional
                 });
             }
@@ -214,7 +214,7 @@ namespace BussinesLayer
                 {
                     Matricula = matricula,
                     Curso_lectivo = curso,
-                    Entrevista = entrevista,
+                    //Entrevista = entrevista,
                     Vocacional = vocacional
                 });
             }

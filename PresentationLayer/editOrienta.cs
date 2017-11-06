@@ -26,7 +26,7 @@ namespace PresentationLayer
         private void llenaCampos(int id, string nombre, decimal entrevista, decimal vocacional)
         {
             txtBoxStudent.Text = nombre;
-            txtBoxEntrevista.Text = entrevista.ToString();
+            txtBoxEspe1.Text = entrevista.ToString();
             txtBoxVoca.Text = vocacional.ToString();
         }
 
@@ -49,10 +49,10 @@ namespace PresentationLayer
             NotaBussines bs = new NotaBussines();
             if (type == 1)
             {
-                bs.guardarNotaOrienta(matricula, 3, decimal.Parse(txtBoxEntrevista.Text), decimal.Parse(txtBoxVoca.Text));
+                bs.guardarNotaOrienta(matricula, 3, decimal.Parse(txtBoxEspe1.Text), decimal.Parse(txtBoxVoca.Text));
             } else
             {
-                bs.editNotaOrienta(Id, decimal.Parse(txtBoxEntrevista.Text), decimal.Parse(txtBoxVoca.Text));
+                bs.editNotaOrienta(Id, decimal.Parse(txtBoxEspe1.Text), decimal.Parse(txtBoxVoca.Text));
             }
             MessageBox.Show("Información guardada de manera adecuada");
             rfDTOri();

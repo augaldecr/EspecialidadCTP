@@ -295,13 +295,13 @@ namespace PresentationLayer
             dtGrdVwOrienta.Columns["Periodo"].Visible = false;
             dtGrdVwOrienta.Columns["PeriodoNombre"].Visible = false;
             dtGrdVwOrienta.Columns["Calificacion"].Visible = false;
+            dtGrdVwOrienta.Columns["Tipo"].Visible = false;
             #endregion
 
             #region Nombre de columnas
             dtGrdVwOrienta.Columns["Apellido1"].HeaderText = "Primer apellido";
             dtGrdVwOrienta.Columns["Apellido2"].HeaderText = "Segundo apellido";
             dtGrdVwOrienta.Columns["Nombre"].HeaderText = "Nombre";
-            dtGrdVwOrienta.Columns["Entrevista"].HeaderText = "Entrevista";
             dtGrdVwOrienta.Columns["Vocacional"].HeaderText = "Vocacional";
             #endregion
 

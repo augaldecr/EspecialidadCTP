@@ -72,9 +72,9 @@ namespace DataLayer
                         cmd.Parameters.Add("curso_lectivo", MySqlDbType.Int32);
                         cmd.Parameters["curso_lectivo"].Value = nota.Curso_lectivo;
                         cmd.Parameters["curso_lectivo"].Direction = ParameterDirection.Input;
-                        cmd.Parameters.Add("entrevista", MySqlDbType.Double);
-                        cmd.Parameters["entrevista"].Value = nota.Entrevista;
-                        cmd.Parameters["entrevista"].Direction = ParameterDirection.Input;
+                        //cmd.Parameters.Add("entrevista", MySqlDbType.Double);
+                        //cmd.Parameters["entrevista"].Value = nota.Entrevista;
+                        //cmd.Parameters["entrevista"].Direction = ParameterDirection.Input;
                         cmd.Parameters.Add("vocacional", MySqlDbType.Double);
                         cmd.Parameters["vocacional"].Value = nota.Vocacional;
                         cmd.Parameters["vocacional"].Direction = ParameterDirection.Input;
@@ -145,9 +145,9 @@ namespace DataLayer
                         cmd.Parameters["pidnota_orienta"].Value = nota.IdNota;
                         cmd.Parameters["pidnota_orienta"].Direction = ParameterDirection.Input;
 
-                        cmd.Parameters.Add("pentrevista", MySqlDbType.Double);
-                        cmd.Parameters["pentrevista"].Value = nota.Entrevista;
-                        cmd.Parameters["pentrevista"].Direction = ParameterDirection.Input;
+                        //cmd.Parameters.Add("pentrevista", MySqlDbType.Double);
+                        //cmd.Parameters["pentrevista"].Value = nota.Entrevista;
+                        //cmd.Parameters["pentrevista"].Direction = ParameterDirection.Input;
 
                         cmd.Parameters.Add("pvocacional", MySqlDbType.Double);
                         cmd.Parameters["pvocacional"].Value = nota.Vocacional;
@@ -362,8 +362,16 @@ namespace DataLayer
                                 nota.Apellido2 = dr.GetString(3);
                                 nota.Nombre = dr.GetString(4);
                                 nota.Curso_lectivo = dr.GetInt32(5);
-                                nota.Entrevista = dr.GetValue(7) == DBNull.Value ? (decimal?)null : dr.GetDecimal(7);
-                                nota.Vocacional = dr.GetValue(8) == DBNull.Value ? (decimal?)null : dr.GetDecimal(8);
+                                nota.Vocacional = dr.GetValue(7) == DBNull.Value ? (decimal?)null : dr.GetDecimal(7);
+                                nota.Esp1_id = dr.GetValue(8) == DBNull.Value ? (int?)null : dr.GetInt32(8);
+                                nota.Esp1_nombre = dr.GetString(9);
+                                nota.Esp1_nota = dr.GetValue(10) == DBNull.Value ? (decimal?)null : dr.GetDecimal(10);
+                                nota.Esp2_id = dr.GetValue(11) == DBNull.Value ? (int?)null : dr.GetInt32(11);
+                                nota.Esp2_nombre = dr.GetString(12);
+                                nota.Esp2_nota = dr.GetValue(13) == DBNull.Value ? (decimal?)null : dr.GetDecimal(13);
+                                nota.Esp3_id = dr.GetValue(14) == DBNull.Value ? (int?)null : dr.GetInt32(14);
+                                nota.Esp3_nombre = dr.GetString(15);
+                                nota.Esp3_nota = dr.GetValue(16) == DBNull.Value ? (decimal?)null : dr.GetDecimal(16);
 
                                 lista.Add(nota);
                             }
@@ -529,7 +537,7 @@ namespace DataLayer
                                 nota.IdNota = dr.GetInt32(0);
                                 nota.Matricula = dr.GetInt32(1);
                                 nota.Curso_lectivo = dr.GetInt32(2);
-                                nota.Entrevista = dr.GetValue(7) == DBNull.Value ? (decimal?)null : dr.GetDecimal(3);
+                                //nota.Entrevista = dr.GetValue(7) == DBNull.Value ? (decimal?)null : dr.GetDecimal(3);
                                 nota.Vocacional = dr.GetValue(7) == DBNull.Value ? (decimal?)null : dr.GetDecimal(4);
                             }
                             dr.Close();
@@ -936,6 +944,38 @@ namespace DataLayer
                 using (MySqlConnection conn = new MySqlConnection(connString))
                 {
                     using (MySqlCommand cmd = new MySqlCommand("SELECT * FROM notas_faltantes8;", conn))
+                    {
+                        using (MySqlDataAdapter sda = new MySqlDataAdapter())
+                        {
+                            sda.SelectCommand = cmd;
+                            using (DataTable dat = new DataTable())
+                            {
+                                sda.Fill(dat);
+                                Utilities.ExportDataSet(path, dat);
+                                return dat;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (System.Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        #endregion
+
+        #region Listar notas faltantes 9 para reporte
+        public DataTable listarNotasFaltantes9(string path)
+        {
+            DataTable table = new DataTable();
+            string connString = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
+
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connString))
+                {
+                    using (MySqlCommand cmd = new MySqlCommand("SELECT * FROM notas_faltantes9;", conn))
                     {
                         using (MySqlDataAdapter sda = new MySqlDataAdapter())
                         {
