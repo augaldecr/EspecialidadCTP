@@ -52,6 +52,40 @@ namespace DataLayer
         }
         #endregion
 
+        #region GuardarNota
+        public void GuardaNotaEleccion(Nota nota)
+        {
+            string connString = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
+
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connString))
+                {
+                    using (MySqlCommand cmd = new MySqlCommand())
+                    {
+                        cmd.Connection = conn;
+                        cmd.CommandText = "UpdateEleccionEspecialidad";
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.Add("pmatricula", MySqlDbType.Int32);
+                        cmd.Parameters["pmatricula"].Value = nota.Matricula;
+                        cmd.Parameters["pmatricula"].Direction = ParameterDirection.Input;
+                        cmd.Parameters.Add("pespecialidad", MySqlDbType.Int32);
+                        cmd.Parameters["pespecialidad"].Value = nota.Asignatura;
+                        cmd.Parameters["pespecialidad"].Direction = ParameterDirection.Input;
+
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+                        conn.Close();
+                    }
+                }
+            }
+            catch (System.Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        #endregion
+
         #region GuardarNotaOrienta
         public void GuardaNotaOrienta(Nota nota)
         {
@@ -72,9 +106,6 @@ namespace DataLayer
                         cmd.Parameters.Add("curso_lectivo", MySqlDbType.Int32);
                         cmd.Parameters["curso_lectivo"].Value = nota.Curso_lectivo;
                         cmd.Parameters["curso_lectivo"].Direction = ParameterDirection.Input;
-                        //cmd.Parameters.Add("entrevista", MySqlDbType.Double);
-                        //cmd.Parameters["entrevista"].Value = nota.Entrevista;
-                        //cmd.Parameters["entrevista"].Direction = ParameterDirection.Input;
                         cmd.Parameters.Add("vocacional", MySqlDbType.Double);
                         cmd.Parameters["vocacional"].Value = nota.Vocacional;
                         cmd.Parameters["vocacional"].Direction = ParameterDirection.Input;

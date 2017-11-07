@@ -20,7 +20,31 @@ namespace DataLayer
                 {
                     //TODO: Selecciona Curso Lectivo activo
                     using (MySqlCommand cmd = new MySqlCommand("call InsertMatricula("+ mat.Estudiante +", "+ mat.CursoLectivo +
-                        ", " + mat.Grupo + ", "+ mat.Especialidad1 +", "+ mat.Especialidad2 +", "+ mat.Especialidad3 +")", conn))
+                        ", " + mat.Grupo + ")", conn))
+                    {
+                        cmd.CommandType = CommandType.Text;
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+                        conn.Close();
+                    }
+                    using (MySqlCommand cmd = new MySqlCommand("call InsertEleccionEspecialidad(" + 
+                        matriculaXEstudiante(mat.Estudiante).IdMatricula + ", " + mat.Especialidad1 + ", 1)", conn))
+                    {
+                        cmd.CommandType = CommandType.Text;
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+                        conn.Close();
+                    }
+                    using (MySqlCommand cmd = new MySqlCommand("call InsertEleccionEspecialidad(" + 
+                        matriculaXEstudiante(mat.Estudiante).IdMatricula + ", " + mat.Especialidad2 + ", 2)", conn))
+                    {
+                        cmd.CommandType = CommandType.Text;
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+                        conn.Close();
+                    }
+                    using (MySqlCommand cmd = new MySqlCommand("call InsertEleccionEspecialidad(" + 
+                        matriculaXEstudiante(mat.Estudiante).IdMatricula + ", " + mat.Especialidad3 + ", 3)", conn))
                     {
                         cmd.CommandType = CommandType.Text;
                         conn.Open();
@@ -89,7 +113,31 @@ namespace DataLayer
                 {
                     //TODO: Selecciona Curso Lectivo activo
                     using (MySqlCommand cmd = new MySqlCommand("call UpdateMatricula("+ mat.IdMatricula +"," + mat.Estudiante + ", " + mat.CursoLectivo +
-                        ", " + mat.Grupo + ", " + mat.Especialidad1 + ", " + mat.Especialidad2 + ", " + mat.Especialidad3 + ")", conn))
+                        ", " + mat.Grupo + ")", conn))
+                    {
+                        cmd.CommandType = CommandType.Text;
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+                        conn.Close();
+                    }
+
+                    using (MySqlCommand cmd = new MySqlCommand("call UpdateEleccionEspecialidad(" + mat.IdMatricula + "," + mat.Especialidad1 + ", 1)", conn))
+                    {
+                        cmd.CommandType = CommandType.Text;
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+                        conn.Close();
+                    }
+
+                    using (MySqlCommand cmd = new MySqlCommand("call UpdateEleccionEspecialidad(" + mat.IdMatricula + "," + mat.Especialidad2 + ", 2)", conn))
+                    {
+                        cmd.CommandType = CommandType.Text;
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+                        conn.Close();
+                    }
+
+                    using (MySqlCommand cmd = new MySqlCommand("call UpdateEleccionEspecialidad(" + mat.IdMatricula + "," + mat.Especialidad3 + ", 3)", conn))
                     {
                         cmd.CommandType = CommandType.Text;
                         conn.Open();
@@ -154,11 +202,23 @@ namespace DataLayer
         {
             string connString = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
 
-
             try
             {
                 using (MySqlConnection conn = new MySqlConnection(connString))
                 {
+                    using (MySqlCommand cmd = new MySqlCommand())
+                    {
+                        cmd.Connection = conn;
+                        cmd.CommandText = "DeleteEleccionEspecialidadXParam";
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.Add("pmatricula", MySqlDbType.Int32);
+                        cmd.Parameters["pmatricula"].Value = id;
+                        cmd.Parameters["pmatricula"].Direction = ParameterDirection.Input;
+
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+                        conn.Close();
+                    }
                     using (MySqlCommand cmd = new MySqlCommand())
                     {
                         cmd.Connection = conn;
@@ -349,7 +409,7 @@ namespace DataLayer
         }
         #endregion
 
-        #region SeleccionaMatricula
+        #region SeleccionaMatricula por estudiante
         public Matricula matriculaXEstudiante(int id)
         {
             string connString = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
@@ -448,7 +508,7 @@ namespace DataLayer
 
                 using (MySqlConnection conn = new MySqlConnection(connString))
                 {
-                    using (MySqlCommand cmd = new MySqlCommand("SELECT * FROM matriculas_all WHERE estudiante=" + id + ";", conn))
+                    using (MySqlCommand cmd = new MySqlCommand("SELECT * FROM matriculas_admision WHERE estudiante=" + id + ";", conn))
                     {
                         conn.Open();
                         MySqlDataReader dr = cmd.ExecuteReader();
@@ -461,10 +521,6 @@ namespace DataLayer
                                 mat.Estudiante = dr.GetInt32(1);
                                 mat.CursoLectivo = dr.GetInt32(2);
                                 mat.Grupo = dr.GetInt32(3);
-                                mat.Especialidad1 = dr.GetInt32(4);
-                                mat.Especialidad2 = dr.GetInt32(5);
-                                mat.Especialidad3 = dr.GetInt32(6);
-
                             }
                             dr.Close();
                         }

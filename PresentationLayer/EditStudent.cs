@@ -51,9 +51,9 @@ namespace PresentationLayer
             txtBoxCel.Text = est.Celular.ToString();
             txtBoxEmail.Text = est.Email.ToString();
             chkBoxLocal.Checked = Convert.ToBoolean(est.Ctpp);
-            cmbBoxEspe1.SelectedValue = mat.Especialidad1;
-            cmbBoxEspe2.SelectedValue = mat.Especialidad2;
-            cmbBoxEspe3.SelectedValue = mat.Especialidad3;
+            cmbBoxEspe1.SelectedValue = new EspecialidadBussines().especialidadXMatYPrioridad(mat.IdMatricula, 1).idEspecialidad;
+            cmbBoxEspe2.SelectedValue = new EspecialidadBussines().especialidadXMatYPrioridad(mat.IdMatricula, 2).idEspecialidad;
+            cmbBoxEspe3.SelectedValue = new EspecialidadBussines().especialidadXMatYPrioridad(mat.IdMatricula, 3).idEspecialidad;
             cmbBoxGrupo.SelectedValue = mat.Grupo;
             grupo = mat.Grupo;
         }
@@ -114,7 +114,15 @@ namespace PresentationLayer
                 }
                 catch (Exception ex)
                 {
-                    throw new Exception(ex.Message);
+                    if (ex.Message.Contains("cedula"))
+                    {
+                        MessageBox.Show("Número de cédula duplicado. Favor corregir.");
+                        txtBoxCedula.Focus();
+                    }
+                    else
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
                 }
 
                 MatriculaBussines mbs = new MatriculaBussines();

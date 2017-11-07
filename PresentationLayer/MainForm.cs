@@ -209,8 +209,26 @@ namespace PresentationLayer
                 dtGrdVwOrienta.Rows[e.RowIndex].Cells["apellido1"].Value.ToString(),
                 dtGrdVwOrienta.Rows[e.RowIndex].Cells["apellido2"].Value.ToString()),
 
-                dtGrdVwOrienta.Rows[e.RowIndex].Cells["Entrevista"].Value != null ?
-                decimal.Parse(dtGrdVwOrienta.Rows[e.RowIndex].Cells["Entrevista"].Value.ToString()) : 0,
+                dtGrdVwOrienta.Rows[e.RowIndex].Cells["Esp1_id"].Value != null ?
+                int.Parse(dtGrdVwOrienta.Rows[e.RowIndex].Cells["Esp1_id"].Value.ToString()) : 0,
+                dtGrdVwOrienta.Rows[e.RowIndex].Cells["Esp1_nombre"].Value != null ?
+                dtGrdVwOrienta.Rows[e.RowIndex].Cells["Esp1_nombre"].Value.ToString() : null,
+                dtGrdVwOrienta.Rows[e.RowIndex].Cells["Esp1_nota"].Value != null ?
+                decimal.Parse(dtGrdVwOrienta.Rows[e.RowIndex].Cells["Esp1_nota"].Value.ToString()) : 0,
+
+                dtGrdVwOrienta.Rows[e.RowIndex].Cells["Esp2_id"].Value != null ?
+                int.Parse(dtGrdVwOrienta.Rows[e.RowIndex].Cells["Esp2_id"].Value.ToString()) : 0,
+                dtGrdVwOrienta.Rows[e.RowIndex].Cells["Esp2_nombre"].Value != null ?
+                dtGrdVwOrienta.Rows[e.RowIndex].Cells["Esp2_nombre"].Value.ToString() : null,
+                dtGrdVwOrienta.Rows[e.RowIndex].Cells["Esp2_nota"].Value != null ?
+                decimal.Parse(dtGrdVwOrienta.Rows[e.RowIndex].Cells["Esp2_nota"].Value.ToString()) : 0,
+
+                dtGrdVwOrienta.Rows[e.RowIndex].Cells["Esp3_id"].Value != null ?
+                int.Parse(dtGrdVwOrienta.Rows[e.RowIndex].Cells["Esp3_id"].Value.ToString()) : 0,
+                dtGrdVwOrienta.Rows[e.RowIndex].Cells["Esp3_nombre"].Value != null ?
+                dtGrdVwOrienta.Rows[e.RowIndex].Cells["Esp3_nombre"].Value.ToString() : null,
+                dtGrdVwOrienta.Rows[e.RowIndex].Cells["Esp3_nota"].Value != null ?
+                decimal.Parse(dtGrdVwOrienta.Rows[e.RowIndex].Cells["Esp3_nota"].Value.ToString()) : 0,
 
                 dtGrdVwOrienta.Rows[e.RowIndex].Cells["Vocacional"].Value != null ?
                 decimal.Parse(dtGrdVwOrienta.Rows[e.RowIndex].Cells["Vocacional"].Value.ToString()) : 0);
@@ -234,8 +252,26 @@ namespace PresentationLayer
                 dtGrdVwOrienta.Rows[dtGrdVwOrienta.CurrentRow.Index].Cells["ApellidoOne"].Value.ToString(),
                 dtGrdVwOrienta.Rows[dtGrdVwOrienta.CurrentRow.Index].Cells["ApellidoTwo"].Value.ToString()),
 
-                dtGrdVwOrienta.Rows[dtGrdVwOrienta.CurrentRow.Index].Cells["Entrevista"].Value != null ?
-                decimal.Parse(dtGrdVwOrienta.Rows[dtGrdVwOrienta.CurrentRow.Index].Cells["Entrevista"].Value.ToString()) : 0,
+                dtGrdVwOrienta.Rows[dtGrdVwOrienta.CurrentRow.Index].Cells["Esp1_id"].Value != null ?
+                int.Parse(dtGrdVwOrienta.Rows[dtGrdVwOrienta.CurrentRow.Index].Cells["Esp1_id"].Value.ToString()) : 0,
+                dtGrdVwOrienta.Rows[dtGrdVwOrienta.CurrentRow.Index].Cells["Esp1_nombre"].Value != null ?
+                dtGrdVwOrienta.Rows[dtGrdVwOrienta.CurrentRow.Index].Cells["Esp1_nombre"].Value.ToString() : null,
+                dtGrdVwOrienta.Rows[dtGrdVwOrienta.CurrentRow.Index].Cells["Esp1_nota"].Value != null ?
+                decimal.Parse(dtGrdVwOrienta.Rows[dtGrdVwOrienta.CurrentRow.Index].Cells["Esp1_nota"].Value.ToString()) : 0,
+
+                dtGrdVwOrienta.Rows[dtGrdVwOrienta.CurrentRow.Index].Cells["Esp2_id"].Value != null ?
+                int.Parse(dtGrdVwOrienta.Rows[dtGrdVwOrienta.CurrentRow.Index].Cells["Esp2_id"].Value.ToString()) : 0,
+                dtGrdVwOrienta.Rows[dtGrdVwOrienta.CurrentRow.Index].Cells["Esp2_nombre"].Value != null ?
+                dtGrdVwOrienta.Rows[dtGrdVwOrienta.CurrentRow.Index].Cells["Esp2_nombre"].Value.ToString() : null,
+                dtGrdVwOrienta.Rows[dtGrdVwOrienta.CurrentRow.Index].Cells["Esp2_nota"].Value != null ?
+                decimal.Parse(dtGrdVwOrienta.Rows[dtGrdVwOrienta.CurrentRow.Index].Cells["Esp2_nota"].Value.ToString()) : 0,
+
+                dtGrdVwOrienta.Rows[dtGrdVwOrienta.CurrentRow.Index].Cells["Esp3_id"].Value != null ?
+                int.Parse(dtGrdVwOrienta.Rows[dtGrdVwOrienta.CurrentRow.Index].Cells["Esp3_id"].Value.ToString()) : 0,
+                dtGrdVwOrienta.Rows[dtGrdVwOrienta.CurrentRow.Index].Cells["Esp3_nombre"].Value != null ?
+                dtGrdVwOrienta.Rows[dtGrdVwOrienta.CurrentRow.Index].Cells["Esp3_nombre"].Value.ToString() : null,
+                dtGrdVwOrienta.Rows[dtGrdVwOrienta.CurrentRow.Index].Cells["Esp3_nota"].Value != null ?
+                decimal.Parse(dtGrdVwOrienta.Rows[dtGrdVwOrienta.CurrentRow.Index].Cells["Esp3_nota"].Value.ToString()) : 0,
 
                 dtGrdVwOrienta.Rows[dtGrdVwOrienta.CurrentRow.Index].Cells["Vocacional"].Value != null ?
                 decimal.Parse(dtGrdVwOrienta.Rows[dtGrdVwOrienta.CurrentRow.Index].Cells["Vocacional"].Value.ToString()) : 0);
@@ -288,7 +324,6 @@ namespace PresentationLayer
         {
             #region Oculta columnas nulas
             dtGrdVwOrienta.Columns["IdNota"].Visible = false;
-            dtGrdVwOrienta.Columns["Matricula"].Visible = false;
             dtGrdVwOrienta.Columns["Asignatura"].Visible = false;
             dtGrdVwOrienta.Columns["Curso_lectivo"].Visible = false;
             dtGrdVwOrienta.Columns["Nivel"].Visible = false;
@@ -296,13 +331,23 @@ namespace PresentationLayer
             dtGrdVwOrienta.Columns["PeriodoNombre"].Visible = false;
             dtGrdVwOrienta.Columns["Calificacion"].Visible = false;
             dtGrdVwOrienta.Columns["Tipo"].Visible = false;
+            dtGrdVwOrienta.Columns["Esp1_id"].Visible = false;
+            dtGrdVwOrienta.Columns["Esp2_id"].Visible = false;
+            dtGrdVwOrienta.Columns["Esp3_id"].Visible = false;
             #endregion
 
             #region Nombre de columnas
+            dtGrdVwOrienta.Columns["Matricula"].HeaderText = "ID";
             dtGrdVwOrienta.Columns["Apellido1"].HeaderText = "Primer apellido";
             dtGrdVwOrienta.Columns["Apellido2"].HeaderText = "Segundo apellido";
             dtGrdVwOrienta.Columns["Nombre"].HeaderText = "Nombre";
             dtGrdVwOrienta.Columns["Vocacional"].HeaderText = "Vocacional";
+            dtGrdVwOrienta.Columns["Esp1_nombre"].HeaderText = "Espec. 1";
+            dtGrdVwOrienta.Columns["Esp2_nombre"].HeaderText = "Espec. 2";
+            dtGrdVwOrienta.Columns["Esp3_nombre"].HeaderText = "Espec. 3";
+            dtGrdVwOrienta.Columns["Esp1_nota"].HeaderText = "Nota 1";
+            dtGrdVwOrienta.Columns["Esp2_nota"].HeaderText = "Nota 2";
+            dtGrdVwOrienta.Columns["Esp3_nota"].HeaderText = "Nota 3";
             #endregion
 
             dtGrdVwOrienta.Refresh();

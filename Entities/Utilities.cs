@@ -8,6 +8,10 @@ namespace Entities
 {
     public static class Utilities
     {
+
+        /*XLWorkbook wb = new XLWorkbook();
+DataTable dt = GetDataTableOrWhatever();
+wb.Worksheets.Add(dt,"WorksheetName");*/
         public static void ExportDataSet(string destino, DataTable table)
         {
             try

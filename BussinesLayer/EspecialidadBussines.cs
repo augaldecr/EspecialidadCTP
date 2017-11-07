@@ -22,6 +22,18 @@ namespace BussinesLayer
             }
         }
 
+        public Especialidad especialidadXMatYPrioridad(int mat, int prior)
+        {
+            try
+            {
+                return new EspecialidadData().especialidadXMatYPrior(mat, prior);
+            }
+            catch (System.Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
         public DataTable listarEspecXEstud(string path)
         {
             try
@@ -75,3 +87,4 @@ namespace BussinesLayer
         }
     }
 }
+

@@ -9,25 +9,39 @@ namespace PresentationLayer
         int Id;
         int type;
         int matricula;
+        int id1;
+        int id2;
+        int id3;
 
         public delegate void refreshDTOri();
         public event refreshDTOri rfDTOri;
 
-        public editOrienta(int tipo, int matri, int id, string nombre, decimal entrevista, decimal vocacional)
+        public editOrienta(int tipo, int matri, int id, string nombre,
+            int esp1, string esp1_nombre, decimal nota1, int esp2, string esp2_nombre, decimal nota2, 
+            int esp3, string esp3_nombre, decimal nota3, decimal vocacional)
         {
             InitializeComponent();
             type = tipo;
             asignaTitle(tipo);
             Id = id;
             matricula = matri;
-            llenaCampos(id, nombre, entrevista, vocacional);
+            id1 = esp1;
+            id2 = esp2;
+            id3 = esp3;
+            llenaCampos(id, nombre, vocacional, esp1_nombre, nota1, esp2_nombre, nota2, esp3_nombre, nota3);
         }
 
-        private void llenaCampos(int id, string nombre, decimal entrevista, decimal vocacional)
+        private void llenaCampos(int id, string nombre, decimal vocacional, string esp1_nombre, decimal nota1,
+            string esp2_nombre, decimal nota2, string esp3_nombre, decimal nota3)
         {
             txtBoxStudent.Text = nombre;
-            txtBoxEspe1.Text = entrevista.ToString();
             txtBoxVoca.Text = vocacional.ToString();
+            lblEspe1.Text = esp1_nombre;
+            lblEspe2.Text = esp2_nombre;
+            lblEspe3.Text = esp3_nombre;
+            txtBoxEspe1.Text = nota1.ToString();
+            txtBoxEspe2.Text = nota2.ToString();
+            txtBoxEspe3.Text = nota3.ToString();
         }
 
         private void asignaTitle(int tipo)
@@ -50,6 +64,7 @@ namespace PresentationLayer
             if (type == 1)
             {
                 bs.guardarNotaOrienta(matricula, 3, decimal.Parse(txtBoxEspe1.Text), decimal.Parse(txtBoxVoca.Text));
+                
             } else
             {
                 bs.editNotaOrienta(Id, decimal.Parse(txtBoxEspe1.Text), decimal.Parse(txtBoxVoca.Text));

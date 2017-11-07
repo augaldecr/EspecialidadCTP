@@ -1,11 +1,9 @@
-﻿using DocumentFormat.OpenXml.Packaging;
-using Entities;
+﻿using Entities;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
-using System.Linq;
 
 namespace DataLayer
 {
@@ -46,6 +44,41 @@ namespace DataLayer
             {
                 throw new Exception(ex.Message);
             }
+        }
+        #endregion
+
+        #region SeleccionaEspecialidadElegida por matricula y prioridad
+        public Especialidad especialidadXMatYPrior(int mat, int prior)
+        {
+            string connString = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
+            Especialidad espe = new Especialidad();
+
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connString))
+                {
+                    using (MySqlCommand cmd = new MySqlCommand("CALL `SeleccionarEspeXMatYPrior`("+mat+","+prior+ ");", conn))
+                    {
+                        conn.Open();
+                        MySqlDataReader dr = cmd.ExecuteReader();
+
+                        if (dr.FieldCount > 0)
+                        {
+                            while (dr.Read())
+                            {
+                                espe.idEspecialidad = dr.GetInt32(0);
+                                espe.Nombre = dr.GetString(1);
+                            }
+                            dr.Close();
+                        }
+                    }
+                }
+            }
+            catch (System.Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return espe;
         }
         #endregion
 
