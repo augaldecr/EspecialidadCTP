@@ -29,8 +29,8 @@ namespace PresentationLayer
 
         private void tbPgEstudiantes_Enter(object sender, EventArgs e)
         {
-            llenarEstudianteDatosDtGrdVw();
             llenaComboSecciones();
+            llenarEstudianteDatosDtGrdVw();
         }
 
         private void llenarEstudianteDatosDtGrdVw()
@@ -65,7 +65,7 @@ namespace PresentationLayer
             dtGrdVwEstudiantes.Columns["Email"].HeaderText = "Correo electrónico";
             dtGrdVwEstudiantes.Columns["Ctpp"].Visible = false;
 
-            if (!dtGrdVwEstudiantes.Columns.Contains("Local"))
+            if (!dtGrdVwEstudiantes.Columns.Contains("Ctpp"))
             {
                 DataGridViewCheckBoxColumn DtGVCl = new DataGridViewCheckBoxColumn();
                 DtGVCl.DataPropertyName = "Ctpp";
@@ -172,6 +172,7 @@ namespace PresentationLayer
             BindingSource bs = new BindingSource();
             bs.DataSource = listaEstudiantes.Where(x => x.Cedula.Contains(txtBoxBusqEst.Text));
             dtGrdVwEstudiantes.DataSource = bs;
+            formateaDTEstudiantes();
         }
         #endregion
 
@@ -191,7 +192,8 @@ namespace PresentationLayer
         private void vaciarOrientaDatosDtGrdVw()
         {
             dtGrdVwOrienta.DataSource = null;
-            formateaDTNotasOrienta();
+            dtGrdVwOrienta.Refresh();
+            dtGrdVwOrienta.Update();
         }
 
         private void dtGrdVwOrienta_CellDoubleClick_1(object sender, DataGridViewCellEventArgs e)
@@ -296,7 +298,7 @@ namespace PresentationLayer
                     }
                     else
                     {
-                        bs.editNotaOrienta(int.Parse(dtGrdVwOrienta.Rows[dtGrdVwOrienta.CurrentRow.Index].Cells["IdNota"].Value.ToString()), 0, 0);
+                        bs.editNotaOrienta(int.Parse(dtGrdVwOrienta.Rows[dtGrdVwOrienta.CurrentRow.Index].Cells["IdNota"].Value.ToString()), 0);
                         MessageBox.Show("Notas eliminadas de manera exitosa");
                         refrescaDTNotasOrienta();
                     }
@@ -323,17 +325,17 @@ namespace PresentationLayer
         private void formateaDTNotasOrienta()
         {
             #region Oculta columnas nulas
-            dtGrdVwOrienta.Columns["IdNota"].Visible = false;
-            dtGrdVwOrienta.Columns["Asignatura"].Visible = false;
-            dtGrdVwOrienta.Columns["Curso_lectivo"].Visible = false;
-            dtGrdVwOrienta.Columns["Nivel"].Visible = false;
-            dtGrdVwOrienta.Columns["Periodo"].Visible = false;
-            dtGrdVwOrienta.Columns["PeriodoNombre"].Visible = false;
-            dtGrdVwOrienta.Columns["Calificacion"].Visible = false;
-            dtGrdVwOrienta.Columns["Tipo"].Visible = false;
-            dtGrdVwOrienta.Columns["Esp1_id"].Visible = false;
-            dtGrdVwOrienta.Columns["Esp2_id"].Visible = false;
-            dtGrdVwOrienta.Columns["Esp3_id"].Visible = false;
+                dtGrdVwOrienta.Columns["IdNota"].Visible = false;
+                dtGrdVwOrienta.Columns["Asignatura"].Visible = false;
+                dtGrdVwOrienta.Columns["Curso_lectivo"].Visible = false;
+                dtGrdVwOrienta.Columns["Nivel"].Visible = false;
+                dtGrdVwOrienta.Columns["Periodo"].Visible = false;
+                dtGrdVwOrienta.Columns["PeriodoNombre"].Visible = false;
+                dtGrdVwOrienta.Columns["Calificacion"].Visible = false;
+                dtGrdVwOrienta.Columns["Tipo"].Visible = false;
+                dtGrdVwOrienta.Columns["Esp1_id"].Visible = false;
+                dtGrdVwOrienta.Columns["Esp2_id"].Visible = false;
+                dtGrdVwOrienta.Columns["Esp3_id"].Visible = false;
             #endregion
 
             #region Nombre de columnas
@@ -606,17 +608,13 @@ namespace PresentationLayer
 
         private void btnEstXEspec_Click(object sender, EventArgs e)
         {
-            //svFileDg.FileName = "Estudiantes por especialidad.xlsx";
-            //svFileDg.DefaultExt = "xlsx";
-            //svFileDg.Filter = "Archivo de MS Excel|.xlsx";
-            //dirBrwsDlg. = "Seleccione el destino del reporte";
             dirBrwsDlg.Description = "Seleccione el destino del reporte";
             dirBrwsDlg.RootFolder = Environment.SpecialFolder.Desktop;
 
             DialogResult rs = dirBrwsDlg.ShowDialog();
             if (rs == DialogResult.OK)
             {
-                new EspecialidadBussines().listarEstudXEspec(dirBrwsDlg.SelectedPath);
+                new EspecialidadBussines().listarEstudXEspec(dirBrwsDlg.SelectedPath, "Estudiantes por especialidad");
                 MessageBox.Show("Reporte generado");
             }
         }
@@ -689,32 +687,38 @@ namespace PresentationLayer
         private void SvFileDg_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
         {
             SaveFileDialog sv = (SaveFileDialog)sender;
-
-            if (sv.FileName.Contains("Especialidades por estudiante"))
+            try
             {
-                new EspecialidadBussines().listarEspecXEstud(svFileDg.FileName);
+                if (sv.FileName.Contains("Especialidades por estudiante"))
+                {
+                    new EspecialidadBussines().listarEspecXEstud(svFileDg.FileName, "Especialidades por estudiante");
+                }
+                else if (sv.FileName.Contains("Inconsistencias"))
+                {
+                    new EspecialidadBussines().listarIncosistencias(svFileDg.FileName, "Inconsistencias");
+                }
+                else if (sv.FileName.Contains("Notas_8"))
+                {
+                    new NotaBussines().listarNotas8(svFileDg.FileName, "Notas_8");
+                }
+                else if (sv.FileName.Contains("Notas_9"))
+                {
+                    new NotaBussines().listarNotas9(svFileDg.FileName, "Notas_9");
+                }
+                else if (sv.FileName.Contains("Notas_faltantes_8"))
+                {
+                    new NotaBussines().listarNotasFaltantes8(svFileDg.FileName, "Notas_faltantes_8");
+                }
+                else if (sv.FileName.Contains("Notas_faltantes_9"))
+                {
+                    new NotaBussines().listarNotasFaltantes9(svFileDg.FileName, "Notas_faltantes_9");
+                }
+                MessageBox.Show("Reporte generado");
             }
-            else if (sv.FileName.Contains("Inconsistencias"))
+            catch (Exception ex)
             {
-                new EspecialidadBussines().listarIncosistencias(svFileDg.FileName);
+                MessageBox.Show(ex.Message);
             }
-            else if (sv.FileName.Contains("Notas_8"))
-            {
-                new NotaBussines().listarNotas8(svFileDg.FileName);
-            }
-            else if (sv.FileName.Contains("Notas_9"))
-            {
-                new NotaBussines().listarNotas9(svFileDg.FileName);
-            }
-            else if (sv.FileName.Contains("Notas_faltantes_8"))
-            {
-                new NotaBussines().listarNotasFaltantes8(svFileDg.FileName);
-            }
-            else if (sv.FileName.Contains("Notas_faltantes_9"))
-            {
-                new NotaBussines().listarNotasFaltantes9(svFileDg.FileName);
-            }
-            MessageBox.Show("Reporte generado");
         }
     }
     #endregion

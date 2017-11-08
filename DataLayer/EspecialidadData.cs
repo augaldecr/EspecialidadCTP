@@ -207,7 +207,7 @@ namespace DataLayer
         #endregion
 
         #region Listar escogencia de especialidades por estudiante, para reporte
-        public DataTable listEspecXEstud(string path)
+        public DataTable listEspecXEstud(string path, string name)
         {
             string connString = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
             DataTable dt = new DataTable();
@@ -224,7 +224,7 @@ namespace DataLayer
                             using (DataTable dat = new DataTable())
                             {
                                 sda.Fill(dat);
-                                Utilities.ExportDataSet(path, dat);
+                                Utilities.ExportDataSet(path, dat, name);
                                 return dat;
                             }
                         }
@@ -240,7 +240,7 @@ namespace DataLayer
         #endregion
 
         #region Listar estudiantes por especialidad, para reporte
-        public DataTable listEstudXEspecialidad(int espe, string path)
+        public DataTable listEstudXEspecialidad(int espe, string path, string name)
         {
             string connString = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
             DataTable dt = new DataTable();
@@ -268,7 +268,7 @@ namespace DataLayer
                             using (DataTable dat = new DataTable())
                             {
                                 sda.Fill(dat);
-                                Utilities.ExportDataSet(path, dat);
+                                Utilities.ExportDataSet(path, dat, name);
                                 return dat;
                             }
                         }
@@ -283,7 +283,7 @@ namespace DataLayer
         #endregion
 
         #region Listar escogencia erronea, para reporte
-        public DataTable listErroneas(string path)
+        public DataTable listErroneas(string path, string name)
         {
             string connString = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
             DataTable dt = new DataTable();
@@ -300,7 +300,7 @@ namespace DataLayer
                             using (DataTable dat = new DataTable())
                             {
                                 sda.Fill(dat);
-                                Utilities.ExportDataSet(path, dat);
+                                Utilities.ExportDataSet(path, dat, name);
                                 return dat;
                             }
                         }

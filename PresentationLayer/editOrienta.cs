@@ -1,4 +1,5 @@
 ﻿using BussinesLayer;
+using DataLayer;
 using System;
 using System.Windows.Forms;
 
@@ -60,18 +61,37 @@ namespace PresentationLayer
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            NotaBussines bs = new NotaBussines();
-            if (type == 1)
+            try
             {
-                bs.guardarNotaOrienta(matricula, 3, decimal.Parse(txtBoxEspe1.Text), decimal.Parse(txtBoxVoca.Text));
-                
-            } else
-            {
-                bs.editNotaOrienta(Id, decimal.Parse(txtBoxEspe1.Text), decimal.Parse(txtBoxVoca.Text));
+                NotaBussines bs = new NotaBussines();
+                if (type == 1)
+                {
+                    bs.guardarNotaOrienta(matricula, decimal.Parse(txtBoxVoca.Text));
+                    if (id1 > 0)
+                        bs.editNotaEleccEspe(id1, decimal.Parse(txtBoxEspe1.Text));
+                    if (id2 > 0)
+                        bs.editNotaEleccEspe(id2, decimal.Parse(txtBoxEspe2.Text));
+                    if (id3 > 0)
+                        bs.editNotaEleccEspe(id3, decimal.Parse(txtBoxEspe3.Text));
+                }
+                else
+                {
+                    bs.editNotaOrienta(Id, decimal.Parse(txtBoxVoca.Text));
+                    if (id1 > 0)
+                        bs.editNotaEleccEspe(id1, decimal.Parse(txtBoxEspe1.Text));
+                    if (id2 > 0)
+                        bs.editNotaEleccEspe(id2, decimal.Parse(txtBoxEspe2.Text));
+                    if (id3 > 0)
+                        bs.editNotaEleccEspe(id3, decimal.Parse(txtBoxEspe3.Text));
+                }
+                MessageBox.Show("Información guardada de manera adecuada");
+                rfDTOri();
+                this.Close();
             }
-            MessageBox.Show("Información guardada de manera adecuada");
-            rfDTOri();
-            this.Close();
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btnSalir_Click(object sender, EventArgs e)

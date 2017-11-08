@@ -44,11 +44,11 @@ namespace BussinesLayer
             }
         }
 
-        public DataTable listarNotasFaltantes8(string path)
+        public DataTable listarNotasFaltantes8(string path, string name)
         {
             try
             {
-                return new NotaData().listarNotasFaltantes8(path);
+                return new NotaData().listarNotasFaltantes8(path, name);
             }
             catch (Exception ex)
             {
@@ -56,11 +56,11 @@ namespace BussinesLayer
             }
         }
 
-        public DataTable listarNotas8(string path)
+        public DataTable listarNotas8(string path, string name)
         {
             try
             {
-                return new NotaData().listarNotas8(path);
+                return new NotaData().listarNotas8(path, name);
             }
             catch (Exception ex)
             {
@@ -80,11 +80,11 @@ namespace BussinesLayer
             }
         }
 
-        public DataTable listarNotasFaltantes9(string path)
+        public DataTable listarNotasFaltantes9(string path, string name)
         {
             try
             {
-                return new NotaData().listarNotasFaltantes9(path);
+                return new NotaData().listarNotasFaltantes9(path, name);
             }
             catch (Exception ex)
             {
@@ -92,11 +92,11 @@ namespace BussinesLayer
             }
         }
 
-        public DataTable listarNotas9(string path)
+        public DataTable listarNotas9(string path, string name)
         {
             try
             {
-                return new NotaData().listarNotas9(path);
+                return new NotaData().listarNotas9(path, name);
             }
             catch (Exception ex)
             {
@@ -128,15 +128,31 @@ namespace BussinesLayer
             }
         }
 
-        public void editNotaOrienta(int id, decimal entrevista, decimal vocacional)
+        public void editNotaOrienta(int id, decimal vocacional)
         {
             try
             {
                 new NotaData().ActualizaNotaOrienta(new Nota
                 {
                     IdNota = id,
-                    //Entrevista = entrevista,
                     Vocacional = vocacional
+                });
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
+        }
+
+        public void editNotaEleccEspe(int id, decimal nota)
+        {
+            try
+            {
+                new NotaData().ActualizaNotaEleccEsp(new Nota
+                {
+                    IdNota = id,
+                    Calificacion = nota
                 });
             }
             catch (Exception ex)
@@ -206,15 +222,13 @@ namespace BussinesLayer
             }
         }
 
-        public void guardarNotaOrienta(int matricula, int curso, decimal entrevista, decimal vocacional)
+        public void guardarNotaOrienta(int matricula, decimal vocacional)
         {
             try
             {
                 new NotaData().GuardaNotaOrienta(new Nota
                 {
                     Matricula = matricula,
-                    Curso_lectivo = curso,
-                    //Entrevista = entrevista,
                     Vocacional = vocacional
                 });
             }

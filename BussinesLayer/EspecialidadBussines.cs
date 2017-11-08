@@ -34,11 +34,11 @@ namespace BussinesLayer
             }
         }
 
-        public DataTable listarEspecXEstud(string path)
+        public DataTable listarEspecXEstud(string path, string name)
         {
             try
             {
-                return new EspecialidadData().listEspecXEstud(path);
+                return new EspecialidadData().listEspecXEstud(path, name);
             }
             catch (System.Exception ex)
             {
@@ -46,7 +46,7 @@ namespace BussinesLayer
             }
         }
 
-        public DataTable listarEstudXEspec(string path)
+        public DataTable listarEstudXEspec(string path, string name)
         {
             DataTable dt = new DataTable();
             string directorio = "\\Estudiantes_por_especialidad";
@@ -63,7 +63,7 @@ namespace BussinesLayer
                 foreach (Especialidad espe in new EspecialidadData().ListEspecialidad())
                 {
                     path = string.Format("{0}\\{1}",path,(string.Format("{0}{1}",espe.Nombre,".xlsx")));
-                    dt.Merge(new EspecialidadData().listEstudXEspecialidad(espe.idEspecialidad, path));
+                    dt.Merge(new EspecialidadData().listEstudXEspecialidad(espe.idEspecialidad, path, name));
                     path = string.Format("{0}{1}", path0, directorio);
                 }
                 return dt;
@@ -74,11 +74,11 @@ namespace BussinesLayer
             }
         }
 
-        public DataTable listarIncosistencias(string path)
+        public DataTable listarIncosistencias(string path, string name)
         {
             try
             {
-                return new EspecialidadData().listErroneas(path);
+                return new EspecialidadData().listErroneas(path, name);
             }
             catch (System.Exception ex)
             {

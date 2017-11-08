@@ -103,9 +103,6 @@ namespace DataLayer
                         cmd.Parameters.Add("matricula", MySqlDbType.Int32);
                         cmd.Parameters["matricula"].Value = nota.Matricula;
                         cmd.Parameters["matricula"].Direction = ParameterDirection.Input;
-                        cmd.Parameters.Add("curso_lectivo", MySqlDbType.Int32);
-                        cmd.Parameters["curso_lectivo"].Value = nota.Curso_lectivo;
-                        cmd.Parameters["curso_lectivo"].Direction = ParameterDirection.Input;
                         cmd.Parameters.Add("vocacional", MySqlDbType.Double);
                         cmd.Parameters["vocacional"].Value = nota.Vocacional;
                         cmd.Parameters["vocacional"].Direction = ParameterDirection.Input;
@@ -157,6 +154,40 @@ namespace DataLayer
         }
         #endregion
 
+        #region ActualizarNota de eleccion especialidad
+        public void ActualizaNotaEleccEsp(Nota nota)
+        {
+            string connString = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
+
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connString))
+                {
+                    using (MySqlCommand cmd = new MySqlCommand())
+                    {
+                        cmd.Connection = conn;
+                        cmd.CommandText = "UpdateNotaEleccionEspecialidad";
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.Add("pidnota", MySqlDbType.Int32);
+                        cmd.Parameters["pidnota"].Value = nota.IdNota;
+                        cmd.Parameters["pidnota"].Direction = ParameterDirection.Input;
+                        cmd.Parameters.Add("pnota", MySqlDbType.Decimal);
+                        cmd.Parameters["pnota"].Value = nota.Calificacion;
+                        cmd.Parameters["pnota"].Direction = ParameterDirection.Input;
+
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+                        conn.Close();
+                    }
+                }
+            }
+            catch (System.Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        #endregion
+
         #region ActualizarNotaOrienta
         public void ActualizaNotaOrienta(Nota nota)
         {
@@ -175,10 +206,6 @@ namespace DataLayer
                         cmd.Parameters.Add("pidnota_orienta", MySqlDbType.Int32);
                         cmd.Parameters["pidnota_orienta"].Value = nota.IdNota;
                         cmd.Parameters["pidnota_orienta"].Direction = ParameterDirection.Input;
-
-                        //cmd.Parameters.Add("pentrevista", MySqlDbType.Double);
-                        //cmd.Parameters["pentrevista"].Value = nota.Entrevista;
-                        //cmd.Parameters["pentrevista"].Direction = ParameterDirection.Input;
 
                         cmd.Parameters.Add("pvocacional", MySqlDbType.Double);
                         cmd.Parameters["pvocacional"].Value = nota.Vocacional;
@@ -965,7 +992,7 @@ namespace DataLayer
         #endregion
 
         #region Listar notas faltantes 8 para reporte
-        public DataTable listarNotasFaltantes8(string path)
+        public DataTable listarNotasFaltantes8(string path, string name)
         {
             DataTable table = new DataTable();
             string connString = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
@@ -982,7 +1009,7 @@ namespace DataLayer
                             using (DataTable dat = new DataTable())
                             {
                                 sda.Fill(dat);
-                                Utilities.ExportDataSet(path, dat);
+                                Utilities.ExportDataSet(path, dat, name);
                                 return dat;
                             }
                         }
@@ -997,7 +1024,7 @@ namespace DataLayer
         #endregion
 
         #region Listar notas faltantes 9 para reporte
-        public DataTable listarNotasFaltantes9(string path)
+        public DataTable listarNotasFaltantes9(string path, string name)
         {
             DataTable table = new DataTable();
             string connString = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
@@ -1014,7 +1041,7 @@ namespace DataLayer
                             using (DataTable dat = new DataTable())
                             {
                                 sda.Fill(dat);
-                                Utilities.ExportDataSet(path, dat);
+                                Utilities.ExportDataSet(path, dat, name);
                                 return dat;
                             }
                         }
@@ -1029,7 +1056,7 @@ namespace DataLayer
         #endregion
 
         #region Listar notas 8 para reporte
-        public DataTable listarNotas8( string path)
+        public DataTable listarNotas8(string path, string name)
         {
             string connString = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
 
@@ -1045,7 +1072,7 @@ namespace DataLayer
                             using (DataTable dat = new DataTable())
                             {
                                 sda.Fill(dat);
-                                Utilities.ExportDataSet(path, dat);
+                                Utilities.ExportDataSet(path, dat, name);
                                 return dat;
                             }
                         }
@@ -1060,7 +1087,7 @@ namespace DataLayer
         #endregion
 
         #region Listar notas 9  para reporte
-        public DataTable listarNotas9(string path)
+        public DataTable listarNotas9(string path, string name)
         {
             string connString = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
 
@@ -1076,7 +1103,7 @@ namespace DataLayer
                             using (DataTable dat = new DataTable())
                             {
                                 sda.Fill(dat);
-                                Utilities.ExportDataSet(path, dat);
+                                Utilities.ExportDataSet(path, dat, name);
                                 return dat;
                             }
                         }
