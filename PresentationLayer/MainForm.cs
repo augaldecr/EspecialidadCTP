@@ -10,12 +10,6 @@ namespace PresentationLayer
 {
     public partial class MainForm : Form
     {
-        //TODO: Jalar notas de base de datos de piad
-        //TODO: Filtrar estudiantes y notas por sección en el MainForm
-        //TODO: Creada tabla "periodos_basicos"//
-        // TODO: Agregadas las vistas notas_faltantes8 y notas_faltantes9
-        //TODO: Eliminado el campo entrevista de tabla notas_orienta
-        // TODO: Se crea la tabla "elecciones_especialidad" y se copian los valores desde matriculas_admision
         //QUERY:
         //INSERT INTO elecciones_especialidad(identrevista, matricula, especialidad, prioridad, nota)
         //SELECT null, idmatricula_admision, especialidad1, 1, null FROM matriculas_admision
@@ -250,9 +244,9 @@ namespace PresentationLayer
                 dtGrdVwOrienta.Rows[dtGrdVwOrienta.CurrentRow.Index].Cells["IdNota"].Value != null ?
                 int.Parse(dtGrdVwOrienta.Rows[dtGrdVwOrienta.CurrentRow.Index].Cells["IdNota"].Value.ToString()) : 0,
 
-                string.Format("{0} {1} {2}", dtGrdVwOrienta.Rows[dtGrdVwOrienta.CurrentRow.Index].Cells["Nombre1"].Value.ToString(),
-                dtGrdVwOrienta.Rows[dtGrdVwOrienta.CurrentRow.Index].Cells["ApellidoOne"].Value.ToString(),
-                dtGrdVwOrienta.Rows[dtGrdVwOrienta.CurrentRow.Index].Cells["ApellidoTwo"].Value.ToString()),
+                string.Format("{0} {1} {2}", dtGrdVwOrienta.Rows[dtGrdVwOrienta.CurrentRow.Index].Cells["Nombre"].Value.ToString(),
+                dtGrdVwOrienta.Rows[dtGrdVwOrienta.CurrentRow.Index].Cells["apellido1"].Value.ToString(),
+                dtGrdVwOrienta.Rows[dtGrdVwOrienta.CurrentRow.Index].Cells["apellido2"].Value.ToString()),
 
                 dtGrdVwOrienta.Rows[dtGrdVwOrienta.CurrentRow.Index].Cells["Esp1_id"].Value != null ?
                 int.Parse(dtGrdVwOrienta.Rows[dtGrdVwOrienta.CurrentRow.Index].Cells["Esp1_id"].Value.ToString()) : 0,
