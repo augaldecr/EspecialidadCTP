@@ -608,5 +608,38 @@ namespace DataLayer
             return matriculas;
         }
         #endregion
+
+        #region Cedula por matricula
+        public string CedulaXMatricula(int mat)
+        {
+            string connString = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
+
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connString))
+                {
+                    using (MySqlCommand cmd = new MySqlCommand("CALL cedula_x_matricula(" + mat + ");", conn))
+                    {
+                        conn.Open();
+                        MySqlDataReader dr = cmd.ExecuteReader();
+
+                        if (dr.FieldCount > 0)
+                        {
+                            while (dr.Read())
+                            {
+                                return dr.GetString(0);
+                            }
+                            dr.Close();
+                        }
+                    }
+                }
+            }
+            catch (System.Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return null;
+        }
+        #endregion
     }
 }

@@ -714,6 +714,68 @@ namespace PresentationLayer
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            foreach (NotasBasicas notas in new NotaBussines().listarNotasBasicas8())
+            {
+                if (notas.esp1 == null || notas.esp2 == null || notas.esp3 == null)
+                {
+                    CambiaNota((int)notas.idMatricula, 8, 1);
+                }
+                if (notas.cie1 == null || notas.cie2 == null || notas.cie3 == null)
+                {
+                    CambiaNota((int)notas.idMatricula, 8, 2);
+                }
+                if (notas.estsoc1 == null || notas.estsoc2 == null || notas.estsoc3 == null)
+                {
+                    CambiaNota((int)notas.idMatricula, 8, 3);
+                }
+                if (notas.mat1 == null || notas.mat2 == null || notas.mat3 == null)
+                {
+                    CambiaNota((int)notas.idMatricula, 8, 4);
+                }
+                if (notas.ing1 == null || notas.ing2 == null || notas.ing3 == null)
+                {
+                    CambiaNota((int)notas.idMatricula, 8, 6);
+                }
+                if (notas.civ1 == null || notas.civ2 == null || notas.civ3 == null)
+                {
+                    CambiaNota((int)notas.idMatricula, 8, 11);
+                }
+                if (notas.talI1 == null || notas.talI2 == null || notas.talI3 == null)
+                {
+
+                    CambiaNota((int)notas.idMatricula, 8, 312);
+                }
+                if (notas.talII1 == null || notas.talII2 == null || notas.talII3 == null)
+                {
+                    CambiaNota((int)notas.idMatricula, 8, 313);
+                }
+            }
+            MessageBox.Show("Importación terminada");
+        }
+
+        private void CambiaNota(int mat, int nivel, int asig)
+        {
+            NotaBussines nb = new NotaBussines();
+
+            nb.delNotasXMatNivelAsig(mat, nivel, asig);
+            decimal nota = new NotaBussines().SeleccNotaDesdeAnual(
+                new MatriculaBussines().CedulaXMatricul(mat), nivel, asig);
+
+            for (int i = 1; i <= 3; i++)
+            {
+                nb.guardarNota(new Nota()
+                {
+                    Matricula = mat,
+                    Asignatura = asig,
+                    Nivel = nivel,
+                    Periodo = i,
+                    Calificacion = nota,
+                });
+            }
+        }
     }
     #endregion
 }

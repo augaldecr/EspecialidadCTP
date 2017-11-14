@@ -351,6 +351,44 @@ namespace DataLayer
         }
         #endregion
 
+        #region Borrar Notas por matrícula, nivel y asignatura
+        public void BorraNotasXMatNivelAsig(int mat, int nivel, int asig)
+        {
+            string connString = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
+
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connString))
+                {
+                    using (MySqlCommand cmd = new MySqlCommand())
+                    {
+                        cmd.Connection = conn;
+                        cmd.CommandText = "DeleteNotasXMatNivelAsig";
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.Add("pmatricula", MySqlDbType.Int32);
+                        cmd.Parameters["pmatricula"].Value = mat;
+                        cmd.Parameters["pmatricula"].Direction = ParameterDirection.Input;
+                        cmd.Parameters.Add("pnivel", MySqlDbType.Int32);
+                        cmd.Parameters["pnivel"].Value = nivel;
+                        cmd.Parameters["pnivel"].Direction = ParameterDirection.Input;
+                        cmd.Parameters.Add("pasig", MySqlDbType.Int32);
+                        cmd.Parameters["pasig"].Value = asig;
+                        cmd.Parameters["pasig"].Direction = ParameterDirection.Input;
+
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+                        conn.Close();
+                    }
+                }
+            }
+            catch (System.Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        #endregion
+
+
         #region ListarNotas
         public List<Nota> ListNotas()
         {
@@ -1115,6 +1153,39 @@ namespace DataLayer
                 throw new Exception(ex.Message);
             }
         }
-        #endregion 
+        #endregion
+
+        #region Seleccionar nota desde anual
+        public decimal seleccNotaDesdeAnual(string cedula, int nivel, int asignatura)
+        {
+            string connString = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
+
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connString))
+                {
+                    using (MySqlCommand cmd = new MySqlCommand("CALL selecc_nota_desde_anual('" + cedula + "', "+ nivel +","+ asignatura+");", conn))
+                    {
+                        conn.Open();
+                        MySqlDataReader dr = cmd.ExecuteReader();
+
+                        if (dr.FieldCount > 0)
+                        {
+                            while (dr.Read())
+                            {
+                                return dr.GetDecimal(0);
+                            }
+                            dr.Close();
+                        }
+                    }
+                }
+            }
+            catch (System.Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return 0;
+        }
+        #endregion
     }
 }

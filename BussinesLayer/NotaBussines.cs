@@ -56,6 +56,18 @@ namespace BussinesLayer
             }
         }
 
+        public decimal SeleccNotaDesdeAnual(string cedula, int nivel, int asignatura)
+        {
+            try
+            {
+                return new NotaData().seleccNotaDesdeAnual(cedula, nivel, asignatura);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
         public DataTable listarNotas8(string path, string name)
         {
             try
@@ -203,6 +215,18 @@ namespace BussinesLayer
             try
             {
                 new NotaData().BorraNotasXMatYNivel(mat, nivel);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public void delNotasXMatNivelAsig(int mat, int nivel, int asig)
+        {
+            try
+            {
+                new NotaData().BorraNotasXMatNivelAsig(mat, nivel, asig);
             }
             catch (Exception ex)
             {

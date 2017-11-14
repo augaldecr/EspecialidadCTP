@@ -42,6 +42,18 @@ namespace BussinesLayer
             return matriculaData.IdMatriculaXEstudiante(est);
         }
 
+        public string CedulaXMatricul(int mat)
+        {
+            try
+            {
+                return new MatriculaData().CedulaXMatricula(mat);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
         public Matricula matriculaXEstudiante(int est)
         {
             MatriculaData matriculaData = new MatriculaData();

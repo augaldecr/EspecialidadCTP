@@ -78,6 +78,7 @@
             this.btnNotas9 = new System.Windows.Forms.Button();
             this.svFileDg = new System.Windows.Forms.SaveFileDialog();
             this.dirBrwsDlg = new System.Windows.Forms.FolderBrowserDialog();
+            this.button1 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tbPgEstudiantes.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -621,6 +622,7 @@
             this.tableLayoutPanel10.Controls.Add(this.btnListarInconsistencias, 2, 0);
             this.tableLayoutPanel10.Controls.Add(this.btnNotas8, 0, 1);
             this.tableLayoutPanel10.Controls.Add(this.btnNotas9, 1, 1);
+            this.tableLayoutPanel10.Controls.Add(this.button1, 2, 1);
             this.tableLayoutPanel10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel10.Location = new System.Drawing.Point(3, 143);
             this.tableLayoutPanel10.Name = "tableLayoutPanel10";
@@ -723,6 +725,17 @@
             // 
             this.svFileDg.DefaultExt = "xlsx";
             // 
+            // button1
+            // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button1.Location = new System.Drawing.Point(986, 181);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(99, 52);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -814,5 +827,6 @@
         private System.Windows.Forms.Button btnNotas9;
         private System.Windows.Forms.Button btnNotasFaltantes9;
         private System.Windows.Forms.Button btnNotasFaltantes8;
+        private System.Windows.Forms.Button button1;
     }
 }
