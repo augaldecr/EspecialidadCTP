@@ -715,6 +715,7 @@ namespace PresentationLayer
             }
         }
 
+        #region Importa notas desde anual
         private void button1_Click(object sender, EventArgs e)
         {
             foreach (NotasBasicas notas in new NotaBussines().listarNotasBasicas8())
@@ -745,7 +746,6 @@ namespace PresentationLayer
                 }
                 if (notas.talI1 == null || notas.talI2 == null || notas.talI3 == null)
                 {
-
                     CambiaNota((int)notas.idMatricula, 8, 312);
                 }
                 if (notas.talII1 == null || notas.talII2 == null || notas.talII3 == null)
@@ -758,11 +758,29 @@ namespace PresentationLayer
 
         private void CambiaNota(int mat, int nivel, int asig)
         {
+            int[] talleres = new AsignaturaBussiness().TalleresDesdeAnual(
+                new MatriculaBussines().CedulaXMatricul(mat), 8);
+
             NotaBussines nb = new NotaBussines();
+            decimal nota;
 
             nb.delNotasXMatNivelAsig(mat, nivel, asig);
-            decimal nota = new NotaBussines().SeleccNotaDesdeAnual(
-                new MatriculaBussines().CedulaXMatricul(mat), nivel, asig);
+
+            if (asig == 312)
+            {
+                nota = new NotaBussines().SeleccNotaDesdeAnual(
+                    new MatriculaBussines().CedulaXMatricul(mat), nivel, talleres[0]);
+            }
+            else if (asig == 313)
+            {
+                nota = new NotaBussines().SeleccNotaDesdeAnual(
+                    new MatriculaBussines().CedulaXMatricul(mat), nivel, talleres[1]);
+            }
+            else
+            {
+                nota = new NotaBussines().SeleccNotaDesdeAnual(
+                    new MatriculaBussines().CedulaXMatricul(mat), nivel, asig);
+            }
 
             for (int i = 1; i <= 3; i++)
             {
@@ -776,6 +794,7 @@ namespace PresentationLayer
                 });
             }
         }
+        #endregion
     }
     #endregion
 }

@@ -97,5 +97,52 @@ namespace DataLayer
             return talleres;
         }
         #endregion
+
+        #region Lista talleres desde anual
+        public int[] listarTalleresDesdeAnual(string cedula, int nivel)
+        {
+            string connString = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
+            int[] talleres = new int[2];
+
+            //TODO: Recuperar las matriculas por el curso lectivo
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connString))
+                {
+                    using (MySqlCommand cmd = new MySqlCommand())
+                    {
+                        cmd.Connection = conn;
+                        cmd.CommandText = "talleres_desde_anual";
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.Add("pcedula", MySqlDbType.VarChar);
+                        cmd.Parameters["pcedula"].Value = cedula;
+                        cmd.Parameters["pcedula"].Direction = ParameterDirection.Input;
+                        cmd.Parameters.Add("pnivel", MySqlDbType.Int32);
+                        cmd.Parameters["pnivel"].Value = nivel;
+                        cmd.Parameters["pnivel"].Direction = ParameterDirection.Input;
+
+                        conn.Open();
+                        MySqlDataReader dr = cmd.ExecuteReader();
+                        if (dr.FieldCount > 0)
+                        {
+                            while (dr.Read())
+                            {
+                                int i = 0;
+                                talleres[i] = dr.GetInt32(0);
+                                i++;
+                            }
+                            dr.Close();
+                        }
+                        conn.Close();
+                    }
+                }
+            }
+            catch (System.Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return talleres;
+        }
+        #endregion
     }
 }
