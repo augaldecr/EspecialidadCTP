@@ -76,9 +76,10 @@
             this.btnListarInconsistencias = new System.Windows.Forms.Button();
             this.btnNotas8 = new System.Windows.Forms.Button();
             this.btnNotas9 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.svFileDg = new System.Windows.Forms.SaveFileDialog();
             this.dirBrwsDlg = new System.Windows.Forms.FolderBrowserDialog();
-            this.button1 = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.tabControl1.SuspendLayout();
             this.tbPgEstudiantes.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -721,10 +722,6 @@
             this.btnNotas9.UseVisualStyleBackColor = true;
             this.btnNotas9.Click += new System.EventHandler(this.btnNotas9_Click);
             // 
-            // svFileDg
-            // 
-            this.svFileDg.DefaultExt = "xlsx";
-            // 
             // button1
             // 
             this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -735,6 +732,14 @@
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // svFileDg
+            // 
+            this.svFileDg.DefaultExt = "xlsx";
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // MainForm
             // 
@@ -828,5 +833,6 @@
         private System.Windows.Forms.Button btnNotasFaltantes9;
         private System.Windows.Forms.Button btnNotasFaltantes8;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
