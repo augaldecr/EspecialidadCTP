@@ -775,11 +775,22 @@ foreach (NotasBasicas notas in new NotaBussines().listarNotasBasicas8())
                 WorksheetPart worksheetPart = workbookPart.WorksheetParts.First();
                 SheetData sheetData = worksheetPart.Worksheet.Elements<SheetData>().First();
 
+                List<SharedStringItem> sharedStrings = workbookPart.SharedStringTablePart.SharedStringTable.ChildElements.OfType<SharedStringItem>().ToList();
+
                 foreach (Row r in sheetData.Elements<Row>())
                 {
                     foreach (Cell c in r.Elements<Cell>())
                     {
-                        MessageBox.Show(r.RowIndex +" - " + c.InnerText);
+                        var value = c.InnerText;
+                        int sharedStringIndex;
+
+                        if (int.TryParse(c.InnerText, out sharedStringIndex) &&
+                            sharedStrings.Count > sharedStringIndex &&
+                            sharedStrings[sharedStringIndex].Text != null)
+                        {
+                            value = sharedStrings[sharedStringIndex].Text.Text;
+                        }
+                        MessageBox.Show(value);
                     }
                 }
             }
