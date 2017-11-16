@@ -174,6 +174,19 @@ namespace BussinesLayer
 
         }
 
+        public void EditNotaEleccEspXMatYEsp(Nota nota)
+        {
+            try
+            {
+                new NotaData().ActualizaNotaEleccEspXMatYEsp(nota);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
+        }
+
         public void delNota(int id)
         {
             try

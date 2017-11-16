@@ -1,12 +1,12 @@
 ﻿using BussinesLayer;
-using DocumentFormat.OpenXml.Packaging;
-using DocumentFormat.OpenXml.Spreadsheet;
 using Entities;
+using Spire.Xls;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
+
 
 namespace PresentationLayer
 {
@@ -768,7 +768,8 @@ foreach (NotasBasicas notas in new NotaBussines().listarNotasBasicas8())
 
         private void OpenFileDialog1_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            OpenFileDialog open = (OpenFileDialog)sender;
+            #region Open con ClosedXML
+            /*OpenFileDialog open = (OpenFileDialog)sender;
             using (SpreadsheetDocument hoja = SpreadsheetDocument.Open(open.FileName, false))
             {
                 WorkbookPart workbookPart = hoja.WorkbookPart;
@@ -779,6 +780,9 @@ foreach (NotasBasicas notas in new NotaBussines().listarNotasBasicas8())
 
                 foreach (Row r in sheetData.Elements<Row>())
                 {
+                    string mat = null;
+                    string nota = null;
+
                     foreach (Cell c in r.Elements<Cell>())
                     {
                         var value = c.InnerText;
@@ -790,10 +794,74 @@ foreach (NotasBasicas notas in new NotaBussines().listarNotasBasicas8())
                         {
                             value = sharedStrings[sharedStringIndex].Text.Text;
                         }
-                        MessageBox.Show(value);
+
+                        if (mat == null)
+                        {
+                            mat = value;
+                        }
+                        else
+                        {
+                            if (value.Contains("."))
+                            {
+                                nota = value.Replace(".", ",");
+                            }
+                            else
+                            {
+                                nota = string.Format("{0}.00", value);
+                            }
+                        }
                     }
+
+                    decimal cal = decimal.Parse(nota);
+                    //cal = Math.Round(cal, 2);
+
+                    new NotaBussines().EditNotaEleccEspXMatYEsp(new Nota
+                    {
+                        Matricula = int.Parse(mat),
+                        Asignatura = 3,
+                        Calificacion = cal
+                    });
+
+                    mat = null;
+                    nota = null;
+                    cal = 0;
                 }
             }
+            MessageBox.Show("Importacion");*/
+            #endregion
+
+            OpenFileDialog open = (OpenFileDialog)sender;
+
+            Workbook workbook = new Workbook();
+            workbook.LoadFromFile(@open.FileName);
+            Worksheet sheet = workbook.Worksheets[0];
+            foreach (var Row in sheet.Rows)
+            {
+                string mat = null;
+                string nota = null;
+
+                foreach (var cell in Row.Cells)
+                {
+                    if (mat == null)
+                    {
+                        mat = cell.Value;
+                    } else
+                    {
+                        nota = cell.Value;
+                    }
+                }
+
+                new NotaBussines().EditNotaEleccEspXMatYEsp(new Nota
+                {
+                    Matricula = int.Parse(mat),
+                    Asignatura = 7,
+                    Calificacion = decimal.Parse(nota)
+                });
+
+                mat = null;
+                nota = null;
+            }
+            MessageBox.Show("Importación lista");
         }
 
         private void CambiaNota(int mat, int nivel, int asig)

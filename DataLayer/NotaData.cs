@@ -188,6 +188,44 @@ namespace DataLayer
         }
         #endregion
 
+
+        #region ActualizarNota de eleccion especialidad por matrícula y especialidad
+        public void ActualizaNotaEleccEspXMatYEsp(Nota nota)
+        {
+            string connString = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
+
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connString))
+                {
+                    using (MySqlCommand cmd = new MySqlCommand())
+                    {
+                        cmd.Connection = conn;
+                        cmd.CommandText = "UpdateEleccionEspecialidadXMatYEsp";
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.Add("pmatricula", MySqlDbType.Int32);
+                        cmd.Parameters["pmatricula"].Value = nota.Matricula;
+                        cmd.Parameters["pmatricula"].Direction = ParameterDirection.Input;
+                        cmd.Parameters.Add("pesp", MySqlDbType.Int32);
+                        cmd.Parameters["pesp"].Value = nota.Asignatura;
+                        cmd.Parameters["pesp"].Direction = ParameterDirection.Input;
+                        cmd.Parameters.Add("pnota", MySqlDbType.Decimal);
+                        cmd.Parameters["pnota"].Value = nota.Calificacion;
+                        cmd.Parameters["pnota"].Direction = ParameterDirection.Input;
+
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+                        conn.Close();
+                    }
+                }
+            }
+            catch (System.Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        #endregion
+
         #region ActualizarNotaOrienta
         public void ActualizaNotaOrienta(Nota nota)
         {
@@ -387,7 +425,6 @@ namespace DataLayer
             }
         }
         #endregion
-
 
         #region ListarNotas
         public List<Nota> ListNotas()
