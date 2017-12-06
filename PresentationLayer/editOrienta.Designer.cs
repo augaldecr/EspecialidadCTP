@@ -36,19 +36,19 @@
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.txtBoxStudent = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.txtBoxEspe1 = new System.Windows.Forms.TextBox();
             this.txtBoxVoca = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.lblEspe3 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.txtBoxEspe1 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.txtBoxEspe3 = new System.Windows.Forms.TextBox();
             this.txtBoxEspe2 = new System.Windows.Forms.TextBox();
             this.lblEspe1 = new System.Windows.Forms.Label();
             this.lblEspe2 = new System.Windows.Forms.Label();
-            this.lblEspe3 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -167,6 +167,17 @@
             this.txtBoxStudent.Size = new System.Drawing.Size(483, 32);
             this.txtBoxStudent.TabIndex = 2;
             // 
+            // txtBoxVoca
+            // 
+            this.txtBoxVoca.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.txtBoxVoca.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBoxVoca.Location = new System.Drawing.Point(166, 57);
+            this.txtBoxVoca.MaxLength = 45;
+            this.txtBoxVoca.Name = "txtBoxVoca";
+            this.txtBoxVoca.Size = new System.Drawing.Size(178, 32);
+            this.txtBoxVoca.TabIndex = 2;
+            this.txtBoxVoca.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxVoca_KeyPress);
+            // 
             // label2
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -177,6 +188,17 @@
             this.label2.Size = new System.Drawing.Size(121, 26);
             this.label2.TabIndex = 1;
             this.label2.Text = "Estudiante:";
+            // 
+            // label3
+            // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(19, 60);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(125, 26);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Vocacional:";
             // 
             // tableLayoutPanel5
             // 
@@ -203,58 +225,16 @@
             this.tableLayoutPanel5.Size = new System.Drawing.Size(652, 151);
             this.tableLayoutPanel5.TabIndex = 3;
             // 
-            // txtBoxEspe1
+            // lblEspe3
             // 
-            this.txtBoxEspe1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtBoxEspe1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBoxEspe1.Location = new System.Drawing.Point(524, 9);
-            this.txtBoxEspe1.MaxLength = 45;
-            this.txtBoxEspe1.Name = "txtBoxEspe1";
-            this.txtBoxEspe1.Size = new System.Drawing.Size(125, 32);
-            this.txtBoxEspe1.TabIndex = 4;
-            // 
-            // txtBoxVoca
-            // 
-            this.txtBoxVoca.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtBoxVoca.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBoxVoca.Location = new System.Drawing.Point(166, 57);
-            this.txtBoxVoca.MaxLength = 45;
-            this.txtBoxVoca.Name = "txtBoxVoca";
-            this.txtBoxVoca.Size = new System.Drawing.Size(178, 32);
-            this.txtBoxVoca.TabIndex = 2;
-            // 
-            // label1
-            // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(17, 12);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(160, 26);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Especialidad 1:";
-            // 
-            // label3
-            // 
-            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(19, 60);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(125, 26);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Vocacional:";
-            // 
-            // label4
-            // 
-            this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(17, 62);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(160, 26);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "Especialidad 2:";
+            this.lblEspe3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblEspe3.AutoSize = true;
+            this.lblEspe3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEspe3.Location = new System.Drawing.Point(291, 113);
+            this.lblEspe3.Name = "lblEspe3";
+            this.lblEspe3.Size = new System.Drawing.Size(133, 24);
+            this.lblEspe3.TabIndex = 11;
+            this.lblEspe3.Text = "Especialidad 3";
             // 
             // label5
             // 
@@ -267,6 +247,39 @@
             this.label5.TabIndex = 6;
             this.label5.Text = "Especialidad 3:";
             // 
+            // txtBoxEspe1
+            // 
+            this.txtBoxEspe1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtBoxEspe1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBoxEspe1.Location = new System.Drawing.Point(524, 9);
+            this.txtBoxEspe1.MaxLength = 45;
+            this.txtBoxEspe1.Name = "txtBoxEspe1";
+            this.txtBoxEspe1.Size = new System.Drawing.Size(125, 32);
+            this.txtBoxEspe1.TabIndex = 4;
+            this.txtBoxEspe1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxEspe1_KeyPress);
+            // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(17, 12);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(160, 26);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Especialidad 1:";
+            // 
+            // label4
+            // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(17, 62);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(160, 26);
+            this.label4.TabIndex = 5;
+            this.label4.Text = "Especialidad 2:";
+            // 
             // txtBoxEspe3
             // 
             this.txtBoxEspe3.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -276,6 +289,7 @@
             this.txtBoxEspe3.Name = "txtBoxEspe3";
             this.txtBoxEspe3.Size = new System.Drawing.Size(125, 32);
             this.txtBoxEspe3.TabIndex = 7;
+            this.txtBoxEspe3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxEspe3_KeyPress);
             // 
             // txtBoxEspe2
             // 
@@ -286,6 +300,7 @@
             this.txtBoxEspe2.Name = "txtBoxEspe2";
             this.txtBoxEspe2.Size = new System.Drawing.Size(125, 32);
             this.txtBoxEspe2.TabIndex = 8;
+            this.txtBoxEspe2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxEspe2_KeyPress);
             // 
             // lblEspe1
             // 
@@ -308,17 +323,6 @@
             this.lblEspe2.Size = new System.Drawing.Size(133, 24);
             this.lblEspe2.TabIndex = 10;
             this.lblEspe2.Text = "Especialidad 2";
-            // 
-            // lblEspe3
-            // 
-            this.lblEspe3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblEspe3.AutoSize = true;
-            this.lblEspe3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEspe3.Location = new System.Drawing.Point(291, 113);
-            this.lblEspe3.Name = "lblEspe3";
-            this.lblEspe3.Size = new System.Drawing.Size(133, 24);
-            this.lblEspe3.TabIndex = 11;
-            this.lblEspe3.Text = "Especialidad 3";
             // 
             // editOrienta
             // 

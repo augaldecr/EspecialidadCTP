@@ -151,7 +151,7 @@
             this.cmbBoxEspe2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbBoxEspe2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbBoxEspe2.FormattingEnabled = true;
-            this.cmbBoxEspe2.Location = new System.Drawing.Point(463, 307);
+            this.cmbBoxEspe2.Location = new System.Drawing.Point(463, 308);
             this.cmbBoxEspe2.Name = "cmbBoxEspe2";
             this.cmbBoxEspe2.Size = new System.Drawing.Size(191, 33);
             this.cmbBoxEspe2.TabIndex = 11;
@@ -295,6 +295,7 @@
             this.txtBoxNombre.Name = "txtBoxNombre";
             this.txtBoxNombre.Size = new System.Drawing.Size(191, 32);
             this.txtBoxNombre.TabIndex = 2;
+            this.txtBoxNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxNombre_KeyPress);
             // 
             // txtBoxApellido2
             // 
@@ -410,7 +411,7 @@
             this.cmbBoxEspe1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbBoxEspe1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbBoxEspe1.FormattingEnabled = true;
-            this.cmbBoxEspe1.Location = new System.Drawing.Point(134, 307);
+            this.cmbBoxEspe1.Location = new System.Drawing.Point(134, 308);
             this.cmbBoxEspe1.Name = "cmbBoxEspe1";
             this.cmbBoxEspe1.Size = new System.Drawing.Size(191, 33);
             this.cmbBoxEspe1.TabIndex = 10;
@@ -421,7 +422,7 @@
             this.cmbBoxEspe3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbBoxEspe3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbBoxEspe3.FormattingEnabled = true;
-            this.cmbBoxEspe3.Location = new System.Drawing.Point(134, 367);
+            this.cmbBoxEspe3.Location = new System.Drawing.Point(134, 368);
             this.cmbBoxEspe3.Name = "cmbBoxEspe3";
             this.cmbBoxEspe3.Size = new System.Drawing.Size(191, 33);
             this.cmbBoxEspe3.TabIndex = 12;
@@ -457,7 +458,7 @@
             "11",
             "12",
             "N/A"});
-            this.cmbBoxGrupo.Location = new System.Drawing.Point(463, 367);
+            this.cmbBoxGrupo.Location = new System.Drawing.Point(463, 368);
             this.cmbBoxGrupo.Name = "cmbBoxGrupo";
             this.cmbBoxGrupo.Size = new System.Drawing.Size(191, 33);
             this.cmbBoxGrupo.TabIndex = 25;

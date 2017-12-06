@@ -248,5 +248,10 @@ namespace PresentationLayer
                 cmbBoxGrupo.SelectedValue = 13;
             }
         }
+
+        private void txtBoxNombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
     }
 }
