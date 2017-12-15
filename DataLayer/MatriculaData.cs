@@ -641,5 +641,67 @@ namespace DataLayer
             return null;
         }
         #endregion
+
+        #region ActualizarEspecialidadX
+        public void ActualizaEspecialidadX(Matricula mat)
+        {
+            string connString = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
+
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connString))
+                {
+                    using (MySqlCommand cmd = new MySqlCommand())
+                    {
+                        cmd.Connection = conn;
+                        cmd.CommandText = "UpdateEspecialidadX";
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.Add("pidmatricula_admision", MySqlDbType.Int32);
+                        cmd.Parameters["pidmatricula_admision"].Value = mat.IdMatricula;
+                        cmd.Parameters["pidmatricula_admision"].Direction = ParameterDirection.Input;
+                        cmd.Parameters.Add("pespe", MySqlDbType.Int32);
+                        cmd.Parameters["pespe"].Value = mat.Especialidadx;
+                        cmd.Parameters["pespe"].Direction = ParameterDirection.Input;
+
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+                        conn.Close();
+                    }
+                }
+            }
+            catch (System.Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        #endregion
+
+        #region Cantidad matriculas por Especialidad X
+        public int qtyMatsXEspecialidadX(int espe)
+        {
+            string connString = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
+            int matriculas = 0;
+
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connString))
+                {
+                    //TODO: Selecciona Curso Lectivo activo
+                    using (MySqlCommand cmd = new MySqlCommand("CALL cantidad_x_especialidad("+ espe +");", conn))
+                    {
+                        cmd.CommandType = CommandType.Text;
+                        conn.Open();
+                        matriculas = Convert.ToInt32(cmd.ExecuteScalar());
+                        conn.Close();
+                    }
+                }
+            }
+            catch (System.Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return matriculas;
+        }
+        #endregion
     }
 }

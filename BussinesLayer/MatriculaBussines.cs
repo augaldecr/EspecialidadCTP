@@ -1,10 +1,6 @@
 ﻿using DataLayer;
 using Entities;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BussinesLayer
 {
@@ -29,6 +25,19 @@ namespace BussinesLayer
             try
             {
                 dt.ActualizaMatricula(mat);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public void modificaEspecialidadX(Matricula mat)
+        {
+            MatriculaData dt = new MatriculaData();
+            try
+            {
+                dt.ActualizaEspecialidadX(mat);
             }
             catch (Exception ex)
             {
@@ -78,5 +87,16 @@ namespace BussinesLayer
             return new MatriculaData().qtyMatsXCursoActivo();
         }
 
+        public int qtyMatsEspeX(int espe)
+        {
+            try
+            {
+                return new MatriculaData().qtyMatsXEspecialidadX(espe);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

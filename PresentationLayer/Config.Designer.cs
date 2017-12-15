@@ -57,6 +57,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnImpCalif = new System.Windows.Forms.Button();
             this.chkBoxCalific = new System.Windows.Forms.CheckBox();
+            this.tabPgGenerar = new System.Windows.Forms.TabPage();
+            this.btnGenResults = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tbPgValores.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -65,12 +67,14 @@
             this.statusStripConfig.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
+            this.tabPgGenerar.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tbPgValores);
             this.tabControl1.Controls.Add(this.tbPgImport);
+            this.tabControl1.Controls.Add(this.tabPgGenerar);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
@@ -411,6 +415,27 @@
             this.chkBoxCalific.TabIndex = 18;
             this.chkBoxCalific.UseVisualStyleBackColor = true;
             // 
+            // tabPgGenerar
+            // 
+            this.tabPgGenerar.Controls.Add(this.btnGenResults);
+            this.tabPgGenerar.Location = new System.Drawing.Point(4, 29);
+            this.tabPgGenerar.Name = "tabPgGenerar";
+            this.tabPgGenerar.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPgGenerar.Size = new System.Drawing.Size(788, 411);
+            this.tabPgGenerar.TabIndex = 2;
+            this.tabPgGenerar.Text = "Generar";
+            this.tabPgGenerar.UseVisualStyleBackColor = true;
+            // 
+            // btnGenResults
+            // 
+            this.btnGenResults.Location = new System.Drawing.Point(280, 166);
+            this.btnGenResults.Name = "btnGenResults";
+            this.btnGenResults.Size = new System.Drawing.Size(240, 80);
+            this.btnGenResults.TabIndex = 0;
+            this.btnGenResults.Text = "Generar resultados";
+            this.btnGenResults.UseVisualStyleBackColor = true;
+            this.btnGenResults.Click += new System.EventHandler(this.btnGenResults_Click);
+            // 
             // Config
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -436,6 +461,7 @@
             this.tableLayoutPanel2.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
+            this.tabPgGenerar.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -471,5 +497,7 @@
         private System.Windows.Forms.StatusStrip statusStripConfig;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLblConfig;
         private System.Windows.Forms.ToolStripProgressBar prgBarConfig;
+        private System.Windows.Forms.TabPage tabPgGenerar;
+        private System.Windows.Forms.Button btnGenResults;
     }
 }

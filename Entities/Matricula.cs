@@ -10,5 +10,7 @@
         public int Especialidad1 { get; set; }
         public int Especialidad2 { get; set; }
         public int Especialidad3 { get; set; }
+        public int Especialidadx { get; set; }
+        public decimal Nota { get; set; }
     }
 }

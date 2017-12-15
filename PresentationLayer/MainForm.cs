@@ -1,6 +1,5 @@
 ﻿using BussinesLayer;
 using Entities;
-using Spire.Xls;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -167,6 +166,17 @@ namespace PresentationLayer
             vaciarEstudianteDatosDtGrdVw();
             BindingSource bs = new BindingSource();
             bs.DataSource = listaEstudiantes.Where(x => x.Cedula.Contains(txtBoxBusqEst.Text));
+            dtGrdVwEstudiantes.DataSource = bs;
+            formateaDTEstudiantes();
+        }
+
+        private void txtBoxBusq_TextChanged(object sender, EventArgs e)
+        {
+            vaciarEstudianteDatosDtGrdVw();
+            BindingSource bs = new BindingSource();
+            bs.DataSource = listaEstudiantes.Where(x => x.Nombre.Contains(txtBoxBusqEst.Text) ||
+                                                   x.Apellido1.Contains(txtBoxBusqEst.Text) ||
+                                                   x.Apellido2.Contains(txtBoxBusqEst.Text));
             dtGrdVwEstudiantes.DataSource = bs;
             formateaDTEstudiantes();
         }
@@ -717,192 +727,18 @@ namespace PresentationLayer
             }
         }
 
-        #region Importa notas desde anual
-        private void button1_Click(object sender, EventArgs e)
+        private void btnEspeObtenida_Click(object sender, EventArgs e)
         {
-            openFileDialog1.FileOk += OpenFileDialog1_FileOk;
-            openFileDialog1.ShowDialog();
+            dirBrwsDlg.Description = "Seleccione el destino del reporte";
+            dirBrwsDlg.RootFolder = Environment.SpecialFolder.Desktop;
 
-            #region Importa notas
-            /*
-foreach (NotasBasicas notas in new NotaBussines().listarNotasBasicas8())
-{
-    if (notas.esp1 == null || notas.esp2 == null || notas.esp3 == null)
-    {
-        CambiaNota((int)notas.idMatricula, 8, 1);
-    }
-    if (notas.cie1 == null || notas.cie2 == null || notas.cie3 == null)
-    {
-        CambiaNota((int)notas.idMatricula, 8, 2);
-    }
-    if (notas.estsoc1 == null || notas.estsoc2 == null || notas.estsoc3 == null)
-    {
-        CambiaNota((int)notas.idMatricula, 8, 3);
-    }
-    if (notas.mat1 == null || notas.mat2 == null || notas.mat3 == null)
-    {
-        CambiaNota((int)notas.idMatricula, 8, 4);
-    }
-    if (notas.ing1 == null || notas.ing2 == null || notas.ing3 == null)
-    {
-        CambiaNota((int)notas.idMatricula, 8, 6);
-    }
-    if (notas.civ1 == null || notas.civ2 == null || notas.civ3 == null)
-    {
-        CambiaNota((int)notas.idMatricula, 8, 11);
-    }
-    if (notas.talI1 == null || notas.talI2 == null || notas.talI3 == null)
-    {
-        CambiaNota((int)notas.idMatricula, 8, 312);
-    }
-    if (notas.talII1 == null || notas.talII2 == null || notas.talII3 == null)
-    {
-        CambiaNota((int)notas.idMatricula, 8, 313);
-    }
-}
-*/
-            #endregion
-
-            //MessageBox.Show("Importación terminada");
-        }
-
-        private void OpenFileDialog1_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            #region Open con ClosedXML
-            /*OpenFileDialog open = (OpenFileDialog)sender;
-            using (SpreadsheetDocument hoja = SpreadsheetDocument.Open(open.FileName, false))
+            DialogResult rs = dirBrwsDlg.ShowDialog();
+            if (rs == DialogResult.OK)
             {
-                WorkbookPart workbookPart = hoja.WorkbookPart;
-                WorksheetPart worksheetPart = workbookPart.WorksheetParts.First();
-                SheetData sheetData = worksheetPart.Worksheet.Elements<SheetData>().First();
-
-                List<SharedStringItem> sharedStrings = workbookPart.SharedStringTablePart.SharedStringTable.ChildElements.OfType<SharedStringItem>().ToList();
-
-                foreach (Row r in sheetData.Elements<Row>())
-                {
-                    string mat = null;
-                    string nota = null;
-
-                    foreach (Cell c in r.Elements<Cell>())
-                    {
-                        var value = c.InnerText;
-                        int sharedStringIndex;
-
-                        if (int.TryParse(c.InnerText, out sharedStringIndex) &&
-                            sharedStrings.Count > sharedStringIndex &&
-                            sharedStrings[sharedStringIndex].Text != null)
-                        {
-                            value = sharedStrings[sharedStringIndex].Text.Text;
-                        }
-
-                        if (mat == null)
-                        {
-                            mat = value;
-                        }
-                        else
-                        {
-                            if (value.Contains("."))
-                            {
-                                nota = value.Replace(".", ",");
-                            }
-                            else
-                            {
-                                nota = string.Format("{0}.00", value);
-                            }
-                        }
-                    }
-
-                    decimal cal = decimal.Parse(nota);
-                    //cal = Math.Round(cal, 2);
-
-                    new NotaBussines().EditNotaEleccEspXMatYEsp(new Nota
-                    {
-                        Matricula = int.Parse(mat),
-                        Asignatura = 3,
-                        Calificacion = cal
-                    });
-
-                    mat = null;
-                    nota = null;
-                    cal = 0;
-                }
-            }
-            MessageBox.Show("Importacion");*/
-            #endregion
-
-            OpenFileDialog open = (OpenFileDialog)sender;
-
-            Workbook workbook = new Workbook();
-            workbook.LoadFromFile(@open.FileName);
-            Worksheet sheet = workbook.Worksheets[0];
-            foreach (var Row in sheet.Rows)
-            {
-                string mat = null;
-                string nota = null;
-
-                foreach (var cell in Row.Cells)
-                {
-                    if (mat == null)
-                    {
-                        mat = cell.Value;
-                    } else
-                    {
-                        nota = cell.Value;
-                    }
-                }
-
-                new NotaBussines().EditNotaEleccEspXMatYEsp(new Nota
-                {
-                    Matricula = int.Parse(mat),
-                    Asignatura = 7,
-                    Calificacion = decimal.Parse(nota)
-                });
-
-                mat = null;
-                nota = null;
-            }
-            MessageBox.Show("Importación lista");
-        }
-
-        private void CambiaNota(int mat, int nivel, int asig)
-        {
-            int[] talleres = new AsignaturaBussiness().TalleresDesdeAnual(
-                new MatriculaBussines().CedulaXMatricul(mat), 8);
-
-            NotaBussines nb = new NotaBussines();
-            decimal nota;
-
-            nb.delNotasXMatNivelAsig(mat, nivel, asig);
-
-            if (asig == 312)
-            {
-                nota = new NotaBussines().SeleccNotaDesdeAnual(
-                    new MatriculaBussines().CedulaXMatricul(mat), nivel, talleres[0]);
-            }
-            else if (asig == 313)
-            {
-                nota = new NotaBussines().SeleccNotaDesdeAnual(
-                    new MatriculaBussines().CedulaXMatricul(mat), nivel, talleres[1]);
-            }
-            else
-            {
-                nota = new NotaBussines().SeleccNotaDesdeAnual(
-                    new MatriculaBussines().CedulaXMatricul(mat), nivel, asig);
-            }
-
-            for (int i = 1; i <= 3; i++)
-            {
-                nb.guardarNota(new Nota()
-                {
-                    Matricula = mat,
-                    Asignatura = asig,
-                    Nivel = nivel,
-                    Periodo = i,
-                    Calificacion = nota,
-                });
+                new NotaBussines().EspecialidadGanada(dirBrwsDlg.SelectedPath, "Especialidad obtenida");
+                MessageBox.Show("Reporte generado");
             }
         }
         #endregion
     }
-    #endregion
 }

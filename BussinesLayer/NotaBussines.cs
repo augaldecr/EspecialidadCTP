@@ -3,6 +3,7 @@ using Entities;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 
 namespace BussinesLayer
 {
@@ -109,6 +110,65 @@ namespace BussinesLayer
             try
             {
                 return new NotaData().listarNotas9(path, name);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public DataTable EspecialidadGanada(string path, string name)
+        {
+            DataTable dt = new DataTable();
+            string directorio = "\\Especialidad_obtenida";
+            string path0 = path;
+
+            try
+            {
+                if (!Directory.Exists(string.Format("{0}{1}", path, directorio)))
+                {
+                    Directory.CreateDirectory(string.Format("{0}{1}", path, directorio));
+                }
+                path = string.Format("{0}{1}", path, directorio);
+
+                foreach (Especialidad espe in new EspecialidadData().ListEspecialidad())
+                {
+                    path = string.Format("{0}\\{1}", path, (string.Format("{0}{1}", espe.Nombre, ".xlsx")));
+                    dt.Merge(new NotaData().listarEspecialidadGanada(path, name, espe.idEspecialidad));
+                    path = string.Format("{0}{1}", path0, directorio);
+                }
+                path = string.Format("{0}\\{1}", path, (string.Format("{0}{1}", "Desgloce_ganados", ".xlsx")));
+                new NotaData().genDesgloceGanados(path, "Desgloce_ganados");
+                path = string.Format("{0}{1}", path0, directorio);
+                path = string.Format("{0}\\{1}", path, (string.Format("{0}{1}", "Desgloce_sin_espec", ".xlsx")));
+                new NotaData().genDesgloceEstSinEspec(path, "Desgloce_sin_espec");
+                path = string.Format("{0}{1}", path0, directorio);
+
+                return dt;
+            }
+            catch (System.Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public void DesgloceGanados(string path, string name)
+        {
+            try
+            {
+                new NotaData().genDesgloceGanados(path, name);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public void DesgloceEstSinEspec(string path, string name)
+        {
+            try
+            {
+                new NotaData().genDesgloceEstSinEspec(path, name);
             }
             catch (Exception ex)
             {
@@ -280,6 +340,18 @@ namespace BussinesLayer
             try
             {
                 new NotaData().ActualizaNota(nota);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public List<Matricula> ListaNotasEleccion(int espe, int prior, int limit)
+        {
+            try
+            {
+                return new NotaData().ListNotasEleccion(espe, prior, limit);
             }
             catch (Exception ex)
             {

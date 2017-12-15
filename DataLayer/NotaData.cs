@@ -188,7 +188,6 @@ namespace DataLayer
         }
         #endregion
 
-
         #region ActualizarNota de eleccion especialidad por matrícula y especialidad
         public void ActualizaNotaEleccEspXMatYEsp(Nota nota)
         {
@@ -1224,5 +1223,153 @@ namespace DataLayer
             return 0;
         }
         #endregion
+
+        #region ListarNotas de elecciones de especialidad
+        public List<Matricula> ListNotasEleccion(int espe, int prior, int limit)
+        {
+            string connString = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
+            List<Matricula> lista = new List<Matricula>(); ;
+
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connString))
+                {
+                    using (MySqlCommand cmd = new MySqlCommand())
+                    {
+                        cmd.Connection = conn;
+                        cmd.CommandText = "calif_x_especialidad";
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.Add("pesp", MySqlDbType.Int32);
+                        cmd.Parameters["pesp"].Value = espe;
+                        cmd.Parameters["pesp"].Direction = ParameterDirection.Input;
+                        cmd.Parameters.Add("pprioridad", MySqlDbType.Int32);
+                        cmd.Parameters["pprioridad"].Value = prior;
+                        cmd.Parameters["pprioridad"].Direction = ParameterDirection.Input;
+                        cmd.Parameters.Add("plimite", MySqlDbType.Int32);
+                        cmd.Parameters["plimite"].Value = limit;
+                        cmd.Parameters["plimite"].Direction = ParameterDirection.Input;
+
+                        conn.Open();
+                        MySqlDataReader dr = cmd.ExecuteReader();
+
+                        if (dr.FieldCount > 0)
+                        {
+                            while (dr.Read())
+                            {
+                                Matricula nota = new Matricula();
+                                nota.IdMatricula = dr.GetInt32(0);
+                                nota.Nota = dr.GetDecimal(3);
+
+                                lista.Add(nota);
+                            }
+                            dr.Close();
+                            conn.Close();
+                        }
+                    }
+                }
+                return lista;
+            }
+            catch (System.Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        #endregion
+
+        #region Listar especialidad ganada
+        public DataTable listarEspecialidadGanada(string path, string name, int espe)
+        {
+            DataTable table = new DataTable();
+            string connString = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
+
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection())
+                {
+                    using (MySqlCommand cmd = new MySqlCommand())
+                    {
+                        conn.ConnectionString = connString;
+                        conn.Open();
+
+                        cmd.Connection = conn;
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.CommandText = "resultados_finales";
+
+                        cmd.Parameters.Add("@pesp", MySqlDbType.Int32).Value = espe;
+
+                        using (MySqlDataAdapter sda = new MySqlDataAdapter())
+                        {
+                            sda.SelectCommand = cmd;
+                            using (DataTable dat = new DataTable())
+                            {
+                                sda.Fill(dat);
+                                Utilities.ExportDataSet(path, dat, name);
+                                return dat;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (System.Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        #endregion
+
+        public void genDesgloceGanados(string path, string name)
+        {
+            string connString = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connString))
+                {
+                    using (MySqlCommand cmd = new MySqlCommand("SELECT * FROM resultados_completos;", conn))
+                    {
+                        using (MySqlDataAdapter sda = new MySqlDataAdapter())
+                        {
+                            sda.SelectCommand = cmd;
+                            using (DataTable dat = new DataTable())
+                            {
+                                sda.Fill(dat);
+                                Utilities.ExportDataSet(path, dat, name);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (System.Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public void genDesgloceEstSinEspec(string path, string name)
+        {
+            string connString = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
+
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connString))
+                {
+                    using (MySqlCommand cmd = new MySqlCommand("SELECT * FROM desgloce_estudiantes_sin_especialidad;", conn))
+                    {
+                        using (MySqlDataAdapter sda = new MySqlDataAdapter())
+                        {
+                            sda.SelectCommand = cmd;
+                            using (DataTable dat = new DataTable())
+                            {
+                                sda.Fill(dat);
+                                Utilities.ExportDataSet(path, dat, name);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (System.Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }
