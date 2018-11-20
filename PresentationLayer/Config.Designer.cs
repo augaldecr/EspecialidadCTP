@@ -339,6 +339,7 @@
             this.btnImpEstud.TabIndex = 5;
             this.btnImpEstud.Text = "Importar";
             this.btnImpEstud.UseVisualStyleBackColor = true;
+            this.btnImpEstud.Click += new System.EventHandler(this.btnImpEstud_Click);
             // 
             // label4
             // 
